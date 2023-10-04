@@ -4,11 +4,11 @@
 $libros = [
     "1234567890123" => [
         "isbn" => "1234567890123",
-        "titulo" => "Libro 1",
+        "titulo" => "Harry Potter y la piedra filosofal",
         "descripcion" => "Descripción del Libro 1",
         "categoria" => "ciencias",
         "editorial" => "Editorial 1",
-        "foto" => "imgs/1234567890123.jpg",
+        "foto" => "./img/a.jpeg",
         "precio" => 19.99
     ],
     "2345678901234" => [
@@ -17,75 +17,136 @@ $libros = [
         "descripcion" => "Descripción del Libro 2",
         "categoria" => "cocina",
         "editorial" => "Editorial 2",
-        "foto" => "imgs/2345678901234.jpg",
+        "foto" => "./img/b.jpeg",
         "precio" => 15.49
     ],
-    "2345678901234" => [
-        "isbn" => "2345678901234",
+    "2345678901235" => [
+        "isbn" => "2345678901235",
         "titulo" => "Libro 3",
-        "descripcion" => "Descripción del Libro 2",
+        "descripcion" => "Descripción del Libro 3",
         "categoria" => "cocina",
         "editorial" => "Editorial 2",
-        "foto" => "imgs/2345678901234.jpg",
-        "precio" => 15.49
+        "foto" => "./img/c.jpeg",
+        "precio" => 15.59
     ],
-    "2345678901234" => [
-        "isbn" => "2345678901234",
+    "2345678901236" => [
+        "isbn" => "2345678901236",
         "titulo" => "Libro 4",
-        "descripcion" => "Descripción del Libro 2",
+        "descripcion" => "Descripción del Libro 4",
         "categoria" => "cocina",
         "editorial" => "Editorial 2",
-        "foto" => "imgs/2345678901234.jpg",
-        "precio" => 15.49
+        "foto" => "./img/a.jpeg",
+        "precio" => 16.49
     ],
-    "2345678901234" => [
-        "isbn" => "2345678901234",
+    "2345678901237" => [
+        "isbn" => "2345678901237",
         "titulo" => "Libro 5",
-        "descripcion" => "Descripción del Libro 2",
+        "descripcion" => "Descripción del Libro 5",
         "categoria" => "cocina",
         "editorial" => "Editorial 2",
-        "foto" => "imgs/2345678901234.jpg",
-        "precio" => 15.49
+        "foto" => "./img/b.jpeg",
+        "precio" => 17.49
     ],
-    "2345678901234" => [
-        "isbn" => "2345678901234",
+    "2345678901238" => [
+        "isbn" => "2345678901238",
         "titulo" => "Libro 6",
-        "descripcion" => "Descripción del Libro 2",
+        "descripcion" => "Descripción del Libro 6",
         "categoria" => "cocina",
         "editorial" => "Editorial 2",
-        "foto" => "imgs/2345678901234.jpg",
-        "precio" => 15.49
+        "foto" => "./img/c.jpeg",
+        "precio" => 13.49
     ],
-    "2345678901234" => [
-        "isbn" => "2345678901234",
+    "2345678901239" => [
+        "isbn" => "2345678901239",
         "titulo" => "Libro 7",
-        "descripcion" => "Descripción del Libro 2",
+        "descripcion" => "Descripción del Libro 7",
         "categoria" => "cocina",
         "editorial" => "Editorial 2",
-        "foto" => "imgs/2345678901234.jpg",
-        "precio" => 15.49
+        "foto" => "./img/d.jpeg",
+        "precio" => 19.95
     ],
-    "2345678901234" => [
-        "isbn" => "2345678901234",
+    "2345678901241" => [
+        "isbn" => "2345678901241",
         "titulo" => "Libro 8",
-        "descripcion" => "Descripción del Libro 2",
+        "descripcion" => "Harry Poter y la Camara secreta",
         "categoria" => "cocina",
         "editorial" => "Editorial 2",
-        "foto" => "imgs/2345678901234.jpg",
-        "precio" => 15.49
+        "foto" => "./img/b.jpeg",
+        "precio" => 11.99
+    ],
+    "8345678901241" => [
+        "isbn" => "8345678901241",
+        "titulo" => "Libro 9",
+        "descripcion" => "Harry Poter y la Camara secreta",
+        "categoria" => "cocina",
+        "editorial" => "Editorial 2",
+        "foto" => "./img/b.jpeg",
+        "precio" => 11.99
+    ],
+    "7345678901241" => [
+        "isbn" => "7345678901241",
+        "titulo" => "Libro 10",
+        "descripcion" => "Harry Poter y la Camara secreta",
+        "categoria" => "cocina",
+        "editorial" => "Editorial 2",
+        "foto" => "./img/b.jpeg",
+        "precio" => 11.99
+    ],
+    "6345678901241" => [
+        "isbn" => "6345678901241",
+        "titulo" => "Libro 11",
+        "descripcion" => "Harry Poter y la Camara secreta",
+        "categoria" => "cocina",
+        "editorial" => "Editorial 2",
+        "foto" => "./img/b.jpeg",
+        "precio" => 11.99
+    ],
+    "5345678901241" => [
+        "isbn" => "5345678901241",
+        "titulo" => "Libro 12",
+        "descripcion" => "Harry Poter y la Camara secreta",
+        "categoria" => "cocina",
+        "editorial" => "Editorial 2",
+        "foto" => "./img/b.jpeg",
+        "precio" => 11.99
+    ],
+    "4345678901241" => [
+        "isbn" => "4345678901241",
+        "titulo" => "Libro 13",
+        "descripcion" => "Harry Poter y la Camara secreta",
+        "categoria" => "cocina",
+        "editorial" => "Editorial 2",
+        "foto" => "./img/b.jpeg",
+        "precio" => 11.99
+    ],
+    "3345678901241" => [
+        "isbn" => "3345678901241",
+        "titulo" => "Libro 14",
+        "descripcion" => "Harry Poter y la Camara secreta",
+        "categoria" => "cocina",
+        "editorial" => "Editorial 2",
+        "foto" => "./img/d.jpeg",
+        "precio" => 11.99
+    ],
+    "1345678901241" => [
+        "isbn" => "1345678901241",
+        "titulo" => "Libro 15",
+        "descripcion" => "Harry Poter y la Camara secreta",
+        "categoria" => "cocina",
+        "editorial" => "Editorial 2",
+        "foto" => "./img/b.jpeg",
+        "precio" => 11.99
     ],
     
 ];
 
-// Función para mostrar la lista de libros
+// Función para mostrar la lista de libros en una tabla
 function mostrarLibrosEnTabla($libros)
 {
     echo "<table border='1'>";
     $contador = 0;
-    foreach ($libros as $libro) {
-        if ($contador % 4 == 0) {
-            echo "<tr>";
-        }
+    echo "<tr>"; // Inicia una nueva fila antes de comenzar a mostrar los libros
+    foreach ($libros as $isbn => $libro) {
         echo "<td>";
         echo "<strong>ISBN:</strong> " . $libro["isbn"] . "<br>";
         echo "<strong>Título:</strong> " . $libro["titulo"] . "<br>";
@@ -97,9 +158,10 @@ function mostrarLibrosEnTabla($libros)
         echo "</td>";
         $contador++;
         if ($contador % 4 == 0) {
-            echo "</tr>";
+            echo "</tr><tr>"; // Cierra la fila después de cada 4 libros y comienza una nueva fila
         }
     }
+    echo "</tr>"; // Cierra la última fila
     echo "</table>";
 }
 
