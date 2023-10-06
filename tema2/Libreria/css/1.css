@@ -1,0 +1,54 @@
+body {
+  background-color: lightgray;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  max-width: 1200px; /* Ancho máximo del contenedor */
+  margin: 0 auto; /* Centra el contenedor en la página */
+  padding: 20px;
+}
+
+h1 {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.layout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.libro {
+  width: 200px;
+  border: 1px solid #000000;
+  padding: 16px;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 1 5px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+
+.libro img {
+  width: 125px;
+  height: 150px;
+  margin-bottom: 10px;
+}
+
+.precio {
+  color: rgb(155, 0, 0);
+  text-align: left;
+}
+
+.categorias {
+  color: rgba(31, 4, 128, 0.548);
+}
+
+.libro:hover {
+  transform: scale(1.05); /* Agrandar la tarjeta al pasar el ratón */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Agregar sombra al pasar el ratón */
+}
