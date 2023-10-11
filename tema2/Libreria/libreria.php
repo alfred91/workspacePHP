@@ -1,6 +1,5 @@
 <?php
 
-// Definir la estructura del array asociativo para los libros
 $libros = [
     "1234567890123" => [
         "isbn" => "1234567890123",
@@ -140,15 +139,13 @@ $libros = [
     
 ];
 
-// Función para mostrar los primeros 4 libros de la categoría especificada
 function mostrarLibrosPorCategoria($libros, $categoria)
 {
     $librosMostrados = 0;
 
     echo "<h2 class='categorias'>$categoria</h2>";
 
-    echo "<div class='layout'>"; // Cambio a clase 'layout' para utilizar flexbox
-
+    echo "<div class='layout'>";
     foreach ($libros as $isbn => $libro) {
         if ($libro["categoria"] == $categoria && $librosMostrados < 4) {
             echo "<div class='libro'>";

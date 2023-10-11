@@ -5,8 +5,8 @@ body {
   padding: 0;
 }
 .container {
-  max-width: 1200px; /* Ancho máximo del contenedor */
-  margin: 0 auto; /* Centra el contenedor en la página */
+  max-width: 1200px;
+  margin: 0 auto; 
   padding: 20px;
 }
 
@@ -49,6 +49,6 @@ h1 {
 }
 
 .libro:hover {
-  transform: scale(1.05); /* Agrandar la tarjeta al pasar el ratón */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Agregar sombra al pasar el ratón */
+  transform: scale(1.05); 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }

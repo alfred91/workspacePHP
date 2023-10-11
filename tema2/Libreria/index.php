@@ -16,10 +16,9 @@
 
     <?php
     include("libreria.php");
-    // Llamamos a la función para mostrar solo los 4 primeros libros de la categoría "Novela Histórica"
+    
 mostrarLibrosPorCategoria($libros, "Novela Histórica");
 
-// Llamamos a la función para mostrar solo los 4 primeros libros de la categoría "Novela Negra"
 mostrarLibrosPorCategoria($libros, "Novela Negra");
     ?>
 </div>
