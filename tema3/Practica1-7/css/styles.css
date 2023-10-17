@@ -221,6 +221,7 @@ strong {
 
 small, .small {
   font-size: 0.875em;
+  color:white;
 }
 
 mark, .mark {
@@ -331,9 +332,7 @@ tfoot,
 tr,
 td,
 th {
-  border-color: inherit;
-  border-style: solid;
-  border-width: 0;
+  border: 1px, solid grey;
 }
 
 label {
@@ -11164,6 +11163,7 @@ body {
 .datatable-table > thead > tr > th {
   vertical-align: top;
   padding: 0.5rem 0.5rem;
+  border: 1px solid black;
 }
 
 .datatable-table > thead > tr > th {
