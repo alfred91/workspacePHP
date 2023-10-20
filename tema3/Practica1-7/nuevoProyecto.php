@@ -1,32 +1,46 @@
-<?php include('cabecera.php');?>
-                <main>
-                    <div class="container-fluid px-4">
-                        <h1 class="mt-4">Nuevo Proyecto</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Nuevo Proyecto</li>
+<?php include('cabecera.php');
+if (isset($_SESSION['usuario'])){?>
+
+<h1 class="mt-4">Proyectos</h1>
+        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active"><a href="proyectos.php">Proyectos</a> > Nuevo Proyecto</li>
                         </ol>
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                Añadir un proyecto
+                            </div>
+                            <div class="card-body">
+                    <div class="container-fluid px-4">
+                        
+                        <ol class="breadcrumb mb-4">
+                           
                         <form action="controlador.php" method="post">
                             <input type="hidden" name="accion" value="nuevo">
 
                             <label>Nombre:</label>
-                            <input type="text" name="nombre" required><br>
+                            <input type="text" name="nombre" required><br><br>
 
                             <label>Fecha Inicio:</label>
-                            <input type="date" name="fechaInicio" required><br>
+                            <input type="date" name="fechaInicio" required><br><br>
 
                             <label>Fecha Fin prevista:</label>
-                            <input type="date" name="fechaFinPrevista" required><br>
+                            <input type="date" name="fechaFinPrevista" required><br><br>
 
                             <label>Dias Transcurridos:</label>
-                            <input type="number" name="diasTranscurridos" required><br>
+                            <input type="number" name="diasTranscurridos" required><br><br>
 
                             <label>Porcentaje Completado:</label>
-                            <input type="number" name="porcentajeCompletado" required><br>
+                            <input type="number" name="porcentajeCompletado" required><br><br>
 
                             <label>Importancia (1-5): </label>
-                            <input type="number" name="importancia" required><br>
+                            <input type="number" name="importancia" required><br><br>
 
                             <input type="submit" value="Añadir proyecto">
                         </form>
-<?php include('pie.php'); ?>
+                    <?php } 
+                            else {
+                                echo"Logeate para poder añadir un proyecto";
+                                die();}?>
+                     
+                    <?php include('pie.php'); ?> 

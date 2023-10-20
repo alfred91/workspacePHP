@@ -1,35 +1,19 @@
-<?php include('cabecera.php');?>
-                <main>
-                    <div class="container-fluid px-4">
-                        <h1 class="mt-4">Detalles del Proyecto</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Proyectos</li>
+<?php include('cabecera.php');?>          
+        <h1 class="mt-4">Proyectos</h1>
+        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active"><a href="proyectos.php">Proyectos</a> > Detalle</li>
                         </ol>
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                Proyectos en detalle 
-                                                            </div>
-                        </div>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                DataTable Example
+                                Detalle del proyecto
                             </div>
-                            <div class="card-body">
-                                <table id="datatablesSimple"><?php
-
+                            <div class="card-body"><?php
 
 if(isset($_SESSION['proyectoDetalle'])) {
     $proyecto = $_SESSION['proyectoDetalle'];
 
-echo "<div class='card mb-4'>
-<div class='card-header'>
-    <i class='fas fa-table me-1'></i>
-    DataTable Example
-</div>
-<div class='card-body'>
-    <id='datatablesSimple'>
+echo "<table id='datatablesSimple' border='2'>
         <thead>
                 <tr>
                     <th>ID</th>
@@ -56,14 +40,9 @@ echo "<div class='card mb-4'>
         echo "</table>";
 } else {
     // Si no hay datos del proyecto en la sesión, redirige a la página de proyectos
-    header("Location: proyectos.php?error=proyecto_no_disponible");
+    echo"Proyecto no disponible";
     exit();
 }
 ?>
-
                                 </table>
-                            </div>
-                        </div>
-                    </div>
-                </main>
 <?php include('pie.php'); ?>               

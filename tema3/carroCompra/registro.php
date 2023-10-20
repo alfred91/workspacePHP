@@ -48,18 +48,18 @@
 
 <?php
       if (isset($_GET['error'])) {
-        echo "<h5 class='text-danger'>No coinciden passwords</h5>";
+        echo "<h5 class='text-danger'>".$_GET['error']."</h5>";
       }
 
 ?>
 
         <div class="mb-2">
           <label for="name" class="form-label">Nombre</label>
-          <input type="text" class="form-control" id="name" name="nombre" placeholder="Javier" required>
+          <input type="text" class="form-control" id="name" name="nombre" placeholder="Nombre" required>
         </div>
         <div class="mb-2">
           <label for="surn" class="form-label">Apellidos</label>
-          <input type="text" class="form-control" id="surn" name="apellidos" placeholder="Guillén" required>
+          <input type="text" class="form-control" id="surn" name="apellidos" placeholder="Apellidos" required>
         </div>
         <div class="mb-2">
           <label for="password" class="form-label">Password</label>
@@ -71,11 +71,11 @@
         </div>
         <div class="mb-2">
           <label for="email" class="form-label">Email</label>
-          <input type="email" class="form-control" id="email" name="email" placeholder="jj@gmail.com" required>
+          <input type="email" class="form-control" id="email" name="email" placeholder="email@ejemplo.com" required>
         </div>
         <div class="mb-2">
           <label for="address" class="form-label">Dirección</label>
-          <input type="text" class="form-control" id="address" name="direccion" placeholder="Mi casa,n1">
+          <input type="text" class="form-control" id="address" name="direccion" placeholder="Calle nº">
         </div>
 
         <div class="mb-2">
@@ -115,7 +115,7 @@
 
         <div class="mb-3">
           <label for="comentarios" class="form-label">Comentarios</label>
-          <textarea class="form-control" id="comentarios" name="comentarios" rows="3"></textarea>
+          <textarea class="form-control" id="comentarios" name="comentarios" rows="3" maxlength="255"></textarea>
         </div>
 
         <div class="mb-2">
@@ -134,10 +134,7 @@
     
   </div>
   
-</main>
-
-
-    
+  </main>    
   </body>
 
   <script src="js/bootstrap.min.js" crossorigin="anonymous"></script>

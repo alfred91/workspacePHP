@@ -104,7 +104,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_PO
         
             header("Location: proyectos.php");
             die(); 
-         } elseif ($_GET['accion'] == 'eliminar' && isset($_GET['id'])) {
+
+         } elseif ($_GET['accion'] == 'cerrarSesion') {
+            // Destruir la sesión
+            session_destroy();
+        
+            // Redirigir al usuario a la página de inicio de sesión
+            header("Location: proyectos.php");
+            die();
+            
+        } elseif ($_GET['accion'] == 'eliminar' && isset($_GET['id'])) {
 // Acción para eliminar un proyecto
     $proyecto_id = $_GET['id'];
 

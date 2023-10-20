@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Dashboard - Alfredo</title>
+        <title>Proyectos - Alfredo</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -16,7 +16,7 @@
     <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.php">Inicio</a>
+            <a class="navbar-brand ps-3" href="proyectos.php">Inicio</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -33,13 +33,14 @@
                     <div class="small">
                         <?php 
                         if(isset($_SESSION['usuario'])){
-                            echo $_SESSION['usuario']; 
+                            echo $_SESSION['usuario'];
+                            echo" <a href='controlador.php?accion=cerrarSesion'>Cerrar sesión</a>"; 
                         } else {
-                            echo " Iniciar Sesion : ";
+                            echo"Iniciar sesion ";
                         }
                         ?>
-                    </div>
-                    </div>
+                    </div>              
+            </div>
 
             <!-- Navbar-->
             
@@ -57,7 +58,7 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Menu</div>
-                            <a class="nav-link" href="index.php">
+                            <a class="nav-link" href="proyectos.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
@@ -70,20 +71,19 @@
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link" href="./proyectos.php">
-                                <div class="sb-nav-link-icon"></div>
-                                Ver Proyectos
-                            </a>    
+                                  
                                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
                                         Gestionar Proyectos
                                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </a>
                                     <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="verProyecto.php?id=<?php echo $proyecto['id']; ?>">
-                                        Detalle Proyecto</a>
+                                        
 
-                                            <a class="nav-link" href="nuevoProyecto.php">Añadir Proyecto</a>
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Añadir Proyecto</button>
+
+                                            <a class="nav-link" href="nuevoProyecto.php?accion=nuevo">Añadir Proyecto</a>
+                                            
 
                                             <a class="nav-link" href='controlador.php?accion=eliminarTodos'>Eliminar Todos</a>
                                         </nav>
@@ -96,3 +96,5 @@
                 </nav>
             </div>
 <div id="layoutSidenav_content">
+<main>
+                    <div class="container-fluid px-4">

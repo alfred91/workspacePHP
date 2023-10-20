@@ -17,14 +17,19 @@
 
     array("id" => "p0001", "nombre" => "AMD Ryzen 7 5800X", "precio" => 325, "cantidad" => 1,
                 "img" => "./img/productos/pr1.webp", "ivaR" => 0),
+
     array("id" => "p0002", "nombre" => "Logitech 350", "precio" => 50, "cantidad" => 1,
                 "img" => "./img/productos/pr2.webp", "ivaR" => 1),
+
     array("id" => "p0003", "nombre" => "Monitor AOC 32' OLED", "precio" => 610, "cantidad" => 1,
                 "img" => "./img/productos/pr3.webp", "ivaR" => 0),
+                
     array("id" => "p0004", "nombre" => "Teclado Ducky español", "precio" => 120, "cantidad" => 1,
                 "img" => "./img/productos/pr1.webp", "ivaR" => 1),
+
     array("id" => "p0005", "nombre" => "Nvidia GTX 4090", "precio" => 2000, "cantidad" => 1,
                 "img" => "./img/productos/pr1.webp", "ivaR" => 1),
+
     array("id" => "p0006", "nombre" => "SSD Samsung 980 Pro 2TB", "precio" => 170, "cantidad" => 1,
                 "img" => "./img/productos/pr1.webp", "ivaR" => 0),
 

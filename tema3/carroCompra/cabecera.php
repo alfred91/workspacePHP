@@ -44,14 +44,24 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
+
                 <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="index.php?categoria='ratones'">Ratones</a>
+                <a class="nav-link" href="index.php?categoria=ratones">Ratones</a>
                 </li>
-                
+                <li class="nav-item">
+                <a class="nav-link" href="index.php?categoria=monitores">Monitores</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="index.php?categoria=teclados">Teclados</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="index.php?categoria=graficas">Gráficas</a>
+                </li>
             </ul>
+
             <div class="d-flex">
 <?php
   if (isset($_SESSION['usuario'])) {
