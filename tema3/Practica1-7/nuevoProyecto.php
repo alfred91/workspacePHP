@@ -1,5 +1,4 @@
-<?php include('cabecera.php');
-if (isset($_SESSION['usuario'])){?>
+<?php include('cabecera.php'); ?>
 
 <h1 class="mt-4">Proyectos</h1>
         <ol class="breadcrumb mb-4">
@@ -12,9 +11,10 @@ if (isset($_SESSION['usuario'])){?>
                             </div>
                             <div class="card-body">
                     <div class="container-fluid px-4">
-                        
                         <ol class="breadcrumb mb-4">
-                           
+
+                <!--CONTENIDO DEL FORMULARIO, EL POST LO MANDAMOS DE TIPO OCULTO --> 
+
                         <form action="controlador.php" method="post">
                             <input type="hidden" name="accion" value="nuevo">
 
@@ -37,10 +37,5 @@ if (isset($_SESSION['usuario'])){?>
                             <input type="number" name="importancia" required><br><br>
 
                             <input type="submit" value="Añadir proyecto">
-                        </form>
-                    <?php } 
-                            else {
-                                echo"Logeate para poder añadir un proyecto";
-                                die();}?>
-                     
-                    <?php include('pie.php'); ?> 
+                        </form>                     
+<?php include('pie.php'); ?> 

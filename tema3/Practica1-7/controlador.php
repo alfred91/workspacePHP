@@ -1,4 +1,7 @@
 <?php session_start();
+include 'lib.php';
+
+// SI SE AUTENTICA CON UNA CONTRASEÑA DE MAS DE 8 Y CON 1 MAYUS, CARGA LOS PROYECTOS EN PROYECTOS.PHP
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_POST['password'])) {
 
         $email=$_POST['email'];
@@ -9,12 +12,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_PO
         die();
     }
 
-// Si el usuario y la contraseña son válidos, configurar la sesión y redirigir a proyectos.php
 
-// De lo contrario, redirigir a login.php con un mensaje de error
-
-// Configurar usuario y proyectos en la sesión
-
+// SE ESTABLECE EL USUARIO Y LOS PROYECTOS EN LA SESION
     $_SESSION['usuario'] = $email;
 
     $proyectos = array(
@@ -72,8 +71,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_PO
     header("Location: proyectos.php");
     die();
 
+//SI PINCHAMOS EN NUEVO
     } elseif ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['accion']) && $_POST['accion'] == 'nuevo') {
-        // Obtener datos del formulario
+
+//SE OBTIENEN LOS DATOS DEL FORM
             $nombre = $_POST['nombre'];
             $fechaInicio = $_POST['fechaInicio'];
             $fechaFinPrevista = $_POST['fechaFinPrevista'];
@@ -81,11 +82,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_PO
             $porcentajeCompletado = $_POST['porcentajeCompletado'];
             $importancia = $_POST['importancia'];
         
-        // Calcular nuevo ID
+// ASIGNAMOS EL NUEVO ID AL PROYECTO
             $proyectos = $_SESSION['proyectos'];
             $nuevoId = max(array_column($proyectos, 'id')) + 1;
         
-        // Crear nuevo proyecto
+// SE CREA EL PROYECTO CON LOS PARAMETROS QUE HAN SIDO DEFINIDOS
             $nuevoProyecto = array(
                 'id' => $nuevoId,
                 'nombre' => $nombre,
@@ -96,16 +97,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_PO
                 'importancia' => $importancia
             );
         
-        // Agregar el nuevo proyecto al array de sesiones
+// SE AGREGA EL PROYECTO AL ARRAY DE SESIONES
             $_SESSION['proyectos'][] = $nuevoProyecto;
         
             
-        // Redirigir de vuelta a la página de proyectos
+// Redirigir de vuelta a la página de proyectos
         
             header("Location: proyectos.php");
             die(); 
-
-         } elseif ($_GET['accion'] == 'cerrarSesion') {
+// SI PINCHAMOS EN GENERARPDF    
+        } elseif ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['accion']) && $_GET['accion'] == 'generarPDF') {
+//LLAMADA A LA FUNCION GENERARPDF
+            $pdfContent = generarPDF($_SESSION['proyectos']);
+        
+// Establece los encabezados para la descarga del archivo PDF
+            header('Content-Type: application/pdf');
+            header('Content-Disposition: attachment; filename="proyectos.pdf"');
+        
+// Imprime el contenido del PDF para que se descargue al navegador
+            echo $pdfContent;
+            die();
+                    
+        } elseif ($_GET['accion'] == 'cerrarSesion') {
             // Destruir la sesión
             session_destroy();
         

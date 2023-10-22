@@ -1,8 +1,6 @@
 <?php include('cabecera.php');?>
-<div id="layoutSidenav_content">
         <div id="layoutAuthentication">
-            <div id="layoutAuthentication_content">
-                <main>
+            <div id="layoutAuthentication_content">                
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-5">
@@ -32,6 +30,5 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>         
+                        </div>        
 <?php include('pie.php'); ?>

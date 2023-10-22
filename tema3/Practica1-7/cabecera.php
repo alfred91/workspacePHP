@@ -36,21 +36,19 @@
                             echo $_SESSION['usuario'];
                             echo" <a href='controlador.php?accion=cerrarSesion'>Cerrar sesión</a>"; 
                         } else {
-                            echo"Iniciar sesion ";
+                            echo"<ul class='navbar-nav ms-auto ms-md-0 me-3 me-lg-4'>
+                            <li class='nav-item dropdown'>
+                                <a class='button' id='navbarDropdown' href='login.php' role='button' aria-expanded='false'><i class='fas fa-user fa-fw'></i></a>
+                                </ul>
+                            </li>
+                        </ul>";
                         }
                         ?>
                     </div>              
-            </div>
+                </div>
 
             <!-- Navbar-->
             
-            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                <li class="nav-item dropdown">
-                    <a class="button" id="navbarDropdo/* Ancho máximo del contenedor */wn" href="login.php" role="button" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    </ul>
-                </li>
-            </ul>
-
         </nav>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
@@ -76,16 +74,24 @@
                                         Gestionar Proyectos
                                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </a>
+                                    
                                     <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
-                                        
 
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Añadir Proyecto</button>
+                                <!--BOTONES DE LA GESTION DE PROYECTOS SOLO DISPONIBLES CUANDO EL USUARIO ESTA EN LA SESION -->
+
+                                        <?php if (isset($_SESSION['usuario'])): ?>
 
                                             <a class="nav-link" href="nuevoProyecto.php?accion=nuevo">Añadir Proyecto</a>
                                             
+                                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#nuevoProyectoModal">Añadir con Modal</a>
 
                                             <a class="nav-link" href='controlador.php?accion=eliminarTodos'>Eliminar Todos</a>
+
+                                            <a class="nav-link" href="controlador.php?accion=generarPDF">Generar PDF</a>
+
+                                        <?php endif; ?>
+
                                         </nav>
                                     </div>                                 
                                 </nav>
@@ -95,6 +101,6 @@
                     </div>                    
                 </nav>
             </div>
-<div id="layoutSidenav_content">
-<main>
-                    <div class="container-fluid px-4">
+        <div id="layoutSidenav_content">
+    <main>
+<div class="container-fluid px-4">

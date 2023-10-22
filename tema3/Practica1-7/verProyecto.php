@@ -10,9 +10,10 @@
                             </div>
                             <div class="card-body"><?php
 
+//SI SE HA PINCHADO EN VER UN PROYECTO EN CONCRETO
 if(isset($_SESSION['proyectoDetalle'])) {
     $proyecto = $_SESSION['proyectoDetalle'];
-
+//CREAMOS LA TABLA PARA EL PROYECTO
 echo "<table id='datatablesSimple' border='2'>
         <thead>
                 <tr>
@@ -34,15 +35,14 @@ echo "<table id='datatablesSimple' border='2'>
                     <td>{$proyecto['diasTranscurridos']}</td>
                     <td>{$proyecto['porcentajeCompletado']}%</td>
                     <td>{$proyecto['importancia']}</td>
-                    <td><a href='controlador.php?accion=eliminar&id={$proyecto['id']}'>Eliminar</a></td>
+                    <td><a href='controlador.php?accion=eliminar&id={$proyecto['id']}'> <img src='assets/img/eliminar.jpg'width='25rem' height='25rem'> </a> </td>  
                 </tr>";
         
         echo "</table>";
 } else {
-    // Si no hay datos del proyecto en la sesión, redirige a la página de proyectos
     echo"Proyecto no disponible";
     exit();
 }
 ?>
-                                </table>
+</table>
 <?php include('pie.php'); ?>               
