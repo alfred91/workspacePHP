@@ -3,12 +3,12 @@ require 'vendor/autoload.php';
 
 function generarPDF($proyectos) {
     
-    //Nuevo pdf, creamos una pagina y elegimos el tipo de fuente y tamaño
+//NUEVO PDF, AÑADIMOS PAGINA Y ESTABLECEMOS LA FUENTE, TAMAÑO Y TIPO
     $pdf = new TCPDF();
     $pdf->AddPage();
     $pdf->SetFont('times', 'B', 16);
 
-    // Pintar el PDF para cada proyecto
+//PINTAR EN EL PDF LOS DATOS DE CADA PROYECTO:
     foreach ($proyectos as $proyecto) {
         $pdf->Cell(40, 10, 'ID: ' . $proyecto['id']);
         $pdf->Ln();
@@ -25,7 +25,7 @@ function generarPDF($proyectos) {
         $pdf->Cell(40, 10, 'Importancia: ' . $proyecto['importancia']);
         $pdf->Ln(10);
     }
-    // Devuelve el PDF como caena de bytes
+//DEVUELVE EL PDF COMO CADENA DE BYTES
     return $pdf->Output('', 'S');
 }
 ?>
