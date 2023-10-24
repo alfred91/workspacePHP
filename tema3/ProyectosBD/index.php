@@ -1,4 +1,5 @@
-<?php include('cabecera.php');?>          
+<?php include 'cabecera.php';
+include 'db.php';?>          
         <h1 class="mt-4">Proyectos</h1>
         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Proyectos</li>
@@ -8,61 +9,51 @@
                                 <i class="fas fa-table me-1"></i>
                                 Tabla de Proyectos
                             </div>
-                            <div class="card-body"><?php
+                            <div class="card-body">
 
-// Verificar si existe la sesión de proyectos
-    if(isset($_SESSION['proyectos'])) {
-        // Obtener proyectos de la sesión
-        $proyectos = $_SESSION['proyectos'];
+<?php
+try{
+$conn=conexion();
+if ($conn) {
+    echo "Conexión exitosa";
+} else {
+    echo "Error en la conexión";
+}
 
-    // Mostrar proyectos en una tabla
-        echo "<table id='datatablesSimple' border='2'>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Fecha de Inicio</th>
-                    <th>Fecha de Fin Prevista</th>
-                    <th>Días Transcurridos</th>
-                    <th>Porcentaje Completado</th>
-                    <th>Importancia</th>
-                    <th>Ver</th>
-                    <th>Eliminar</th>
-                </tr>
-            </thead>
-            <tfoot>
-            <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Fecha de Inicio</th>
-                    <th>Fecha de Fin Prevista</th>
-                    <th>Días Transcurridos</th>
-                    <th>Porcentaje Completado</th>
-                    <th>Importancia</th>
-                    <th>Ver</th>
-                    <th>Eliminar</th>
-                </tr>
-            </tfoot>
-            <tbody>";
-    
-        foreach ($proyectos as $proyecto) {
-            echo "<tr>
-                    <td>{$proyecto['id']}</td>
-                    <td>{$proyecto['nombre']}</td>
-                    <td>{$proyecto['fechaInicio']}</td>
-                    <td>{$proyecto['fechaFinPrevista']}</td>
-                    <td>{$proyecto['diasTranscurridos']}</td>
-                    <td>{$proyecto['porcentajeCompletado']}%</td>
-                    <td>{$proyecto['importancia']}</td>
-                    <td><a href='controlador.php?accion=ver&id={$proyecto['id']}'> <img src='assets/img/detalle.jpg' width='25rem' height='25rem'> </a> </td>
-                    <td><a href='controlador.php?accion=eliminar&id={$proyecto['id']}'> <img src='assets/img/eliminar.jpg'width='25rem' height='25rem'> </a> </td>
-                </tr>";
-        }
+$sql = "SELECT * FROM proyectos WHERE idUsuario =:idUsuario";
+$stmt = $conn->prepare($sql);
+$stmt->bindParam(':idUsuario', $_SESSION['idUsuario']);
+$stmt->execute();
 
-        echo "</tbody> </table>";
-    } else {
-        echo "<p>No hay proyectos disponibles.</p>";
-    }?>
+$proyectos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    echo '<table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Nombre del Proyecto</th>
+            <th>Fecha de Inicio</th>
+            <th>Fecha de Fin Prevista</th>
+            <th>Días Transcurridos</th>
+            <th>Porcentaje Completado</th>
+            <th>Importancia</th>
+            </tr>';
+
+    foreach ($proyectos as $proyecto) {
+        echo '<tr>
+            <td>'. $proyecto['id']. '</td>
+            <td>'. $proyecto['nombre']. '</td>
+            <td>'. $proyecto['fechaInicio']. '</td>
+            <td>'. $proyecto['fechaFinPrevista']. '</td>
+            <td>'. $proyecto['diasTranscurridos']. '</td>
+            <td>'. $proyecto['porcentajeCompletado']. '</td>
+            <td>'. $proyecto['importancia']. '</td>
+            </tr>';
+    }
+} catch (PDOException $e){
+    echo "Error: ". $e->getMessage();
+    }
+    echo "</table>";
+    ?>
     <!--CONTENIDO DEL MODAL, EL POST TIPO OCULTO -->
                     
     <div class="modal fade" id="nuevoProyectoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

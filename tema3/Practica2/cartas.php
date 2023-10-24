@@ -1,10 +1,11 @@
 <?php session_start();
 if (!isset($_SESSION['mazo'])) {
-
+    
     $mazo=array('c1','c2','c3','c4','c5','c6','c7','c11','c12','c13',
                 'd1','d2','d3','d4','d5','d6','d7','d11','d12','d13',
                 'p1','p2','p3','p4','p5','p6','p7','p11','p12','p13',
                 't1','t2','t3','t4','t5','t6','t7','t11','t12','t13');
+
     shuffle($mazo);
     $_SESSION['mazo']=$mazo;
     $_SESSION['cartasJugadas'] = 0;

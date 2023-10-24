@@ -31,11 +31,14 @@
         <!--LOGIN, SI EL USUARIO NO ESA LOGEADO, SE MUESTRA ICONO PARA INICIAR SESION, CUADO INICIE SESION,
             SE MUESTRA EL EMAIL EN LA PARTE SUPERIOR Y LA OPCION DE CERRAR SESION -->
 
+    <!--LOGIN, SI EL USUARIO NO ESA LOGEADO, SE MUESTRA ICONO PARA INICIAR SESION, CUADO INICIE SESION,
+            SE MUESTRA EL EMAIL EN LA PARTE SUPERIOR Y LA OPCION DE CERRAR SESION -->
+
             <div class="sb-sidenav-footer">
                     <div class="small">
                         <?php 
-                        if(isset($_SESSION['usuario'])){
-                            echo $_SESSION['usuario'];
+                        if(isset($_SESSION['email'])){
+                            echo $_SESSION['email'];
                             echo" <a href='controlador.php?accion=cerrarSesion'>Cerrar sesión</a>"; 
                         } else {
                             echo"<ul class='navbar-nav ms-auto ms-md-0 me-3 me-lg-4'>
@@ -50,6 +53,7 @@
                 </div>
             </nav>
 
+
         <!-- Navbar-->
             
         <div id="layoutSidenav">
@@ -62,14 +66,14 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
-                            <div class="sb-sidenav-menu-heading">PROYECTOS</div>
-                            
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                                Proyectos
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                                <div class="sb-sidenav-menu-heading">PROYECTOS</div>
+                                
+                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                                    Proyectos
+                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                </a>
+                                <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                   
                                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
@@ -82,15 +86,16 @@
 
         <!--BOTONES DE LA GESTION DE PROYECTOS SOLO DISPONIBLES CUANDO EL USUARIO ESTA EN LA SESION -->
 
-                                        <?php if (isset($_SESSION['usuario'])): ?>
+                                        <?php if (isset($_SESSION['email'])): ?>
 
-                                            <a class="nav-link" href="nuevoProyecto.php?accion=nuevo">Añadir Proyecto</a>
-                                            
-                                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#nuevoProyectoModal">Añadir con Modal</a>
+                                                                            
+                                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#nuevoProyectoModal">Añadir Proyecto</a>
 
-                                            <a class="nav-link" href='controlador.php?accion=eliminarTodos'>Eliminar Todos</a>
+                                            <a class="nav-link" href='controlador.php?accion=borrarProyecto'>Borrar Proyecto</a>
 
-                                            <a class="nav-link" href="controlador.php?accion=generarPDF">Generar PDF</a>
+                                            <a class="nav-link" href='controlador.php?accion=modificarProyecto'>Modificar proyecto</a>
+
+                                            <a class="nav-link" href='controlador.php?accion=buscarProyecto'>Buscar Proyecto</a>
 
                                         <?php endif; ?>
 
