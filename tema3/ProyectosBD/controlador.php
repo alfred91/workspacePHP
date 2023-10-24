@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_PO
         die();
     } else {
         header("Location: login.php?error=USUARIO_INVALIDO");
-    }die();
+    }    die();
 
 //SI PINCHAMOS EN NUEVO
     } elseif ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['accion']) && $_POST['accion'] == 'nuevo') {
@@ -49,7 +49,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_PO
     $stmt->bindParam(':diasTranscurridos', $diasTranscurridos);
     $stmt->bindParam(':porcentajeCompletado', $porcentajeCompletado);
     $stmt->bindParam(':importancia', $importancia);
-
     
     if ($stmt->execute()) {
 
@@ -59,8 +58,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_PO
         } else { echo "Error al insertar proyecto: " . $stmt->errorInfo()[2];}
             die();
                   
-
-
 // SI CERRAMOS SESION, SE DESRTRUYE                    
         } elseif ($_GET['accion'] == 'cerrarSesion') {
             // Destruir la sesión
@@ -81,7 +78,7 @@ $sql = "DELETE FROM proyectos WHERE id=$proyecto_id";
                 header("Location: proyectos.php");
                 die();
                 } else {
-                echo "Error: ". $sql. "<br>". $conn->error;
+                echo "Error: ";
                 }
             }
 

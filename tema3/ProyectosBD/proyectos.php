@@ -60,7 +60,6 @@
                     <td><a href='controlador.php?accion=eliminar&id={$proyecto['id']}'> <img src='assets/img/eliminar.jpg'width='25rem' height='25rem'> </a> </td>
                 </tr>";
         }
-
         echo "</tbody> </table>";
     } else {
 

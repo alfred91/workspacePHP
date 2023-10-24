@@ -10,7 +10,6 @@ include 'db.php';?>
                                 Tabla de Proyectos
                             </div>
                             <div class="card-body">
-
 <?php
 try{
 $conn=conexion();
@@ -93,4 +92,4 @@ $proyectos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
             </div>  
-<?php include('pie.php'); ?>               
+<?php include('pie.php'); ?>
