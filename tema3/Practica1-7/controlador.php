@@ -1,21 +1,16 @@
 <?php session_start();
 include 'lib.php';
 
-// SI SE AUTENTICA CON UNA CONTRASEÑA DE MAS DE 8 CARACTERES Y CON 1 MAYUS, CARGA LOS PROYECTOS EN PROYECTOS.PHP
-
+// SI PINCHAMOS EN LOGIN CON POST Y TENEMOS EL EMAIL Y LA CONTRASEÑA
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_POST['password'])) {
 
-        $email=$_POST['email'];
-        $password=$_POST['password'];
+    $email=$_POST['email'];
+    $password=$_POST['password'];
 
-    if(strlen($password) < 8 || !preg_match("/[A-Z]/", $password)) {
-        header("Location: login.php?error=CONTRASENA_INVALIDA");
-        die();
-    }
+//LLAMA A LA FUNCION QUE COMPRUEBA LA CONTRASEÑA Y AUTENTICA AL USUARIO 
+        userLogin($email,$password);
 
-// SE ESTABLECE EL USUARIO
-
-    $_SESSION['usuario'] = $email;
+// SE ESTABLECE EL ARRAY
 
     $proyectos = array(
 
@@ -85,6 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_PO
             $porcentajeCompletado = $_POST['porcentajeCompletado'];
             $importancia = $_POST['importancia'];
         
+            
 //ASIGNA EL NUEVO ID AL PROYECTO
             $proyectos = $_SESSION['proyectos'];
             $nuevoId = max(array_column($proyectos, 'id')) + 1;

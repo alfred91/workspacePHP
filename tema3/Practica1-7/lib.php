@@ -1,6 +1,19 @@
 <?php
 require 'vendor/autoload.php';
 
+//FUNCION PARA AUTENTICAR AL USUARIO, SE LE LLAMA DESDE CONTROLADOR
+function userLogin($email,$password){
+    if (strlen($password) < 8 || !preg_match("/[A-Z]/",$password)){
+        header("Location: login.php?error=CONTRASENA_INVALIDA");
+        die();
+    }
+ //CARGA EL USUARIO EN LA SESION   
+    $_SESSION['usuario']=$email;
+}
+
+
+
+
 function generarPDF($proyectos) {
     
 //NUEVO PDF, AÑADIMOS PAGINA Y ESTABLECEMOS LA FUENTE, TAMAÑO Y TIPO
