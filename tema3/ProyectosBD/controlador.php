@@ -42,6 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_PO
     $sql = "INSERT INTO proyectos (nombre,fechaInicio,fechaFinprevista,diasTranscurridos,porcentajeCompletado,importancia)
         VALUES (:nombre,:fechaInicio,:fechaFinPrevista,:diasTranscurridos,:porcentajeCompletado,:importancia)";
 
+    $conn = conexion();
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':nombre', $nombre);
     $stmt->bindParam(':fechaInicio', $fechaInicio);
@@ -74,11 +75,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_PO
 // SE BUSCA POR ID Y SE ELIMINA
 $sql = "DELETE FROM proyectos WHERE id=$proyecto_id";
 
-            if ($con->query($sql)==TRUE) {
+            if ($conn->query($sql)==TRUE) {
                 header("Location: proyectos.php");
                 die();
                 } else {
-                echo "Error: ";
+                echo "Error";
                 }
             }
 

@@ -38,6 +38,7 @@ $proyectos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </tr>';
 
     foreach ($proyectos as $proyecto) {
+        var_dump($proyecto);
         echo '<tr>
             <td>'. $proyecto['id']. '</td>
             <td>'. $proyecto['nombre']. '</td>
