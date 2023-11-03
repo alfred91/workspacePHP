@@ -36,8 +36,8 @@
             <div class="sb-sidenav-footer">
                     <div class="small">
                         <?php 
-                        if(isset($_SESSION['email'])){
-                            echo $_SESSION['email'];
+                        if(isset($_SESSION['usuario'])){
+                            
                             echo" <a href='controlador.php?accion=cerrarSesion'>Cerrar sesión</a>"; 
                         } else {
                             echo"<ul class='navbar-nav ms-auto ms-md-0 me-3 me-lg-4'>
@@ -85,7 +85,7 @@
 
         <!--BOTONES DE LA GESTION DE PROYECTOS SOLO DISPONIBLES CUANDO EL USUARIO ESTA EN LA SESION -->
 
-                                        <?php if (isset($_SESSION['email'])): ?>
+                                        <?php if (isset($_SESSION['usuario'])): ?>
 
                                                                             
                                             <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#nuevoProyectoModal">Añadir Proyecto</a>

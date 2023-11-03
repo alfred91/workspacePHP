@@ -36,6 +36,11 @@
                             <label>Importancia (1-5): </label>
                             <input type="number" name="importancia" required><br><br>
 
+                            <input type="hidden" name="idUsuario" value="<?php echo $_SESSION['idUsuario']; ?>">
+
+
+
                             <input type="submit" value="Añadir proyecto">
                         </form>                     
+                        <?php var_dump($idUsuario)?>
 <?php include('pie.php'); ?> 

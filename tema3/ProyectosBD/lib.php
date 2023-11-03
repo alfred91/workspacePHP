@@ -1,7 +1,7 @@
 <?php
 function conexion(){
 
-    $bbdd="miBD";
+    $bbdd="proyectos";
     $usuario="root";
     $password="usuario";
 
