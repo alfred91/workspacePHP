@@ -11,20 +11,15 @@ include 'db.php';?>
                             </div>
                             <div class="card-body">
 <?php
-try{
-$conn=conexion();
-if ($conn) {
-    echo "Conexión exitosa";
-} else {
-    echo "Error en la conexión";
-}
+try {
+    $conn = conexion();
+    $idUsuario = $_SESSION['idUsuario'];
+    $sql = "SELECT * FROM Proyectos WHERE idUsuario = :idUsuario";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindValue(':idUsuario',$idUsuario, PDO::PARAM_INT);
+    $stmt->execute();
 
-$sql = "SELECT * FROM proyectos WHERE idUsuario =:idUsuario";
-$stmt = $conn->prepare($sql);
-$stmt->bindParam(':idUsuario', $_SESSION['idUsuario']);
-$stmt->execute();
-
-$proyectos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $proyectos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     echo '<table border="1">
         <tr>
@@ -35,10 +30,13 @@ $proyectos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <th>Días Transcurridos</th>
             <th>Porcentaje Completado</th>
             <th>Importancia</th>
-            </tr>';
+            <th>Id Usuario</th>
+            <th>Modificar</th>
+            <th>Borrar</th>
+
+        </tr>';
 
     foreach ($proyectos as $proyecto) {
-        var_dump($proyecto);
         echo '<tr>
             <td>'. $proyecto['id']. '</td>
             <td>'. $proyecto['nombre']. '</td>
@@ -47,13 +45,20 @@ $proyectos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <td>'. $proyecto['diasTranscurridos']. '</td>
             <td>'. $proyecto['porcentajeCompletado']. '</td>
             <td>'. $proyecto['importancia']. '</td>
-            </tr>';
+            <td>'. $proyecto['idUsuario']. '</td>
+            <td>'. $proyecto['idUsuario']. '</td>
+            <td>'. $proyecto['idUsuario']. '</td>
+
+
+
+        </tr>';
     }
-} catch (PDOException $e){
-    echo "Error: ". $e->getMessage();
-    }
-    echo "</table>";
-    ?>
+    echo '</table>';
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
+?>
+
     <!--CONTENIDO DEL MODAL, EL POST TIPO OCULTO -->
                     
     <div class="modal fade" id="nuevoProyectoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

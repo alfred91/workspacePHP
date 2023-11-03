@@ -13,44 +13,44 @@ if (!isset($_SESSION['mazo'])) {
 }
 
 // FUNCION PARA CALCULAR LA SUMA DE LOS VALORES DE LAS CARTAS
-function sumaCartas($cartas) {
-    $suma = 0;
-    foreach ($cartas as $carta) {
-        $valor = intval(substr($carta, 1));
-        if ($valor > 7) {
-            $suma += 0.5;
-        } else {
-            $suma += $valor;
+    function sumaCartas($cartas) {
+        $suma = 0;
+        foreach ($cartas as $carta) {
+            $valor = intval(substr($carta, 1));
+            if ($valor > 7) {
+                $suma += 0.5;
+            } else {
+                $suma += $valor;
+            }
         }
+        return $suma;
     }
-    return $suma;
-}
 
 // PEDIR CARTA
-if (isset($_POST['pedir'])) {
+    if (isset($_POST['pedir'])) {
 
-    $carta = array_shift($_SESSION['mazo']);
-    $_SESSION['cartasUsuario'][] = $carta;
-    $_SESSION['cartasJugadas']++;
+        $carta = array_shift($_SESSION['mazo']);
+        $_SESSION['cartasUsuario'][] = $carta;
+        $_SESSION['cartasJugadas']++;
 
-    $suma = sumaCartas($_SESSION['cartasUsuario']);
-    
-        if ($suma > 7.5) {
-            $_SESSION['resultado'] = 'Has perdido';
+        $suma = sumaCartas($_SESSION['cartasUsuario']);
+        
+            if ($suma > 7.5) {
+                $_SESSION['resultado'] = 'Has perdido';
 
-        } elseif ($suma == 7.5) {
-            $_SESSION['resultado'] = 'Has ganado';
+            } elseif ($suma == 7.5) {
+                $_SESSION['resultado'] = 'Has ganado';
 
-        }
+            }
 
         
 }
 //REINICIAR
-if (isset($_POST['reiniciar'])) {
-    session_destroy();
-    header("Location: ".$_SERVER['PHP_SELF']);
-    exit();
-}
+    if (isset($_POST['reiniciar'])) {
+        session_destroy();
+        header("Location: ".$_SERVER['PHP_SELF']);
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>

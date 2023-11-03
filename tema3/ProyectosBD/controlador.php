@@ -3,32 +3,32 @@ include 'db.php';
 // SI SE AUTENTICA CON UNA CONTRASEÑA DE MAS DE 8 CARACTERES Y CON 1 MAYUS
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_POST['password'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password']; // Contraseña sin hashear (temporalmente para pruebas)
 
-        $email=$_POST['email'];
-        $password=$_POST['password'];
-
-    if(strlen($password) < 8 || !preg_match("/[A-Z]/", $password)) {
-        header("Location: login.php?error=CONTRASENA_INVALIDA");
-        die();
-    }
-
-// COMPROBAR DATOS DE USUARIO EN LA BASE DE DATOS
+    // COMPROBAR DATOS DE USUARIO EN LA BASE DE DATOS
     $conn = conexion();
-    $sql = "SELECT * FROM usuarios WHERE email = :email";
+    $sql = "SELECT * FROM Usuarios WHERE email = :email AND password = :password";
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+    $stmt->bindParam(':password', $password, PDO::PARAM_STR);
     $stmt->execute();
 
     if ($stmt->rowCount() > 0) {
-        $_SESSION['email'] = $email;
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        $_SESSION['idUsuario'] = $user['id'];
+        $_SESSION['usuario'] = $user['nombre']; //
         header("Location: index.php");
         die();
     } else {
         header("Location: login.php?error=USUARIO_INVALIDO");
-    }    die();
+        die();
+    }
+
+}
 
 //SI PINCHAMOS EN NUEVO
-    } elseif ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['accion']) && $_POST['accion'] == 'nuevo') {
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['accion']) && $_POST['accion'] == 'nuevo') {
 
 //RELLENAMOS EL FORM O EL MODAL, Y AQUI SE OBTIENEN LOS DATOS
             $nombre = $_POST['nombre'];
@@ -37,10 +37,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_PO
             $diasTranscurridos = $_POST['diasTranscurridos'];
             $porcentajeCompletado = $_POST['porcentajeCompletado'];
             $importancia = $_POST['importancia'];
+            $idUsuario = $_SESSION['idUsuario'];
+            
  
 //SE INSERTAN LOS CAMPOS EN LA BASE DE DATOS            
-    $sql = "INSERT INTO proyectos (nombre,fechaInicio,fechaFinprevista,diasTranscurridos,porcentajeCompletado,importancia)
-        VALUES (:nombre,:fechaInicio,:fechaFinPrevista,:diasTranscurridos,:porcentajeCompletado,:importancia)";
+    $sql = "INSERT INTO Proyectos (nombre,fechaInicio,fechaFinprevista,diasTranscurridos,porcentajeCompletado,importancia,idUsuario)
+        VALUES (:nombre,:fechaInicio,:fechaFinPrevista,:diasTranscurridos,:porcentajeCompletado,:importancia,:idUsuario)";
 
     $conn = conexion();
     $stmt = $conn->prepare($sql);
@@ -50,6 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_PO
     $stmt->bindParam(':diasTranscurridos', $diasTranscurridos);
     $stmt->bindParam(':porcentajeCompletado', $porcentajeCompletado);
     $stmt->bindParam(':importancia', $importancia);
+    $stmt->bindParam(':idUsuario', $idUsuario, PDO::PARAM_INT);
     
     if ($stmt->execute()) {
 
