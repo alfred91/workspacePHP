@@ -11,17 +11,9 @@ include 'db.php';?>
                             </div>
                             <div class="card-body">
 <?php
-try {
-    $conn = conexion();
-    $nombre = $_POST['nombre'];
-    $sql = "SELECT * FROM Proyectos WHERE nombre = $nombre";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':nombre', $nombre);
-
-
-    $stmt->execute();
-
-    $proyectos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+if (isset($_SESSION['resultados'])) {
+    $resultados = $_SESSION['resultados'];
+    
 
     echo '<table border="1">
         <tr>
@@ -37,7 +29,7 @@ try {
             <th>Borrar</th>
         </tr>';
 
-        foreach ($proyectos as $proyecto) {
+        foreach ($_SESSION['resultados'] as $proyecto) {
             echo '<tr>
                 <td>' . $proyecto['id'] . '</td>
                 <td>' . $proyecto['nombre'] . '</td>
@@ -52,10 +44,10 @@ try {
                 </tr>';
         }
         echo '</table>';
-        
-        
-} catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
-}
-?>
-<?php include('pie.php'); ?>       
+
+        unset($_SESSION['resultados']);
+
+} else { echo"No hay resultados";
+}?>
+
+<?php include('pie.php'); ?>

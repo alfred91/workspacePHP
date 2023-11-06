@@ -36,6 +36,7 @@
 
 
 
+
             
 
     <!--LOGIN, SI EL USUARIO NO ESA LOGEADO, SE MUESTRA ICONO PARA INICIAR SESION, CUADO INICIE SESION,
@@ -98,11 +99,7 @@
                                                                             
                                             <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#nuevoProyectoModal">Añadir Proyecto</a>
 
-                                            <a class="nav-link" href='controlador.php?accion=borrarProyecto'>Borrar Proyecto</a>
 
-                                            <a class="nav-link" href='controlador.php?accion=modificarProyecto'>Modificar proyecto</a>
-
-                                            <a class="nav-link" href='controlador.php?accion=buscarProyecto'>Buscar Proyecto</a>
 
                                         <?php endif; ?>
 
