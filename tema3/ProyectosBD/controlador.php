@@ -105,20 +105,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_PO
             die();
             
         } elseif ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['accion']) && $_GET['accion'] == 'buscar' && isset($_GET['nombre'])) {
-            $nombre = $_GET['nombre'];
-// BUSCAR UN PROYECTO 
+            $nombre =$_GET['nombre'];
 
-// SE BUSCA POR NOMBRE
-        $sql = "SELECT * FROM Proyectos WHERE nombre LIKE :nombre";
+// BUSCAR UN PROYECTO POR NOMBRE
         $conn = conexion();
+        $sql = "SELECT * FROM Proyectos WHERE idUsuario=:idUsuario AND nombre LIKE :nombre";
         $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':idUsuario', $_SESSION['idUsuario'], PDO::PARAM_INT);
         $stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);
-        $stmt->execute();
-        $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                
         if ($stmt->execute()) {
+            $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            $_SESSION['resultados'] = $resultados;
             header("Location: verProyecto.php");
-            die();
+  
         } else { echo "Error al buscar proyecto: ". $stmt->errorInfo()[2];}
+        
         die();
 
         }elseif ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['accion']) && $_GET['accion'] == 'borrar' && isset($_GET['id'])) {

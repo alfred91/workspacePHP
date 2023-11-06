@@ -451,9 +451,6 @@ legend + * {
   direction: ltr;
 }
 */
-::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
 
 ::-webkit-color-swatch-wrapper {
   padding: 0;

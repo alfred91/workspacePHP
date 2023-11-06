@@ -26,7 +26,7 @@
                                     </form>
                                     </div>
                                     <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="proyectos.php">Inicio</a></div>
+                                        <div class="small"><a href="index.php">Inicio</a></div>
                                     </div>
                                 </div>
                             </div>
