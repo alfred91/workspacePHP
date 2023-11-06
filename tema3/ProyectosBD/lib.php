@@ -1,18 +1,24 @@
-<?php
-function conexion(){
+<?php function login($email,$password){
+        // COMPROBAR DATOS DE USUARIO EN LA BASE DE DATOS
+    $conn = conexion();
+    $sql = "SELECT * FROM Usuarios WHERE email = :email AND password = :password";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+    $stmt->bindParam(':password', $password, PDO::PARAM_STR);
+    $stmt->execute();
 
-    $bbdd="proyectos";
-    $usuario="root";
-    $password="usuario";
+    if ($stmt->rowCount() > 0) {
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        $_SESSION['idUsuario'] = $user['id'];
+        $_SESSION['usuario'] = $user['nombre'];
+        return true;
 
-        try {
-            $dsn = "mysql:host=172.17.0.1:3306;dbname=$bbdd";
-            $dbh = new PDO($dsn, $usuario, $password);
-            return $dbh;
+    } else {
+        return false;
+        }
+}
 
-        } catch (PDOException $e){
-            echo "Error ".$e->getMessage();
-            die();
-        } 
-    }
+function nuevo($nombre,$fechaInicio,$fechaFinPrevista,$diasTranscurridos,$porcentajeCompletado,$importancia,$idUsuario){
+
+}
 ?>

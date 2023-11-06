@@ -1,30 +1,21 @@
 <?php session_start();
 include 'db.php';
-// SI SE AUTENTICA CON UNA CONTRASEÑA DE MAS DE 8 CARACTERES Y CON 1 MAYUS
+include 'lib.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_POST['password'])) {
+    
     $email = $_POST['email'];
-    $password = $_POST['password']; // Contraseña sin hashear
+    $password = $_POST['password'];
+   
+    if (login($email,$password)){
 
-    // COMPROBAR DATOS DE USUARIO EN LA BASE DE DATOS
-    $conn = conexion();
-    $sql = "SELECT * FROM Usuarios WHERE email = :email AND password = :password";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-    $stmt->bindParam(':password', $password, PDO::PARAM_STR);
-    $stmt->execute();
-
-    if ($stmt->rowCount() > 0) {
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
-        $_SESSION['idUsuario'] = $user['id'];
-        $_SESSION['usuario'] = $user['nombre']; //
         header("Location: index.php");
         die();
+
     } else {
         header("Location: login.php?error=USUARIO_INVALIDO,REVISA_TUS_DATOS");
         die();
     }
-
 }
 
 //SI PINCHAMOS EN NUEVO
@@ -38,13 +29,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_PO
             $porcentajeCompletado = $_POST['porcentajeCompletado'];
             $importancia = $_POST['importancia'];
             $idUsuario = $_SESSION['idUsuario'];
+            $conn = conexion();
             
- 
 //SE INSERTAN LOS CAMPOS EN LA BASE DE DATOS            
     $sql = "INSERT INTO Proyectos (nombre,fechaInicio,fechaFinprevista,diasTranscurridos,porcentajeCompletado,importancia,idUsuario)
         VALUES (:nombre,:fechaInicio,:fechaFinPrevista,:diasTranscurridos,:porcentajeCompletado,:importancia,:idUsuario)";
 
-        $conn = conexion();
+        
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':nombre', $nombre);
         $stmt->bindParam(':fechaInicio', $fechaInicio);

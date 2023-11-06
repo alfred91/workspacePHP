@@ -35,10 +35,6 @@
 </form>
 
 
-
-
-            
-
     <!--LOGIN, SI EL USUARIO NO ESA LOGEADO, SE MUESTRA ICONO PARA INICIAR SESION, CUADO INICIE SESION,
             SE MUESTRA EL EMAIL EN LA PARTE SUPERIOR Y LA OPCION DE CERRAR SESION -->
 
@@ -82,15 +78,7 @@
                                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                 </a>
                                 <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                  
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-                                        Gestionar Proyectos
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                    </a>
-                                    
-                                    <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                        <nav class="sb-sidenav-menu-nested nav">
+                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages"> 
 
         <!--BOTONES DE LA GESTION DE PROYECTOS SOLO DISPONIBLES CUANDO EL USUARIO ESTA EN LA SESION -->
 
@@ -99,12 +87,9 @@
                                                                             
                                             <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#nuevoProyectoModal">Añadir Proyecto</a>
 
-
-
                                         <?php endif; ?>
 
-                                        </nav>
-                                    </div>                                 
+                                                                    
                                 </nav>
                             </div>
                             <div class="sb-sidenav-menu-heading"></div>                            
