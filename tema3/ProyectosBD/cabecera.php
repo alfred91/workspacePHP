@@ -11,6 +11,12 @@
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Bootstrap CSS y JS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+   
     </head>
     
     <body class="sb-nav-fixed">
@@ -20,15 +26,17 @@
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
-            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Buscar" aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-                </div>
-            </form>
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0" action="controlador.php" method="GET">
+    <div class="input-group">
+        <input class="form-control" type="text" name="nombre" placeholder="Buscar por nombre..." aria-label="Buscar Proyecto" aria-describedby="btnNavbarSearch" />
+        <input type="hidden" name="accion" value="buscar"> 
+        <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+    </div>
+</form>
+
+
+
             
-        <!--LOGIN, SI EL USUARIO NO ESA LOGEADO, SE MUESTRA ICONO PARA INICIAR SESION, CUADO INICIE SESION,
-            SE MUESTRA EL EMAIL EN LA PARTE SUPERIOR Y LA OPCION DE CERRAR SESION -->
 
     <!--LOGIN, SI EL USUARIO NO ESA LOGEADO, SE MUESTRA ICONO PARA INICIAR SESION, CUADO INICIE SESION,
             SE MUESTRA EL EMAIL EN LA PARTE SUPERIOR Y LA OPCION DE CERRAR SESION -->
@@ -37,8 +45,9 @@
                     <div class="small">
                         <?php 
                         if(isset($_SESSION['usuario'])){
+                            echo("Logeado como: <b>".$_SESSION['usuario']."</b> ");
                             
-                            echo" <a href='controlador.php?accion=cerrarSesion'>Cerrar sesión</a>"; 
+                            echo"<a href='controlador.php?accion=cerrarSesion'>Cerrar sesión</a>"; 
                         } else {
                             echo"<ul class='navbar-nav ms-auto ms-md-0 me-3 me-lg-4'>
                             <li class='nav-item dropdown'>
@@ -51,7 +60,6 @@
                     </div>              
                 </div>
             </nav>
-
 
         <!-- Navbar-->
             
