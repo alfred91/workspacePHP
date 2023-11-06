@@ -1,6 +1,6 @@
 <?php include 'cabecera.php';
 include 'db.php';?>          
-        <h1 class="mt-4">Proyectos</h1>
+        <h1 class="mt-4">Resultados</h1>
         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Proyectos</li>
                         </ol>
@@ -13,7 +13,6 @@ include 'db.php';?>
 <?php
 if (isset($_SESSION['resultados'])) {
     $resultados = $_SESSION['resultados'];
-    
 
     echo '<table border="1">
         <tr>
@@ -47,7 +46,46 @@ if (isset($_SESSION['resultados'])) {
 
         unset($_SESSION['resultados']);
 
-} else { echo"No hay resultados";
+} else { echo "<p>No hay resultados";
 }?>
+<!--MODAL PARA ACTUALIZAR UN PROYECTO-->
 
-<?php include('pie.php'); ?>
+            <?php foreach ($resultados as $proyecto): ?>
+<div class="modal fade" id="modalActualizar_<?php echo $proyecto['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="modalActualizarLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Actualizar el proyecto <?php echo $proyecto['id']; ?></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="controlador.php" method="POST">
+                    <input type="hidden" name="accion" value="actualizar">
+                    <input type="hidden" name="proyecto_id" value="<?php echo $proyecto['id']; ?>">
+
+                    <label>Nombre:</label>
+                    <input type="text" name="nombre" value="<?php echo ($proyecto['nombre']); ?>" required><br><br>
+
+                    <label>Fecha Inicio:</label>
+                    <input type="date" name="fechaInicio" value="<?php echo $proyecto['fechaInicio']; ?>" required><br><br>
+
+                    <label>Fecha Fin prevista:</label>
+                    <input type="date" name="fechaFinPrevista" value="<?php echo $proyecto['fechaFinPrevista']; ?>" required><br><br>
+
+                    <label>Dias Transcurridos:</label>
+                    <input type="number" name="diasTranscurridos" value="<?php echo $proyecto['diasTranscurridos']; ?>" required><br><br>
+
+                    <label>Porcentaje Completado:</label>
+                    <input type="number" name="porcentajeCompletado" value="<?php echo $proyecto['porcentajeCompletado']; ?>" required><br><br>
+
+                    <label>Importancia (1-5):</label>
+                    <input type="number" name="importancia" value="<?php echo $proyecto['importancia']; ?>" required><br><br>
+
+                    <button type="submit" class="btn btn-primary">Actualizar Proyecto</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endforeach;
+include('pie.php'); ?>
