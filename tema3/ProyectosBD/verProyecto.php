@@ -1,21 +1,18 @@
 <?php include 'cabecera.php';
 include 'db.php';?>          
-        <h1 class="mt-4">Resultados</h1>
-        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Proyectos</li>
-                        </ol>
+        <h1 class="mt-4">Proyectos</h1>
+ 
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Tabla de Proyectos
+                                Resultados
                             </div>
                             <div class="card-body">
 <?php
 if (isset($_SESSION['resultados'])) {
     $resultados = $_SESSION['resultados'];
 
-    echo '<table border="1">
-        <tr>
+    echo '<table id="datatableSimple" class="table" border="1"><thead class="thead-dark"><tr>
             <th>ID</th>
             <th>Nombre del Proyecto</th>
             <th>Fecha de Inicio</th>
@@ -38,8 +35,8 @@ if (isset($_SESSION['resultados'])) {
                 <td>' . $proyecto['porcentajeCompletado'] . '</td>
                 <td>' . $proyecto['importancia'] . '</td>
                 <td>' . $proyecto['idUsuario'] . '</td>
-                <td><a href="#" data-bs-toggle="modal" data-bs-target="#modalActualizar_' . $proyecto['id'] . '">Actualizar</a></td>
-                <td><a href="controlador.php?accion=borrar&id=' . $proyecto['id'] . '">Borrar</a></td>
+                <td><a href="#" data-bs-toggle="modal" data-bs-target="#modalActualizar_' . $proyecto['id'] . '"><button type="button" class="btn btn-outline-info">@</button></a></td>
+                <td><a href="controlador.php?accion=borrar&id=' . $proyecto['id'] . '"><button type="button" class="btn btn-outline-danger">X</button></a></td>
                 </tr>';
         }
         echo '</table>';

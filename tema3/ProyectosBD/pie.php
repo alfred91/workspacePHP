@@ -7,7 +7,7 @@
                         <div class="d-flex align-items-center justify-content-between small">
                             <div class="text-muted">Copyright &copy; Proyectos de Alfredo 2DAW 2023</div>
                             <div>
-                                <a href="#">Privacy Policy</a>
+                                <a href="index.php">Inicio</a>
                                 &middot;
                                 <a href="https://www.github.com/alfred91">Github alfred91</a>
                             </div>
