@@ -1,9 +1,7 @@
 <?php include 'cabecera.php';
 include 'db.php';?>          
         <h1 class="mt-4">Proyectos</h1>
-        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Proyectos</li>
-                        </ol>
+ 
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
@@ -11,6 +9,9 @@ include 'db.php';?>
                             </div>
                             <div class="card-body">
 <?php
+///MOSTRAMOS PROYECTOS SOLO CUANDO EL USUARIO ESTE LOGUEADO
+if(isset($_SESSION['usuario'])){
+
 try {
     $conn = conexion();
     $idUsuario = $_SESSION['idUsuario'];
@@ -21,7 +22,7 @@ try {
 
     $proyectos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    echo '<table border="1">
+    echo '<table id="datatableSimple" class="table" border="1"><thead class="thead-dark">
         <tr>
             <th>ID</th>
             <th>Nombre del Proyecto</th>
@@ -45,8 +46,8 @@ try {
                 <td>' . $proyecto['porcentajeCompletado'] . '</td>
                 <td>' . $proyecto['importancia'] . '</td>
                 <td>' . $proyecto['idUsuario'] . '</td>
-                <td><a href="#" data-bs-toggle="modal" data-bs-target="#modalActualizar_' . $proyecto['id'] . '">Actualizar</a></td>
-                <td><a href="controlador.php?accion=borrar&id=' . $proyecto['id'] . '">Borrar</a></td>
+                <td><a href="#" data-bs-toggle="modal" data-bs-target="#modalActualizar_' . $proyecto['id'] . '"><button type="button" class="btn btn-outline-info">@</button></a></td>
+                <td><a href="controlador.php?accion=borrar&id=' . $proyecto['id'] . '"><button type="button" class="btn btn-outline-danger">X</button></a></td>
                 </tr>';
         }
         echo '</table>';
@@ -135,5 +136,5 @@ try {
         </div>
     </div>
 </div>
-<?php endforeach;
+<?php endforeach;}
 include('pie.php'); ?>
