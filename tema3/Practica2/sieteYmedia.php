@@ -38,7 +38,7 @@ if (!isset($_SESSION['mazo'])) {
             if ($suma > 7.5) {
                 $_SESSION['resultado'] = 'Has perdido';
 
-            } elseif ($suma == 7.5) {
+            } elseif ($suma === 7.5) {
                 $_SESSION['resultado'] = 'Has ganado';
 
             }

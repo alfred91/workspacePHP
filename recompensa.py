@@ -5,6 +5,7 @@ import scipy;
 import shapely;
 
 def reward_function(params):
+def reward_function(params):
     # Parámetros de entrada
     track_width = params['track_width']
     distance_from_center = params['distance_from_center']
@@ -33,15 +34,17 @@ def reward_function(params):
     # Calculate the direction of the center line based on the closest waypoints
     next_point = waypoints[closest_waypoints[1]]
     prev_point = waypoints[closest_waypoints[0]]
-
-    # Calculate the direction in radius, arctan2(dy, dx), the result is (-pi, pi) in radians
-    track_direction = math.atan2(next_point[1] - prev_point[1], next_point[0] - prev_point[0])
-    # Convert to degree
+    next_next_point = waypoints[(closest_waypoints[1] + 1) % len(waypoints)]
+    
+  # Calcular la dirección en radianes, arctan2(dy, dx), el resultado está en el rango (-pi, pi) en radianes
+    track_direction = math.atan2(next_next_point[1] - prev_point[1], next_next_point[0] - prev_point[0])
+    # Convertir a grados
     track_direction = math.degrees(track_direction)
+
 
     # Calculate the difference between the track direction and the heading direction of the car
     direction_diff = abs(track_direction - heading)
-    if direction_diff > 180:
+    if direction_diff > 160:
         direction_diff = 360 - direction_diff
 
     # Penalize the reward if the difference is too large
@@ -58,7 +61,7 @@ def reward_function(params):
         return steering_penalty
     
     # Recompensar por mantenerse cerca de la línea central
-    reward = center_reward * (1.0 - (distance_from_center / (0.333 * track_width)))
+    reward = center_reward * (1.0 - (distance_from_center / (0.3 * track_width)))
     
     # Recompensar la velocidad en secciones rectas
     if speed >= 3:
