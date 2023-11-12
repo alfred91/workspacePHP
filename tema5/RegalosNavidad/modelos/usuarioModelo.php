@@ -1,9 +1,6 @@
 <?php
 namespace RegalosNavidad\modelos;
 
-use \PDO;
-use \RegalosNavidad\controladores\controladorLogin;
-
 class UsuarioModelo
 {
 
