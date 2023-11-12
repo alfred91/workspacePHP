@@ -3,7 +3,7 @@ namespace RegalosNavidad;
 
 session_start();
 
-use RegalosNavidad\controladores\ControladorEnlace;
+use RegalosNavidad\controladores\controladorEnlace;
 use RegalosNavidad\vistas\vistaInicio;
 use RegalosNavidad\controladores\controladorRegalo;
 use RegalosNavidad\controladores\controladorLogin;
@@ -15,30 +15,42 @@ spl_autoload_register(function ($class) {
     include_once "./" . $ruta . ".php";
 });
 
+// Manejar acciones antes de renderizar la vista
 if (isset($_REQUEST["accion"])) {
     if ($_REQUEST["accion"] == "mostrarFormularioLogin") {
         controladorLogin::mostrarFormulario();
         die();
     } elseif ($_REQUEST["accion"] == "enviarForm") {
-        // Si se envió el formulario de inicio de sesión
         $email = $_REQUEST["email"];
         $password = $_REQUEST["password"];
-        ControladorLogin::iniciarSesion($email, $password);
+        controladorLogin::iniciarSesion($email, $password);
     } elseif ($_REQUEST["accion"] == "cerrarSesion") {
-        // Si se cerró la sesión
-        ControladorLogin::cerrarSesion();
+        controladorLogin::cerrarSesion();
         die();
+    } elseif ($_REQUEST["accion"] == "mostrarRegalos") {
+        // Si se solicitó la acción de mostrar regalos, manejarla aquí
+        $idUsuario = $_SESSION['idUsuario'];
+        $regalos = controladorRegalo::mostrarRegalos();
+        vistaRegalos::render($regalos);
+        die();
+    } elseif ($_REQUEST["accion"] == "addRegalo") {
+        // Si se solicitó la acción de agregar regalo, manejarla aquí
+        $nombre = $_REQUEST["nombre"];
+        $destinatario = $_REQUEST["destinatario"];
+        $precio = $_REQUEST["precio"];
+        $estado = $_REQUEST["estado"];
+        $year = $_REQUEST["year"];
+        $idUsuario = $_SESSION['idUsuario'];
+        controladorRegalo::insertarRegalo($nombre, $destinatario, $precio, $estado, $year, $idUsuario);
     }
 }
 
-// Después de manejar la acción, mostrar la vista correspondiente
+// Después de manejar las acciones, mostrar la vista correspondiente
 if (isset($_SESSION['idUsuario'])) {
-    $idUsuario = $_SESSION['idUsuario'];
-    controladorRegalo::mostrarRegalos($idUsuario);
-    ControladorEnlace::mostraEnlaces($idRegalo);
     // Si el usuario ha iniciado sesión, redirigir a la página de regalos
+    $idUsuario = $_SESSION['idUsuario'];
+    $regalos = controladorRegalo::mostrarRegalos($idUsuario);
     vistaRegalos::render($regalos);
-
 } else {
     // Mostrar la página de inicio
     vistaInicio::render();

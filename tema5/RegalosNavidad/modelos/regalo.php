@@ -10,8 +10,9 @@ class Regalo
     private $precio;
     private $estado;
     private $year;
+    private $idUsuario;
 
-    public function __construct($nombre = "", $destinatario = "", $precio = "", $estado = "", $year = "")
+    public function __construct($nombre = "", $destinatario = "", $precio = "", $estado = "", $year = "", $idUsuario="")
     {
 
         $this->nombre = $nombre;
@@ -19,6 +20,7 @@ class Regalo
         $this->precio = $precio;
         $this->estado = $estado;
         $this->year = $year;
+        $this->idUsuario = $idUsuario;
 
     }
     /**
@@ -137,6 +139,26 @@ class Regalo
     public function setYear($year)
     {
         $this->year = $year;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of idUsuario
+     */ 
+    public function getIdUsuario()
+    {
+        return $this->idUsuario;
+    }
+
+    /**
+     * Set the value of idUsuario
+     *
+     * @return  self
+     */ 
+    public function setIdUsuario($idUsuario)
+    {
+        $this->idUsuario = $idUsuario;
 
         return $this;
     }

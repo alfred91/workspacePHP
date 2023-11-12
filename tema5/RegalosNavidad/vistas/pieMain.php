@@ -1,6 +1,3 @@
-</div>
-</div>
-</main>
 
 <footer class="py-4 bg-danger mt-auto">
     <div class="container px-4">
