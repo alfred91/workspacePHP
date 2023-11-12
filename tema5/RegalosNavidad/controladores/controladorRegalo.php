@@ -19,8 +19,6 @@ use RegalosNavidad\vistas\vistaRegalos;
             vistaRegalos::render($regalos); // Pasar los regalos a la vista
         }
         
-        
-        
-    }
+}
 
 ?>

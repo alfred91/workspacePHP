@@ -1,8 +1,8 @@
 <?php
 namespace RegalosNavidad\controladores;
 
-use RegalosNavidad\modelos\EnlaceModelo;
-use RegalosNavidad\vistas\VistaInicio;
+use RegalosNavidad\modelos\enlaceModelo;
+use RegalosNavidad\vistas\vistaInicio;
 
 class ControladorEnlace
 {
@@ -16,8 +16,6 @@ class ControladorEnlace
     {
 
         $enlaces = EnlaceModelo::mostrarEnlaces($idRegalo);
-
-        VistaInicio::render();
 
         return $enlaces;
 

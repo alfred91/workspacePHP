@@ -1,7 +1,6 @@
 <?php
 namespace RegalosNavidad\vistas;
-
-use RegalosNavidad\controladores\controladorRegalo;
+use RegalosNavidad\controladores\controladorEnlace;
 
 class VistaRegalos
 {
@@ -22,45 +21,48 @@ class VistaRegalos
                         <th class="col col-lg-2 text-center">Precio</th>
                         <th class="col col-lg-2 text-center">Estado</th>
                         <th class="col col-lg-2 text-center">Año</th>
+                        <th class="col col-lg-2 text-center">idUsuario</th>
                         <th class="col col-lg-2 text-center">Enlaces</th>
                     </tr>
                 </thead>
-                <tbody>
-
+                
                     <?php
-                    if (isset($regalos) && is_array($regalos)) {
+                    if (isset($regalos)) {
                         foreach ($regalos as $regalo) {
                             ?>
-                            <tr>
-                                <td>
-                                    <?= $regalo->getNombre() ?>
-                                </td>
-                                <td>
-                                    <?= $regalo->getDestinatario() ?>
-                                </td>
-                                <td>
-                                    <?= $regalo->getPrecio() ?>
-                                </td>
-                                <td>
-                                    <?= $regalo->getEstado() ?>
-                                </td>
-                                <td>
-                                    <?= $regalo->getYear() ?>
-                                </td>
-                                <td>
-                                    <?= $enlaces->getLinks() ?>
-                                </td>
-                            </tr>
+                              <tr>
+            <td><?= $regalo->getNombre() ?></td>
+            <td><?= $regalo->getDestinatario() ?></td>
+            <td><?= $regalo->getPrecio() ?></td>
+            <td><?= $regalo->getEstado() ?></td>
+            <td><?= $regalo->getYear() ?></td>
+            <td><?= $regalo->getIdUsuario()?></td>
+            <td>
+                <?php
+                // Obtén los enlaces asociados al regalo actual
+                $enlaces = controladorEnlace::mostraEnlaces($regalo);
+
+                // Muestra los enlaces si existen
+                if ($enlaces && is_array($enlaces)) {
+                    foreach ($enlaces as $enlace) {
+                         $enlace->getEnlaceWeb() . "<br>";
+                    }
+                } else {
+                    echo "Sin enlaces";
+                }
+                ?>
+            </td>
+        </tr>
                             <?php
                         }
                     }
                     ?>
-                </tbody>
+                </>
             </table>
         </div>
-
+        
         <?php
-        include("pieMain.php");
+        include"pieMain.php";
     }
 }
 ?>

@@ -108,6 +108,13 @@
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table me-1"></i>
-            Tabla de Proyectos
+            Tabla de Regalos
         </div>
         <div class="card-body">
+            
+        <a href="?accion=mostrarRegalos" class="btn btn-primary btn-lg px-4 gap-3"> Mostrar regalos</a> 
+        
+        <a class="nav-link" href="?accion=addRegalo" data-bs-toggle="modal"data-bs-target="#nuevoRegaloModal">Añadir Regalo</a>
+                                
+               
+            </form>

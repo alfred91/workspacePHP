@@ -18,10 +18,33 @@ class RegaloModelo
 
         $regalos = $stmt->fetchAll();
         $conexion->finishConection();
-        var_dump($regalos); // Agrega esta línea para verificar los resultados
-
         return $regalos;
     }
+
+    public function insertarRegalo(
+        $nombre,
+        $destinatario,
+        $precio,
+        $estado,
+        $year,
+        $idUsuario) {
+
+        $conexion = new conectar();
+        $stmt = $conexion->getConexion()->prepare("INSERT INTO Regalos (nombre, destinatario, precio, estado, year, idUsuario)
+                                                    VALUES (:nombre, :destinatario, :precio, :estado, :year, :idUsuario)");
+        $stmt->bindParam(':idUsuario', $idUsuario);
+        $stmt->bindParam(':nombre', $nombre);
+        $stmt->bindParam(':destinatario', $destinatario);
+        $stmt->bindParam(':precio', $precio);
+        $stmt->bindParam(':estado', $estado);
+        $stmt->bindParam(':year', $year);
+        $stmt->execute();
+     
+        $conexion->finishConection();
+        var_dump($stmt); // Agrega esta línea para verificar los resultados
+        return $stmt;
+    }
+
 
 }
 
