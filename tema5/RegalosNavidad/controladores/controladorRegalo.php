@@ -16,7 +16,9 @@ use RegalosNavidad\vistas\vistaRegalos;
 
             $regalos = regaloModelo::mostrarRegalos($idUsuario); // Obtener los regalos del modelo
 
-            vistaRegalos::render($regalos); // Pasar los regalos a la vista
+            //vistaRegalos::render($regalos);
+            
+            return $regalos;
         }
         
 }

@@ -44,7 +44,7 @@
         </form>
 
         <!-- LOGIN Y SESIÓN -->
-        <div class="sb-sidenav-footer">
+        <div>
             <div class="small">
                 <?php
                 if (isset($_SESSION['email'])) {
@@ -52,8 +52,8 @@
                     echo ("<a href='?accion=cerrarSesion' class='btn btn-danger btn-sm px-4 gap-3'> Cerrar Sesion</a>");
                 } else {
                     echo "<ul class='navbar-nav ms-auto ms-md-0 me-3 me-lg-4'>
-                            <li class='nav-item dropdown'>
-                                <a class='button' id='navbarDropdown' href='login.php' role='button' aria-expanded='false'><i class='fas fa-gift'></i></a>
+                            <li class='nav-item>
+                                <a class='button' id='navbar' href='login.php' role='button' aria-expanded='false'><i class='fas fa-gift'></i></a>
                             </li>
                         </ul>";
                 }

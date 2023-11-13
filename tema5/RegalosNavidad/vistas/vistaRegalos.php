@@ -45,7 +45,7 @@ class VistaRegalos
                 // Muestra los enlaces si existen
                 if ($enlaces && is_array($enlaces)) {
                     foreach ($enlaces as $enlace) {
-                         $enlace->getEnlaceWeb() . "<br>";
+                        echo $enlace->getEnlaceWeb() . "<br>";
                     }
                 } else {
                     echo "Sin enlaces";

@@ -15,7 +15,7 @@ class ControladorEnlace
     public static function mostraEnlaces($idRegalo)
     {
 
-        $enlaces = EnlaceModelo::mostrarEnlaces($idRegalo);
+        $enlaces = enlaceModelo::mostrarEnlaces($idRegalo);
 
         return $enlaces;
 

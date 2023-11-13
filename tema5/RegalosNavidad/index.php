@@ -30,8 +30,7 @@ if (isset($_REQUEST["accion"])) {
     } elseif ($_REQUEST["accion"] == "mostrarRegalos") {
         // Si se solicitó la acción de mostrar regalos, manejarla aquí
         $idUsuario = $_SESSION['idUsuario'];
-        $regalos = controladorRegalo::mostrarRegalos();
-        vistaRegalos::render($regalos);
+        $regalos = controladorRegalo::mostrarRegalos($idUsuario);
         die();
     } elseif ($_REQUEST["accion"] == "addRegalo") {
         // Si se solicitó la acción de agregar regalo, manejarla aquí
@@ -50,6 +49,7 @@ if (isset($_SESSION['idUsuario'])) {
     // Si el usuario ha iniciado sesión, redirigir a la página de regalos
     $idUsuario = $_SESSION['idUsuario'];
     $regalos = controladorRegalo::mostrarRegalos($idUsuario);
+    
     vistaRegalos::render($regalos);
 } else {
     // Mostrar la página de inicio
