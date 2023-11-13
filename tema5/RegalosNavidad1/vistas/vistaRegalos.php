@@ -8,11 +8,19 @@ class VistaRegalos
     public static function render($regalos)
     {
         include "cabeceraMain.php";
-        ?>
+        ?>            
 
         <div class="container-fluid">
-            <button class="btn btn-danger mt-5 mb-3">Añadir regalo</button>
-            <h2 class="mt-5 text-center">REGALOS DE NAVIDAD</h2>
+            
+            <h1 class="mt-5 text-center">Lista de Regalos de <?php echo $_SESSION['nombre']?></h1>
+        <table>
+        <tr><td><button class="btn btn-success" a href="?addRegalo">Añadir regalo</button></td>
+            <td><a class="btn btn-info href="#" data-bs-toggle="modal"
+                                        data-bs-target="#nuevoRegaloModal">Añadir Regalo</a></td></tr>
+
+        </table>
+
+
             <table class="table table-striped table-bordered mt-4">
                 <thead class="bg-danger text-white">
                     <tr>
@@ -37,6 +45,7 @@ class VistaRegalos
             <td><?= $regalo->getEstado() ?></td>
             <td><?= $regalo->getYear() ?></td>
             <td><?= $regalo->getIdUsuario()?></td>
+            
             <td>
                 <?php
                 // Obtén los enlaces asociados al regalo actual
@@ -45,7 +54,8 @@ class VistaRegalos
                 // Muestra los enlaces si existen
                 if ($enlaces && is_array($enlaces)) {
                     foreach ($enlaces as $enlace) {
-                        echo $enlace->getEnlaceWeb() . "<br>";
+                        echo $enlace->getNombreRegalo();  // Acceder al nombre del regalo desde el JOIN
+                        echo $enlace->getEnlaceWeb();
                     }
                 } else {
                     echo "Sin enlaces";
@@ -60,7 +70,7 @@ class VistaRegalos
                 </>
             </table>
         </div>
-        
+      
         <?php
         include"pieMain.php";
     }

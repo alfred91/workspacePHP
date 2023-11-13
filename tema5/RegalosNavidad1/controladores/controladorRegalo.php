@@ -21,6 +21,9 @@ use RegalosNavidad\vistas\vistaRegalos;
             return $regalos;
         }
         
+        public static function insertarRegalo(){
+            
+        }
 }
 
 ?>
