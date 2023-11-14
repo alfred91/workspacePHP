@@ -33,22 +33,18 @@
                 <div>
               
               <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
+
               <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
-              <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
-              <a class="text-light" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
+
+              <a class="text-light" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw me-2"></i></a>
+
+              <a class="text-light" href="https://github.com/alfred91" target="_blank"><i class="fab fa-github fa-sm fa-fw "></i></a>
+
           </div>
                 <div>
                 <?php
-                if (isset($_SESSION['email'])) {
                     echo ("Logeado como: <b>" . $_SESSION['nombre'] . "</b> ");
-                    echo ("<a href='?accion=cerrarSesion' class='btn btn-warning btn-sm px-4 gap-3'> <b>Cerrar Sesion</b></a>");
-                } else {
-                    echo "<ul class='navbar-nav ms-auto ms-md-0 me-3 me-lg-4'>
-                            <li class='nav-item>
-                                <a class='button' id='navbar' href='login.php' role='button' aria-expanded='false'><i class='fas fa-gift'></i></a>
-                            </li>
-                        </ul>";
-                }
+                    echo ("<a href='?accion=cerrarSesion' class='btn btn-warning btn-sm px-4 gap-3'> <b>Cerrar Sesion</b></a>");               
                 ?>
             </div>
 
@@ -76,17 +72,23 @@
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                    
                         <li class="nav-item">
-                            <a class="nav-link" href="?">Home</a>
+                            <a class="nav-link" href="?">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="?">About</a>
+
+                        <a href="?accion=mostrarRegalos" class="nav-link"> Mostrar Regalos</a> 
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="?">Shop</a>
+                            <a class="nav-link" href="?insertarRegalo">Añadir Regalo</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="?">Contact</a>
+                            <a class="nav-link" href="?">Categorias</a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="?">Tienda</a>
+                        </li>
+                        
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
