@@ -15,13 +15,12 @@ class ControladorEnlace
     public static function mostraEnlaces($idRegalo)
     {
 
-        $enlaces = enlaceModelo::mostrarEnlaces($idRegalo);
+        return EnlaceModelo::mostrarEnlaces($idRegalo);
 
-        return $enlaces;
+       
 
     }
 
 }
-
 
 ?>

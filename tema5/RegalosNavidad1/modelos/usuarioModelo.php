@@ -35,6 +35,7 @@ class UsuarioModelo
     {
 
         session_destroy();
+
     }
 
 }
