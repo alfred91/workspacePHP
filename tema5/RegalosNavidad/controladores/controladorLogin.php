@@ -29,6 +29,7 @@ class ControladorLogin
     {
 
         usuarioModelo::cerrarSesion();
+        
         vistaInicio::render();
     }
 

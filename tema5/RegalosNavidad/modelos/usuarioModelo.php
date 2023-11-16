@@ -12,6 +12,7 @@ class UsuarioModelo
         $stmt = $conexion->prepare("SELECT * FROM Usuarios WHERE email = :email AND password = :password");
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':password', $password);
+        
         $stmt->execute();
 
         $usuario = $stmt->fetch();
@@ -35,6 +36,7 @@ class UsuarioModelo
     {
 
         session_destroy();
+
     }
 
 }

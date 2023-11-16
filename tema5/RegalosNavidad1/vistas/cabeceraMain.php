@@ -43,9 +43,11 @@
           </div>
                 <div>
                 <?php
-                    echo ("Logeado como: <b>" . $_SESSION['nombre'] . "</b> ");
-                    echo ("<a href='?accion=cerrarSesion' class='btn btn-warning btn-sm px-4 gap-3'> <b>Cerrar Sesion</b></a>");               
+                    echo '<a href="index.php?accion=cerrarSesion" class="nav-link px-2 link-secondary">';
+                    echo $usuario->getNombre() . "[X]";
+                    echo "</a>";
                 ?>
+
             </div>
 
                 

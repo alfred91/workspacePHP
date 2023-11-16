@@ -61,7 +61,7 @@
         <p class="lead mb-4">Aquí vamos a mostrar los Regalos de Navidad</p>
 
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-          <a href="?accion=mostrarFormularioLogin" class="btn btn-primary btn-lg px-4 gap-3"> Login</a>
+          <a href="index.php?accion=mostrarTodos" class="btn btn-primary btn-lg px-4 gap-3"> Login</a>
         </div>
       </div>
     </div>

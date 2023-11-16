@@ -12,9 +12,9 @@ class Regalo
     private $anio;
     private $idUsuario;
 
-    public function __construct($nombre = "", $destinatario = "", $precio = "", $estado = "", $anio = "", $idUsuario="")
+    public function __construct($id="", $nombre = "", $destinatario = "", $precio = "", $estado = "", $anio = "", $idUsuario="")
     {
-
+        $this->id = $id;
         $this->nombre = $nombre;
         $this->destinatario = $destinatario;
         $this->precio = $precio;
