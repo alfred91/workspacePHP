@@ -21,7 +21,6 @@ class Conectar
 
                 $this->conexion = new PDO("mysql:host=" . $host . ";dbname=" . $bd, $usuario, $password);
                 $this->conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $this->conexion->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
                 $this->conexion->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
             }

@@ -1,0 +1,26 @@
+[
+    {
+    "nombre" : "God of war",
+    "plataformas" : [ "PS5","XBOX","PC" ],
+    "precio" : 60,
+    "nota":9,
+    "descripcion":"Juego de un notas dando ostias"
+
+},
+{
+    "nombre" : "EA FC 24",
+    "plataformas" : [ "PS5","XBOX","PC" ],
+    "precio" : 70,
+    "nota":9,
+    "descripcion":"Juego de un notas dando ostias con un balon"
+
+},
+{
+    "nombre" : "COD MW3",
+    "plataformas" : [ "PS5","XBOX","PC" ],
+    "precio" : 80,
+    "nota":9,
+    "descripcion":"Disparando al aire to pro"
+
+}
+]

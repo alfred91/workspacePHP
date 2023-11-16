@@ -12,7 +12,7 @@ class VistaRegalos
 
         <div class="container-fluid">
             
-            <h1 class="mt-5 text-center">Lista de Regalos de <?php echo $_SESSION['nombre']?></h1>
+            <h1 class="mt-5 text-center">Lista de Regalos de <?php echo $usuario->getNombre() ?></h1>
         <table>
         <tr><td><button class="btn btn-success" a href="?insertarRegalo">Añadir regalo</button></td>
             <td><a class="btn btn-info" href="#" data-bs-toggle="modal"
@@ -54,7 +54,6 @@ class VistaRegalos
                 <?php
                 // Obtén los enlaces asociados al regalo actual
                 $enlaces = controladorEnlace::mostraEnlaces($regalo);
-                            var_dump($enlaces);
                 // Muestra los enlaces si existen
                 
                     foreach ($enlaces as $enlace) {

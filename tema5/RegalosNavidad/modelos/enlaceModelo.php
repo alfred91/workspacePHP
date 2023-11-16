@@ -6,25 +6,24 @@ use \PDO;
 
 class EnlaceModelo
 {
-
     public static function mostrarEnlaces($idRegalo)
-{
-    $conn = new conectar();
-    $conexion = $conn->getConexion();
-    $stmt = $conexion->prepare("SELECT enlaceWeb FROM Enlaces WHERE idRegalo = :idRegalo");
-    $stmt->bindParam(':idRegalo', $idRegalo, PDO::PARAM_INT); // Asegúrate de que el parámetro sea un entero
-    $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'RegalosNavidad\modelos\enlace');
-    $stmt->execute();
+    {
+        $conn = new conectar();
+        $conexion = $conn->getConexion();
 
-    $enlaces = $stmt->fetchAll();
+        // Utilizando un INNER JOIN para combinar las tablas Regalos y Enlaces
+        $stmt = $conexion->prepare("SELECT * FROM Enlaces WHERE idRegalo = '1'");
 
-    $conn->finishConection();
+        $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'RegalosNavidad\modelos\enlace');
+        $stmt->execute();
 
-    return $enlaces;
+        $enlaces = $stmt->fetchAll();
+
+        $conn->finishConection();
+
+        return $enlaces;
+    }
 }
-
-}
-
 
 
 ?>

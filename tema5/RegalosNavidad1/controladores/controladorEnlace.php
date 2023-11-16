@@ -1,7 +1,7 @@
 <?php
 namespace RegalosNavidad\controladores;
 
-use RegalosNavidad\modelos\enlaceModelo;
+use RegalosNavidad\modelos\modeloEnlace;
 use RegalosNavidad\vistas\vistaInicio;
 
 class ControladorEnlace
@@ -9,13 +9,13 @@ class ControladorEnlace
 
     public static function mostrarInicio()
     {
-        VistaInicio::render();
+        vistaInicio::render();
     }
 
     public static function mostraEnlaces($idRegalo)
     {
 
-        return EnlaceModelo::mostrarEnlaces($idRegalo);
+        return modeloEnlace::mostrarEnlaces($idRegalo);
 
        
 
