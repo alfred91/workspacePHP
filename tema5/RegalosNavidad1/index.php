@@ -34,7 +34,7 @@ if (isset($_REQUEST)) {
                 $_SESSION['usuario'] = unserialize($_SESSION['usuario']);
                 controladorRegalo::mostrarRegalos("");
                 }
-                controladorRegalo::mostrarRegalos("");
+                controladorLogin::mostrarFormulario("");
             } else {
                 //Pintar login
                 controladorLogin::mostrarFormulario("");
@@ -71,7 +71,7 @@ if (isset($_REQUEST)) {
 
 
     }
-    if (strcmp($_REQUEST_METHOD["accion"],'insertarRegalo') == 0) {
+    if (strcmp($_REQUEST["accion"],'insertarRegalo') == 0) {
         // Si se solicitó la acción de agregar regalo, manejarla aquí
         $nombre = $_REQUEST["nombre"];
         $destinatario = $_REQUEST["destinatario"];
@@ -84,7 +84,7 @@ if (isset($_REQUEST)) {
         vistaRegalos::render($regalos);
 
     }
-    if (strcmp($_REQUEST_METHOD["accion"],'actualizarRegalo') == 0) {
+    if (strcmp($_REQUEST["accion"],'actualizarRegalo') == 0) {
         // Si se solicitó la acción de agregar regalo, manejarla aquí
         $nombre = $_REQUEST["nombre"];
         $destinatario = $_REQUEST["destinatario"];
