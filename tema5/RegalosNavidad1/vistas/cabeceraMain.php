@@ -43,8 +43,9 @@
           </div>
                 <div>
                 <?php
+                    $usuario = unserialize($_SESSION['usuario']);
                     echo '<a href="index.php?accion=cerrarSesion" class="nav-link px-2 link-secondary">';
-                    echo $usuario->getNombre() . "[X]";
+                    echo $usuario->getEmail() . "[X]";
                     echo "</a>";
                 ?>
 
