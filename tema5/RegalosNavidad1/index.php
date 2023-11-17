@@ -3,7 +3,6 @@ namespace RegalosNavidad;
 
 session_start();
 //session_destroy();
-
 use RegalosNavidad\controladores\controladorEnlace;
 use RegalosNavidad\controladores\controladorRegalo;
 use RegalosNavidad\controladores\controladorLogin;

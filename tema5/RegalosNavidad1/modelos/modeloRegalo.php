@@ -10,11 +10,10 @@ class ModeloRegalo
     {
 
         $conexion = new conectar();
-        $consulta = $conexion->getConexion()->prepare("SELECT * FROM Regalos WHERE idUsuario = :idUsuario");
+        $consulta = $conexion->getConexion()->prepare("SELECT * FROM Regalos WHERE idUsuario = :idUsuario;");
         $consulta->bindParam(':idUsuario', $idUsuario);
         $consulta->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'RegalosNavidad\modelos\regalo');
         $consulta->execute();
-
 
         $regalos = $consulta->fetchAll();
         $conexion->finishConection();

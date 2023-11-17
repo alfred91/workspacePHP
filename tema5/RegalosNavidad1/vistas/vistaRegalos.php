@@ -12,7 +12,9 @@ class VistaRegalos
 
         <div class="container-fluid">
             
-            <h1 class="mt-5 text-center">Lista de Regalos de <?php echo $usuario->getNombre() ?></h1>
+            <h1 class="mt-5 text-center">Lista de Regalos de <?php echo $usuario->getNombre();
+            var_dump($regalos); ?></h1>
+            
         <table>
         <tr><td><button class="btn btn-success" a href="?insertarRegalo">Añadir regalo</button></td>
             <td><a class="btn btn-info" href="#" data-bs-toggle="modal"
