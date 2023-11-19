@@ -1,91 +1,126 @@
-<?php namespace RegalosNavidad;
+<?php
+namespace RegalosNavidad;
 
 session_start();
+//session_destroy();
 
-use RegalosNavidad\vistas\vistaInicio;
-use RegalosNavidad\controladores\controladorRegalo;
-use RegalosNavidad\controladores\controladorLogin;
-use RegalosNavidad\vistas\vistaRegalos;
+use RegalosNavidad\controladores\ControladorRegalo;
 use RegalosNavidad\controladores\ControladorEnlace;
+use RegalosNavidad\controladores\ControladorLogin;
+use RegalosNavidad\vistas\VistaRegalos;
 
+//Autocargar las clases --------------------------
 spl_autoload_register(function ($class) {
+    //echo substr($class, strpos($class,"\\")+1);
     $ruta = substr($class, strpos($class, "\\") + 1);
     $ruta = str_replace("\\", "/", $ruta);
     include_once "./" . $ruta . ".php";
 });
+//Fin Autcargar ----------------------------------
 
-// Manejar acciones antes de renderizar la vista
+if (isset($_REQUEST)) {
+
     if (isset($_REQUEST["accion"])) {
 
-        if ($_REQUEST["accion"] == "mostrarFormularioLogin") {
-            controladorLogin::mostrarFormulario();
-            die();
+        //MOSTRAR TODOS LOS RESULTADOS
+        if (strcmp($_REQUEST['accion'], 'mostrarTodos') == 0) {
 
-        } elseif ($_REQUEST["accion"] == "enviarForm") {
+            //Comprobar si estamos logueados
+            if (isset($_SESSION['usuario'])) {
+                // Deserializa el objeto de usuario y almacénalo en una variable de sesión
+                ControladorRegalo::mostrarRegalos();
+            } else {
+                //Pintar login
+                ControladorLogin::mostrarFormulario("");
+            }
+        }
+
+        if (strcmp($_REQUEST['accion'], 'enviarForm') == 0) {
+
             $email = $_REQUEST["email"];
             $password = $_REQUEST["password"];
-            controladorLogin::iniciarSesion($email, $password);
+            ControladorLogin::checkLogin($email, $password);
 
-        } elseif ($_REQUEST["accion"] == "cerrarSesion") {
-            controladorLogin::cerrarSesion();
+        }
+        if (strcmp($_REQUEST['accion'], 'verEnlaces') == 0) {
+
+            $idRegalo = $_REQUEST['id'];
+            ControladorEnlace::mostraEnlaces($idRegalo);
+        }
+
+        if (strcmp($_REQUEST["accion"], 'cerrarSesion') == 0) {
+            ControladorLogin::cerrarSesion();
             die();
-        } elseif ($_REQUEST["accion"] == "mostrarRegalos") {
-            // Si se solicitó la acción de mostrar regalos, manejarla aquí
-            $idUsuario = $_SESSION['idUsuario'];
-            $regalos = controladorRegalo::mostrarRegalos($idUsuario);
-            vistaRegalos::render($regalos);
+        }
+
+        if (strcmp($_REQUEST["accion"], 'mostrarRegalos') == 0) {
+
+            ControladorRegalo::mostrarRegalos("");
+            VistaRegalos::render($regalos);
 
 
         }
-     elseif ($_REQUEST["accion"] == "borrarRegalo") {
-        // Si se solicitó la acción de borrar regalo, manejarla aquí
-        $idRegaloABorrar = $_REQUEST["borrarRegalo"];
-        controladorRegalo::borrarRegalo($idRegaloABorrar);
+        if (strcmp($_REQUEST["accion"], 'borrarRegalo') == 0) {
 
-        // Redirigir a la página de regalos después de borrar
-        vistaRegalos::render($regalos);
-      
+            $id = $_REQUEST['id'];
+            ControladorRegalo::borrarRegalo($id);
 
+        }
 
-        } elseif ($_REQUEST_METHOD["accion"] == "insertarRegalo") {
-            // Si se solicitó la acción de agregar regalo, manejarla aquí
-            $nombre = $_REQUEST["nombre"];
-            $destinatario = $_REQUEST["destinatario"];
-            $precio = $_REQUEST["precio"];
-            $estado = $_REQUEST["estado"];
-            $anio = $_REQUEST["anio"];
-            $idUsuario = $_SESSION['idUsuario'];
+        if (strcmp($_REQUEST['accion'], 'verDetalle') == 0) {
 
-            controladorRegalo::insertarRegalo($nombre, $destinatario, $precio, $estado, $anio, $idUsuario);
-            vistaRegalos::render($regalos);
+            $id = $_REQUEST['id'];
+            ControladorRegalo::detalleRegalo($id);
 
-        }        
-     elseif ($_REQUEST_METHOD["accion"] == "actualizarRegalo") {
-        // Si se solicitó la acción de agregar regalo, manejarla aquí
-        $nombre = $_REQUEST["nombre"];
-        $destinatario = $_REQUEST["destinatario"];
-        $precio = $_REQUEST["precio"];
-        $estado = $_REQUEST["estado"];
-        $anio = $_REQUEST["anio"];
-        $idUsuario = $_SESSION['idUsuario'];
+        }
 
-        controladorRegalo::insertarRegalo($nombre, $destinatario, $precio, $estado, $anio, $idUsuario);
-        vistaRegalos::render($regalos);
+        if (strcmp($_REQUEST['accion'], 'verEnlace') == 0) {
 
-    }        
-        
+            $idRegalo = $_REQUEST['idRegalo'];
+            $enlaces = ControladorEnlace::mostraEnlaces($idRegalo);
+
+        }
+        if (strcmp($_REQUEST['accion'], 'borrarEnlace') == 0) {
+
+            $id = $_REQUEST['id'];
+            ControladorEnlace::borrarEnlace($id);
+        }
+        if (strcmp($_REQUEST['accion'], 'modificarEnlace') == 0) {
+
+            $idRegalo = $_REQUEST['idRegalo'];
+            $enlaces = ControladorEnlace::mostraEnlaces($idRegalo);
+
+        }
+        if (strcmp($_REQUEST['accion'], 'insertarRegaloModal') == 0) {
+
+            $nombre = $_REQUEST['nombre'];
+            $destinatario = $_REQUEST['destinatario'];
+            $precio = $_REQUEST['precio'];
+            $estado = $_REQUEST['estado'];
+            $anio = $_REQUEST['anio'];
+            $idUsuario = $_REQUEST['idUsuario'];
+
+            ControladorRegalo::insertarRegalo($nombre, $destinatario, $precio, $estado, $anio, $idUsuario);
+        }
+
+        if (strcmp($_REQUEST['accion'], 'actualizarRegaloModal') == 0) {
+
+            $nombre = $_REQUEST['nombre'];
+            $destinatario = $_REQUEST['destinatario'];
+            $precio = $_REQUEST['precio'];
+            $estado = $_REQUEST['estado'];
+            $anio = $_REQUEST['anio'];
+            $id = $_REQUEST['id'];
+            $idUsuario = $_REQUEST['idUsuario'];
+
+            ControladorRegalo::actualizarRegalo($nombre, $destinatario, $precio, $estado, $anio, $id, $idUsuario);
+            ControladorRegalo::mostrarRegalos("");
+        }
     }
-    // Después de manejar las acciones, mostrar la vista correspondiente
-    if (isset($_SESSION['idUsuario'])) {
-        // Si el usuario ha iniciado sesión, redirigir a la página de regalos
-        $idUsuario = $_SESSION['idUsuario'];
-        $regalos = controladorRegalo::mostrarRegalos($idUsuario);
-        
-        vistaRegalos::render($regalos);
-        
-        
-    } else {
+    // Después de manejar las acciones, mostrar la vista correspondient
+    else {
         // Mostrar la página de inicio
-        vistaInicio::render();
+        ControladorRegalo::mostrarInicio();
     }
+}
 ?>
