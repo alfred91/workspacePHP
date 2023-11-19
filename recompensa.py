@@ -1,4 +1,5 @@
 def reward_function(params):
+    
     # Parámetros de entrada
     track_width = params['track_width']
     distance_from_center = params['distance_from_center']
@@ -8,8 +9,8 @@ def reward_function(params):
     progress = params['progress']
     steps = params['steps']
 
-    # Parámetros de penalización y recompensa
-    collision_penalty = 1e-3
+    # Parámetros de penalización y recompensa ult e2 e1
+    collision_penalty = 1e-3    
     off_track_penalty = 1e-2
     speed_reward = 0.7
     steering_penalty = 0.3
@@ -24,18 +25,19 @@ def reward_function(params):
     if params['is_crashed']:
         return collision_penalty
     
-    # Penalizar cambios bruscos en el ángulo de dirección
-    if steering_angle > 15:
+    # Penalizar cambios mayores de 15º en el ángulo de dirección ult. 18
+    if steering_angle > 15: 
         return steering_penalty
     
     # Recompensar por mantenerse cerca de la línea central
     reward = center_reward * (1.0 - (distance_from_center / (0.3 * track_width)))
     
-    # Recompensar la velocidad en secciones rectas
+    # Recompensar la velocidad en secciones rectas ult >1
     if speed >= 1.5:
         reward += speed_reward
     
     # Recompensar por el progreso en la pista
     reward += progress_reward * progress / steps
     
+    # Devolver la recompensa
     return float(reward)
