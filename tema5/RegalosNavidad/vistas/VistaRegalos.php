@@ -13,8 +13,7 @@ class VistaRegalos
 
         <div class="container-fluid">
 
-            <h1 class="mt-5 text-center">🎁 Lista de Regalos de
-                <?php echo $usuario->getNombre(); ?> 🎁
+            <h1 class="mt-5 text-center">🎁 Lista de Regalos de <?php echo $usuario->getNombre(); ?> 🎁
             </h1>
 
             <table class="table table-striped table-bordered mt-4">
@@ -34,8 +33,13 @@ class VistaRegalos
                 </thead>
 
                 <?php
-                if (isset($regalos)) {
-                    foreach ($regalos as $regalo) {
+               if (empty($regalos)) {?>
+
+            <h3 class='text-center'> <?php echo $usuario->getNombre(); ?>  no tiene regalos, puedes crear uno aqui </h3>
+            <a class="nav-link" href="#"  data-bs-toggle="modal" data-bs-target="#nuevoRegaloModal">Añadir Regalo</a>
+            
+            <?php } else {
+                foreach ($regalos as $regalo) {
                         ?>
                         <tr>
                             <td class="col col-lg-2 text-center">
@@ -53,7 +57,6 @@ class VistaRegalos
                             <td class="col col-lg-2 text-center">
                                 <?= $regalo->getanio() ?>
                             </td>
-
 
                             <td class="col col-lg-2 text-center">
                                 <!-- Botón para mostrar detalles de un regalo -->
@@ -75,7 +78,7 @@ class VistaRegalos
                                     data-bs-target="#modificarRegaloModal<?= $regalo->getId() ?>"> ✍️
                                 </button>
                             </td>
-
+                        </tr>
 
                             <!-- Nuevo Regalo Modal -->
                             <div class="modal fade" id="nuevoRegaloModal" tabindex="-1" aria-labelledby="nuevoRegaloModalLabel"
@@ -103,7 +106,7 @@ class VistaRegalos
                                                 <input type="text" name="estado">
                                                 <br><br>
                                                 <label for="anio">Año:</label>
-                                                <input type="number" min="1900" name="anio">
+                                                <input type="number" min="2000" name="anio">
                                                 <input type="hidden" name="idUsuario" value="<?= $regalo->getIdUsuario() ?>">
 
                                                 <br><br>
@@ -163,13 +166,10 @@ class VistaRegalos
                                     </div>
                                 </div>
                             </div>
-                            </td>
-                        </tr>
                         <?php
                     }
                 }
                 ?>
-                </>
             </table>
         </div>
 

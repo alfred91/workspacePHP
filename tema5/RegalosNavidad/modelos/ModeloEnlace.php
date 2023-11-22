@@ -11,8 +11,8 @@ class ModeloEnlace
         $conexion = new Conectar();
         $stmt=$conexion->getConexion()->prepare("SELECT * FROM Enlaces WHERE idRegalo = ?");
         $stmt -> bindValue(1,$idRegalo);
-        echo "SQL: " . $stmt->queryString . PHP_EOL;
-        echo "Bound Parameter: " . $idRegalo . PHP_EOL;
+        //echo "SQL: " . $stmt->queryString . PHP_EOL;
+        //echo "Bound Parameter: " . $idRegalo . PHP_EOL;
         $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'RegalosNavidad\modelos\Enlace');
         
         $stmt->execute();
@@ -29,7 +29,7 @@ class ModeloEnlace
 
         $conexion = $conn->getConexion();
 
-        $stmt = $conexion->prepare("INSERT INTO Regalos (nombre, destinatario, precio, estado, anio, idUsuario) VALUES (?,?,?,?,?,?)");
+        $stmt = $conexion->prepare("INSERT INTO Enlaces (nombre, destinatario, precio, estado, anio, idUsuario) VALUES (?,?,?,?,?,?)");
         $stmt -> bindValue(1,$nombre);
         $stmt -> bindValue(2,$enlaceWeb);
         $stmt -> bindValue(3,$precio);
@@ -41,6 +41,23 @@ class ModeloEnlace
         $conn -> finishConection();
 
     }
+    
+    public static function actualizarEnlace($nombre, $enlaceWeb, $precio, $imagen, $prioridad,$id){
+        
+        $conn = new Conectar();
+        $conexion = $conn->getConexion()->prepare("UPDATE Enlaces SET
+        nombre=?, enlaceWeb=?, precio=?, imagen=?, prioridad=? WHERE id=?");
+        $conexion->bindValue(1, $nombre);
+        $conexion->bindValue(2, $enlaceWeb);
+        $conexion->bindValue(3, $precio);
+        $conexion->bindValue(4, $imagen);
+        $conexion->bindValue(5, $prioridad);
+        $conexion->bindValue(6, $id);
+        $conexion->execute();
+
+        $conn -> finishConection();
+
+    }
 
     public static function borrarEnlaces($id){
         
@@ -48,7 +65,7 @@ class ModeloEnlace
 
         $stmt=$conexion->getConexion()->prepare("DELETE FROM Enlaces WHERE id=?");
 
-        $stmt->bindParam(1, $id);
+        $stmt->bindValue(1, $id);
 
 
         $stmt->execute();     

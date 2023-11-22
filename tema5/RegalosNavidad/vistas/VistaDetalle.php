@@ -14,7 +14,7 @@ class VistaDetalle
     
             <h1 class="mt-5 text-center">🔍 Detalle <?php echo $regalo->getNombre();?> 🔍
 
-<a class="navbar-brand text-success logo h1 align-self-center" href="?accion=mostrarTodos">
+<a class="navbar-brand text-success logo h1 align-self-center" href="?accion=mostrarRegalos">
  🎁 👈🏽
             </a></h1>
 

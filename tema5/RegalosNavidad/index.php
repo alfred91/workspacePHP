@@ -22,44 +22,71 @@ if (isset($_REQUEST)) {
 
     if (isset($_REQUEST["accion"])) {
 
-        //MOSTRAR TODOS LOS RESULTADOS
+
         if (strcmp($_REQUEST['accion'], 'mostrarTodos') == 0) {
 
-            //Comprobar si estamos logueados
-            if (isset($_SESSION['usuario'])) {
-                // Deserializa el objeto de usuario y almacénalo en una variable de sesión
+
+            if (isset($_SESSION['usuario'])) {  // SI EL USUARIO ESTA EN LA SESION MOSTRAMOS LOS REGALOS
+
                 ControladorRegalo::mostrarRegalos();
             } else {
-                //Pintar login
-                ControladorLogin::mostrarFormulario("");
+
+                ControladorLogin::mostrarFormulario();  // DE LO CONTRARIO SE MUESTRA UN FORM DE LOGIN
             }
         }
 
-        if (strcmp($_REQUEST['accion'], 'enviarForm') == 0) {
+        if (strcmp($_REQUEST['accion'], 'enviarForm') == 0) { // COMPROBAMOS LOS DATOS DEL FORMULARIO AL ENVIAR
 
             $email = $_REQUEST["email"];
             $password = $_REQUEST["password"];
             ControladorLogin::checkLogin($email, $password);
 
         }
+
+        if (strcmp($_REQUEST["accion"], 'cerrarSesion') == 0) { // CERRAR SESION
+            ControladorLogin::cerrarSesion();
+            die();
+        }
+
+        if (strcmp($_REQUEST["accion"], 'mostrarRegalos') == 0) {   
+
+            ControladorRegalo::mostrarRegalos();
+            VistaRegalos::render($regalos);
+
+        }
+
+        if (strcmp($_REQUEST['accion'], 'insertarRegaloModal') == 0) {
+
+            $nombre = $_REQUEST['nombre'];
+            $destinatario = $_REQUEST['destinatario'];
+            $precio = $_REQUEST['precio'];
+            $estado = $_REQUEST['estado'];
+            $anio = $_REQUEST['anio'];
+            $idUsuario = $_REQUEST['idUsuario'];
+
+            ControladorRegalo::insertarRegalo($nombre, $destinatario, $precio, $estado, $anio, $idUsuario);
+        }
+
+        if (strcmp($_REQUEST['accion'], 'actualizarRegaloModal') == 0) {
+
+            $nombre = $_REQUEST['nombre'];
+            $destinatario = $_REQUEST['destinatario'];
+            $precio = $_REQUEST['precio'];
+            $estado = $_REQUEST['estado'];
+            $anio = $_REQUEST['anio'];
+            $id = $_REQUEST['id'];
+
+
+            ControladorRegalo::actualizarRegalo($nombre, $destinatario, $precio, $estado, $anio, $id);
+            ControladorRegalo::mostrarRegalos();
+        }
+
         if (strcmp($_REQUEST['accion'], 'verEnlaces') == 0) {
 
             $idRegalo = $_REQUEST['id'];
             ControladorEnlace::mostraEnlaces($idRegalo);
         }
 
-        if (strcmp($_REQUEST["accion"], 'cerrarSesion') == 0) {
-            ControladorLogin::cerrarSesion();
-            die();
-        }
-
-        if (strcmp($_REQUEST["accion"], 'mostrarRegalos') == 0) {
-
-            ControladorRegalo::mostrarRegalos("");
-            VistaRegalos::render($regalos);
-
-
-        }
         if (strcmp($_REQUEST["accion"], 'borrarRegalo') == 0) {
 
             $id = $_REQUEST['id'];
@@ -85,41 +112,20 @@ if (isset($_REQUEST)) {
             $id = $_REQUEST['id'];
             ControladorEnlace::borrarEnlace($id);
         }
-        if (strcmp($_REQUEST['accion'], 'modificarEnlace') == 0) {
-
-            $idRegalo = $_REQUEST['idRegalo'];
-            $enlaces = ControladorEnlace::mostraEnlaces($idRegalo);
-
-        }
-        if (strcmp($_REQUEST['accion'], 'insertarRegaloModal') == 0) {
+        if (strcmp($_REQUEST['accion'], 'actualizarEnlaceModal') == 0) {
 
             $nombre = $_REQUEST['nombre'];
-            $destinatario = $_REQUEST['destinatario'];
+            $enlaceWeb = $_REQUEST['enlaceWeb'];
             $precio = $_REQUEST['precio'];
-            $estado = $_REQUEST['estado'];
-            $anio = $_REQUEST['anio'];
-            $idUsuario = $_REQUEST['idUsuario'];
-
-            ControladorRegalo::insertarRegalo($nombre, $destinatario, $precio, $estado, $anio, $idUsuario);
-        }
-
-        if (strcmp($_REQUEST['accion'], 'actualizarRegaloModal') == 0) {
-
-            $nombre = $_REQUEST['nombre'];
-            $destinatario = $_REQUEST['destinatario'];
-            $precio = $_REQUEST['precio'];
-            $estado = $_REQUEST['estado'];
-            $anio = $_REQUEST['anio'];
+            $imagen = $_REQUEST['imagen'];
+            $prioridad = $_REQUEST['prioridad'];
             $id = $_REQUEST['id'];
-            $idUsuario = $_REQUEST['idUsuario'];
 
-            ControladorRegalo::actualizarRegalo($nombre, $destinatario, $precio, $estado, $anio, $id, $idUsuario);
-            ControladorRegalo::mostrarRegalos("");
+            ControladorEnlace::actualizarEnlace($nombre, $enlaceWeb, $precio, $imagen, $prioridad, $idRegalo);
+            ControladorEnlace::mostraEnlaces("");
+
         }
-    }
-    // Después de manejar las acciones, mostrar la vista correspondient
-    else {
-        // Mostrar la página de inicio
+    } else {
         ControladorRegalo::mostrarInicio();
     }
 }
