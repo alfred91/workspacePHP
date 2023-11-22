@@ -1,26 +1,29 @@
 [
-    {
-    "nombre" : "God of war",
-    "plataformas" : [ "PS5","XBOX","PC" ],
+    { 
+    "nombre" : "God of War",
+    "plataformas" : [
+        "PS5", "XBox", "PC"
+    ],
     "precio" : 60,
-    "nota":9,
-    "descripcion":"Juego de un notas dando ostias"
-
+    "nota" : 9,
+    "descripcion" : "Juego de un fulano repartiendo estopa con un hacha"
 },
-{
-    "nombre" : "EA FC 24",
-    "plataformas" : [ "PS5","XBOX","PC" ],
+{ 
+    "nombre" : "EAFC 24",
+    "plataformas" : [
+        "PS5", "XBox", "PC"
+    ],
     "precio" : 70,
-    "nota":9,
-    "descripcion":"Juego de un notas dando ostias con un balon"
-
+    "nota" : 7,
+    "descripcion" : "Juego para echar pachangas online con los colegas al fútbol"
 },
-{
-    "nombre" : "COD MW3",
-    "plataformas" : [ "PS5","XBOX","PC" ],
+{ 
+    "nombre" : "Call of Duty MW III",
+    "plataformas" : [
+        "PS5", "XBox", "PC"
+    ],
     "precio" : 80,
-    "nota":9,
-    "descripcion":"Disparando al aire to pro"
-
+    "nota" : 8,
+    "descripcion" : "Pegar tiros como un descosío"
 }
 ]

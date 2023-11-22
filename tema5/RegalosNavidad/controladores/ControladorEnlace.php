@@ -13,28 +13,61 @@ class ControladorEnlace
         vistaInicio::render();
     }
 
-    public static function mostraEnlaces($id)
+    public static function mostraEnlaces($idRegalo)
     {
-        $enlaces=ModeloEnlace::mostrarEnlaces($id);
+        $enlaces = ModeloEnlace::mostrarEnlaces($idRegalo);
 
         VistaEnlaces::render($enlaces);
-       
+
     }
 
-    public static function insertarEnlace($nombre, $enlaceWeb, $precio, $imagen, $prioridad, $idRegalo){
+    public static function insertarEnlace($nombre, $enlaceWeb, $precio, $imagen, $prioridad, $idRegalo)
+    {
+        $enlaces=ModeloEnlace::insertarEnlace(
+            $nombre,
+            $enlaceWeb,
+            $precio,
+            $imagen,
+            $prioridad,
+            $idRegalo
+        );
+        VistaEnlaces::render($idRegalo);
 
-        
+
+
+    }
+    public static function actualizarEnlace(
+        $id,
+        $nombre,
+        $enlaceWeb,
+        $precio,
+        $imagen,
+        $prioridad,
+    ) {
+
+        $enlace=ModeloEnlace::actualizarEnlace(
+            $id,
+            $nombre,
+            $enlaceWeb,
+            $precio,
+            $imagen,
+            $prioridad
+        );
+        return $enlace;
     }
 
-    public static function borrarEnlace($id){
+
+
+    public static function borrarEnlace($id)
+    {
 
         ModeloEnlace::borrarEnlaces($id);
 
-        VistaEnlaces::render($id);
+        VistaEnlaces::render("");
 
     }
 
-    
+
 
 }
 
