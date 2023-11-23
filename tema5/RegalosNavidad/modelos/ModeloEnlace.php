@@ -24,12 +24,29 @@ class ModeloEnlace
         return $enlaces;
     }
 
+    public static function obtenerEnlacePorId($id)
+{
+    $conexion = new Conectar();
+    $stmt = $conexion->getConexion()->prepare("SELECT * FROM Enlaces WHERE id = ?");
+    $stmt->bindValue(1, $id);
+    $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'RegalosNavidad\modelos\Enlace');
+    $stmt->execute();
+
+    $enlace = $stmt->fetch();
+
+    $conexion->finishConection();
+
+    return $enlace;
+}
+
+
     public static function insertarEnlace($nombre, $enlaceWeb, $precio, $imagen, $prioridad, $idRegalo){
         $conn = new Conectar();
 
         $conexion = $conn->getConexion();
 
-        $stmt = $conexion->prepare("INSERT INTO Enlaces (nombre, destinatario, precio, estado, anio, idUsuario) VALUES (?,?,?,?,?,?)");
+        $stmt = $conexion->prepare("INSERT INTO Enlaces (nombre, enlaceWeb, precio, imagen, prioridad, idRegalo) VALUES (?,?,?,?,?,?)");
+ 
         $stmt -> bindValue(1,$nombre);
         $stmt -> bindValue(2,$enlaceWeb);
         $stmt -> bindValue(3,$precio);
@@ -66,7 +83,6 @@ class ModeloEnlace
         $stmt=$conexion->getConexion()->prepare("DELETE FROM Enlaces WHERE id=?");
 
         $stmt->bindValue(1, $id);
-
 
         $stmt->execute();     
 

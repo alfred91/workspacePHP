@@ -1,4 +1,5 @@
-<?php namespace RegalosNavidad\controladores;
+<?php
+namespace RegalosNavidad\controladores;
 
 use RegalosNavidad\modelos\ModeloRegalo;
 use RegalosNavidad\vistas\VistaDetalle;
@@ -15,54 +16,58 @@ class ControladorRegalo
         VistaInicio::render();
     }
 
-   public static function mostrarRegalos(){
+    public static function mostrarRegalos()
+    {
 
-    $usuario = unserialize($_SESSION['usuario']);
+        $usuario = unserialize($_SESSION['usuario']);
 
-    $regalos = ModeloRegalo::mostrarRegalos($usuario -> getId());
+        $regalos = ModeloRegalo::mostrarRegalos($usuario->getId());
 
-    VistaRegalos::render($regalos);
-}
+        VistaRegalos::render($regalos);
+    }
 
-public static function detalleRegalo($id){
- 
-    $regalo=ModeloRegalo::detalleRegalo($id);
+    public static function detalleRegalo($id)
+    {
 
-    VistaDetalle::render($regalo);
+        $regalo = ModeloRegalo::detalleRegalo($id);
 
-}
+        VistaDetalle::render($regalo);
 
-public static function insertarRegalo($nombre, $destinatario, $precio, $estado, $anio, $idUsuario){
+    }
 
-    $regalos = ModeloRegalo::insertarRegalo($nombre, $destinatario, $precio, $estado, $anio, $idUsuario);
+    public static function insertarRegalo($nombre, $destinatario, $precio, $estado, $anio, $idUsuario)
+    {
 
-    $user = unserialize($_SESSION['usuario']);
+        ModeloRegalo::insertarRegalo($nombre, $destinatario, $precio, $estado, $anio, $idUsuario);
 
-    $regalos = ModeloRegalo::mostrarRegalos($user -> getId());
+        $user = unserialize($_SESSION['usuario']);
 
-    VistaRegalos::render($regalos);
-    
-}
-public static function actualizarRegalo($nombre, $destinatario, $precio, $estado, $anio, $idUsuario) {
+        $regalos = ModeloRegalo::mostrarRegalos($user->getId());
 
-    $regalos = ModeloRegalo::actualizarRegalo($nombre, $destinatario, $precio, $estado, $anio, $idUsuario);
+        VistaRegalos::render($regalos);
+    }
 
-    return $regalos;    
-}
+    public static function actualizarRegalo($nombre, $destinatario, $precio, $estado, $anio, $idUsuario)
+    {
+
+        ModeloRegalo::actualizarRegalo($nombre, $destinatario, $precio, $estado, $anio, $idUsuario);
+    }
 
 
-public static function borrarRegalo($id){
 
-    ModeloRegalo::borrarRegalo($id);
+    public static function borrarRegalo($id)
+    {
 
-    $user = unserialize($_SESSION['usuario']);
+        ModeloRegalo::borrarRegalo($id);
 
-    $regalos = ModeloRegalo::mostrarRegalos($user -> getId());
+        $user = unserialize($_SESSION['usuario']);
 
-    // RENDERIZAMOS LA VISTA DE RESULTADOS
-    VistaRegalos::render($regalos);
-    die();
-}
+        $regalos = ModeloRegalo::mostrarRegalos($user->getId());
+
+        // RENDERIZAMOS LA VISTA DE RESULTADOS
+        VistaRegalos::render($regalos);
+        die();
+    }
 
 
 }
