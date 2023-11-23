@@ -131,6 +131,10 @@ if (isset($_REQUEST)) {
         
             ControladorEnlace::actualizarEnlaceModal ($nombre, $enlaceWeb, $precio, $imagen, $prioridad, $id);
             ControladorEnlace::mostraEnlaces($idRegalo);
+        }
+        if (strcmp($_REQUEST['accion'], 'mostrarRegalosOrdenados') == 0 ) {
+            ControladorRegalo::mostrarRegalosOrdenados();
+            VistaRegalos::render($regalos);
         }        
 
     } else {

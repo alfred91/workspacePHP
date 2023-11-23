@@ -53,8 +53,6 @@ class ControladorRegalo
         ModeloRegalo::actualizarRegalo($nombre, $destinatario, $precio, $estado, $anio, $idUsuario);
     }
 
-
-
     public static function borrarRegalo($id)
     {
 
@@ -69,6 +67,12 @@ class ControladorRegalo
         die();
     }
 
+public static function mostrarRegalosOrdenados()
+{
+    $usuario = unserialize($_SESSION['usuario']);
+    $regalos = ModeloRegalo::mostrarRegalosOrdenados($usuario->getId());
+    VistaRegalos::render($regalos);
+}
 
 }
 
