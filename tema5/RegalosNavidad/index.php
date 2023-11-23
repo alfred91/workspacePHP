@@ -145,22 +145,20 @@ if (isset($_REQUEST)) {
 
         if (strcmp($_REQUEST['accion'], 'mostrarEnlacesOrdenadosPrecioAsc') == 0) {
             $idRegalo = $_REQUEST['idRegalo'];
-            ControladorEnlace::mostrarEnlacesOrdenadosAsc($idRegalo);
+            ControladorEnlace::mostrarEnlacesOrdenadosPrecioAsc($idRegalo);
 
         }
 
         if (strcmp($_REQUEST['accion'], 'mostrarEnlacesOrdenadosPrecioDesc') == 0) {
             $idRegalo = $_REQUEST['idRegalo'];
-            ControladorEnlace::mostrarEnlacesOrdenadosDesc($idRegalo);
+            ControladorEnlace::mostrarEnlacesOrdenadosPrecioDesc($idRegalo);
         }
 
         if (isset($_REQUEST['accion']) && strcmp($_REQUEST['accion'], 'filtrarPorAnio') == 0) {
             $anio = $_REQUEST['anio'];
         
-            // Assuming that you have a user object stored in the session
             $usuario = unserialize($_SESSION['usuario']);
             
-            // Check if the user object exists and has an id
             if ($usuario && $usuario->getId()) {
                 $idUsuario = $usuario->getId();
                 $regalos = ControladorRegalo::filtrarPorAnio($idUsuario, $anio);

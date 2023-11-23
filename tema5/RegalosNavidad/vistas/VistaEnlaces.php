@@ -14,13 +14,10 @@ class VistaEnlaces
             <div class="text-center mt-3">
             <a class="btn btn-primary" href="#" data-bs-toggle="modal" data-bs-target="#nuevoEnlaceModal">Añadir Enlace</a>
 
-                <a class="btn btn-secondary" href="?accion=mostrarEnlacesOrdenadosPrecioAsc&idRegalo=<?= $enlaces[0]->getIdRegalo() ?>"> 🢁 Por Precio</a>
-                <a class="btn btn-secondary" href="?accion=mostrarEnlacesOrdenadosPrecioDesc&idRegalo=<?= $enlaces[0]->getIdRegalo() ?>"> 🢃 Por Precio</a>
                 
-                <a class="btn btn-secondary" href="?accion=mostrarEnlacesOrdenadosPrecioAsc&idRegalo=<?= isset($_REQUEST['idRegalo']) ? $_REQUEST['idRegalo'] : '' ?>"> 🢁 Por Precio</a>
-<a class="btn btn-secondary" href="?accion=mostrarEnlacesOrdenadosPrecioDesc&idRegalo=<?= isset($_REQUEST['idRegalo']) ? $_REQUEST['idRegalo'] : '' ?>"> 🢃 Por Precio</a>
-
-
+               
+                
+            
 
 </div>
 
@@ -38,7 +35,8 @@ class VistaEnlaces
                         <th class="col col-lg-2 text-center">ID</th>
                         <th class="col col-lg-2 text-center">Nombre</th>
                         <th class="col col-lg-2 text-center">Enlace Web</th>
-                        <th class="col col-lg-2 text-center">Precio</th>
+                        <th class="col col-lg-2 text-center"><a class="btn btn-danger" href="?accion=mostrarEnlacesOrdenadosPrecioAsc&idRegalo=<?= $enlaces[0]->getIdRegalo() ?>">🢁</a> Precio
+                        <a class="btn btn-danger" href="?accion=mostrarEnlacesOrdenadosPrecioDesc&idRegalo=<?= $enlaces[0]->getIdRegalo() ?>">🢃</a> </th>
                         <th class="col col-lg-2 text-center">Imagen</th>
                         <th class="col col-lg-2 text-center">Prioridad</th>
                         <th class="col col-lg-2 text-center">idRegalo</th>

@@ -15,10 +15,9 @@ class VistaRegalos
 
             <h1 class="mt-5 text-center">🎁 Lista de Regalos de <?php echo $usuario->getNombre(); ?> 🎁
             </h1>
-            <div class="text-center mt-3">
-        <a class="btn btn-success" href="?accion=mostrarRegalosOrdenados"> 🢁 </a>
-        <a class="btn btn-success" href="?accion=mostrarRegalosOrdenadosDesc"> 🢃 </a>
-    </div>
+           
+        
+   
 
             <table class="table table-striped table-bordered mt-4">
                 <thead class="bg-danger text-white">
@@ -27,7 +26,10 @@ class VistaRegalos
                         <th class="col col-lg-2 text-center">Destinatario</th>
                         <th class="col col-lg-2 text-center">Precio</th>
                         <th class="col col-lg-2 text-center">Estado</th>
-                        <th class="col col-lg-2 text-center">Año</th>
+                        <th class="col col-lg-2 text-center">
+                            <a class="btn btn-danger" href="?accion=mostrarRegalosOrdenados"> 🢁 </a> Año 
+                            <a class="btn btn-danger" href="?accion=mostrarRegalosOrdenadosDesc"> 🢃 </a>
+                        </th>
                         <th class="col col-lg-2 text-center">Enlaces</th>
                         <th class="col col-lg-2 text-center">Detalle</th>
                         <th class="col col-lg-2 text-center">Eliminar</th>

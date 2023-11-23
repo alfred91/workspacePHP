@@ -22,17 +22,15 @@ class ControladorEnlace
     }
 
 
-    public static function mostrarEnlacesOrdenadosAsc($idRegalo)
+    public static function mostrarEnlacesOrdenadosPrecioAsc($idRegalo)
     {
         $enlaces = ModeloEnlace::mostraEnlacesPrecioAsc($idRegalo);
-
         VistaEnlaces::render($enlaces);
     }
     
-    public static function mostrarEnlacesOrdenadosDesc($idRegalo)
+    public static function mostrarEnlacesOrdenadosPrecioDesc($idRegalo)
     {
         $enlaces = ModeloEnlace::mostraEnlacesPrecioDesc($idRegalo);
-
         VistaEnlaces::render($enlaces);
     }
     
