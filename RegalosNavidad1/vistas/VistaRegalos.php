@@ -15,9 +15,6 @@ class VistaRegalos
 
             <h1 class="mt-5 text-center">🎁 Lista de Regalos de <?php echo $usuario->getNombre(); ?> 🎁
             </h1>
-            <div class="text-center mt-3">
-        <a class="btn btn-secondary" href="?accion=mostrarRegalosOrdenados">Mostrar Regalos Ordenados</a>
-    </div>
 
             <table class="table table-striped table-bordered mt-4">
                 <thead class="bg-danger text-white">
@@ -39,7 +36,7 @@ class VistaRegalos
                if (empty($regalos)) {?>
 
             <h3 class='text-center'> <?php echo $usuario->getNombre(); ?>  no tiene regalos, puedes crear uno aqui </h3>
-            <a class="btn btn-primary" href="#" data-bs-toggle="modal" data-bs-target="#nuevoRegaloModal">Añadir Regalo</a>            
+            <a class="nav-link" href="#"  data-bs-toggle="modal" data-bs-target="#nuevoRegaloModal">Añadir Regalo</a>
             
             <?php } else {
                 foreach ($regalos as $regalo) {

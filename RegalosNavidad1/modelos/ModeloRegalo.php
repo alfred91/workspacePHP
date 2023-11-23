@@ -21,23 +21,6 @@ class ModeloRegalo
 
         return $resultados;
     }
-
-  // En ModeloRegalo.php
-public static function mostrarRegalosOrdenados($idUsuario)
-{
-    $conexion = new Conectar();
-    $stmt = $conexion->getConexion()->prepare("SELECT * FROM Regalos WHERE idUsuario=? ORDER BY anio ");
-    $stmt->bindValue(1, $idUsuario);
-    $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'RegalosNavidad\modelos\Regalo');
-    $stmt->execute();
-
-    $resultados = $stmt->fetchAll();
-
-    $conexion->finishConection();
-
-    return $resultados;
-}
-
     
     public static function mostrarTodos()
     {
