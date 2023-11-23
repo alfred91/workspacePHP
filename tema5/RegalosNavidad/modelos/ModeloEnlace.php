@@ -90,13 +90,17 @@ class ModeloEnlace
 
     }
 
-    
-    public static function mostraEnlacesPrecioAsc($idRegalo){
+    public static function mostraEnlacesPrecioAsc($idRegalo)
+    {
         $conexion = new Conectar();
-        $stmt=$conexion->getConexion()->prepare("SELECT * FROM Enlaces WHERE idRegalo = ? ORDER BY precio ASC");
-        $stmt -> bindValue(1,$idRegalo);
+        $stmt = $conexion->getConexion()->prepare("SELECT * FROM Enlaces WHERE idRegalo = ? ORDER BY precio ASC");
+        $stmt->bindValue(1, $idRegalo);
         $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'RegalosNavidad\modelos\Enlace');
         $stmt->execute();
+    
+        // Debugging: imprimir la consulta y el valor del precio
+        //echo "SQL: " . $stmt->queryString . PHP_EOL;
+        //echo "Bound Parameter: " . $idRegalo . PHP_EOL;
     
         $enlaces = $stmt->fetchAll();
     
@@ -105,21 +109,21 @@ class ModeloEnlace
         return $enlaces;
     }
     
-    
-    public static function mostraEnlacesPrecioDesc($idRegalo){
-    
-        $conexion = new Conectar();
-        $stmt=$conexion->getConexion()->prepare("SELECT * FROM Enlaces WHERE idRegalo = ? ORDER BY precio DESC");
-        $stmt -> bindValue(1,$idRegalo);
-        $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'RegalosNavidad\modelos\Enlace');
-        $stmt->execute();
-    
-        $enlaces = $stmt->fetchAll();
-    
-        $conexion->finishConection();
-    
-        return $enlaces;
-    }
+public static function mostraEnlacesPrecioDesc($idRegalo)
+{
+    $conexion = new Conectar();
+    $stmt = $conexion->getConexion()->prepare("SELECT * FROM Enlaces WHERE idRegalo = ? ORDER BY precio DESC");
+    $stmt->bindValue(1, $idRegalo);
+    $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'RegalosNavidad\modelos\Enlace');
+    $stmt->execute();
+
+    $enlaces = $stmt->fetchAll();
+
+    $conexion->finishConection();
+
+    return $enlaces;
+}
+
     
 }
 ?>
