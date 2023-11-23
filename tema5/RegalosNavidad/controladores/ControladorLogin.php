@@ -33,13 +33,14 @@ class ControladorLogin
 {
     $resultado = ModeloUsuario::checkLogin($email, $password);
 
-    // Según login, muestra el formulario o los resultados
+
     if (!$resultado) {
         echo '<script>alert("Datos incorrectos");</script>';
         ControladorLogin::mostrarFormulario();
+
     } else {
         $_SESSION['usuario'] = serialize($resultado);
-        ControladorRegalo::mostrarRegalos();
+ 
     }
 }
 
