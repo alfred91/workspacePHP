@@ -18,12 +18,14 @@ class ControladorRegalo
 
     public static function mostrarRegalos()
     {
+        if (isset($_SESSION['usuario'])) {
 
         $usuario = unserialize($_SESSION['usuario']);
 
         $regalos = ModeloRegalo::mostrarRegalos($usuario->getId());
 
         VistaRegalos::render($regalos);
+        }
     }
 
     public static function detalleRegalo($id)

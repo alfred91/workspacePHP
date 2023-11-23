@@ -7,7 +7,6 @@ session_start();
 use RegalosNavidad\controladores\ControladorRegalo;
 use RegalosNavidad\controladores\ControladorEnlace;
 use RegalosNavidad\controladores\ControladorLogin;
-use RegalosNavidad\modelos\ModeloEnlace;
 use RegalosNavidad\vistas\VistaEnlaces;
 use RegalosNavidad\vistas\VistaRegalos;
 
@@ -51,7 +50,7 @@ if (isset($_REQUEST)) {
         }
 
         if (strcmp($_REQUEST["accion"], 'mostrarRegalos') == 0) {
-
+            
             ControladorRegalo::mostrarRegalos();
 
         }
@@ -154,7 +153,7 @@ if (isset($_REQUEST)) {
             ControladorEnlace::mostrarEnlacesOrdenadosPrecioDesc($idRegalo);
         }
 
-        if (isset($_REQUEST['accion']) && strcmp($_REQUEST['accion'], 'filtrarPorAnio') == 0) {
+        if (strcmp($_REQUEST['accion'], 'filtrarPorAnio') == 0) {
             $anio = $_REQUEST['anio'];
         
             $usuario = unserialize($_SESSION['usuario']);
