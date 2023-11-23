@@ -30,6 +30,7 @@ if (isset($_REQUEST)) {
             if (isset($_SESSION['usuario'])) {  // SI EL USUARIO ESTA EN LA SESION MOSTRAMOS LOS REGALOS
 
                 ControladorRegalo::mostrarRegalos();
+                
             } else {
 
                 ControladorLogin::mostrarFormulario();  // DE LO CONTRARIO SE MUESTRA UN FORM DE LOGIN
@@ -50,7 +51,7 @@ if (isset($_REQUEST)) {
         }
 
         if (strcmp($_REQUEST["accion"], 'mostrarRegalos') == 0) {
-            
+
             ControladorRegalo::mostrarRegalos();
 
         }
@@ -155,9 +156,9 @@ if (isset($_REQUEST)) {
 
         if (strcmp($_REQUEST['accion'], 'filtrarPorAnio') == 0) {
             $anio = $_REQUEST['anio'];
-        
+
             $usuario = unserialize($_SESSION['usuario']);
-            
+
             if ($usuario && $usuario->getId()) {
                 $idUsuario = $usuario->getId();
                 $regalos = ControladorRegalo::filtrarPorAnio($idUsuario, $anio);
