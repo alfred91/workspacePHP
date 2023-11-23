@@ -7,6 +7,7 @@ session_start();
 use RegalosNavidad\controladores\ControladorRegalo;
 use RegalosNavidad\controladores\ControladorEnlace;
 use RegalosNavidad\controladores\ControladorLogin;
+use RegalosNavidad\vistas\VistaEnlaces;
 use RegalosNavidad\vistas\VistaRegalos;
 
 //Autocargar las clases --------------------------
@@ -51,7 +52,6 @@ if (isset($_REQUEST)) {
         if (strcmp($_REQUEST["accion"], 'mostrarRegalos') == 0) {   
 
             ControladorRegalo::mostrarRegalos();
-            VistaRegalos::render($regalos);
 
         }
 
@@ -98,34 +98,43 @@ if (isset($_REQUEST)) {
 
             $id = $_REQUEST['id'];
             ControladorRegalo::detalleRegalo($id);
-
         }
-
-        if (strcmp($_REQUEST['accion'], 'verEnlace') == 0) {
-
-            $idRegalo = $_REQUEST['idRegalo'];
-            $enlaces = ControladorEnlace::mostraEnlaces($idRegalo);
-
-        }
-        if (strcmp($_REQUEST['accion'], 'borrarEnlace') == 0) {
-
-            $id = $_REQUEST['id'];
-            ControladorEnlace::borrarEnlace($id);
-        }
-        if (strcmp($_REQUEST['accion'], 'actualizarEnlaceModal') == 0) {
+        
+        if (strcmp($_REQUEST['accion'], 'insertarEnlaceModal') == 0){
 
             $nombre = $_REQUEST['nombre'];
             $enlaceWeb = $_REQUEST['enlaceWeb'];
             $precio = $_REQUEST['precio'];
             $imagen = $_REQUEST['imagen'];
             $prioridad = $_REQUEST['prioridad'];
-            $id = $_REQUEST['id'];
+            $idRegalo = $_REQUEST['idRegalo'];
 
-            ControladorEnlace::actualizarEnlace($nombre, $enlaceWeb, $precio, $imagen, $prioridad, $idRegalo);
-            ControladorEnlace::mostraEnlaces("");
-
+            ControladorEnlace::insertarEnlace($nombre,$enlaceWeb,$precio,$imagen,$prioridad,$idRegalo);
+            VistaRegalos::render("");
         }
+
+        if (strcmp($_REQUEST['accion'], 'borrarEnlace') == 0) {
+
+            $id = $_REQUEST['id'];
+            ControladorEnlace::borrarEnlace($id);
+            vistaEnlaces::render($enlaces);
+        }
+
+        if (strcmp($_REQUEST['accion'], 'actualizarEnlaceModal') == 0) {
+            
+            $nombre = $_REQUEST['nombre'];
+            $enlaceWeb = $_REQUEST['enlaceWeb'];
+            $precio = $_REQUEST['precio'];
+            $imagen = $_REQUEST['imagen'];
+            $prioridad = $_REQUEST['prioridad'];
+            $id= $_REQUEST['id'];
+        
+            ControladorEnlace::actualizarEnlaceModal ($nombre, $enlaceWeb, $precio, $imagen, $prioridad, $id);
+            ControladorEnlace::mostraEnlaces($idRegalo);
+        }        
+
     } else {
+
         ControladorRegalo::mostrarInicio();
     }
 }

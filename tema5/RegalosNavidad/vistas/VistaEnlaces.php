@@ -37,6 +37,7 @@ class VistaEnlaces
                 </thead>
                 
                     <?php
+                   if (array($enlaces)) {
                         foreach ($enlaces as $enlace) {
                             ?>
                               <tr>
@@ -55,9 +56,48 @@ class VistaEnlaces
             </td>
 
 <!-- BOTON DE MODIFICAR ENLACE -->
-            <td class="col col-lg-2 text-center">
-                <a href="?accion=actualizarEnlaceModal&id=<?= $enlace->getId() ?>" class="btn btn-info">🎁</a>
-            </td>
+<td class="col col-lg-2 text-center">
+    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#actualizarEnlaceModal<?= $enlace->getId() ?>">🎁</button>
+</td>
+ <!-- Modificar Enlace Modal -->
+ <div class="modal fade" id="actualizarEnlaceModal<?= $enlace->getId() ?>" tabindex="-1"
+    aria-labelledby="actualizarEnlaceModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="actualizarEnlaceModalLabel">Modificar Enlace <?= $enlace->getNombre() ?></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Modify Form (Update Form) -->
+
+                <form action="?modificarEnlace=<?= $enlace->getNombre() ?>" method="post">
+                    <!-- Your form fields go here, pre-filled with existing data -->
+                    <input type="hidden" name="id" value="<?= $enlace->getId()?>">
+
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" name="nombre" value="<?= $enlace->getNombre() ?>" required>
+                    <br><br>
+                    <label for="enlaceWeb">Enlace Web:</label>
+                    <input type="text" name="enlaceWeb" value="<?= $enlace->getEnlaceWeb() ?>">
+                    <br><br>
+                    <label for="precio">precio:</label>
+                    <input type="number" step=".01" min="0.01" max="9999" name="precio" value="<?= $enlace->getPrecio() ?>">
+                    <br><br>
+                    <label for="imagen">Imagen:</label>
+                    <input type="text" name="imagen" value="<?= $enlace->getImagen() ?>">
+                    <br><br>
+                    <label for="prioridad">Prioridad:</label>
+                    <input type="number" min="1" name="prioridad" value="<?= $enlace->getPrioridad() ?>">
+
+                    <input type="hidden" name="idRegalo" value="<?= $enlace->getIdRegalo() ?>">
+
+                    <button type="submit" class="btn btn-success" name="accion" value="actualizarEnlaceModal">Insertar Enlace</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
                               </tr>
         
@@ -71,53 +111,15 @@ class VistaEnlaces
       
         <?php
 
-        } else {
+        }} else {
 
-            echo '<p class="text-center">No hay enlaces para este regalo.</p>';
+            echo '<h2 class="text-center">No hay enlaces para este regalo.</h2>';
         }
         ?>
 
-         <!-- Modificar Enlace Modal -->
-<div class="modal fade" id="actualizarEnlaceModal<?= $enlace->getId() ?>" tabindex="-1"
-    aria-labelledby="actualizarEnlaceModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="actualizarEnlaceModalLabel">Modificar Enlace <?= $enlace->getNombre() ?></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <!-- Modify Form (Update Form) -->
-                <form action="?modificarEnlace=<?= $enlace->getNombre() ?>" method="post">
-                    <!-- Your form fields go here, pre-filled with existing data -->
+        
 
-                    <label for="nombre">Nombre:</label>
-                    <input type="text" name="id" value="<?= $enlace->getNombre() ?>" required>
-                    <br><br>
-                    <label for="enlaceWeb">Enlace Web:</label>
-                    <input type="url" name="enlaceWeb" value="<?= $enlace->getEnlaceWeb() ?>" required>
-                    <br><br>
-                    <label for="precio">precio:</label>
-                    <input type="number" step=".01" min="0.01" max="9999" name="precio" value="<?= $enlace->getPrecio() ?>" required>
-                    <br><br>
-                    <label for="imagen">Imagen:</label>
-                    <input type="text" name="imagen" value="<?= $enlace->getImagen() ?>">
-                    <br><br>
-                    <label for="prioridad">Prioridad:</label>
-                    <input type="number" min="1" name="prioridad" value="<?= $enlace->getPrioridad() ?>">
-
-                    <input type="hidden" name="id" value="<?= $enlace->getId()?>">
-
-                    <input type="hidden" name="idRegalo" value="<?= $enlace->getIdRegalo() ?>">
-
-                    <button type="submit" class="btn btn-success" name="accion" value="actualizarEnlaceModal">Insertar Enlace</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Nuevo Regalo Modal -->
+<!-- Nuevo Enlace Modal -->
 <div class="modal fade" id="nuevoEnlaceModal" tabindex="-1" aria-labelledby="nuevoEnlaceModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
@@ -133,7 +135,7 @@ class VistaEnlaces
                     <input type="hidden" name="id" value="<?= $enlace->getId() ?>">
 
                     <label for="nombre">Nombre:</label>
-                    <input type="text" name="id" value="<?= $enlace->getNombre() ?>" required>
+                    <input type="text" name="nombre" value="<?= $enlace->getNombre() ?>" required>
                     <br><br>
                     <label for="enlaceWeb">Enlace Web:</label>
                     <input type="text" name="enlaceWeb" value="<?= $enlace->getEnlaceWeb() ?>" required>
