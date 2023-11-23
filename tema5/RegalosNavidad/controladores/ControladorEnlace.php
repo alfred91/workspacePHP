@@ -20,6 +20,19 @@ class ControladorEnlace
         VistaEnlaces::render($enlaces);
 
     }
+    public static function mostrarEnlacesOrdenadosAsc($idRegalo)
+    {
+        $enlaces = ModeloEnlace::mostraEnlacesPrecioAsc($idRegalo);
+        VistaEnlaces::render($enlaces);
+    }
+    
+    public static function mostrarEnlacesOrdenadosDesc($idRegalo)
+    {
+        $enlaces = ModeloEnlace::mostraEnlacesPrecioDesc($idRegalo);
+        VistaEnlaces::render($enlaces);
+    }
+    
+    
 
     public static function insertarEnlace($nombre, $enlaceWeb, $precio, $imagen, $prioridad, $idRegalo)
     {
