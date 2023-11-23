@@ -7,6 +7,7 @@ session_start();
 use RegalosNavidad\controladores\ControladorRegalo;
 use RegalosNavidad\controladores\ControladorEnlace;
 use RegalosNavidad\controladores\ControladorLogin;
+use RegalosNavidad\modelos\ModeloEnlace;
 use RegalosNavidad\vistas\VistaEnlaces;
 use RegalosNavidad\vistas\VistaRegalos;
 
@@ -49,7 +50,7 @@ if (isset($_REQUEST)) {
             die();
         }
 
-        if (strcmp($_REQUEST["accion"], 'mostrarRegalos') == 0) {   
+        if (strcmp($_REQUEST["accion"], 'mostrarRegalos') == 0) {
 
             ControladorRegalo::mostrarRegalos();
 
@@ -99,8 +100,8 @@ if (isset($_REQUEST)) {
             $id = $_REQUEST['id'];
             ControladorRegalo::detalleRegalo($id);
         }
-        
-        if (strcmp($_REQUEST['accion'], 'insertarEnlaceModal') == 0){
+
+        if (strcmp($_REQUEST['accion'], 'insertarEnlaceModal') == 0) {
 
             $nombre = $_REQUEST['nombre'];
             $enlaceWeb = $_REQUEST['enlaceWeb'];
@@ -109,7 +110,7 @@ if (isset($_REQUEST)) {
             $prioridad = $_REQUEST['prioridad'];
             $idRegalo = $_REQUEST['idRegalo'];
 
-            ControladorEnlace::insertarEnlace($nombre,$enlaceWeb,$precio,$imagen,$prioridad,$idRegalo);
+            ControladorEnlace::insertarEnlace($nombre, $enlaceWeb, $precio, $imagen, $prioridad, $idRegalo);
             VistaRegalos::render("");
         }
 
@@ -121,48 +122,54 @@ if (isset($_REQUEST)) {
         }
 
         if (strcmp($_REQUEST['accion'], 'actualizarEnlaceModal') == 0) {
-            
+
             $nombre = $_REQUEST['nombre'];
             $enlaceWeb = $_REQUEST['enlaceWeb'];
             $precio = $_REQUEST['precio'];
             $imagen = $_REQUEST['imagen'];
             $prioridad = $_REQUEST['prioridad'];
-            $id= $_REQUEST['id'];
-        
-            ControladorEnlace::actualizarEnlaceModal ($nombre, $enlaceWeb, $precio, $imagen, $prioridad, $id);
+            $id = $_REQUEST['id'];
+
+            ControladorEnlace::actualizarEnlaceModal($nombre, $enlaceWeb, $precio, $imagen, $prioridad, $id);
             ControladorEnlace::mostraEnlaces($idRegalo);
         }
-        if (strcmp($_REQUEST['accion'], 'mostrarRegalosOrdenados') == 0 ) {
+        if (strcmp($_REQUEST['accion'], 'mostrarRegalosOrdenados') == 0) {
             ControladorRegalo::mostrarRegalosOrdenados();
             VistaRegalos::render($regalos);
-        } 
-        if (strcmp($_REQUEST['accion'], 'mostrarRegalosOrdenadosDesc') == 0 ) {
+        }
+        if (strcmp($_REQUEST['accion'], 'mostrarRegalosOrdenadosDesc') == 0) {
             ControladorRegalo::mostrarRegalosOrdenadosDesc();
             VistaRegalos::render($regalos);
-        } 
-
-     // ...
+        }
 
 
-    if (strcmp($_REQUEST['accion'], 'mostrarEnlacesOrdenadosAsc') == 0) {
-        // Asegúrate de que $_REQUEST['idRegalo'] esté definido
-        $idRegalo = isset($_REQUEST['idRegalo']);
+        if (strcmp($_REQUEST['accion'], 'mostrarEnlacesOrdenadosPrecioAsc') == 0) {
+            $idRegalo = $_REQUEST['idRegalo'];
+            ControladorEnlace::mostrarEnlacesOrdenadosAsc($idRegalo);
 
-        echo "Mostrar enlaces ordenados ascendentemente";
-        ControladorEnlace::mostrarEnlacesOrdenadosAsc($idRegalo);
-    } elseif (strcmp($_REQUEST['accion'], 'mostrarEnlacesOrdenadosDesc') == 0) {
-        // Asegúrate de que $_REQUEST['idRegalo'] esté definido
-        $idRegalo = isset($_REQUEST['idRegalo']) ? $_REQUEST['idRegalo'] : null;
+        }
 
-        echo "Mostrar enlaces ordenados descendentemente";
-        ControladorEnlace::mostrarEnlacesOrdenadosDesc($idRegalo);
+        if (strcmp($_REQUEST['accion'], 'mostrarEnlacesOrdenadosPrecioDesc') == 0) {
+            $idRegalo = $_REQUEST['idRegalo'];
+            ControladorEnlace::mostrarEnlacesOrdenadosDesc($idRegalo);
+        }
 
-    }
-
+        if (isset($_REQUEST['accion']) && strcmp($_REQUEST['accion'], 'filtrarPorAnio') == 0) {
+            $anio = $_REQUEST['anio'];
         
-
-
-               
+            // Assuming that you have a user object stored in the session
+            $usuario = unserialize($_SESSION['usuario']);
+            
+            // Check if the user object exists and has an id
+            if ($usuario && $usuario->getId()) {
+                $idUsuario = $usuario->getId();
+                $regalos = ControladorRegalo::filtrarPorAnio($idUsuario, $anio);
+            } else {
+                ControladorRegalo::mostrarRegalos();
+            }
+        } else {
+            ControladorRegalo::mostrarRegalos();
+        }
 
     } else {
 
