@@ -29,25 +29,20 @@ class ControladorLogin
     
     /** 
      * Comprobar si el login es correcto o no
-     */
-    public static function checkLogin($email, $password)
-    {
-        $resultado = ModeloUsuario::checkLogin($email, $password);
+     */public static function checkLogin($email, $password)
+{
+    $resultado = ModeloUsuario::checkLogin($email, $password);
 
-        // Según login muestro otra vez el login o muestro los resultados
-        if ($resultado == false) {
-
-            echo '<script>alert("Datos incorrectos");</script>';
-            ControladorLogin::mostrarFormulario();
-            
-        } else {
-            // Meter en la sesión el usuario
-            $_SESSION['usuario'] = serialize($resultado);
-
-            // Pintamos resultados
-            ControladorRegalo::mostrarRegalos();
-        }
+    // Según login, muestra el formulario o los resultados
+    if (!$resultado) {
+        echo '<script>alert("Datos incorrectos");</script>';
+        ControladorLogin::mostrarFormulario();
+    } else {
+        $_SESSION['usuario'] = serialize($resultado);
+        ControladorRegalo::mostrarRegalos();
     }
+}
+
 
     public static function cerrarSesion()
     {
