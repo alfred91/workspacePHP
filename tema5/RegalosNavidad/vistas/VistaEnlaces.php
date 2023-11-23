@@ -14,10 +14,11 @@ class VistaEnlaces
             <div class="text-center mt-3">
             <a class="btn btn-primary" href="#" data-bs-toggle="modal" data-bs-target="#nuevoEnlaceModal">Añadir Enlace</a>
 
-            <a class="btn btn-secondary" href="?accion=mostrarEnlacesOrdenadosAsc&idRegalo=<?= $enlaces[0]->getIdRegalo() ?>&orden=asc"> 🢁 </a>
-                <a class="btn btn-secondary" href="?accion=mostrarEnlacesOrdenadosDesc&idRegalo=<?= $enlaces[0]->getIdRegalo() ?>&orden=desc"> 🢃 </a>
                 <a class="btn btn-secondary" href="?accion=mostrarEnlacesOrdenadosPrecioAsc&idRegalo=<?= $enlaces[0]->getIdRegalo() ?>"> 🢁 Por Precio</a>
                 <a class="btn btn-secondary" href="?accion=mostrarEnlacesOrdenadosPrecioDesc&idRegalo=<?= $enlaces[0]->getIdRegalo() ?>"> 🢃 Por Precio</a>
+                
+                <a class="btn btn-secondary" href="?accion=mostrarEnlacesOrdenadosPrecioAsc&idRegalo=<?= isset($_REQUEST['idRegalo']) ? $_REQUEST['idRegalo'] : '' ?>"> 🢁 Por Precio</a>
+<a class="btn btn-secondary" href="?accion=mostrarEnlacesOrdenadosPrecioDesc&idRegalo=<?= isset($_REQUEST['idRegalo']) ? $_REQUEST['idRegalo'] : '' ?>"> 🢃 Por Precio</a>
 
 
 

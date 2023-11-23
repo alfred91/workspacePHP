@@ -86,6 +86,22 @@ public static function mostrarRegalosOrdenadosDesc($idUsuario)
         $conn -> finishConection();
 
     }
+
+    public static function filtrarPorAnio($idUsuario, $anio)
+    {
+        $conexion = new Conectar();
+        $stmt = $conexion->getConexion()->prepare("SELECT * FROM Regalos WHERE idUsuario=? AND anio = ?");
+        $stmt->bindValue(1, $idUsuario);
+        $stmt->bindValue(2, $anio);
+        
+        $stmt->execute();
+    
+        $resultados = $stmt->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'RegalosNavidad\modelos\Regalo');
+    
+        $conexion->finishConection();
+    
+        return $resultados;
+    }
     
     public static function actualizarRegalo($nombre, $destinatario, $precio, $estado, $anio, $id){
 

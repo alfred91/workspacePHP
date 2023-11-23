@@ -67,6 +67,14 @@ class ControladorRegalo
         die();
     }
 
+    public static function filtrarPorAnio($idUsuario,$anio){
+
+        $regalos = ModeloRegalo::filtrarPorAnio($idUsuario,$anio);
+
+        VistaRegalos::render($regalos);
+    }
+
+
 public static function mostrarRegalosOrdenados()
 {
     $usuario = unserialize($_SESSION['usuario']);

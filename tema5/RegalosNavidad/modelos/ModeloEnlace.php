@@ -90,20 +90,21 @@ class ModeloEnlace
 
     }
 
+    
     public static function mostraEnlacesPrecioAsc($idRegalo){
-
         $conexion = new Conectar();
         $stmt=$conexion->getConexion()->prepare("SELECT * FROM Enlaces WHERE idRegalo = ? ORDER BY precio ASC");
         $stmt -> bindValue(1,$idRegalo);
         $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'RegalosNavidad\modelos\Enlace');
         $stmt->execute();
     
-        $resultados = $stmt->fetchAll();
+        $enlaces = $stmt->fetchAll();
     
         $conexion->finishConection();
     
-        return $resultados;
+        return $enlaces;
     }
+    
     
     public static function mostraEnlacesPrecioDesc($idRegalo){
     
@@ -113,11 +114,11 @@ class ModeloEnlace
         $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'RegalosNavidad\modelos\Enlace');
         $stmt->execute();
     
-        $resultados = $stmt->fetchAll();
+        $enlaces = $stmt->fetchAll();
     
         $conexion->finishConection();
     
-        return $resultados;
+        return $enlaces;
     }
     
 }
