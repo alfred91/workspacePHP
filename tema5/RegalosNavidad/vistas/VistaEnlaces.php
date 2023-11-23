@@ -11,9 +11,20 @@ class VistaEnlaces
 <h1 class="mt-5 text-center">Lista de Enlaces 
 <a class="navbar-brand text-success logo h1 align-self-center" href="?accion=mostrarRegalos">🎁  👈🏽
             </a></h1>
+            <div class="text-center mt-3">
             <a class="btn btn-primary" href="#" data-bs-toggle="modal" data-bs-target="#nuevoEnlaceModal">Añadir Enlace</a>
 
-                        
+            <a class="btn btn-secondary" href="?accion=mostrarEnlacesOrdenadosAsc&idRegalo=<?= $enlaces[0]->getIdRegalo() ?>&orden=asc"> 🢁 </a>
+                <a class="btn btn-secondary" href="?accion=mostrarEnlacesOrdenadosDesc&idRegalo=<?= $enlaces[0]->getIdRegalo() ?>&orden=desc"> 🢃 </a>
+                <a class="btn btn-secondary" href="?accion=mostrarEnlacesOrdenadosPrecioAsc&idRegalo=<?= $enlaces[0]->getIdRegalo() ?>"> 🢁 Por Precio</a>
+                <a class="btn btn-secondary" href="?accion=mostrarEnlacesOrdenadosPrecioDesc&idRegalo=<?= $enlaces[0]->getIdRegalo() ?>"> 🢃 Por Precio</a>
+
+
+
+</div>
+
+</div>
+
 
 <?php
         if (isset($enlaces) && !empty($enlaces)) {
@@ -120,8 +131,7 @@ class VistaEnlaces
         
 
 <!-- Nuevo Enlace Modal -->
-<div class="modal fade" id="nuevoEnlaceModal" tabindex="-1" aria-labelledby="nuevoEnlaceModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="nuevoEnlaceModal" tabindex="-1" aria-labelledby="nuevoEnlaceModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -130,8 +140,8 @@ class VistaEnlaces
             </div>
             <div class="modal-body">
                 <!-- Formulario de Inserción -->
-                <form action="?insertarRegalo" method="post">
-                    <!-- Campos del formulario (nombre, destinatario, precio, etc.) -->
+                <form action="?insertarEnlaceModal" method="post" enctype="multipart/form-data">
+                    <!-- Campos del formulario (nombre, enlaceWeb, precio, imagen, prioridad) -->
                     <input type="hidden" name="id" value="<?= $enlace->getId() ?>">
 
                     <label for="nombre">Nombre:</label>
@@ -140,16 +150,21 @@ class VistaEnlaces
                     <label for="enlaceWeb">Enlace Web:</label>
                     <input type="text" name="enlaceWeb" value="<?= $enlace->getEnlaceWeb() ?>" required>
                     <br><br>
-                    <label for="precio">precio:</label>
+                    <label for="precio">Precio:</label>
                     <input type="number" step=".01" min="0.01" max="9999" name="precio" value="<?= $enlace->getPrecio() ?>" required>
                     <br><br>
                     <label for="imagen">Imagen:</label>
-                    <input type="text" name="imagen" value="<?= $enlace->getImagen() ?>">
+                    <input type="blob" name="imagen">
                     <br><br>
                     <label for="prioridad">Prioridad:</label>
-                    <input type="number" min="1" name="prioridad" value="<?= $enlace->getPrioridad() ?>">
-
-                    <input type="hidden" name="idRegalo" value="<?= $enlace->getIdRegalo() ?>">
+                    <select name="prioridad" required>
+                        <option value="0">Baja</option>
+                        <option value="1">Media</option>
+                        <option value="2">Alta</option>
+                    </select>
+                    <br><br>
+                    <label for="idRegalo">ID del Regalo:</label>
+                    <input type="number" min="1" name="idRegalo" value="<?= $enlace->getIdRegalo() ?>" required>
                     <!-- Add other form fields based on your data model -->
 
                     <button type="submit" class="btn btn-success" name="accion" value="insertarEnlaceModal">Insertar Enlace</button>
@@ -158,6 +173,7 @@ class VistaEnlaces
         </div>
     </div>
 </div>
+
                                             <?php
     include "PieMain.php";
     }

@@ -16,7 +16,8 @@ class VistaRegalos
             <h1 class="mt-5 text-center">🎁 Lista de Regalos de <?php echo $usuario->getNombre(); ?> 🎁
             </h1>
             <div class="text-center mt-3">
-        <a class="btn btn-secondary" href="?accion=mostrarRegalosOrdenados">Mostrar Regalos Ordenados</a>
+        <a class="btn btn-success" href="?accion=mostrarRegalosOrdenados"> 🢁 </a>
+        <a class="btn btn-success" href="?accion=mostrarRegalosOrdenadosDesc"> 🢃 </a>
     </div>
 
             <table class="table table-striped table-bordered mt-4">
@@ -106,8 +107,14 @@ class VistaRegalos
                                                 <input type="number" min="1" name="precio">
                                                 <br><br>
                                                 <label for="estado">Estado:</label>
-                                                <input type="text" name="estado">
+                                                <select name="estado">
+                                                    <option value="pendiente">Pendiente</option>
+                                                    <option value="comprado">Comprado</option>
+                                                    <option value="envuelto">Envuelto</option>
+                                                    <option value="entregado">Entregado</option>
+                                                </select>
                                                 <br><br>
+
                                                 <label for="anio">Año:</label>
                                                 <input type="number" min="2000" name="anio">
                                                 <input type="hidden" name="idUsuario" value="<?= $regalo->getIdUsuario() ?>">
@@ -152,8 +159,14 @@ class VistaRegalos
                                                 <input type="number" min="1" name="precio" value="<?= $regalo->getPrecio() ?>">
                                                 <br><br>
                                                 <label for="estado">Estado:</label>
-                                                <input type="text" name="estado" value="<?= $regalo->getEstado() ?>">
+                                                <select name="estado">
+                                                    <option value="pendiente" <?= ($regalo->getEstado() == 'pendiente') ? 'selected' : '' ?>>Pendiente</option>
+                                                    <option value="comprado" <?= ($regalo->getEstado() == 'comprado') ? 'selected' : '' ?>>Comprado</option>
+                                                    <option value="envuelto" <?= ($regalo->getEstado() == 'envuelto') ? 'selected' : '' ?>>Envuelto</option>
+                                                    <option value="entregado" <?= ($regalo->getEstado() == 'entregado') ? 'selected' : '' ?>>Entregado</option>
+                                                </select>
                                                 <br><br>
+
                                                 <label for="anio">Año:</label>
                                                 <input type="number" min="1900" name="anio" value="<?= $regalo->getanio() ?>">
 
@@ -163,7 +176,7 @@ class VistaRegalos
                                                 <!-- Add other form fields based on your data model -->
 
                                                 <button type="submit" class="btn btn-success" name="accion"
-                                                    value="actualizarRegaloModal">Insertar Regalo</button>
+                                                    value="actualizarRegaloModal">Actualizar</button>
                                             </form>
                                         </div>
                                     </div>

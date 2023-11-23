@@ -73,6 +73,12 @@ public static function mostrarRegalosOrdenados()
     $regalos = ModeloRegalo::mostrarRegalosOrdenados($usuario->getId());
     VistaRegalos::render($regalos);
 }
+public static function mostrarRegalosOrdenadosDesc()
+{
+    $usuario = unserialize($_SESSION['usuario']);
+    $regalos = ModeloRegalo::mostrarRegalosOrdenadosDesc($usuario->getId());
+    VistaRegalos::render($regalos);
+}
 
 }
 

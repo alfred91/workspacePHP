@@ -83,7 +83,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="?">Enlaces</a>
+                            <a class="nav-link" href="?">Vista Inicio</a>
                         </li>
                         
                     </ul>

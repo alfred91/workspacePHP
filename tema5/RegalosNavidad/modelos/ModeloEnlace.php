@@ -89,5 +89,36 @@ class ModeloEnlace
         $conexion->finishConection();        
 
     }
+
+    public static function mostraEnlacesPrecioAsc($idRegalo){
+
+        $conexion = new Conectar();
+        $stmt=$conexion->getConexion()->prepare("SELECT * FROM Enlaces WHERE idRegalo = ? ORDER BY precio ASC");
+        $stmt -> bindValue(1,$idRegalo);
+        $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'RegalosNavidad\modelos\Enlace');
+        $stmt->execute();
+    
+        $resultados = $stmt->fetchAll();
+    
+        $conexion->finishConection();
+    
+        return $resultados;
+    }
+    
+    public static function mostraEnlacesPrecioDesc($idRegalo){
+    
+        $conexion = new Conectar();
+        $stmt=$conexion->getConexion()->prepare("SELECT * FROM Enlaces WHERE idRegalo = ? ORDER BY precio DESC");
+        $stmt -> bindValue(1,$idRegalo);
+        $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'RegalosNavidad\modelos\Enlace');
+        $stmt->execute();
+    
+        $resultados = $stmt->fetchAll();
+    
+        $conexion->finishConection();
+    
+        return $resultados;
+    }
+    
 }
 ?>

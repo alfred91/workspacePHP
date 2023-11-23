@@ -135,7 +135,34 @@ if (isset($_REQUEST)) {
         if (strcmp($_REQUEST['accion'], 'mostrarRegalosOrdenados') == 0 ) {
             ControladorRegalo::mostrarRegalosOrdenados();
             VistaRegalos::render($regalos);
-        }        
+        } 
+        if (strcmp($_REQUEST['accion'], 'mostrarRegalosOrdenadosDesc') == 0 ) {
+            ControladorRegalo::mostrarRegalosOrdenadosDesc();
+            VistaRegalos::render($regalos);
+        } 
+
+     // ...
+
+
+    if (strcmp($_REQUEST['accion'], 'mostrarEnlacesOrdenadosAsc') == 0) {
+        // Asegúrate de que $_REQUEST['idRegalo'] esté definido
+        $idRegalo = isset($_REQUEST['idRegalo']);
+
+        echo "Mostrar enlaces ordenados ascendentemente";
+        ControladorEnlace::mostrarEnlacesOrdenadosAsc($idRegalo);
+    } elseif (strcmp($_REQUEST['accion'], 'mostrarEnlacesOrdenadosDesc') == 0) {
+        // Asegúrate de que $_REQUEST['idRegalo'] esté definido
+        $idRegalo = isset($_REQUEST['idRegalo']) ? $_REQUEST['idRegalo'] : null;
+
+        echo "Mostrar enlaces ordenados descendentemente";
+        ControladorEnlace::mostrarEnlacesOrdenadosDesc($idRegalo);
+
+    }
+
+        
+
+
+               
 
     } else {
 
