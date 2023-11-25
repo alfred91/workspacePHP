@@ -22,7 +22,6 @@ class ModeloRegalo
         return $resultados;
     }
 
-  // En ModeloRegalo.php
 public static function mostrarRegalosOrdenados($idUsuario)
 {
     $conexion = new Conectar();

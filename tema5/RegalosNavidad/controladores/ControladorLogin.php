@@ -1,4 +1,5 @@
-<?php namespace RegalosNavidad\controladores;
+<?php
+namespace RegalosNavidad\controladores;
 
 use RegalosNavidad\vistas\VistaInicio;
 use RegalosNavidad\modelos\ModeloRegalo;
@@ -26,23 +27,23 @@ class ControladorLogin
         VistaUsuarios::render();
 
     }
-    
-    /** 
-     * Comprobar si el login es correcto o no
-     */public static function checkLogin($email, $password)
-{
-    $resultado = ModeloUsuario::checkLogin($email, $password);
+
+    public static function checkLogin($email, $password)
+    {
+
+        $resultado = ModeloUsuario::checkLogin($email, $password);
 
 
-    if (!$resultado) {
-        echo '<script>alert("Datos incorrectos");</script>';
-        ControladorLogin::mostrarFormulario();
+        if (!$resultado) {
+            echo '<script>alert("Datos incorrectos");</script>';
+            ControladorLogin::mostrarFormulario();
 
-    } else {
-        $_SESSION['usuario'] = serialize($resultado);
- 
+        } else {
+            $_SESSION['usuario'] = serialize($resultado);
+            ControladorRegalo::mostrarRegalos("");
+
+        }
     }
-}
 
 
     public static function cerrarSesion()
@@ -51,24 +52,6 @@ class ControladorLogin
 
         VistaInicio::render();
     }
-
-    /**
-     * Método que muestra todos los resultados
-     */
-    public static function mostrarTodos()
-    {
-        //LLamar a BBDD para traerme todos los resultados
-        $resultados = ModeloRegalo::mostrarRegalos("");
-
-        //LLamar a una vista para pintar todos los resultados
-        vistaRegalos::render($resultados);
-    }
-
-    /**
-     * Método que eliminar un resultado de la BBDD
-     */
-    }
-
-
+}
 
 ?>

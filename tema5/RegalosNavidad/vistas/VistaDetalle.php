@@ -12,10 +12,10 @@ class VistaDetalle
 
         <div class="container-fluid">
     
-            <h1 class="mt-5 text-center">🔍 Detalle <?php echo $regalo->getNombre();?> 🔍
+            <h1 class="mt-5 text-center"> Detalle <?php echo $regalo->getNombre();?> 🔍
 
 <a class="navbar-brand text-success logo h1 align-self-center" href="?accion=mostrarRegalos">
- 🎁 👈🏽
+ 🎁 
             </a></h1>
 
             <table class="table table-striped table-bordered mt-4">
@@ -42,7 +42,7 @@ class VistaDetalle
             <td class="col col-lg-2 text-center"><?= $regalo->getEstado() ?></td>
             <td class="col col-lg-2 text-center"><?= $regalo->getanio() ?></td>
             <td class="col col-lg-2 text-center">
-            <a href="?accion=verEnlaces&id=<?= $regalo->getId() ?>" class="btn btn-info">🔍</a>
+            <a href="?accion=verEnlaces&id=<?= $regalo->getId() ?>" class="btn btn-warning">🔗</a>
             </td>
            
             </td>
