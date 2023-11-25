@@ -29,7 +29,7 @@
                     <i class="fa fa-envelope mx-2"></i>
                     <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:alfred.91.mc@gmail.com<">alfred.91.mc@gmail.com</a>
                     <i class="fa fa-phone mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:662040002">662 040 002</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:662040002">Contacto</a>
                 </div>
                 <div>
               
@@ -74,7 +74,7 @@
                    
                         <li class="nav-item">
 
-                        <a href="?accion=mostrarTodos" class="nav-link"> Regalos</a> 
+                        <a href="?accion=mostrarRegalos" class="nav-link"> Regalos</a> 
                         </li>
                         
                         <li class="nav-item">
@@ -83,8 +83,9 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="?">Vista Inicio</a>
-                        </li>
+
+                    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#nuevoEnlaceModal">Añadir Enlace</a>
+                       
                         
                     </ul>
                 </div>
@@ -93,8 +94,8 @@
     <input type="hidden" name="accion" value="filtrarPorAnio">
     <label for="inputYear" class="form-label">Filtrar por año:</label>
     <div class="input-group">
-        <input type="text" class="form-control" id="inputYear" name="anio" placeholder="2000">
-        <button type="submit" class="btn btn-primary">Filter</button>
+        <input type="text" class="form-control" id="inputYear" name="anio" placeholder="2023">
+        <button type="submit" class="btn btn-danger">🔍</button>
     </div>
 </form>
 

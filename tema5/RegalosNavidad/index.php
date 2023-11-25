@@ -7,8 +7,6 @@ session_start();
 use RegalosNavidad\controladores\ControladorRegalo;
 use RegalosNavidad\controladores\ControladorEnlace;
 use RegalosNavidad\controladores\ControladorLogin;
-use RegalosNavidad\vistas\VistaEnlaces;
-use RegalosNavidad\vistas\VistaRegalos;
 
 //Autocargar las clases --------------------------
 spl_autoload_register(function ($class) {
@@ -30,7 +28,7 @@ if (isset($_REQUEST)) {
             if (isset($_SESSION['usuario'])) {  // SI EL USUARIO ESTA EN LA SESION MOSTRAMOS LOS REGALOS
 
                 ControladorRegalo::mostrarRegalos();
-                
+
             } else {
 
                 ControladorLogin::mostrarFormulario();  // DE LO CONTRARIO SE MUESTRA UN FORM DE LOGIN
@@ -42,7 +40,6 @@ if (isset($_REQUEST)) {
             $email = $_REQUEST["email"];
             $password = $_REQUEST["password"];
             ControladorLogin::checkLogin($email, $password);
-
         }
 
         if (strcmp($_REQUEST["accion"], 'cerrarSesion') == 0) { // CERRAR SESION
@@ -50,13 +47,12 @@ if (isset($_REQUEST)) {
             die();
         }
 
-        if (strcmp($_REQUEST["accion"], 'mostrarRegalos') == 0) {
+        if (strcmp($_REQUEST["accion"], 'mostrarRegalos') == 0) {  //BOTON HOME, UNA VEZ LOGUEADOS
 
             ControladorRegalo::mostrarRegalos();
-
         }
 
-        if (strcmp($_REQUEST['accion'], 'insertarRegaloModal') == 0) {
+        if (strcmp($_REQUEST['accion'], 'insertarRegaloModal') == 0) {  //INSERTAR UN REGALO
 
             $nombre = $_REQUEST['nombre'];
             $destinatario = $_REQUEST['destinatario'];
@@ -68,7 +64,7 @@ if (isset($_REQUEST)) {
             ControladorRegalo::insertarRegalo($nombre, $destinatario, $precio, $estado, $anio, $idUsuario);
         }
 
-        if (strcmp($_REQUEST['accion'], 'actualizarRegaloModal') == 0) {
+        if (strcmp($_REQUEST['accion'], 'actualizarRegaloModal') == 0) {    // MODIFICAR UN REGALO    
 
             $nombre = $_REQUEST['nombre'];
             $destinatario = $_REQUEST['destinatario'];
@@ -77,31 +73,29 @@ if (isset($_REQUEST)) {
             $anio = $_REQUEST['anio'];
             $id = $_REQUEST['id'];
 
-
             ControladorRegalo::actualizarRegalo($nombre, $destinatario, $precio, $estado, $anio, $id);
             ControladorRegalo::mostrarRegalos();
         }
 
-        if (strcmp($_REQUEST['accion'], 'verEnlaces') == 0) {
+        if (strcmp($_REQUEST['accion'], 'verEnlaces') == 0) {   // VER LOS ENLACES DE UN REGALO CONCRETO
 
             $idRegalo = $_REQUEST['id'];
             ControladorEnlace::mostraEnlaces($idRegalo);
         }
 
-        if (strcmp($_REQUEST["accion"], 'borrarRegalo') == 0) {
+        if (strcmp($_REQUEST["accion"], 'borrarRegalo') == 0) { // BORRAR UN REGALO 
 
             $id = $_REQUEST['id'];
             ControladorRegalo::borrarRegalo($id);
-
         }
 
-        if (strcmp($_REQUEST['accion'], 'verDetalle') == 0) {
+        if (strcmp($_REQUEST['accion'], 'verDetalle') == 0) {   // DETALLES DE UN REGALO
 
             $id = $_REQUEST['id'];
             ControladorRegalo::detalleRegalo($id);
         }
 
-        if (strcmp($_REQUEST['accion'], 'insertarEnlaceModal') == 0) {
+        if (strcmp($_REQUEST['accion'], 'insertarEnlaceModal') == 0) {  // INSERTAR UN ENLACE PARA UN REGALO ESPECIFICO
 
             $nombre = $_REQUEST['nombre'];
             $enlaceWeb = $_REQUEST['enlaceWeb'];
@@ -111,17 +105,15 @@ if (isset($_REQUEST)) {
             $idRegalo = $_REQUEST['idRegalo'];
 
             ControladorEnlace::insertarEnlace($nombre, $enlaceWeb, $precio, $imagen, $prioridad, $idRegalo);
-            VistaRegalos::render("");
         }
 
-        if (strcmp($_REQUEST['accion'], 'borrarEnlace') == 0) {
+        if (strcmp($_REQUEST['accion'], 'borrarEnlace') == 0) { // BORRAR UN ENLACE DE UN REGALO
 
             $id = $_REQUEST['id'];
             ControladorEnlace::borrarEnlace($id);
-            vistaEnlaces::render($enlaces);
         }
 
-        if (strcmp($_REQUEST['accion'], 'actualizarEnlaceModal') == 0) {
+        if (strcmp($_REQUEST['accion'], 'actualizarEnlaceModal') == 0) {    // MODIFICAR UN ENLACE
 
             $nombre = $_REQUEST['nombre'];
             $enlaceWeb = $_REQUEST['enlaceWeb'];
@@ -131,30 +123,27 @@ if (isset($_REQUEST)) {
             $id = $_REQUEST['id'];
 
             ControladorEnlace::actualizarEnlaceModal($nombre, $enlaceWeb, $precio, $imagen, $prioridad, $id);
-            ControladorEnlace::mostraEnlaces($idRegalo);
         }
-        if (strcmp($_REQUEST['accion'], 'mostrarRegalosOrdenados') == 0) {
+
+        if (strcmp($_REQUEST['accion'], 'mostrarRegalosOrdenados') == 0) {  // ORDENAR REGALOS POR AÑO ASC
             ControladorRegalo::mostrarRegalosOrdenados();
-            VistaRegalos::render($regalos);
         }
-        if (strcmp($_REQUEST['accion'], 'mostrarRegalosOrdenadosDesc') == 0) {
+
+        if (strcmp($_REQUEST['accion'], 'mostrarRegalosOrdenadosDesc') == 0) {  // ORDENAR REGALOS POR AÑO DESC
             ControladorRegalo::mostrarRegalosOrdenadosDesc();
-            VistaRegalos::render($regalos);
         }
 
-
-        if (strcmp($_REQUEST['accion'], 'mostrarEnlacesOrdenadosPrecioAsc') == 0) {
+        if (strcmp($_REQUEST['accion'], 'mostrarEnlacesOrdenadosPrecioAsc') == 0) { // ORDENAR ENLACES POR PRECIO ASC
             $idRegalo = $_REQUEST['idRegalo'];
             ControladorEnlace::mostrarEnlacesOrdenadosPrecioAsc($idRegalo);
-
         }
 
-        if (strcmp($_REQUEST['accion'], 'mostrarEnlacesOrdenadosPrecioDesc') == 0) {
+        if (strcmp($_REQUEST['accion'], 'mostrarEnlacesOrdenadosPrecioDesc') == 0) {  // ORDENAR ENLACES POR PRECIO DESC
             $idRegalo = $_REQUEST['idRegalo'];
             ControladorEnlace::mostrarEnlacesOrdenadosPrecioDesc($idRegalo);
         }
 
-        if (strcmp($_REQUEST['accion'], 'filtrarPorAnio') == 0) {
+        if (strcmp($_REQUEST['accion'], 'filtrarPorAnio') == 0) {   // BUSCAR REGALOS POR AÑO
             $anio = $_REQUEST['anio'];
 
             $usuario = unserialize($_SESSION['usuario']);
@@ -163,14 +152,12 @@ if (isset($_REQUEST)) {
                 $idUsuario = $usuario->getId();
                 $regalos = ControladorRegalo::filtrarPorAnio($idUsuario, $anio);
             } else {
-                ControladorRegalo::mostrarRegalos();
+                echo("<alert>No se ha podido encontrar </alert>");
             }
         } else {
-            ControladorRegalo::mostrarRegalos();
+            exit();
         }
-
     } else {
-
         ControladorRegalo::mostrarInicio();
     }
 }
