@@ -28,9 +28,14 @@
                     <label for="imagen">Imagen:</label>
                     <input type="text" name="imagen" value="<?= $enlace->getImagen() ?>">
                     <br><br>
-                    <label for="prioridad">Prioridad:</label>
-                    <input type="number" min="1" name="prioridad" value="<?= $enlace->getPrioridad() ?>">
 
+                    <label for="prioridad">Prioridad:</label>
+                    <select name="prioridad" required>
+                        <option value="0" <?= $enlace->getPrioridad() == 0 ? 'selected' : '' ?>>Baja</option>
+                        <option value="1" <?= $enlace->getPrioridad() == 1 ? 'selected' : '' ?>>Media</option>
+                        <option value="2" <?= $enlace->getPrioridad() == 2 ? 'selected' : '' ?>>Alta</option>
+                    </select><p></p>
+                    
                     <input type="hidden" name="idRegalo" value="<?= $enlace->getIdRegalo() ?>">
 
                     <button type="submit" class="btn btn-success" name="accion" value="actualizarEnlaceModal">Insertar
