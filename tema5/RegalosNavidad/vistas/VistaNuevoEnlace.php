@@ -13,14 +13,15 @@
                     <input type="text" name="nombre" value="" required>
                     <br><br>
                     <label for="enlaceWeb">Enlace Web:</label>
-                    <input type="text" name="enlaceWeb" value="" required>
+                    <input type="url" name="enlaceWeb" value="" required>
                     <br><br>
                     <label for="precio">Precio:</label>
-                    <input type="number" step=".01" min="0.01" max="9999" name="precio" value="" required>
+                    <input type="number" step=".01" min="1" max="4999" name="precio" value="" required>
                     <br><br>
                     <label for="imagen">Imagen:</label>
-                    <input type="blob" name="imagen">
+                    <input type="file" name="imagen">
                     <br><br>
+
                     <label for="prioridad">Prioridad:</label>
                     <select name="prioridad" required>
                         <option value="0">Baja</option>
