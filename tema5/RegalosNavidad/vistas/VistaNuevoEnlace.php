@@ -1,4 +1,4 @@
- <div class="modal fade" id="nuevoEnlaceModal" tabindex="-1" aria-labelledby="nuevoEnlaceModalLabel" aria-hidden="true">
+<div class="modal fade" id="nuevoEnlaceModal" tabindex="-1" aria-labelledby="nuevoEnlaceModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -19,6 +19,7 @@
                     <input type="number" step=".01" min="1" max="4999" name="precio" value="" required>
                     <br><br>
                     <label for="imagen">Imagen:</label>
+                    <p></p>
                     <input type="file" name="imagen">
                     <br><br>
 
@@ -28,13 +29,13 @@
                         <option value="1">Media</option>
                         <option value="2">Alta</option>
                     </select>
-                            <br><br>
-                            <input type="hidden" name="idRegalo" value="<?php echo $_GET['id'];?>">
+                    <input type="hidden" name="idRegalo" value="<?php echo $_GET['id']; ?>">
 
-                            <button type="submit" class="btn btn-success" name="accion"
-                                                    value="insertarEnlaceModal">Insertar Enlace</button>
-                        </form>
-                    </div>
-                </div>
+                    <button type="submit" class="btn btn-success float-end" name="accion"
+                        value="actualizarEnlaceModal">Insertar Enlace</button>
+
+                </form>
             </div>
         </div>
+    </div>
+</div>
