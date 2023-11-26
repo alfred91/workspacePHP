@@ -13,7 +13,7 @@ class VistaIncidencias
 
         <div class="container-fluid">
 
-            <h1 class="mt-5 text-center">🎁 Lista de Incidencias de <?php echo $usuario->getNombre(); ?>
+            <h1 class="mt-5 text-center">Incidencias de <?php echo $usuario->getNombre(); ?>
             </h1>
            
         
@@ -136,7 +136,6 @@ class VistaIncidencias
 
                                                 <br><br>
 
-                                                <!-- Add other form fields based on your data model -->
 
                                                 <button type="submit" class="btn btn-success" name="accion"
                                                     value="insertarincidenciaModal">Insertar incidencia</button>
@@ -146,7 +145,6 @@ class VistaIncidencias
                                 </div>
                             </div>
 
-                            <!-- Modificar incidencia Modal -->
                             <div class="modal fade" id="modificarincidenciaModal<?= $incidencia->getId() ?>" tabindex="-1"
                                 aria-labelledby="modificarincidenciaModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -158,9 +156,7 @@ class VistaIncidencias
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <!-- Modify Form (Update Form) -->
                                             <form action="?modificarincidencia=<?= $incidencia->getId() ?>" method="post">
-                                                <!-- Your form fields go here, pre-filled with existing data -->
                                                 <label for="nombre">ID:</label>
                                                 <input type="text" name="id" value="<?= $incidencia->getId() ?>" required>
                                                 <br><br>
@@ -187,9 +183,6 @@ class VistaIncidencias
 
                                                 <input type="hidden" name="idUsuario" value="<?= $incidencia->getIdUsuario() ?>">
                                                 <br><br>
-
-                                                <!-- Add other form fields based on your data model -->
-
                                                 <button type="submit" class="btn btn-success" name="accion"
                                                     value="actualizarincidenciaModal">Actualizar</button>
                                             </form>

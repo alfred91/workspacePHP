@@ -2,11 +2,11 @@
 
     namespace Incidencias\controladores;
 
-    use Examen\modelos\ModeloIncidencia;
-    use Examen\vistas\VistaInicio;
-    use Examen\vistas\VistaResultados;
-    use Examen\modelos\ModeloCliente;
-    use Examen\vistas\VistaResultadosClientes;
+    use Incidencias\modelos\ModeloIncidencia;
+    use Incidencias\vistas\VistaInicio;
+    use Incidencias\vistas\VistaResultados;
+    use Incidencias\modelos\ModeloCliente;
+    use Incidencias\vistas\VistaResultadosClientes;
 
     class ControladorIncidencias {
 
