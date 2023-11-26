@@ -53,34 +53,26 @@ class ControladorEnlace
     // MÉTODO PARA ACTUALIZAR UN ENLACE
     public static function actualizarEnlaceModal($nombre, $enlaceWeb, $precio, $imagen, $prioridad, $id)
     {
-        // OBTENER EL IDREGALO ASOCIADO AL ENLACE QUE SE ESTÁ ACTUALIZANDO
         $enlace = ModeloEnlace::obtenerEnlacePorId($id);
         $idRegalo = $enlace->getIdRegalo();
 
-        // ACTUALIZAR EL ENLACE EN LA BASE DE DATOS
         ModeloEnlace::actualizarEnlace($nombre, $enlaceWeb, $precio, $imagen, $prioridad, $id);
 
-        // OBTENER LA LISTA ACTUALIZADA DE ENLACES
         $enlaces = ModeloEnlace::mostrarEnlaces($idRegalo);
 
-        // RENDERIZAR LA VISTA DE ENLACES CON LA LISTA ACTUALIZADA
         VistaEnlaces::render($enlaces);
     }
 
     // MÉTODO PARA BORRAR UN ENLACE
     public static function borrarEnlace($id)
     {
-        // OBTENER EL IDREGALO ASOCIADO AL ENLACE QUE SE ESTÁ BORRANDO
         $enlace = ModeloEnlace::obtenerEnlacePorId($id);
         $idRegalo = $enlace->getIdRegalo();
 
-        // BORRAR EL ENLACE DE LA BASE DE DATOS
         ModeloEnlace::borrarEnlaces($id);
 
-        // OBTENER LA LISTA ACTUALIZADA DE ENLACES
         $enlaces = ModeloEnlace::mostrarEnlaces($idRegalo);
 
-        // RENDERIZAR LA VISTA DE ENLACES CON LA LISTA ACTUALIZADA
         VistaEnlaces::render($enlaces);
     }
 }

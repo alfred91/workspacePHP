@@ -11,7 +11,7 @@
             <div class="modal-body">
                 <!-- Modify Form (Update Form) -->
 
-                <form action="?modificarEnlace=<?= $enlace->getNombre() ?>" method="post">
+                <form action="?accion=actualizarEnlaceModal&id=<?= $enlace->getId() ?>" method="post" enctype="multipart/form-data">
 
                     <input type="hidden" name="id" value="<?= $enlace->getId() ?>">
 
@@ -21,12 +21,13 @@
                     <label for="enlaceWeb">Enlace Web:</label>
                     <input type="text" name="enlaceWeb" value="<?= $enlace->getEnlaceWeb() ?>">
                     <br><br>
-                    <label for="precio">precio:</label>
+                    <label for="precio">Precio:</label>
                     <input type="number" step=".01" min="0.01" max="9999" name="precio"
                         value="<?= $enlace->getPrecio() ?>">
                     <br><br>
-                    <label for="imagen">Imagen:</label>
-                    <input type="text" name="imagen" value="<?= $enlace->getImagen() ?>">
+                    <label for="imagen">Nueva Imagen:</label>
+                    <input type="file" name="imagen">
+                    <input type="hidden" name="imagen_existente" value="<?= base64_encode($enlace->getImagen()) ?>">
                     <br><br>
 
                     <label for="prioridad">Prioridad:</label>
@@ -34,12 +35,9 @@
                         <option value="0" <?= $enlace->getPrioridad() == 0 ? 'selected' : '' ?>>Baja</option>
                         <option value="1" <?= $enlace->getPrioridad() == 1 ? 'selected' : '' ?>>Media</option>
                         <option value="2" <?= $enlace->getPrioridad() == 2 ? 'selected' : '' ?>>Alta</option>
-                    </select><p></p>
-                    
-                    <input type="hidden" name="idRegalo" value="<?= $enlace->getIdRegalo() ?>">
+                    </select>
 
-                    <button type="submit" class="btn btn-success" name="accion" value="actualizarEnlaceModal">Insertar
-                        Enlace</button>
+                    <button type="submit" class="btn btn-success" name="accion" value="actualizarEnlaceModal">Actualizar Enlace</button>
                 </form>
             </div>
         </div>

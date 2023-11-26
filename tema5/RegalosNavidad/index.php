@@ -22,7 +22,7 @@ if (isset($_REQUEST)) {
     if (isset($_REQUEST["accion"])) {
 
 
-        if (strcmp($_REQUEST['accion'], 'mostrarTodos') == 0) {
+        if (strcmp($_REQUEST['accion'], 'mostrarRegalos') == 0) {
 
 
             if (isset($_SESSION['usuario'])) {  // SI EL USUARIO ESTA EN LA SESION MOSTRAMOS LOS REGALOS
@@ -45,11 +45,6 @@ if (isset($_REQUEST)) {
         if (strcmp($_REQUEST["accion"], 'cerrarSesion') == 0) { // CERRAR SESION
             ControladorLogin::cerrarSesion();
             die();
-        }
-
-        if (strcmp($_REQUEST["accion"], 'mostrarRegalos') == 0) {  //BOTON HOME, UNA VEZ LOGUEADOS
-
-            ControladorRegalo::mostrarRegalos();
         }
 
         if (strcmp($_REQUEST['accion'], 'insertarRegaloModal') == 0) {  //INSERTAR UN REGALO
@@ -95,34 +90,62 @@ if (isset($_REQUEST)) {
             ControladorRegalo::detalleRegalo($id);
         }
 
-        if (strcmp($_REQUEST['accion'], 'insertarEnlaceModal') == 0) {  // INSERTAR UN ENLACE PARA UN REGALO ESPECIFICO
+        if (strcmp($_REQUEST['accion'], 'filtrarPorAnio') == 0) {   // BUSCAR REGALOS POR AÑO
 
+            $anio = $_REQUEST['anio'];
+            $usuario = unserialize($_SESSION['usuario']);
+            $idUsuario = $usuario->getId();
+            ControladorRegalo::filtrarPorAnio($idUsuario, $anio);
+        }
+
+        if (strcmp($_REQUEST['accion'], 'insertarEnlaceModal') == 0) {
+            // Verificar si se subió un archivo y si no hay errores en la carga del archivo
+            if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
+                $nombre = $_REQUEST['nombre'];
+                $enlaceWeb = $_REQUEST['enlaceWeb'];
+                $precio = $_REQUEST['precio'];
+                $prioridad = $_REQUEST['prioridad'];
+                $idRegalo = $_REQUEST['idRegalo'];
+
+                // Ruta temporal del archivo cargado
+                $archivoTemporal = $_FILES['imagen']['tmp_name'];
+
+                // Contenido del archivo
+                $contenidoImagen = file_get_contents($archivoTemporal);
+
+                // Luego, podrías almacenar $contenidoImagen en tu base de datos o hacer lo que necesites con él
+                // Ajusta este llamado según la lógica de tu aplicación
+                ControladorEnlace::insertarEnlace($nombre, $enlaceWeb, $precio, $contenidoImagen, $prioridad, $idRegalo);
+            } else {
+                // Manejar el caso en que no se haya subido un archivo correctamente
+                echo "Error al cargar la imagen.";
+            }
+        }
+        if (isset($_REQUEST['accion']) && $_REQUEST['accion'] == 'actualizarEnlaceModal') {
+            $id = $_REQUEST['id'];
             $nombre = $_REQUEST['nombre'];
             $enlaceWeb = $_REQUEST['enlaceWeb'];
             $precio = $_REQUEST['precio'];
-            $imagen = $_REQUEST['imagen'];
             $prioridad = $_REQUEST['prioridad'];
-            $idRegalo = $_REQUEST['idRegalo'];
-
-            ControladorEnlace::insertarEnlace($nombre, $enlaceWeb, $precio, $imagen, $prioridad, $idRegalo);
+        
+            // Check if a new image is provided
+            if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
+                // If a new image is provided, update the image
+                $archivoTemporal = $_FILES['imagen']['tmp_name'];
+                $contenidoImagen = file_get_contents($archivoTemporal);
+            } else {
+                // If no new image is provided, use the existing image
+                $contenidoImagen = base64_decode($_REQUEST['imagen_existente']);
+            }
+        
+            // Update the enlace with the new/old image
+            ControladorEnlace::actualizarEnlaceModal($nombre, $enlaceWeb, $precio, $contenidoImagen, $prioridad, $id);
         }
 
         if (strcmp($_REQUEST['accion'], 'borrarEnlace') == 0) { // BORRAR UN ENLACE DE UN REGALO
 
             $id = $_REQUEST['id'];
             ControladorEnlace::borrarEnlace($id);
-        }
-
-        if (strcmp($_REQUEST['accion'], 'actualizarEnlaceModal') == 0) {    // MODIFICAR UN ENLACE
-
-            $nombre = $_REQUEST['nombre'];
-            $enlaceWeb = $_REQUEST['enlaceWeb'];
-            $precio = $_REQUEST['precio'];
-            $imagen = $_REQUEST['imagen'];
-            $prioridad = $_REQUEST['prioridad'];
-            $id = $_REQUEST['id'];
-
-            ControladorEnlace::actualizarEnlaceModal($nombre, $enlaceWeb, $precio, $imagen, $prioridad, $id);
         }
 
         if (strcmp($_REQUEST['accion'], 'mostrarRegalosOrdenados') == 0) {  // ORDENAR REGALOS POR AÑO ASC
@@ -143,20 +166,6 @@ if (isset($_REQUEST)) {
             ControladorEnlace::mostrarEnlacesOrdenadosPrecioDesc($idRegalo);
         }
 
-        if (strcmp($_REQUEST['accion'], 'filtrarPorAnio') == 0) {   // BUSCAR REGALOS POR AÑO
-            $anio = $_REQUEST['anio'];
-
-            $usuario = unserialize($_SESSION['usuario']);
-
-            if ($usuario && $usuario->getId()) {
-                $idUsuario = $usuario->getId();
-                $regalos = ControladorRegalo::filtrarPorAnio($idUsuario, $anio);
-            } else {
-                echo("<alert>No se ha podido encontrar </alert>");
-            }
-        } else {
-            exit();
-        }
     } else {
         ControladorRegalo::mostrarInicio();
     }
