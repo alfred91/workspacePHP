@@ -1,5 +1,5 @@
 <?php
-namespace Examen\modelos;
+namespace Incidencias\modelos;
 
 use \PDO, \PDOException;
 
@@ -29,9 +29,6 @@ class Conectar
 
         }
     }
-    /**
-     * Get the value of conexion
-     */
     public function getConexion()
     {
         return $this->conexion;

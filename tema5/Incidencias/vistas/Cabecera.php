@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Hugo 0.84.0">
-  <title>Regalos Iniciar Sesion </title>
+  <title> Incidencias </title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/heroes/">
 
@@ -55,13 +55,14 @@
     <h1 class="visually-hidden">Incidencias</h1>
 
     <div class="px-4 py-5 my-5 text-center">
-      <img class="d-block mx-auto mb-4" src="./vistas/imgs/regalos.png" alt="Regalos" width="400" height="350">
-      <h1 class="display-5 fw-bold">Regalos Navidad</h1>
+    <h1 class="display-5 fw-bold">Incidencias Fibra Optica</h1>
+      <img class="d-block mx-auto mb-4" src="./assets/img/inicio.png" width="200" height="180">
+      
       <div class="col-lg-6 mx-auto">
-        <p class="lead mb-4">Aquí vamos a mostrar las Incidencias</p>
+        <p class="lead mb-4">Pincha para acceder a las Incidencias</p>
 
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-          <a href="index.php?accion=mostrarTodos" class="btn btn-primary btn-lg px-4 gap-3"> Login</a>
+          <a href="index.php?accion=mostrarTodos" class="btn btn-primary btn-lg px-4 gap-3"> Entrar</a>
         </div>
       </div>
     </div>

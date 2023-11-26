@@ -1,12 +1,13 @@
 <?php
-namespace Examen\modelos;
-use Examen\modelos\Conectar;
+namespace Incidencias\modelos;
+
+use Incidencias\modelos\Conectar;
 use \PDO;
 
 class ModeloUsuario
-
 {
-    public static function mostrarClientes($nombre) {
+    public static function mostrarClientes($nombre)
+    {
 
         $conn = new Conectar();
         $conexion = $conn->getConexion();
@@ -19,12 +20,12 @@ class ModeloUsuario
         $cliente = $stmt->fetch();
 
         $conn->finishConection();
-     
-        return $cliente;
-        }
 
-        
-    
+        return $cliente;
     }
+
+
+
+}
 
 ?>

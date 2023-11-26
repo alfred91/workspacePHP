@@ -1,5 +1,5 @@
 <?php
-namespace Examen\vistas;
+namespace Incidencias\vistas;
 
 class VistaInicio
 {

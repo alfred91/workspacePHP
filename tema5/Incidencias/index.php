@@ -1,9 +1,8 @@
 <?php
-namespace Examen;
+namespace Incidencias;
 
-use Examen\controladores\ControladorIncidencias;
-use Examen\controladores\ControladorClientes;
-use Examen\vistas\VistaIncidencias;
+use Incidencias\controladores\ControladorIncidencia;
+use Incidencias\controladores\ControladorCliente;
 
 //Autocargar las clases --------------------------
 spl_autoload_register(function ($class) {
@@ -16,62 +15,30 @@ spl_autoload_register(function ($class) {
 
 
 if (isset($_REQUEST)) {
+
     if (isset($_REQUEST["accion"])) {
 
-        if (strcmp($_REQUEST['accion'], 'mostrarIncidencias') == 0) {
-            ControladorIncidencias::mostrarIncidencias();
+        if (strcmp($_REQUEST['accion'], 'mostrarTodos') == 0) {
+            ControladorIncidencia::mostrarTodos();
         }
+
+    
+    if (strcmp($_REQUEST['accion'], 'borrarIncidencia') == 0) { 
+
+        $idCliente=$_REQUEST['idCliente'];
+
+        ControladorIncidencia::borrarIncidencia($idCliente);
         
 
-        if (strcmp($_REQUEST['accion'], 'editarIndicencia') == 0) {
-            $id = $_REQUEST['id'];
 
-            ControladorIncidencias::editarIncidencia($id);
-        }
 
-        if (strcmp($_REQUEST['accion'], 'ModificarIncidencia') == 0) {
-            $id = $_REQUEST['id'];
-            $solucion = $_REQUEST['solucion'];
-            $estado = $_REQUEST['estado'];
-
-            ControladorIncidencias::enviarModificarIncidencia($id, $solucion, $estado);
-        }
-
-        if (strcmp($_REQUEST['accion'], 'eliminarIncidencia') == 0) {
-            $id = $_REQUEST['id'];
-
-            ControladorIncidencias::eliminarIncidencia($id);
-        }
-
-        if (strcmp($_REQUEST['accion'], 'insertarIncidencia') == 0) {
-
-            ControladorIncidencias::insertarIncidencia();
-        }
-
-        if (strcmp($_REQUEST['accion'], 'buscarCliente') == 0) {
-            $dni = $_REQUEST['dni'];
-
-            ControladorIncidencias::buscarCliente($dni);
-        }
-
-        if (strcmp($_REQUEST['accion'], 'insertarIncidencia') == 0) {
-            $id = $_REQUEST['id'];
-
-            ControladorIncidencias::insertarIncidencia($id);
-        }
-
-        if (strcmp($_REQUEST['accion'], 'buscarIncidencia') == 0) {
-            $incidencia = $_REQUEST['incidencia'];
-
-            ControladorIncidencias::buscarIncidencia($incidencia);
-        }
-
-    } else {
-        ControladorIncidencias::mostrarIncidencias();
     }
-        ControladorClientes::mostrarIncidencias();
+        
 
+} else {
+    ControladorCliente::mostrarInicio();
 
+ }
     }
 
 ?>

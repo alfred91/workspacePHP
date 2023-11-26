@@ -40,13 +40,10 @@ class ControladorEnlace
     // MÉTODO PARA INSERTAR UN NUEVO ENLACE
     public static function insertarEnlace($nombre, $enlaceWeb, $precio, $imagen, $prioridad, $idRegalo)
     {
-        // INSERTAR ENLACE EN LA BASE DE DATOS
         ModeloEnlace::insertarEnlace($nombre, $enlaceWeb, $precio, $imagen, $prioridad, $idRegalo);
 
-        // OBTENER LA LISTA ACTUALIZADA DE ENLACES
         $enlaces = ModeloEnlace::mostrarEnlaces($idRegalo);
 
-        // RENDERIZAR LA VISTA DE ENLACES CON LA LISTA ACTUALIZADA
         VistaEnlaces::render($enlaces);
     }
 
