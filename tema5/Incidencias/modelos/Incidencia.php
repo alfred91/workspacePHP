@@ -1,5 +1,5 @@
 <?php
-namespace Examen\modelos;
+namespace Incidencias\modelos;
 
 class Incidencia
 {

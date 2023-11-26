@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>🎁 Regalos de Navidad 🌲</title>
+    <title>Incidencias de Navidad 🌲</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -42,17 +42,7 @@
               <a class="text-light" href="https://github.com/alfred91" target="_blank"><i class="fab fa-github fa-sm fa-fw "></i></a>
 
           </div>
-                <div>
-                <?php
-                    $usuario = unserialize($_SESSION['usuario']);
-                    echo '<a href="index.php?accion=cerrarSesion" class="nav-link px-2 link-secondary">';
-                    echo $usuario->getEmail() . " CERRAR SESION 🔥";
-                    echo "</a>";
-                ?>
-
-            </div>
-
-            </div>
+        </div>
         </div>
     </nav>
     <!-- Close Top Nav -->
@@ -61,7 +51,7 @@
         <div class="container d-flex justify-content-between align-items-center">
 
             <a class="navbar-brand text-success logo h1 align-self-center" href="?accion=mostrarTodos">
-            🎁 Regalos de Navidad 🌲
+             Incidencias 
             </a>
 
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,12 +64,12 @@
                    
                         <li class="nav-item">
 
-                        <a href="?accion=mostrarTodos" class="nav-link"> Regalos</a> 
+                        <a href="?accion=mostrarTodos" class="nav-link"> Incidencias</a> 
                         </li>
                         
                         <li class="nav-item">
                         <a class="nav-link" href="#" data-bs-toggle="modal"
-                    data-bs-target="#nuevoRegaloModal">Añadir Regalo</a></td></tr>
+                    data-bs-target="#nuevoRegaloModal">Añadir Incidencia</a></td></tr>
                         </li>
 
                         <li class="nav-item">
@@ -91,9 +81,9 @@
                 <div class="container my-4">
                 <form action="" method="get">
     <input type="hidden" name="accion" value="filtrarPorAnio">
-    <label for="inputYear" class="form-label">Filtrar por año:</label>
+    <label for="inputCiudad" class="form-label">Filtrar por Ciudad o Estado:</label>
     <div class="input-group">
-        <input type="text" class="form-control" id="inputYear" name="anio" placeholder="2000">
+        <input type="text" class="form-control" id="inputCiudad" name="ciudad" placeholder="Almeria">
         <button type="submit" class="btn btn-primary">Filter</button>
     </div>
 </form>

@@ -19,7 +19,7 @@ class ControladorLogin
     }
 
     /** 
-     * Pintar formulario de login usuaro
+     * Pintar formulario de login usuario
      */
 
     public static function mostrarFormulario()
