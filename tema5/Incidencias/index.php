@@ -22,45 +22,52 @@ if (isset($_REQUEST)) {
             ControladorIncidencia::mostrarTodos();
         }
 
+    
+    if (strcmp($_REQUEST['accion'], 'borrarIncidencia') == 0) { 
 
-        if (strcmp($_REQUEST['accion'], 'borrarIncidencia') == 0) {
-
-            $id = $_REQUEST['id'];
-            ControladorIncidencia::borrarIncidencia($id);
-            ControladorIncidencia::mostrarIncidencias();
+        $id=$_REQUEST['id'];
+        ControladorIncidencia::borrarIncidencia($id);
+        ControladorIncidencia::mostrarIncidencias();
         }
 
-        if (strcmp($_REQUEST['accion'], 'insertarIncidencia') == 0) {
+    if(strcmp($_REQUEST['accion'], 'insertarIncidencia') == 0) {
 
-            $id = $_REQUEST['id'];
-            $latitud = $_REQUEST['latitud'];
-            $longitud = $_REQUEST['longitud'];
-            $ciudad = $_REQUEST['ciudad'];
-            $direccion = $_REQUEST['direccion'];
-            $descripcion = $_REQUEST['descripcion'];
-            $solucion = $_REQUEST['solucion'];
-            $estado = $_REQUEST['estado'];
-            $idCliente = $_REQUEST['idCliente'];
+        $id=$_REQUEST['id'];
+        $latitud=$_REQUEST['latitud'];
+        $longitud=$_REQUEST['longitud'];
+        $ciudad=$_REQUEST['ciudad'];
+        $direccion=$_REQUEST['direccion'];
+        $descripcion=$_REQUEST['descripcion'];
+        $solucion=$_REQUEST['solucion'];
+        $estado=$_REQUEST['estado'];
+        $idCliente=$_REQUEST['idCliente'];
 
-            ControladorIncidencia::insertarIncidencia($id, $latitud, $longitud, $ciudad, $direccion, $descripcion, $solucion, $estado, $idCliente);
-            ControladorIncidencia::mostrarIncidencias();
-        }
-        if (strcmp($_REQUEST['accion'], 'modificarIncidencia') == 0) {
+        ControladorIncidencia::insertarIncidencia($id,$latitud,$longitud,$ciudad,$direccion,$descripcion,$solucion,$estado,$idCliente);
+        ControladorIncidencia::mostrarIncidencias();
+    }
+    if(strcmp($_REQUEST['accion'], 'modificarIncidencia') == 0) {
 
-            $id = $_REQUEST['id'];
-            $solucion = $_REQUEST['solucion'];
-            $estado = $_REQUEST['estado'];
-
-
-            ControladorIncidencia::modificarIncidencia($id, $solucion, $estado);
-            ControladorIncidencia::mostrarIncidencias();
-        }
+        $id=$_REQUEST['id'];
+        $solucion=$_REQUEST['solucion'];
+        $estado=$_REQUEST['estado'];
 
 
-    } else {
-        ControladorCliente::mostrarInicio();
+        ControladorIncidencia::modificarIncidencia($id,$solucion,$estado);
+        ControladorIncidencia::mostrarIncidencias();
+    }
+    if (strcmp($_REQUEST['accion'], 'buscarDni') == 0) { 
+
+        $dni = $_REQUEST['dni'];
+        ControladorCliente::buscarDni($dni);
+        ControladorCliente::mostrarCliente($dni);
 
     }
+
+
+} else {
+    ControladorCliente::mostrarInicio();
+
+ }
 }
 
 ?>

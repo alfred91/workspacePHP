@@ -1,8 +1,11 @@
 <?php
 
-    namespace Incidencias\controladores;
+namespace Incidencias\controladores;
 
-use DeepRacer\vistas\VistaResultados;
+use Incidencias\vistas\VistaResultados;
+use Incidencias\modelos\ModeloCliente;
+use Incidencias\vistas\VistaCliente;
+use Incidencias\vistas\VistaIncidencia;
 use Incidencias\vistas\VistaInicio;
  
 
@@ -15,8 +18,16 @@ use Incidencias\vistas\VistaInicio;
 
         public static function mostrarCliente(){
 
-            VistaResultados::render("");
+            VistaCliente::render("");
 
+    }
+
+    public static function buscarDni($dni){
+        
+        $cliente=ModeloCliente::buscarCliente($dni);
+        
+        VistaCliente::render($cliente);
+        
     }
 }
 ?>
