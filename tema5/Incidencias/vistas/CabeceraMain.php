@@ -85,12 +85,12 @@
                 </div>
                 <div class="container my-4">
                     <form action="" method="get">
-                        <input type="hidden" name="accion" value="filtrarPorAnio">
-                        <label for="inputCiudad" class="form-label">Filtrar por Ciudad o Estado:</label>
+                        <input type="hidden" name="accion" value="buscarDni">
+                        <label for="inputDni" class="form-label"></label>
                         <div class="input-group">
-                            <input type="text" class="form-control" id="inputCiudad" name="ciudad"
-                                placeholder="Almeria">
-                            <button type="submit" class="btn btn-primary">Filter</button>
+                            <input type="text" class="form-control" id="inputDni" name="dni"
+                                >
+                            <button type="submit" class="btn btn-primary">Buscar Dni</button>
                         </div>
                     </form>
 
