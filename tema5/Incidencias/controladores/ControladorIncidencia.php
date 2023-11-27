@@ -8,7 +8,6 @@ use Incidencias\vistas\VistaIncidencia;
 
 class ControladorIncidencia
 {
-
     public static function mostrarInicio()
     {
 
@@ -21,22 +20,59 @@ class ControladorIncidencia
         $resultados = ModeloIncidencia::mostrarIncidencias();
         VistaIncidencia::render($resultados);
     }
-    public static function mostrarIncidencias($idCliente)
+    public static function mostrarIncidencias()
     {
 
         $resultados = ModeloIncidencia::mostrarIncidencias();
-
         VistaIncidencia::render($resultados);
 
     }
-    public static function borrarIncidencia($idCliente){
-        
-        ModeloIncidencia::borrarIncidencia($idCliente);
 
-      ModeloIncidencia::mostrarIncidenciasCliente($idCliente);
+    public static function insertarIncidencia(
+        $id,
+        $latitud,
+        $longitud,
+        $ciudad,
+        $direccion,
+        $descripcion,
+        $solucion,
+        $estado,
+        $idCliente
+    ) {
+        ModeloIncidencia::
+            insertarIncidencia(
+                $id,
+                $latitud,
+                $longitud,
+                $ciudad,
+                $direccion,
+                $descripcion,
+                $solucion,
+                $estado,
+                $idCliente
+            );
 
-        VistaIncidencia::render("");
-        die();
+    }
+    public static function modificarIncidencia(
+        $id,
+        $solucion,
+        $estado
+
+    ) {
+        ModeloIncidencia::
+            modificarInidencia(
+                $id,
+                $solucion,
+                $estado
+            );
+
+    }
+    public static function borrarIncidencia($id)
+    {
+
+        ModeloIncidencia::borrarIncidencia($id);
+
+        ModeloIncidencia::mostrarIncidencias();
 
     }
 }

@@ -59,7 +59,8 @@ class VistaEnlaces
                                 <?= $enlace->getPrecio() ?>
                             </td>
                             <td class="col col-lg-2 text-center">
-                                <img src="data:image/png;base64,<?= base64_encode($enlace->getImagen()) ?>" alt="Sin imagen" style="max-width: 100px; max-height: 100px;">
+                                <img src="data:image/png;base64,<?= base64_encode($enlace->getImagen()) ?>" alt="Sin imagen"
+                                    style="max-width: 100px; max-height: 100px;">
                             </td>
 
                             <td class="col col-lg-2 text-center">

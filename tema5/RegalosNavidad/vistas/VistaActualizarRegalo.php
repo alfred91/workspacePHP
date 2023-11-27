@@ -9,9 +9,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <!-- Modify Form (Update Form) -->
                                     <form action="?modificarRegalo=<?= $regalo->getId() ?>" method="post">
-                                        <!-- Your form fields go here, pre-filled with existing data -->
                                         <label for="nombre">ID:</label>
                                         <input type="text" name="id" value="<?= $regalo->getId() ?>" required>
                                         <br><br>
