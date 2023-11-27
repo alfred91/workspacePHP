@@ -88,12 +88,10 @@
                         <input type="hidden" name="accion" value="buscarDni">
                         <label for="inputDni" class="form-label"></label>
                         <div class="input-group">
-                            <input type="text" class="form-control" id="inputDni" name="dni"
-                                >
-                            <button type="submit" class="btn btn-primary">Buscar Dni</button>
+                        <button type="submit" class="btn btn-primary">Buscar Dni</button>
+                        <input type="text" class="form-control" id="inputDni" name="dni">
                         </div>
                     </form>
-
                 </div>
 
                 <a class="nav-icon position-relative text-decoration-none" href="#">

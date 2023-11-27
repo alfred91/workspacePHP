@@ -4,6 +4,7 @@ namespace Incidencias\modelos;
 
 use Incidencias\modelos\Conectar;
 use \PDO;
+use \PDOException;
 
 class ModeloIncidencia
 {
@@ -39,29 +40,57 @@ class ModeloIncidencia
     }
 
     public static function insertarIncidencia(
-        $id,$latitud,$longitud,$ciudad,$direccion,$descripcion,$solucion,$estado,$idCliente)
-        {
+        $latitud,
+        $longitud,
+        $ciudad,
+        $direccion,
+        $descripcion,
+        $solucion,
+        $estado,
+        $idCliente
+    ) {
+        $conexionObject = new Conectar();
+        $conexion = $conexionObject->getConexion();
+
+        $consulta = $conexion->prepare('INSERT INTO Incidencias (latitud, longitud, ciudad, direccion, descripcion, solucion, estado, idCliente) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
+
+        $consulta->bindValue(1, $latitud);
+        $consulta->bindValue(2, $longitud);
+        $consulta->bindValue(3, $ciudad);
+        $consulta->bindValue(4, $direccion);
+        $consulta->bindValue(5, $descripcion);
+        $consulta->bindValue(6, $solucion);
+        $consulta->bindValue(7, $estado);
+        $consulta->bindValue(8, $idCliente);
+
+        $consulta->execute();
+        $conexionObject->finishConection();
+
+    }
+
+    public static function insertarIncidenciaCliente($latitud, $longitud, $ciudad, $direccion, $descripcion, $solucion, $estado, $idCliente)
+    {
+        try {
             $conexionObject = new Conectar();
-            $conecion = $conexionObject->getConexion();
-    
-            $consulta = $conecion->prepare('INSERT INTO Incidencias VALUES (?,?,?,?,?,?,?,?,?)');
-    
-            $consulta->bindValue(1,$id);
-            $consulta->bindValue(2,$latitud);
-            $consulta->bindValue(3,$longitud);
-            $consulta->bindValue(4,$ciudad);
-            $consulta->bindValue(5,$direccion);
-            $consulta->bindValue(6,$descripcion);
-            $consulta->bindValue(7,$solucion);
-            $consulta->bindValue(8,$estado);
-            $consulta->bindValue(9,$idCliente);
+            $conexion = $conexionObject->getConexion();
+
+            $consulta = $conexion->prepare('INSERT INTO Incidencias (latitud, longitud, ciudad, direccion, descripcion, solucion, estado, idCliente) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
+
+            $consulta->bindValue(1, $latitud);
+            $consulta->bindValue(2, $longitud);
+            $consulta->bindValue(3, $ciudad);
+            $consulta->bindValue(4, $direccion);
+            $consulta->bindValue(5, $descripcion);
+            $consulta->bindValue(6, $solucion);
+            $consulta->bindValue(7, $estado);
+            $consulta->bindValue(8, $idCliente);
+
             $consulta->execute();
-    
-            $consulta->fetchAll();
-    
-            $conexionObject->finishConection();           
-            
+            $conexionObject->finishConection();
+        } catch (PDOException $e) {
+            echo "Error en la consulta: " . $e->getMessage();
         }
+    }
 
     public static function editarIncidencia($id)
     {

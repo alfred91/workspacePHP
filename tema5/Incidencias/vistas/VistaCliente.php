@@ -23,6 +23,7 @@ class VistaCliente
                         <th class="col col-lg-2 text-center">Localidad</th>
                         <th class="col col-lg-2 text-center">Movil</th>
                         <th class="col col-lg-2 text-center">Dni</th>
+                        <th class="col col-lg-2 text-center">Crear incidencia</th>
 
                     </tr>
                 </thead>
@@ -54,10 +55,13 @@ class VistaCliente
                             <td class="col col-lg-2 text-center">
                                 <?= $cliente->getDni() ?>
                             </td>
-
+                            <td class="col col-lg-2 text-center">
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                    data-bs-target="#NuevaIncidencia<?= $cliente->getId(); ?>">✍️
+                                </button>
+                            </td>
                         </tr>
-                        <?php
-
+                        <?php include("VistaNuevaIncidenciaCliente.php");
                     }
                 }
                 ?>
