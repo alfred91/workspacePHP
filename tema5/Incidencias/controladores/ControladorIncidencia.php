@@ -29,7 +29,6 @@ class ControladorIncidencia
     }
 
     public static function insertarIncidencia(
-        $id,
         $latitud,
         $longitud,
         $ciudad,
@@ -41,7 +40,29 @@ class ControladorIncidencia
     ) {
         ModeloIncidencia::
             insertarIncidencia(
-                $id,
+                $latitud,
+                $longitud,
+                $ciudad,
+                $direccion,
+                $descripcion,
+                $solucion,
+                $estado,
+                $idCliente
+            );
+
+    }
+    public static function insertarIncidenciaCliente(
+        $latitud,
+        $longitud,
+        $ciudad,
+        $direccion,
+        $descripcion,
+        $solucion,
+        $estado,
+        $idCliente
+    ) {
+        ModeloIncidencia::
+            insertarIncidenciaCliente(
                 $latitud,
                 $longitud,
                 $ciudad,

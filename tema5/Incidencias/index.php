@@ -31,8 +31,7 @@ if (isset($_REQUEST)) {
         }
 
     if(strcmp($_REQUEST['accion'], 'insertarIncidencia') == 0) {
-
-        $id=$_REQUEST['id'];
+        
         $latitud=$_REQUEST['latitud'];
         $longitud=$_REQUEST['longitud'];
         $ciudad=$_REQUEST['ciudad'];
@@ -42,7 +41,22 @@ if (isset($_REQUEST)) {
         $estado=$_REQUEST['estado'];
         $idCliente=$_REQUEST['idCliente'];
 
-        ControladorIncidencia::insertarIncidencia($id,$latitud,$longitud,$ciudad,$direccion,$descripcion,$solucion,$estado,$idCliente);
+        ControladorIncidencia::insertarIncidencia($latitud,$longitud,$ciudad,$direccion,$descripcion,$solucion,$estado,$idCliente);
+        ControladorIncidencia::mostrarIncidencias();
+    }
+
+    if(strcmp($_REQUEST['accion'], 'insertarIncidenciacliente') == 0) {
+
+        $latitud=$_REQUEST['latitud'];
+        $longitud=$_REQUEST['longitud'];
+        $ciudad=$_REQUEST['ciudad'];
+        $direccion=$_REQUEST['direccion'];
+        $descripcion=$_REQUEST['descripcion'];
+        $solucion=$_REQUEST['solucion'];
+        $estado=$_REQUEST['estado'];
+        $idCliente=$_REQUEST['idCliente'];
+
+        ControladorIncidencia::insertarIncidenciaCliente($latitud,$longitud,$ciudad,$direccion,$descripcion,$solucion,$estado,$idCliente);
         ControladorIncidencia::mostrarIncidencias();
     }
     if(strcmp($_REQUEST['accion'], 'modificarIncidencia') == 0) {
@@ -60,14 +74,11 @@ if (isset($_REQUEST)) {
         $dni = $_REQUEST['dni'];
         ControladorCliente::buscarDni($dni);
         ControladorCliente::mostrarCliente($dni);
-
     }
-
 
 } else {
     ControladorCliente::mostrarInicio();
 
  }
 }
-
 ?>

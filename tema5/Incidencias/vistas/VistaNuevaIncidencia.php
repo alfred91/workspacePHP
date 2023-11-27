@@ -1,4 +1,4 @@
- <div class="modal fade" id="nuevaIncidencia" tabindex="-1" aria-labelledby="nuevaIncidenciaModalLabel"
+<div class="modal fade" id="nuevaIncidencia" tabindex="-1" aria-labelledby="nuevaIncidenciaModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -7,9 +7,8 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <!-- Formulario de Inserción -->
                                     <form action="?insertarIncidencia" method="post">
-                                    <input type="hidden" name="id" id="id" value="<?php echo $incidencia->getId()+1;?>">
+                                    <input type="hidden" name="id" id="id" value="<?php echo $incidencia->getId();?>">
                                     <br>
                                         <label for="latitud">Latitud:</label>
                                         <input type="number" name="latitud" required>

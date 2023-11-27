@@ -2,10 +2,8 @@
 
 namespace Incidencias\controladores;
 
-use Incidencias\vistas\VistaResultados;
 use Incidencias\modelos\ModeloCliente;
 use Incidencias\vistas\VistaCliente;
-use Incidencias\vistas\VistaIncidencia;
 use Incidencias\vistas\VistaInicio;
  
 
@@ -29,5 +27,7 @@ use Incidencias\vistas\VistaInicio;
         VistaCliente::render($cliente);
         
     }
+
+
 }
 ?>
