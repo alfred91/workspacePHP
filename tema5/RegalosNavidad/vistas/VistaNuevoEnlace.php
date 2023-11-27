@@ -6,9 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <!-- Formulario de Inserción -->
                 <form action="?insertarEnlaceModal" method="post" enctype="multipart/form-data">
-                    <!-- Campos del formulario (nombre, enlaceWeb, precio, imagen, prioridad) -->
                     <label for="nombre">Nombre:</label>
                     <input type="text" name="nombre" value="" required>
                     <br><br>

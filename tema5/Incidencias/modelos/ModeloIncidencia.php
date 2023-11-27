@@ -38,6 +38,30 @@ class ModeloIncidencia
         return $incidencias;
     }
 
+    public static function insertarIncidencia(
+        $id,$latitud,$longitud,$ciudad,$direccion,$descripcion,$solucion,$estado,$idCliente)
+        {
+            $conexionObject = new Conectar();
+            $conecion = $conexionObject->getConexion();
+    
+            $consulta = $conecion->prepare('INSERT INTO Incidencias VALUES (?,?,?,?,?,?,?,?,?)');
+    
+            $consulta->bindValue(1,$id);
+            $consulta->bindValue(2,$latitud);
+            $consulta->bindValue(3,$longitud);
+            $consulta->bindValue(4,$ciudad);
+            $consulta->bindValue(5,$direccion);
+            $consulta->bindValue(6,$descripcion);
+            $consulta->bindValue(7,$solucion);
+            $consulta->bindValue(8,$estado);
+            $consulta->bindValue(9,$idCliente);
+            $consulta->execute();
+    
+            $consulta->fetchAll();
+    
+            $conexionObject->finishConection();           
+            
+        }
 
     public static function editarIncidencia($id)
     {

@@ -2,7 +2,8 @@
 
     namespace Incidencias\controladores;
 
-    use Incidencias\vistas\VistaInicio;
+use DeepRacer\vistas\VistaResultados;
+use Incidencias\vistas\VistaInicio;
  
 
     class ControladorCliente{
@@ -12,5 +13,10 @@
             VistaInicio::render();
         }
 
+        public static function mostrarCliente(){
+
+            VistaResultados::render("");
+
     }
+}
 ?>

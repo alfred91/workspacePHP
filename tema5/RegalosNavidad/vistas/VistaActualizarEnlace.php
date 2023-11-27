@@ -9,9 +9,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <!-- Modify Form (Update Form) -->
-
-                <form action="?accion=actualizarEnlaceModal&id=<?= $enlace->getId() ?>" method="post"enctype="multipart/form-data">
+                <form action="?accion=actualizarEnlaceModal&id=<?= $enlace->getId() ?>" method="post"
+                    enctype="multipart/form-data">
                     <input type="hidden" name="id" value="<?= $enlace->getId() ?>">
 
                     <label for="nombre">Nombre:</label>
@@ -37,7 +36,7 @@
                         <option value="2" <?= $enlace->getPrioridad() == 2 ? 'selected' : '' ?>>Alta</option>
                     </select>
 
-                    <button type="submit" class="btn btn-success float-end" name="accion"value="actualizarEnlaceModal">
+                    <button type="submit" class="btn btn-success float-end" name="accion" value="actualizarEnlaceModal">
                         Actualizar Enlace
                     </button>
                 </form>
