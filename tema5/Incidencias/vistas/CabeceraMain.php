@@ -11,14 +11,12 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/templatemo.css">
     <link rel="stylesheet" href="assets/css/custom.css">
-    <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 </head>
 
 <body>
-    <!-- Start Top Nav -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
         <div class="container text-light">
             <div class="w-100 d-flex justify-content-between">
@@ -42,12 +40,10 @@
 
                     <a class="text-light" href="https://github.com/alfred91" target="_blank"><i
                             class="fab fa-github fa-sm fa-fw "></i></a>
-
                 </div>
             </div>
         </div>
     </nav>
-    <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
@@ -63,12 +59,10 @@
                 id="templatemo_main_nav">
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
-
                         <li class="nav-item">
 
                             <a href="?accion=mostrarTodos" class="nav-link"> Incidencias</a>
                         </li>
-
                         <li class="nav-item">
                             <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#nuevaIncidencia">Añadir
                                 Incidencia</a></td>
@@ -79,23 +73,17 @@
                         </li>
                     </ul>
                 </div>
-                <div class="container my-4">
-                    <form action="" method="get">
-                        <input type="hidden" name="accion" value="buscarDni">
-                        <label for="inputDni" class="form-label"></label>
-                        <div class="input-group">
-                        <button type="submit" class="btn btn-primary">Buscar Dni</button>
-                        <input type="text" class="form-control" id="inputDni" name="dni">
-                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control" id="inputEstado" name="action"
+                                placeholder="Buscar por Estado">
+                                <form action="index.php" method="post" class="mt-2">
+                            
+                            <div>
+                                <input class="col-6 mt-3" type="text" name="incidencia" id="incidencia" placeholder="Ciudad / Estado" required />
+                                <button type="submit" class="btn btn-primary" name="accion" value="buscarIncidencia"><i class="btn btn-primary"></i></button>
+                            </div>
+                                    
                     </form>
-                </div>
-                <div class="container my-4">
-                    <form action="" method="get">
-                        <input type="hidden" name="accion" value="buscarIncidencia">
-                        <label for="inputIncidencia" class="form-label"></label>
-                        <div class="input-group">
-                        <button type="submit" class="btn btn-primary">Buscar Incidencia</button>
-                        <input type="text" class="form-control" id="inputIncidencia" name="incidencia">
                         </div>
                     </form>
                 </div>

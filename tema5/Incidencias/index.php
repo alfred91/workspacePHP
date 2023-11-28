@@ -23,6 +23,7 @@ if (isset($_REQUEST)) {
             ControladorIncidencia::mostrarIncidencias();
         }
 
+
     if (strcmp($_REQUEST['accion'], 'borrarIncidencia') == 0) { 
 
         $id=$_REQUEST['id'];
@@ -55,10 +56,12 @@ if (isset($_REQUEST)) {
         ControladorIncidencia::modificarIncidencia($id,$solucion,$estado);
         ControladorIncidencia::mostrarIncidencias();
     }
+
     if (strcmp($_REQUEST['accion'], 'buscarIncidencia') == 0) { 
-        $ciudad = $_REQUEST['incidencia'];
-        $resultados = ControladorIncidencia::buscarIncidencia($ciudad);
-        VistaIncidencia::render($resultados);
+
+        $incidencia=$_REQUEST['incidencia'];
+        ControladorIncidencia::buscarIncidencia($incidencia);
+ 
     }
 
     if (strcmp($_REQUEST['accion'], 'buscarDni') == 0) { 

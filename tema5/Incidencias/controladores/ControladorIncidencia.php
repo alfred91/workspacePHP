@@ -17,8 +17,8 @@ class ControladorIncidencia
     public static function mostrarTodos()
     {
 
-        $resultados = ModeloIncidencia::mostrarIncidencias();
-        return $resultados;
+        ModeloIncidencia::mostrarIncidencias();
+
     }
     public static function mostrarIncidencias()
     {
@@ -51,10 +51,11 @@ class ControladorIncidencia
             );
 
     }
-    public static function buscarIncidencia($ciudad)
-    {
-        $incidencia = ModeloIncidencia::buscarIncidencia($ciudad);
-        return $incidencia;
+    public static function buscarIncidencia($incidencia) {
+
+        $incidencias = ModeloIncidencia::buscarIncidencia($incidencia);
+
+        VistaIncidencia::render($incidencias);
     }
 
     public static function modificarIncidencia(
@@ -75,8 +76,6 @@ class ControladorIncidencia
     {
 
         ModeloIncidencia::borrarIncidencia($id);
-
-        ModeloIncidencia::mostrarIncidencias();
 
     }
 }
