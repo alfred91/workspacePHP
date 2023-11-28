@@ -27,8 +27,12 @@
                     <label for="solucion">Solucion:</label>
                     <input type="text" name="solucion">
                     <br><br>
-                    <label for="estado">Estado: </label>
-                    <input type="text" name="estado">
+                    <select name="estado" id="estado">
+                    <option value="pendiente">Pendiente</option>
+                    <option value="reparado">Reparado</option>
+                    <option value="3">Abierta</option>
+                    <option value="4">Cerrada</option>
+                    </select>
                     <input type="hidden" name="idCliente" id="idCliente" value="<?= $cliente->getId(); ?>">
                     <br><br>
                     <button type="submit" class="btn btn-success" name="accion" value="insertarIncidencia">
