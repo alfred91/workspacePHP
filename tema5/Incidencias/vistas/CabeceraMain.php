@@ -73,18 +73,25 @@
                         </li>
                     </ul>
                 </div>
-                        <div class="col-auto">
-                            <input type="text" class="form-control" id="inputEstado" name="action"
-                                placeholder="Buscar por Estado">
-                                <form action="index.php" method="post" class="mt-2">
-                            
-                            <div>
-                                <input class="col-6 mt-3" type="text" name="incidencia" id="incidencia" placeholder="Ciudad / Estado" required />
-                                <button type="submit" class="btn btn-primary" name="accion" value="buscarIncidencia"><i class="btn btn-primary"></i></button>
-                            </div>
-                                    
-                    </form>
+
+                <div class="container my-4">
+                    <form action="?" method="get" class="mt-2">
+                        <div>
+                            <input class="col-6 mt-3" type="text" class="form-control" id="inputDni" name="dni"
+                                placeholder="Buscar por DNI">
+                            <button type="submit" class="btn btn-primary" name="accion" value="buscarDni"><i
+                                    class="btn btn-primary"></i></button>
                         </div>
+                    </form>
+                    <form action="?" method="post" class="mt-2">
+
+                        <div>
+                            <input class="col-6 mt-3" type="text" name="incidencia" id="incidencia"
+                                placeholder="Ciudad / Estado">
+                            <button type="submit" class="btn btn-primary" name="accion" value="buscarIncidencia"><i
+                                    class="btn btn-primary"></i></button>
+                        </div>
+
                     </form>
                 </div>
             </div>
