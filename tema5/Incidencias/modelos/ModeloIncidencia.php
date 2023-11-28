@@ -96,22 +96,22 @@ class ModeloIncidencia
         $conexionObject->finishConection();
     }
 
-    public static function buscarIncidencia($ciudad)
+    public static function buscarIncidencia($incidencia)
     {
-
         $conexionObject = new Conectar();
         $conexion = $conexionObject->getConexion();
-        $consulta = $conexion->prepare("SELECT * FROM Incidencias WHERE ciudad LIKE :ciudad");
-
-        $consulta->bindValue(':ciudad', '%' . $ciudad . '%',PDO::PARAM_STR);
+        $consulta = $conexion->prepare("SELECT * FROM Incidencias WHERE ciudad LIKE ? OR estado LIKE ?");
+        $consulta-> bindValue(1, "%".$incidencia."%");
+        $consulta-> bindValue(2, "%".$incidencia."%");
         $consulta->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Incidencias\modelos\Incidencia');
-        
         $consulta->execute();
-        $incidencias = $consulta->fetchAll();
+    
+        $incidencia = $consulta->fetchAll();
         $conexionObject->finishConection();
-
-        return $incidencias;
+    
+        return $incidencia;
     }
     
+
 }
 ?>
