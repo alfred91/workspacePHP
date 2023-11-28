@@ -40,24 +40,5 @@ class ModeloCliente
         return $idCli;
 
     }
-    
-    public static function buscarApellidos($apellidos)
-    {
-        $conn = new Conectar();
-        $conexion = $conn->getConexion();
-
-        $stmt = $conexion->prepare("SELECT * FROM Clientes WHERE apellidos LIKE :dni");
-        $stmt->bindValue(':dni','%'.$apellidos.'%',PDO::PARAM_STR);
-   
-        $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Incidencias\modelos\Cliente');
-        $stmt->execute();
-
-        $clientes = $stmt->fetchAll();
-
-        $conn->finishConection();
-
-        return $clientes;
-    }
 }
-
 ?>

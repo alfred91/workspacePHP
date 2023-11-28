@@ -18,7 +18,7 @@ class ControladorIncidencia
     {
 
         $resultados = ModeloIncidencia::mostrarIncidencias();
-        VistaIncidencia::render($resultados);
+        return $resultados;
     }
     public static function mostrarIncidencias()
     {
@@ -51,29 +51,12 @@ class ControladorIncidencia
             );
 
     }
-    public static function insertarIncidenciaCliente(
-        $latitud,
-        $longitud,
-        $ciudad,
-        $direccion,
-        $descripcion,
-        $solucion,
-        $estado,
-        $idCliente
-    ) {
-        ModeloIncidencia::
-            insertarIncidenciaCliente(
-                $latitud,
-                $longitud,
-                $ciudad,
-                $direccion,
-                $descripcion,
-                $solucion,
-                $estado,
-                $idCliente
-            );
-
+    public static function buscarIncidencia($ciudad)
+    {
+        $incidencia = ModeloIncidencia::buscarIncidencia($ciudad);
+        return $incidencia;
     }
+
     public static function modificarIncidencia(
         $id,
         $solucion,

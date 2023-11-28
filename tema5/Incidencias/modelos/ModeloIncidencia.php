@@ -25,6 +25,7 @@ class ModeloIncidencia
 
         return $incidencias;
     }
+
     public static function mostrarIncidenciasCliente($idCliente)
     {
         $conexionObject = new Conectar();
@@ -68,48 +69,6 @@ class ModeloIncidencia
 
     }
 
-    public static function insertarIncidenciaCliente($latitud, $longitud, $ciudad, $direccion, $descripcion, $solucion, $estado, $idCliente)
-    {
-        try {
-            $conexionObject = new Conectar();
-            $conexion = $conexionObject->getConexion();
-
-            $consulta = $conexion->prepare('INSERT INTO Incidencias (latitud, longitud, ciudad, direccion, descripcion, solucion, estado, idCliente) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
-
-            $consulta->bindValue(1, $latitud);
-            $consulta->bindValue(2, $longitud);
-            $consulta->bindValue(3, $ciudad);
-            $consulta->bindValue(4, $direccion);
-            $consulta->bindValue(5, $descripcion);
-            $consulta->bindValue(6, $solucion);
-            $consulta->bindValue(7, $estado);
-            $consulta->bindValue(8, $idCliente);
-
-            $consulta->execute();
-            $conexionObject->finishConection();
-        } catch (PDOException $e) {
-            echo "Error en la consulta: " . $e->getMessage();
-        }
-    }
-
-    public static function editarIncidencia($id)
-    {
-
-        $conexionObject = new Conectar();
-        $conexion = $conexionObject->getConexion();
-
-        $consulta = $conexion->prepare("SELECT * FROM Incidencias WHERE id = ?");
-        $consulta->bindValue(1, $id);
-        $consulta->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Incidencias\modelos\Incidencia'); //Nombre de la clase
-        $consulta->execute();
-
-        $incidencias = $consulta->fetchAll();
-
-        $conexionObject->finishConection();
-
-        return $incidencias;
-    }
-
     public static function modificarInidencia($id, $solucion, $estado)
     {
 
@@ -137,47 +96,22 @@ class ModeloIncidencia
         $conexionObject->finishConection();
     }
 
-    public static function modificarInidencias($latitud, $longitud, $ciudad, $direccion, $solucion, $estado, $id)
-    {
-        $conexionObject = new Conectar();
-        $conexion = $conexionObject->getConexion();
-
-        $consulta = $conexion->prepare("INSERT INTO Incidencias (latitud, longitud, ciudad, direccion, solucion, estado, idCliente) VALUES (?,?,?,?,?,?,?)");
-        $consulta->bindValue(1, $latitud);
-        $consulta->bindValue(2, $longitud);
-        $consulta->bindValue(3, $ciudad);
-        $consulta->bindValue(4, $direccion);
-        $consulta->bindValue(5, $solucion);
-        $consulta->bindValue(6, $estado);
-        $consulta->bindValue(7, $id);
-        $consulta->execute();
-
-        $conexionObject->finishConection();
-
-    }
-
-    public static function buscarIncidencia($incidencia)
+    public static function buscarIncidencia($ciudad)
     {
 
         $conexionObject = new Conectar();
         $conexion = $conexionObject->getConexion();
+        $consulta = $conexion->prepare("SELECT * FROM Incidencias WHERE ciudad LIKE :ciudad");
 
-        $consulta = $conexion->prepare("SELECT * FROM Clientes WHERE ciudad = ? OR nombre LIKE '%$incidencia%'");
-        $consulta->bindValue(1, $incidencia);
-        $consulta->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Incidencias\modelos\Cliente'); //Nombre de la clase
+        $consulta->bindValue(':ciudad', '%' . $ciudad . '%',PDO::PARAM_STR);
+        $consulta->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Incidencias\modelos\Incidencia');
+        
         $consulta->execute();
-
         $incidencias = $consulta->fetchAll();
-
         $conexionObject->finishConection();
 
         return $incidencias;
     }
-
-
-
-
+    
 }
-
-
 ?>

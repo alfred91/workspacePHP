@@ -54,13 +54,11 @@
             <a class="navbar-brand text-success logo h1 align-self-center" href="?accion=mostrarTodos">
                 Incidencias 🧑‍🔧 <p></p>
             </a>
-
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
                 data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between"
                 id="templatemo_main_nav">
                 <div class="flex-fill">
@@ -76,11 +74,9 @@
                                 Incidencia</a></td>
                             </tr>
                         </li>
-
                         <li class="nav-item">
                             <a class="nav-link" href="?">Vista Inicio</a>
                         </li>
-
                     </ul>
                 </div>
                 <div class="container my-4">
@@ -93,19 +89,16 @@
                         </div>
                     </form>
                 </div>
-
-                <a class="nav-icon position-relative text-decoration-none" href="#">
-                    <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                    <span
-                        class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
-                </a>
-                <a class="nav-icon position-relative text-decoration-none" href="#">
-                    <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                    <span
-                        class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
-                </a>
+                <div class="container my-4">
+                    <form action="" method="get">
+                        <input type="hidden" name="accion" value="buscarIncidencia">
+                        <label for="inputIncidencia" class="form-label"></label>
+                        <div class="input-group">
+                        <button type="submit" class="btn btn-primary">Buscar Incidencia</button>
+                        <input type="text" class="form-control" id="inputIncidencia" name="incidencia">
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
-
         </div>
     </nav>

@@ -3,6 +3,7 @@ namespace Incidencias;
 
 use Incidencias\controladores\ControladorIncidencia;
 use Incidencias\controladores\ControladorCliente;
+use Incidencias\vistas\VistaIncidencia;
 
 //Autocargar las clases --------------------------
 spl_autoload_register(function ($class) {
@@ -19,10 +20,9 @@ if (isset($_REQUEST)) {
     if (isset($_REQUEST["accion"])) {
 
         if (strcmp($_REQUEST['accion'], 'mostrarTodos') == 0) {
-            ControladorIncidencia::mostrarTodos();
+            ControladorIncidencia::mostrarIncidencias();
         }
 
-    
     if (strcmp($_REQUEST['accion'], 'borrarIncidencia') == 0) { 
 
         $id=$_REQUEST['id'];
@@ -45,20 +45,6 @@ if (isset($_REQUEST)) {
         ControladorIncidencia::mostrarIncidencias();
     }
 
-    if(strcmp($_REQUEST['accion'], 'insertarIncidenciacliente') == 0) {
-
-        $latitud=$_REQUEST['latitud'];
-        $longitud=$_REQUEST['longitud'];
-        $ciudad=$_REQUEST['ciudad'];
-        $direccion=$_REQUEST['direccion'];
-        $descripcion=$_REQUEST['descripcion'];
-        $solucion=$_REQUEST['solucion'];
-        $estado=$_REQUEST['estado'];
-        $idCliente=$_REQUEST['idCliente'];
-
-        ControladorIncidencia::insertarIncidenciaCliente($latitud,$longitud,$ciudad,$direccion,$descripcion,$solucion,$estado,$idCliente);
-        ControladorIncidencia::mostrarIncidencias();
-    }
     if(strcmp($_REQUEST['accion'], 'modificarIncidencia') == 0) {
 
         $id=$_REQUEST['id'];
@@ -69,11 +55,17 @@ if (isset($_REQUEST)) {
         ControladorIncidencia::modificarIncidencia($id,$solucion,$estado);
         ControladorIncidencia::mostrarIncidencias();
     }
+    if (strcmp($_REQUEST['accion'], 'buscarIncidencia') == 0) { 
+        $ciudad = $_REQUEST['incidencia'];
+        $resultados = ControladorIncidencia::buscarIncidencia($ciudad);
+        VistaIncidencia::render($resultados);
+    }
+
     if (strcmp($_REQUEST['accion'], 'buscarDni') == 0) { 
 
         $dni = $_REQUEST['dni'];
         ControladorCliente::buscarDni($dni);
-        ControladorCliente::mostrarCliente($dni);
+        ControladorCliente::mostrarCliente();
     }
 
 } else {

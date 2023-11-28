@@ -24,14 +24,12 @@ class VistaCliente
                         <th class="col col-lg-2 text-center">Movil</th>
                         <th class="col col-lg-2 text-center">Dni</th>
                         <th class="col col-lg-2 text-center">Crear incidencia</th>
-
                     </tr>
                 </thead>
                 <?php
                 if (empty($clientes)) { ?>
 
                     <h3 class='text-center'> NO HAY CLIENTES CON ESE DNI </h3>
-
 
                 <?php } else {
                     foreach ($clientes as $cliente) {
