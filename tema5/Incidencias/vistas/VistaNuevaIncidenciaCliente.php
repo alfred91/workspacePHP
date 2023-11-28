@@ -10,10 +10,10 @@
             <div class="modal-body">
                 <form action="?insertarIncidenciaCliente" method="post">
                     <label for="latitud">Latitud:</label>
-                    <input type="number" name="latitud" required>
+                    <input type="number" name="latitud" value="1">
                     <br><br>
                     <label for="longitud">Longitud:</label>
-                    <input type="number" name="longitud">
+                    <input type="number" name="longitud" value="1">
                     <br><br>
                     <label for="ciudad">Ciudad:</label>
                     <input type="text" name="ciudad">
@@ -31,7 +31,7 @@
                     <input type="text" name="estado">
                     <input type="hidden" name="idCliente" id="idCliente" value="<?= $cliente->getId(); ?>">
                     <br><br>
-                    <button type="submit" class="btn btn-success" name="accion" value="insertarIncidenciaCliente">
+                    <button type="submit" class="btn btn-success" name="accion" value="insertarIncidencia">
                         Insertar Incidencia</button>
                 </form>
             </div>
