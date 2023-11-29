@@ -1,21 +1,17 @@
 <?php
 namespace RegalosNavidad\modelos;
 
-use RegalosNavidad\modelos\Conectar, \PDO;
+use RegalosNavidad\modelos\Conectar;
 
 class ModeloRegalo
 {
 
     public static function mostrarRegalos($idUsuario)
     {
-
         $conexion = new Conectar();
-        $stmt = $conexion->getConexion()->prepare("SELECT * FROM Regalos WHERE idUsuario=?");
-        $stmt->bindValue(1, $idUsuario);
-        $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'RegalosNavidad\modelos\Regalo');
-        $stmt->execute();
+        $coleccionRegalos = $conexion->getConexion()->selectCollection('Regalos');
 
-        $resultados = $stmt->fetchAll();
+        $resultados = $coleccionRegalos->find(['idUsuario' => $idUsuario]);
 
         $conexion->finishConection();
 

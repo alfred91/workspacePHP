@@ -1,12 +1,12 @@
 <?php
 namespace RegalosNavidad;
 
+use MongoDB\Client;
+
 session_start();
 //session_destroy();
+$collection = (new Client)->test->users;
 
-use RegalosNavidad\controladores\ControladorRegalo;
-use RegalosNavidad\controladores\ControladorEnlace;
-use RegalosNavidad\controladores\ControladorLogin;
 
 //Autocargar las clases --------------------------
 spl_autoload_register(function ($class) {
