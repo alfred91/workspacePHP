@@ -4,6 +4,7 @@ namespace Padel\controladores;
 use Padel\vistas\VistaInicio;
 use Padel\modelos\ModeloPartida;
 use Padel\modelos\ModeloJugador;
+use Padel\vistas\VistaJugador;
 use Padel\vistas\VistaPartida;
 use Padel\Vistas\VistaLogin;
 
@@ -18,9 +19,9 @@ class ControladorJugador
         VistaInicio::render();
     }
 
-    public static function mostrarPartidas(){
-      $partidas = ModeloPartida::mostrarPartidas("");
-      return $partidas;
+    public static function mostrarJugadores(){
+      $jugadores = ModeloJugador::mostrarJugadores();
+      VistaJugador::render($jugadores);
       
         
     }

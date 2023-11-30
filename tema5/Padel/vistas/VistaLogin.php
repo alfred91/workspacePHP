@@ -13,7 +13,7 @@ class VistaLogin
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-body">
-                            <h2 class="card-title text-center mb-4">🌲 Inicio de Sesión 🌲</h2>
+                            <h2 class="card-title text-center mb-4"> Inicio de Sesión </h2>
                             <form action="index.php" method="post">
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email:</label>

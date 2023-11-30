@@ -7,6 +7,7 @@ session_start();
 use Padel\vistas\VistaInicio;
 use Padel\controladores\ControladorPartida;
 use Padel\controladores\ControladorLogin;
+use Padel\controladores\ControladorJugador;
 
 //Autocargar las clases --------------------------
 spl_autoload_register(function ($class) {
@@ -32,9 +33,8 @@ if (isset($_REQUEST)) {
             } else {
 
                 ControladorLogin::mostrarFormulario();  // DE LO CONTRARIO SE MUESTRA UN FORM DE LOGIN
-                die();
             }
-        } 
+        }
 
         if (strcmp($_REQUEST['accion'], 'enviarForm') == 0) { // COMPROBAMOS LOS DATOS DEL FORMULARIO AL ENVIAR
 
@@ -43,6 +43,17 @@ if (isset($_REQUEST)) {
             ControladorLogin::checkLogin($email, $password);
         }
 
+        if (strcmp($_REQUEST["accion"], 'cerrarSesion') == 0) { // CERRAR SESION
+            ControladorLogin::cerrarSesion();
+            die();
+        }
+
+        if (strcmp($_REQUEST['accion'], 'mostrarJugadores') == 0) {
+            ControladorJugador::mostrarJugadores();
+        }
+
+        if (strcmp($_REQUEST['accion'], 'mostrarJugadores') == 0) {
+            ControladorJugador::mostrarJugadores();
+        }
     }
-    VistaInicio::render();
 }
