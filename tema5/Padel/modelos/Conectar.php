@@ -1,5 +1,5 @@
 <?php
-namespace Padel\Modelos;
+namespace Padel\modelos;
 
 use \PDO, \PDOException;
 

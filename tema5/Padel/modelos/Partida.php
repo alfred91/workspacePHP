@@ -1,5 +1,5 @@
 <?php
-namespace Padel;
+namespace Padel\modelos;
 
 class Partida
 {
@@ -27,7 +27,6 @@ class Partida
         $this->idJugador=$idJugador;
 
     }
-
 
 
     /**

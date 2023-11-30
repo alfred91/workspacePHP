@@ -1,6 +1,5 @@
 <?php
-namespace Padel\Modelos;
-
+namespace Padel\modelos;
 use Padel\modelos\Conectar;
 use \PDO;
 
@@ -22,7 +21,6 @@ class ModeloJugador
         $resultado = $stmt->fetch();
 
         $conn->finishConection();
-
 
         return $resultado;
     }

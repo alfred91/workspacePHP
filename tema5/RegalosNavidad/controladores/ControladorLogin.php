@@ -40,7 +40,7 @@ class ControladorLogin
 
         } else {
             $_SESSION['usuario'] = serialize($resultado);
-            ControladorRegalo::mostrarRegalos("");
+            ControladorRegalo::mostrarRegalos();
 
         }
     }
