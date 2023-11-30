@@ -55,5 +55,6 @@ if (isset($_REQUEST)) {
         if (strcmp($_REQUEST['accion'], 'mostrarJugadores') == 0) {
             ControladorJugador::mostrarJugadores();
         }
-    }
+    } else
+        VistaInicio::render();
 }
