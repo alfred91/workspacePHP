@@ -1,28 +1,27 @@
 <?php
 namespace Padel\vistas;
 
-use Padel\controladores\ControladorPartida;
+use Padel\controladores\ControladorJugador;
 
 class VistaJugador
 {
-    public static function render($partidas)
+    public static function render($jugadores)
     {
         include("CabeceraMain.php"); ?>
 
         <div class="container-fluid">
-            <h1 class="mt-5 text-center">🎁 Lista de Partidas de <?php echo $jugador->getNombre(); ?> 🎁 </h1>
+            <h1 class="mt-5 text-center">🎁 Lista de jugadores🎁 </h1>
 
             <table class="table table-striped table-bordered mt-4">
                 <thead class="bg-danger text-white">
                     <tr>
+                        <th class="col col-lg-2 text-center">ID</th>
+                        <th class="col col-lg-2 text-center">Email</th>
                         <th class="col col-lg-2 text-center">Nombre</th>
-                        <th class="col col-lg-2 text-center">Destinatario</th>
-                        <th class="col col-lg-2 text-center">Precio</th>
-                        <th class="col col-lg-2 text-center">Estado</th>
-                        <th class="col col-lg-2 text-center">
-                            <a class="btn btn-danger" href="?accion=mostrarPartidasOrdenados"> 🢁 </a> Año
-                            <a class="btn btn-danger" href="?accion=mostrarpartidasOrdenadosDesc"> 🢃 </a>
-                        </th>
+                        <th class="col col-lg-2 text-center">Password</th>
+                        <th class="col col-lg-2 text-center">Apodo</th>
+                        <th class="col col-lg-2 text-center">Nivel</th>
+                        <th class="col col-lg-2 text-center">Edad</th>
                         <th class="col col-lg-2 text-center">Enlaces</th>
                         <th class="col col-lg-2 text-center">Detalle</th>
                         <th class="col col-lg-2 text-center">Modificar</th>
@@ -32,61 +31,67 @@ class VistaJugador
                 </thead>
 
                 <?php
-                if (empty($partidas)) { ?>
+                if (empty($jugadores)) { ?>
 
                     <h3 class='text-center'>
-                        <?php echo $jugador->getNombre(); ?> no tiene partidas, puedes crear uno aquí
+no tiene jugador
                     </h3>
                     <div class="text-center mt-3">
-                        <a class="btn btn-primary" href="#" data-bs-toggle="modal" data-bs-target="#nuevaPartidaModal">Añadir
-                            partida</a>
+                        <a class="btn btn-primary" href="#" data-bs-toggle="modal" data-bs-target="#nuevoJugadorModal">Añadir
+                            jugador</a>
                     </div>
 
-                <?php include "VistaNuevaPartida.php";
+                <?php
                 } else {
-                    foreach ($partidas as $partida) {
+                    foreach ($jugadores as $jugador) {
                         ?>
                         <tr>
                             <td class="col col-lg-2 text-center">
-                                <?= $partida->getNombre() ?>
+                                <?= $jugador->getId() ?>
                             </td>
                             <td class="col col-lg-2 text-center">
-                                <?= $partida->getDestinatario() ?>
+                                <?= $jugador->getEmail() ?>
                             </td>
                             <td class="col col-lg-2 text-center">
-                                <?= $partida->getPrecio() ?>
+                                <?= $jugador->getPassword() ?>
                             </td>
                             <td class="col col-lg-2 text-center">
-                                <?= $partida->getEstado() ?>
+                                <?= $jugador->getNombre() ?>
                             </td>
                             <td class="col col-lg-2 text-center">
-                                <?= $partida->getanio() ?>
+                                <?= $jugador->getApodo() ?>
+                            </td>
+                            <td class="col col-lg-2 text-center">
+                                <?= $jugador->getNivel() ?>
+                            </td>
+                            <td class="col col-lg-2 text-center">
+                                <?= $jugador->getEdad() ?>
                             </td>
 
                             <td class="col col-lg-2 text-center">
-                                <!-- Botón para mostrar detalles de un partida -->
-                                <a href="?accion=verEnlaces&id=<?= $partida->getId() ?>" class="btn btn-warning">🔗</a>
+                                <!-- Botón para mostrar detalles de un jugador$jugador -->
+                                <a href="?accion=verEnlaces&id=<?= $jugador->getId() ?>" class="btn btn-warning">🔗</a>
                             </td>
 
                             <td class="col col-lg-2 text-center">
-                                <!-- Botón para mostrar detalles de un partida -->
-                                <a href="?accion=verDetalle&id=<?= $partida->getId() ?>" class="btn btn-primary">🔍</a>
+                                <!-- Botón para mostrar detalles de un jugador$jugador -->
+                                <a href="?accion=verDetalle&id=<?= $jugador->getId() ?>" class="btn btn-primary">🔍</a>
                             </td>
                            
                             <!-- Modify Button (Open Modal) -->
                             <td class="col col-lg-2 text-center">
                                 <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                    data-bs-target="#modificarPartidaModal<?= $partida->getId() ?>"> ✍️
+                                    data-bs-target="#modificarJugadorModal<?= $jugador->getId() ?>"> ✍️
                                 </button>
                             </td>
                             <td class="col col-lg-2 text-center">
                                 <!-- Delete Button -->
-                                <a href="index.php?accion=borrarPartida&id=<?= $partida->getId() ?>" class="btn btn-danger">🔥</a>
+                                <a href="index.php?accion=borrarjugador$jugador&id=<?= $jugador->getId() ?>" class="btn btn-danger">🔥</a>
                             </td>
                         </tr>
                     <?php   
-                        include "VistaNuevopartida.php";
-                        include "VistaActualizarpartida.php";
+                        //include "VistaNuevoJugador.php";
+                        //include "VistaActualizarJugador.php";
                     }
                 }
                 ?>

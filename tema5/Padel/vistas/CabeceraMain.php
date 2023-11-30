@@ -2,7 +2,7 @@
 <html lang="es">
 
 <head>
-    <title> 🎁 Regalos de Navidad 🌲</title>
+    <title> PADELEA </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -41,7 +41,7 @@
                 <?php
                     $usuario = unserialize($_SESSION['usuario']);
                     echo '<a href="index.php?accion=cerrarSesion" class="nav-link px-2 link-secondary">';
-                    echo $usuario->getEmail() . " CERRAR SESION 🔥";
+                    echo $usuario->getEmail() . " 🔥 CERRAR SESION 🔥";
                     echo "</a>";
                 ?>
 
@@ -55,7 +55,7 @@
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand text-success logo h1 align-self-center" href="?accion=mostrarRegalos">
+            <a class="navbar-brand text-success logo h1 align-self-center" href="?accion=mostrarPartidas">
             PADELEA
             </a>
 
@@ -69,17 +69,19 @@
                    
                         <li class="nav-item">
 
-                        <a href="?accion=mostrarRegalos" class="nav-link"> Regalos</a> 
+                        <a href="?accion=mostrarTodos" class="nav-link"> Todas las Partidas</a> 
                         </li>
-                        
+                        <li class="nav-item">
+
+                        <a href="?accion=mostrarJugadores" class="nav-link"> Jugadores</a> 
+                        </li>
                         <li class="nav-item">
                         <a class="nav-link" href="#" data-bs-toggle="modal"
-                    data-bs-target="#nuevoRegaloModal">Añadir Regalo</a></td></tr>
+                    data-bs-target="#nuevaPartidaModal">Nueva Partida</a></td></tr>
                         </li>
 
                         <li class="nav-item">
 
-                    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#nuevoEnlaceModal">Añadir Enlace</a>
                        
                         
                     </ul>

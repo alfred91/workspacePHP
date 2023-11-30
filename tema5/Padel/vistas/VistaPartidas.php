@@ -24,6 +24,11 @@ class VistaPartidas
                         <th class="col col-lg-2 text-center">Cubierto</th>
                         <th class="col col-lg-2 text-center">Estado</th>
                         <th class="col col-lg-2 text-center">idJugador</th>
+                        <th class="col col-lg-2 text-center">idJugador</th>
+                        <th class="col col-lg-2 text-center">idJugador</th>
+                        <th class="col col-lg-2 text-center">idJugador</th>
+                        <th class="col col-lg-2 text-center">idJugador</th>
+
                         
                     </tr>
                 </thead>
@@ -40,7 +45,6 @@ class VistaPartidas
 
                 <?php include "VistaNuevaPartida.php";
                 } else {
-                    var_dump($partidas);
                     foreach ($partidas as $partida) {
                         
                         ?>
@@ -92,8 +96,8 @@ class VistaPartidas
                             </td>
                         </tr>
                     <?php   
-                        include "VistaNuevapartida.php";
-                        include "VistaActualizarpartida.php";
+                        //include ("VistaNuevaPartida.php");
+                        //include "VistaActualizarPartida.php";
                     }
                 }
                 ?>
