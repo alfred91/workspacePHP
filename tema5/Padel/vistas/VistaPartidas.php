@@ -2,6 +2,7 @@
 namespace Padel\vistas;
 
 use Padel\controladores\ControladorPartida;
+use Padel\controladores\ControladorJugador;
 
 class VistaPartidas
 {
@@ -10,32 +11,27 @@ class VistaPartidas
         include("CabeceraMain.php"); ?>
 
         <div class="container-fluid">
-            <h1 class="mt-5 text-center">🎁 Lista de Partidas de <?php echo $jugador->getNombre(); ?> 🎁 </h1>
+            <h1 class="mt-5 text-center">Lista de Partidas  </h1>
 
             <table class="table table-striped table-bordered mt-4">
                 <thead class="bg-danger text-white">
                     <tr>
-                        <th class="col col-lg-2 text-center">Nombre</th>
-                        <th class="col col-lg-2 text-center">Destinatario</th>
-                        <th class="col col-lg-2 text-center">Precio</th>
+                        <th class="col col-lg-2 text-center">ID</th>
+                        <th class="col col-lg-2 text-center">Fecha</th>
+                        <th class="col col-lg-2 text-center">Hora</th>
+                        <th class="col col-lg-2 text-center">Ciudad</th>
+                        <th class="col col-lg-2 text-center">Lugar</th>
+                        <th class="col col-lg-2 text-center">Cubierto</th>
                         <th class="col col-lg-2 text-center">Estado</th>
-                        <th class="col col-lg-2 text-center">
-                            <a class="btn btn-danger" href="?accion=mostrarPartidasOrdenados"> 🢁 </a> Año
-                            <a class="btn btn-danger" href="?accion=mostrarpartidasOrdenadosDesc"> 🢃 </a>
-                        </th>
-                        <th class="col col-lg-2 text-center">Enlaces</th>
-                        <th class="col col-lg-2 text-center">Detalle</th>
-                        <th class="col col-lg-2 text-center">Modificar</th>
-                        <th class="col col-lg-2 text-center">Eliminar</th>
+                        <th class="col col-lg-2 text-center">idJugador</th>
                         
                     </tr>
                 </thead>
 
                 <?php
-                if (empty($partidas)) { ?>
-
+                if (!isset($partidas)) { ?>
                     <h3 class='text-center'>
-                        <?php echo $jugador->getNombre(); ?> no tiene partidas, puedes crear uno aquí
+                        <?php echo $jugador->getNombre(); ?> no tiene partidas, puedes crear una aquí
                     </h3>
                     <div class="text-center mt-3">
                         <a class="btn btn-primary" href="#" data-bs-toggle="modal" data-bs-target="#nuevaPartidaModal">Añadir
@@ -44,23 +40,34 @@ class VistaPartidas
 
                 <?php include "VistaNuevaPartida.php";
                 } else {
+                    var_dump($partidas);
                     foreach ($partidas as $partida) {
+                        
                         ?>
                         <tr>
-                            <td class="col col-lg-2 text-center">
-                                <?= $partida->getNombre() ?>
+                        <td class="col col-lg-2 text-center">
+                                <?= $partida->getId() ?>
                             </td>
                             <td class="col col-lg-2 text-center">
-                                <?= $partida->getDestinatario() ?>
+                                <?= $partida->getFecha() ?>
                             </td>
                             <td class="col col-lg-2 text-center">
-                                <?= $partida->getPrecio() ?>
+                                <?= $partida->getHora() ?>
+                            </td>
+                            <td class="col col-lg-2 text-center">
+                                <?= $partida->getCiudad() ?>
+                            </td>
+                            <td class="col col-lg-2 text-center">
+                                <?= $partida->getLugar() ?>
+                            </td>
+                            <td class="col col-lg-2 text-center">
+                                <?= $partida->getCubierto() ?>
                             </td>
                             <td class="col col-lg-2 text-center">
                                 <?= $partida->getEstado() ?>
                             </td>
                             <td class="col col-lg-2 text-center">
-                                <?= $partida->getanio() ?>
+                                <?= $partida->getIdJugador() ?>
                             </td>
 
                             <td class="col col-lg-2 text-center">
@@ -85,7 +92,7 @@ class VistaPartidas
                             </td>
                         </tr>
                     <?php   
-                        include "VistaNuevopartida.php";
+                        include "VistaNuevapartida.php";
                         include "VistaActualizarpartida.php";
                     }
                 }

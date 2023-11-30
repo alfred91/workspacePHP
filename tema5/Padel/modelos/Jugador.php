@@ -1,5 +1,5 @@
 <?php
-namespace Padel;
+namespace Padel\modelos;
 
 class Jugador
 {

@@ -1,4 +1,4 @@
-<?php namespace Padel\Modelos;
+<?php namespace Padel\modelos;
 
 use Padel\modelos\Conectar;
 use \PDO;
@@ -27,7 +27,7 @@ public static function mostrarPartidas($idJugador){
         $conexion = $conn->getConexion();
 
         $stmt = $conexion->prepare("SELECT * FROM Partidas");
-        $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Padel\modelos\Partida'); //Nombre de la clase
+        $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Padel\modelos\Partida');
         $stmt->execute();
 
         $resultados = $stmt->fetchAll();

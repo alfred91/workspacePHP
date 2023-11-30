@@ -29,7 +29,6 @@ public static function detalleRegalo($id){
     $regalo=ModeloRegalo::detalleRegalo($id);
 
     VistaDetalle::render($regalo);
-
 }
 
 public static function verInsertarRegalo(){

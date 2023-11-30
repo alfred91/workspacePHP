@@ -5,10 +5,7 @@ session_start();
 //session_destroy();
 
 use Padel\vistas\VistaInicio;
-use Padel\vistas\VistaLogin;
-use Padel\modelos\Conectar;
 use Padel\controladores\ControladorPartida;
-use Padel\controladores\ControladorJugador;
 use Padel\controladores\ControladorLogin;
 
 //Autocargar las clases --------------------------

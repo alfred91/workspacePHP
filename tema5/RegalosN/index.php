@@ -59,9 +59,8 @@ if (isset($_REQUEST)) {
     
     if (strcmp($_REQUEST["accion"],'mostrarRegalos') == 0) {
         // Si se solicitó la acción de mostrar regalos, manejarla aquí
-        ControladorRegalo::mostrarRegalos("");
+        ControladorRegalo::mostrarRegalos();
         VistaRegalos::render($regalos);
-
 
     }
     if (strcmp($_REQUEST["accion"],'borrarRegalo') == 0) {
