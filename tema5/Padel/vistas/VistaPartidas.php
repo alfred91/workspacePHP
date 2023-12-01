@@ -11,7 +11,7 @@ class VistaPartidas
         include("CabeceraMain.php"); ?>
 
         <div class="container-fluid">
-            <h1 class="mt-5 text-center">Lista de Partidas  </h1>
+            <h1 class="mt-5 text-center">Lista de Partidas </h1>
 
             <table class="table table-striped table-bordered mt-4">
                 <thead class="bg-danger text-white">
@@ -23,13 +23,11 @@ class VistaPartidas
                         <th class="col col-lg-2 text-center">Lugar</th>
                         <th class="col col-lg-2 text-center">Cubierto</th>
                         <th class="col col-lg-2 text-center">Estado</th>
-                        <th class="col col-lg-2 text-center">idJugador</th>
-                        <th class="col col-lg-2 text-center">idJugador</th>
+                        <th class="col col-lg-2 text-center">Apuntarse</th>
                         <th class="col col-lg-2 text-center">idJugador</th>
                         <th class="col col-lg-2 text-center">idJugador</th>
                         <th class="col col-lg-2 text-center">idJugador</th>
 
-                        
                     </tr>
                 </thead>
 
@@ -43,13 +41,11 @@ class VistaPartidas
                             partida</a>
                     </div>
 
-                <?php include "VistaNuevaPartida.php";
+                    <?php include "VistaNuevaPartida.php";
                 } else {
-                    foreach ($partidas as $partida) {
-                        
-                        ?>
+                    foreach ($partidas as $partida) { ?>
                         <tr>
-                        <td class="col col-lg-2 text-center">
+                            <td class="col col-lg-2 text-center">
                                 <?= $partida->getId() ?>
                             </td>
                             <td class="col col-lg-2 text-center">
@@ -70,36 +66,28 @@ class VistaPartidas
                             <td class="col col-lg-2 text-center">
                                 <?= $partida->getEstado() ?>
                             </td>
-                            <td class="col col-lg-2 text-center">
-                                <?= $partida->getIdJugador() ?>
-                            </td>
-
+                        
                             <td class="col col-lg-2 text-center">
                                 <!-- Botón para mostrar detalles de un partida -->
-                                <a href="?accion=verEnlaces&id=<?= $partida->getId() ?>" class="btn btn-warning">🔗</a>
+                                <a href="?accion=apuntarsePartida&id=<?= $partida->getId() ?>" class="btn btn-primary">🔍APUNTARSE</a>
                             </td>
 
-                            <td class="col col-lg-2 text-center">
-                                <!-- Botón para mostrar detalles de un partida -->
-                                <a href="?accion=verDetalle&id=<?= $partida->getId() ?>" class="btn btn-primary">🔍</a>
-                            </td>
-                           
                             <!-- Modify Button (Open Modal) -->
                             <td class="col col-lg-2 text-center">
                                 <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                    data-bs-target="#modificarPartidaModal<?= $partida->getId() ?>"> ✍️
+                                    data-bs-target="#apuntarsePartida<?= $partida->getId() ?>"> ✍️
                                 </button>
                             </td>
                             <td class="col col-lg-2 text-center">
                                 <!-- Delete Button -->
-                                <a href="index.php?accion=borrarPartida&id=<?= $partida->getId() ?>" class="btn btn-danger">🔥</a>
+                                <a href="index.php?accion=eliminarPartida&id=<?= $partida->getId() ?>" class="btn btn-danger">🔥</a>
                             </td>
                         </tr>
-                    <?php   
-                        //include ("VistaNuevaPartida.php");
-                        //include "VistaActualizarPartida.php";
+                    <?php
+
                     }
-                }
+                }      include ("VistaNuevaPartida.php");
+                //include "VistaActualizarPartida.php";
                 ?>
             </table>
         </div>

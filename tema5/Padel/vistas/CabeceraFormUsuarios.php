@@ -53,4 +53,4 @@
     <h1 class="visually-hidden">PADELEA</h1>
 
     <div class="px-4 py-5 my-5 text-center">
-      <img class="d-block mx-auto mb-4" src="./vistas/imgs/regalos.png" alt="Regalos" width="400" height="350">
+      <img class="d-block mx-auto mb-4" src="./assets/img/padel.png" alt="Padelea" width="600" height="260">

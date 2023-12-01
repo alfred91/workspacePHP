@@ -1,4 +1,5 @@
 <?php
+
 namespace Padel\modelos;
 
 class Partida
@@ -11,10 +12,9 @@ class Partida
     private $lugar;
     private $cubierto;
     private $estado;
-    private $jugadores;
-    private $idJugador;
+    private $jugadoresPartidas;
 
-    public function __construct($id = "", $fecha = "", $hora = "", $ciudad = "", $lugar = "", $cubierto = "", $estado = "",$idJugador="")
+    public function __construct($id = "", $fecha = "", $hora = "", $ciudad = "", $lugar = "", $cubierto = "", $estado = "")
     {
         $this->id = $id;
         $this->fecha = $fecha;
@@ -23,15 +23,13 @@ class Partida
         $this->lugar = $lugar;
         $this->cubierto = $cubierto;
         $this->estado = $estado;
-        $this->jugadores = array();
-        $this->idJugador=$idJugador;
-
+        $this->jugadoresPartidas = array(); // Inicializa el array
     }
 
 
     /**
      * Get the value of id
-     */ 
+     */
     public function getId()
     {
         return $this->id;
@@ -41,7 +39,7 @@ class Partida
      * Set the value of id
      *
      * @return  self
-     */ 
+     */
     public function setId($id)
     {
         $this->id = $id;
@@ -51,7 +49,7 @@ class Partida
 
     /**
      * Get the value of fecha
-     */ 
+     */
     public function getFecha()
     {
         return $this->fecha;
@@ -61,7 +59,7 @@ class Partida
      * Set the value of fecha
      *
      * @return  self
-     */ 
+     */
     public function setFecha($fecha)
     {
         $this->fecha = $fecha;
@@ -71,7 +69,7 @@ class Partida
 
     /**
      * Get the value of hora
-     */ 
+     */
     public function getHora()
     {
         return $this->hora;
@@ -81,7 +79,7 @@ class Partida
      * Set the value of hora
      *
      * @return  self
-     */ 
+     */
     public function setHora($hora)
     {
         $this->hora = $hora;
@@ -91,7 +89,7 @@ class Partida
 
     /**
      * Get the value of ciudad
-     */ 
+     */
     public function getCiudad()
     {
         return $this->ciudad;
@@ -101,7 +99,7 @@ class Partida
      * Set the value of ciudad
      *
      * @return  self
-     */ 
+     */
     public function setCiudad($ciudad)
     {
         $this->ciudad = $ciudad;
@@ -111,7 +109,7 @@ class Partida
 
     /**
      * Get the value of lugar
-     */ 
+     */
     public function getLugar()
     {
         return $this->lugar;
@@ -121,7 +119,7 @@ class Partida
      * Set the value of lugar
      *
      * @return  self
-     */ 
+     */
     public function setLugar($lugar)
     {
         $this->lugar = $lugar;
@@ -131,7 +129,7 @@ class Partida
 
     /**
      * Get the value of cubierto
-     */ 
+     */
     public function getCubierto()
     {
         return $this->cubierto;
@@ -141,7 +139,7 @@ class Partida
      * Set the value of cubierto
      *
      * @return  self
-     */ 
+     */
     public function setCubierto($cubierto)
     {
         $this->cubierto = $cubierto;
@@ -151,7 +149,7 @@ class Partida
 
     /**
      * Get the value of estado
-     */ 
+     */
     public function getEstado()
     {
         return $this->estado;
@@ -161,7 +159,7 @@ class Partida
      * Set the value of estado
      *
      * @return  self
-     */ 
+     */
     public function setEstado($estado)
     {
         $this->estado = $estado;
@@ -169,47 +167,33 @@ class Partida
         return $this;
     }
 
-    /**
-     * Get the value of jugadores
-     */ 
-    public function getJugadores()
+    public function agregarJugador(Jugador $jugador)
     {
-        return $this->jugadores;
+        if (count($this->jugadoresPartidas) < 4) {
+            $relacion = new PartidasJugadores($jugador, $this);
+            $this->jugadoresPartidas[] = $relacion;
+        } else {
+            echo("Estamos completos");
+        }
     }
 
-    /**
-     * Set the value of jugadores
-     *
-     * @return  self
-     */ 
-    public function setJugadores($jugadores)
+    public function quitarJugador($idJugador)
     {
-        $this->jugadores = $jugadores;
-
-        return $this;
+        foreach ($this->jugadoresPartidas as $index => $jugador) {
+            if ($jugador->getId() === $idJugador) {
+                unset($this->jugadoresPartidas[$index]);
+                break;
+            }
+        }
     }
 
-    /**
-     * Get the value of idJugador
-     */ 
-    public function getIdJugador()
+    public function cerrarPartida()
     {
-        return $this->idJugador;
+        $this->estado = 'cerrada';
+        $this->enviarEmailConfirmacion();
     }
-
-    /**
-     * Set the value of idJugador
-     *
-     * @return  self
-     */ 
-    public function setIdJugador($idJugador)
+    private function enviarEmailConfirmacion()
     {
-        $this->idJugador = $idJugador;
-
-        return $this;
+        // Lógica para enviar el email de confirmación a los jugadores
     }
 }
-
-
-
-?>

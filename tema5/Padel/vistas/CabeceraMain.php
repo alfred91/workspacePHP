@@ -58,7 +58,7 @@
             <a class="navbar-brand text-success logo h1 align-self-center" href="?accion=mostrarPartidas">
             PADELEA
             </a>
-
+            <img class="d-block mx-auto mb-4" src="./assets/img/padel.png" alt="Padelea" width="300" height="130">
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -77,7 +77,7 @@
                         </li>
                         <li class="nav-item">
                         <a class="nav-link" href="#" data-bs-toggle="modal"
-                    data-bs-target="#nuevaPartidaModal">Nueva Partida</a></td></tr>
+                    data-bs-target="#nuevaPartida">Nueva Partida</a></td></tr>
                         </li>
 
                         <li class="nav-item">
