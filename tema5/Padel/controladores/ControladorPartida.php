@@ -91,18 +91,5 @@ class ControladorPartida
 
     VistaDetallePartida::render($partida);
   }
-
-
-  public function addJugador(Jugador $jugador)
-  {
-    if (count($this->jugadores) < 4) {
-      if (!in_array($jugador, $this->jugadores)) {
-        $this->jugadores[] = $jugador;
-      } else {
-        echo "El jugador ya está inscrito en la partida.";
-      }
-    } else {
-      echo "La partida ya tiene cuatro jugadores inscritos.";
-    }
-  }
 }
+?>

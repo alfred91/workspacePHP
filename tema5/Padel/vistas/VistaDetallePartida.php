@@ -25,6 +25,9 @@ class VistaDetallePartida
                         <th class="col col-lg-2 text-center">Lugar</th>
                         <th class="col col-lg-2 text-center">Cubierto</th>
                         <th class="col col-lg-2 text-center">Estado</th>
+                        <th class="col col-lg-2 text-center">Apuntarse</th>
+                        <th class="col col-lg-2 text-center">Borrarse</th>
+                        <th class="col col-lg-2 text-center">Borrar Partida</th>
                     </tr>
                 </thead>
                 <tr>
@@ -35,6 +38,23 @@ class VistaDetallePartida
                     <td class="col col-lg-2 text-center"><?= $partida->getLugar() ?></td>
                     <td class="col col-lg-2 text-center"><?= $partida->getCubierto() ?></td>
                     <td class="col col-lg-2 text-center"><?= $partida->getEstado() ?></td>
+                    <?php
+            $estado = $partida->getEstado();
+            if ($estado == 'Abierta') {
+            ?>
+                <td class="col col-lg-2 text-center">
+                    <a href="?accion=apuntarsePartida&id=<?= $partida->getId() ?>" class="btn btn-success">-></a>
+                </td>
+                <td class="col col-lg-2 text-center">
+                    <a href="?accion=borrarsePartida&id=<?= $partida->getId() ?>" class="btn btn-warning">x</a>
+                </td>
+                <td class="col col-lg-2 text-center">
+                    <a href="?accion=eliminarPartida&id=<?= $partida->getId() ?>" class="btn btn-danger">X</a>
+                </td>
+
+            <?php
+            }
+            ?>
                 </tr>
             </table>
 
@@ -65,25 +85,6 @@ class VistaDetallePartida
                     ?>
                 </tr>
             </table>
-
-            <?php
-            $estado = $partida->getEstado();
-            if ($estado == 'Abierta') {
-            ?>
-                <td class="col col-lg-2 text-center">
-                    <a href="?accion=apuntarsePartida&id=<?= $partida->getId() ?>" class="btn btn-success">Apuntarse</a>
-                </td>
-                <td class="col col-lg-2 text-center">
-                    <a href="?accion=borrarsePartida&id=<?= $partida->getId() ?>" class="btn btn-warning">Borrarse</a>
-                </td>
-                <td class="col col-lg-2 text-center">
-                    <a href="?accion=eliminarPartida&id=<?= $partida->getId() ?>" class="btn btn-danger">Eliminar Partida</a>
-                </td>
-
-            <?php
-            }
-            ?>
-
         </div>
 <?php
         include "PieMain.php";

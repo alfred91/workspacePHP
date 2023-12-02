@@ -18,11 +18,11 @@
                     <br><br>
 
                     <label for="ciudad">Ciudad:</label>
-                    <input type="text" name="ciudad" required value="Ciudad">
+                    <input type="text" name="ciudad" value="Mojacar" required>
                     <br><br>
 
                     <label for="lugar">Lugar:</label>
-                    <input type="text" name="lugar" required value="Lugar">
+                    <input type="text" name="lugar" value="Parador" required>
                     <br><br>
 
                     <label for="cubierto">Cubierto:</label>
