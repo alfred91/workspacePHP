@@ -80,9 +80,7 @@ class ControladorPartida
       }
     }
   }
-
-
-
+  
   public static function borrarsePartida($idPartida, $idJugador)
   {
     if (isset($_SESSION['usuario'])) {
