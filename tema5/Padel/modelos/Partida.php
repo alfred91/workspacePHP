@@ -194,7 +194,6 @@ class Partida
         }
     }
 
-
     public function rmJugador(Jugador $jugador)
     {
 

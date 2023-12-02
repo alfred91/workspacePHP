@@ -132,15 +132,18 @@ class ControladorPartida
     if ($partida->getEstado() == 'Cerrada') {
       ModeloPartida::abrirPartida($id);
     } else {
-      echo "The game is already closed.";
+      echo "The game is already opened.";
     }
   }
-
   public static function detallePartida($idPartida)
   {
 
     $partida = ModeloPartida::detallePartida($idPartida);
 
     VistaDetallePartida::render($partida);
+  }
+  public static function buscarPartida($partida){
+    $resultado=ModeloPartida::buscarPartida($partida);
+    return $resultado;
   }
 }

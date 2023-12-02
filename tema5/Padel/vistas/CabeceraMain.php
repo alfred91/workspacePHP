@@ -72,16 +72,14 @@
 
                         <li class="nav-item">
 
-                       
-                        
                     </ul>
                 </div>
                 <div class="container my-4">
                 <form action="" method="get">
-    <input type="hidden" name="accion" value="filtrarPorAnio">
-    <label for="inputYear" class="form-label">Filtrar por año:</label>
+    <input type="hidden" name="accion" value="buscarPartida">
+    <label for="inputYear" class="form-label">Buscar por Fecha/Ciudad</label>
     <div class="input-group">
-        <input type="text" class="form-control" id="inputYear" name="anio" placeholder="2023">
+        <input type="text" class="form-control" id="inputYear" name="anio" placeholder="Almeria 2023">
         <button type="submit" class="btn btn-danger">🔍</button>
     </div>
 </form>
