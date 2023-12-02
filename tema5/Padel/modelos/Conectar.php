@@ -1,4 +1,5 @@
 <?php
+
 namespace Padel\modelos;
 
 use \PDO, \PDOException;
@@ -22,12 +23,9 @@ class Conectar
                 $this->conexion = new PDO("mysql:host=" . $host . ";dbname=" . $bd, $usuario, $password);
                 $this->conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $this->conexion->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-
             }
-
         } catch (PDOException $e) {
             echo $e->getMessage();
-
         }
     }
     /**
@@ -43,4 +41,3 @@ class Conectar
         $this->conexion = null;
     }
 }
-?>

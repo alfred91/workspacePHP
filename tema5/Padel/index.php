@@ -1,4 +1,5 @@
 <?php
+
 namespace Padel;
 
 session_start();
@@ -29,7 +30,6 @@ if (isset($_REQUEST)) {
             if (isset($_SESSION['usuario'])) {  // SI EL USUARIO ESTA EN LA SESION MOSTRAMOS LOS Partidas
 
                 ControladorPartida::mostrarPartidas();
-
             } else {
 
                 ControladorLogin::mostrarFormulario();  // DE LO CONTRARIO SE MUESTRA UN FORM DE LOGIN
@@ -53,6 +53,7 @@ if (isset($_REQUEST)) {
 
         if (strcmp($_REQUEST['accion'], 'mostrarJugadores') == 0) {
             ControladorJugador::mostrarJugadores();
+            die();
         }
 
         if (strcmp($_REQUEST['accion'], 'mostrarJugadores') == 0) {
@@ -71,17 +72,28 @@ if (isset($_REQUEST)) {
             ControladorPartida::mostrarPartidas();
         }
         if (strcmp($_REQUEST['accion'], 'eliminarPartida') == 0) {   //ELIMINAR UNA PARTIDA
-            $id= $_REQUEST['id'];
+            $id = $_REQUEST['id'];
             ControladorPartida::eliminarPartida($id);
             ControladorPartida::mostrarPartidas();
         }
+        if (strcmp($_REQUEST['accion'], 'verDetallePartida') == 0) {
+            $id = $_REQUEST['id'];
+            ControladorPartida::detallePartida($id);
+        }
 
-            if (strcmp($_REQUEST['accion'], 'apuntarsePartida') == 0) {
-                $iPpartida=$_REQUEST['id'];
-                $idJugador=$_SESSION['usuario'];
-                ControladorPartida::apuntarsePartida($idPartida,$idJugador);
-                }
+        if (strcmp($_REQUEST['accion'], 'apuntarsePartida') == 0) {
+            $idPartida = $_REQUEST['id'];
+            $idJugador = $_SESSION['usuario'];
+            ControladorPartida::apuntarsePartida($idPartida, $idJugador);
+            ControladorPartida::mostrarPartidas();
+        }
 
+        if (strcmp($_REQUEST['accion'], 'borrarsePartida') == 0) {
+            $idPartida = $_REQUEST['id'];
+            $idJugador = $_SESSION['usuario'];
+            ControladorPartida::borrarsePartida($idPartida, $idJugador);
+            ControladorPartida::mostrarPartidas();
+        }
     } else
         VistaInicio::render();
 }

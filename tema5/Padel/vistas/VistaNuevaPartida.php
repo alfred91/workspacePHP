@@ -32,8 +32,8 @@
                     </select>
 
                     <br><br>
-
-                    <input type="hidden" name="idJugador" value="<?php echo $usuario->getId(); ?>"> <!-- Asegúrate de imprimir el ID del usuario -->
+                    
+                    <input type="hidden" name="idJugador" value="<?php echo $usuario->getId(); ?>"> 
 
                     <button type="submit" class="btn btn-success" name="accion" value="nuevaPartida">Crear Partida</button>
                 </form>

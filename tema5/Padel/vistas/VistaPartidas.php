@@ -1,4 +1,5 @@
 <?php
+
 namespace Padel\vistas;
 
 use Padel\controladores\ControladorPartida;
@@ -23,10 +24,11 @@ class VistaPartidas
                         <th class="col col-lg-2 text-center">Lugar</th>
                         <th class="col col-lg-2 text-center">Cubierto</th>
                         <th class="col col-lg-2 text-center">Estado</th>
+                        <th class="col col-lg-2 text-center">Jugadores Inscritos</th>
+                        <th class="col col-lg-2 text-center">Detalle</th>
                         <th class="col col-lg-2 text-center">Apuntarse</th>
-                        <th class="col col-lg-2 text-center">idJugador</th>
-                        <th class="col col-lg-2 text-center">idJugador</th>
-                        <th class="col col-lg-2 text-center">idJugador</th>
+                        <th class="col col-lg-2 text-center">Borrar Partida</th>
+
 
                     </tr>
                 </thead>
@@ -65,17 +67,24 @@ class VistaPartidas
                             </td>
                             <td class="col col-lg-2 text-center">
                                 <?= $partida->getEstado() ?>
+                            <td class="col col-lg-2 text-center">
+                                <?php
+                                $jugadores = $partida->getJugadores();
+
+                                echo count($jugadores);
+
+                                ?>
                             </td>
-                        
+
+
                             <td class="col col-lg-2 text-center">
                                 <!-- Botón para mostrar detalles de un partida -->
-                                <a href="?accion=apuntarsePartida&id=<?= $partida->getId() ?>" class="btn btn-primary">🔍APUNTARSE</a>
+                                <a href="?accion=verDetallePartida&id=<?= $partida->getId() ?>" class="btn btn-primary">DETALLE</a>
                             </td>
 
                             <!-- Modify Button (Open Modal) -->
                             <td class="col col-lg-2 text-center">
-                                <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                    data-bs-target="#apuntarsePartida<?= $partida->getId() ?>"> ✍️
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#apuntarsePartida<?= $partida->getId() ?>"> APUNTARSE
                                 </button>
                             </td>
                             <td class="col col-lg-2 text-center">
@@ -83,16 +92,17 @@ class VistaPartidas
                                 <a href="index.php?accion=eliminarPartida&id=<?= $partida->getId() ?>" class="btn btn-danger">🔥</a>
                             </td>
                         </tr>
-                    <?php
+                <?php
 
                     }
-                }      include ("VistaNuevaPartida.php");
-                //include "VistaActualizarPartida.php";
+                }
+                include("VistaNuevaPartida.php");
+                include "VistaDetallePartida.php";
                 ?>
             </table>
         </div>
 
-        <?php include "PieMain.php";
+<?php include "PieMain.php";
     }
 }
 ?>

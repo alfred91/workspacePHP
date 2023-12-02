@@ -6,7 +6,7 @@ use Padel\vistas\VistaInicio;
 use Padel\modelos\ModeloPartida;
 use Padel\modelos\ModeloJugador;
 use Padel\vistas\VistaPartidas;
-use Padel\Vistas\VistaLogin;
+use Padel\vistas\VistaDetallePartida;
 
 class ControladorPartida
 {
@@ -38,64 +38,71 @@ class ControladorPartida
 
   public static function nuevaPartida($fecha, $hora, $ciudad, $lugar, $cubierto)
   {
-      if (isset($_SESSION['usuario'])) {
-          $usuario = unserialize($_SESSION['usuario']);
-          $idJugador = $usuario->getId();
-  
-          $partidas = ModeloPartida::nuevaPartida(
-              $fecha,
-              $hora,
-              $ciudad,
-              $lugar,
-              $cubierto,
-              $idJugador 
-          );
-          return $partidas;
-        } VistaPartidas::render("");
-      }
-      public static function apuntarsePartida($idPartida,$idJugador){
-        if (isset($_SESSION['usuario'])) {
-          $usuario = unserialize($_SESSION['usuario']);
-          $idJugador = $usuario->getId();
+    if (isset($_SESSION['usuario'])) {
+      $usuario = unserialize($_SESSION['usuario']);
+      $idJugador = $usuario->getId();
 
-          ModeloPartida::apuntarsePartida($idPartida,$idJugador);
-          VistaPartidas::render("");
-          
-      }
+      $partidas = ModeloPartida::nuevaPartida(
+        $fecha,
+        $hora,
+        $ciudad,
+        $lugar,
+        $cubierto,
+        $idJugador
+      );
+      return $partidas;
     }
-  
+    VistaPartidas::render("");
+  }
+  public static function apuntarsePartida($idPartida, $idJugador)
+  {
+    if (isset($_SESSION['usuario'])) {
+      $usuario = unserialize($_SESSION['usuario']);
+      $idJugador = $usuario->getId();
+
+      ModeloPartida::apuntarsePartida($idPartida, $idJugador);
+    }
+  }
+  public static function borrarsePartida($idPartida, $idJugador)
+  {
+    if (isset($_SESSION['usuario'])) {
+      $usuario = unserialize($_SESSION['usuario']);
+      $idJugador = $usuario->getId();
+
+      ModeloPartida::borrarsePartida($idPartida, $idJugador);
+    }
+  }
+
   public static function eliminarPartida($id)
   {
 
-      ModeloPartida::eliminarPartida($id);
+    ModeloPartida::eliminarPartida($id);
 
-      $user = unserialize($_SESSION['usuario']);
+    $user = unserialize($_SESSION['usuario']);
 
-      $partidas = ModeloPartida::mostrarPartidas($user->getId());
+    $partidas = ModeloPartida::mostrarPartidas($user->getId());
 
-      VistaPartidas::render($partidas);
+    VistaPartidas::render($partidas);
+  }
+  public static function detallePartida($idPartida)
+  {
 
-    
+    $partida = ModeloPartida::detallePartida($idPartida);
+
+    VistaDetallePartida::render($partida);
   }
 
 
-
-
-  //  public function añadirJugador(Jugador $jugador) {
-  // Verificar que no haya más de cuatro jugadores
-  // if (count($this->jugadores) < 4) {
-  // Verificar que el jugador no esté ya en la partida
-  //       if (!in_array($jugador, $this->jugadores)) {
-  //          $this->jugadores[] = $jugador;
-  //       } else {
-  // Manejar el caso en que el jugador ya esté en la partida
-  //           echo "El jugador ya está inscrito en la partida.";
-  //      }
-  //  } else {
-  // Manejar el caso en que la partida ya tenga cuatro jugadores
-  //       echo "La partida ya tiene cuatro jugadores inscritos.";
-  //   }
-  //}
-
+  public function addJugador(Jugador $jugador)
+  {
+    if (count($this->jugadores) < 4) {
+      if (!in_array($jugador, $this->jugadores)) {
+        $this->jugadores[] = $jugador;
+      } else {
+        echo "El jugador ya está inscrito en la partida.";
+      }
+    } else {
+      echo "La partida ya tiene cuatro jugadores inscritos.";
+    }
+  }
 }
-?>

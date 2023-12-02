@@ -2,7 +2,6 @@
 namespace Padel\controladores;
 
 use Padel\vistas\VistaInicio;
-use Padel\modelos\ModeloPartida;
 use Padel\modelos\ModeloJugador;
 use Padel\vistas\VistaLogin;
 
