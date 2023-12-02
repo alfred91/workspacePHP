@@ -12,7 +12,7 @@ class Partida
     private $lugar;
     private $cubierto;
     private $estado;
-    private $jugadoresPartidas;
+    private $jugadores;
 
     public function __construct($id = "", $fecha = "", $hora = "", $ciudad = "", $lugar = "", $cubierto = "", $estado = "")
     {
@@ -23,7 +23,7 @@ class Partida
         $this->lugar = $lugar;
         $this->cubierto = $cubierto;
         $this->estado = $estado;
-        $this->jugadoresPartidas = array(); // Inicializa el array
+        $this->jugadores = [];
     }
 
 
@@ -167,24 +167,42 @@ class Partida
         return $this;
     }
 
-    public function agregarJugador(Jugador $jugador)
+    public function getJugadores()
     {
-        if (count($this->jugadoresPartidas) < 4) {
-            $relacion = new PartidasJugadores($jugador, $this);
-            $this->jugadoresPartidas[] = $relacion;
+        return $this->jugadores;
+    }
+    
+    public function setJugadores(array $jugadores)
+    {
+        $this->jugadores = $jugadores;
+    }
+   
+
+    public function addJugador($nombre, $apodo, $nivel, $edad)
+    {
+        $jugador = new Jugador($nombre, $apodo, $nivel, $edad);
+        $this->jugadores[] = $jugador;
+
+        if (count($this->jugadores) === 4) {
+            $this->estado = 'cerrada';
+            $this->enviarEmailConfirmacion();
         } else {
-            echo("Estamos completos");
+            echo "No es posible agregar más jugadores a la partida.";
         }
     }
 
-    public function quitarJugador($idJugador)
+    public function rmJugador(Jugador $jugador)
     {
-        foreach ($this->jugadoresPartidas as $index => $jugador) {
-            if ($jugador->getId() === $idJugador) {
-                unset($this->jugadoresPartidas[$index]);
-                break;
+        // Buscar al jugador y quitarlo de la partida
+        foreach ($this->jugadores as $index => $jug) {
+            if ($jug->getId() === $jugador->getId()) {
+                unset($this->jugadores[$index]);
+                echo "Te has quitado de la partida.";
+                $this->estado = 'abierta';
+                return;
             }
         }
+        echo "No estabas inscrito en esta partida.";
     }
 
     public function cerrarPartida()
@@ -194,6 +212,6 @@ class Partida
     }
     private function enviarEmailConfirmacion()
     {
-        // Lógica para enviar el email de confirmación a los jugadores
+        echo ("enviando email de confirmacion.. ");
     }
 }
