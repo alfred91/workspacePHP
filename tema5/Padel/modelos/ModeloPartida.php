@@ -45,14 +45,14 @@ class ModeloPartida
         return $resultados;
     }
 
-    public static function nuevaPartida($fecha, $hora, $ciudad, $lugar, $cubierto, $jugadores)
+    public static function nuevaPartida($fecha, $hora, $ciudad, $lugar, $cubierto, $jugador)
     {
         $conn = new Conectar();
         $conexion = $conn->getConexion();
-
+    
         try {
             $conexion->beginTransaction(); // Start a transaction
-
+    
             // Insert the new partida
             $stmt = $conexion->prepare('INSERT INTO Partidas (Fecha, Hora, Ciudad, Lugar, Cubierto, Estado)
                                     VALUES (:Fecha, :Hora, :Ciudad, :Lugar, :Cubierto, "Abierta")');
@@ -61,18 +61,16 @@ class ModeloPartida
             $stmt->bindValue(':Ciudad', $ciudad, PDO::PARAM_STR);
             $stmt->bindValue(':Lugar', $lugar, PDO::PARAM_STR);
             $stmt->bindValue(':Cubierto', $cubierto, PDO::PARAM_STR);
-
+    
             $stmt->execute();
             $idPartida = $conexion->lastInsertId();  // Obtain the ID of the newly created partida
-
-            // Insert players into PartidasJugadores
+    
+            // Insert the player into PartidasJugadores
             $stmt = $conexion->prepare('INSERT INTO PartidasJugadores (IdPartida, IdJugador) VALUES (:IdPartida, :IdJugador)');
-            foreach ($jugadores as $jugador) {
-                $stmt->bindValue(':IdPartida', $idPartida, PDO::PARAM_INT);
-                $stmt->bindValue(':IdJugador', $jugador, PDO::PARAM_INT);
-                $stmt->execute();
-            }
-
+            $stmt->bindValue(':IdPartida', $idPartida, PDO::PARAM_INT);
+            $stmt->bindValue(':IdJugador', $jugador, PDO::PARAM_INT);
+            $stmt->execute();
+    
             $conexion->commit(); // Commit the transaction
         } catch (PDOException $e) {
             $conexion->rollBack(); // Roll back the transaction on error
@@ -81,7 +79,7 @@ class ModeloPartida
             $conn->finishConection();
         }
     }
-
+    
     public static function apuntarsePartida($idPartida, $idJugador)
     {
         $conn = new Conectar();
@@ -114,7 +112,6 @@ class ModeloPartida
             $conn->finishConection();
         }
     }
-
     public static function detallePartida($idPartida)
     {
         $conn = new Conectar();
@@ -172,9 +169,6 @@ class ModeloPartida
             die();
         }
     }
-
-
-
     public static function eliminarPartida($id)
     {
         $conn = new Conectar();

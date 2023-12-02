@@ -15,7 +15,7 @@ class VistaPartidas
             <h1 class="mt-5 text-center">Lista de Partidas </h1>
 
             <table class="table table-striped table-bordered mt-4">
-                <thead class="bg-danger text-white">
+                <thead class="bg-success text-white">
                     <tr>
                         <th class="col col-lg-2 text-center">ID</th>
                         <th class="col col-lg-2 text-center">Fecha</th>
@@ -25,9 +25,8 @@ class VistaPartidas
                         <th class="col col-lg-2 text-center">Cubierto</th>
                         <th class="col col-lg-2 text-center">Estado</th>
                         <th class="col col-lg-2 text-center">Jugadores Inscritos</th>
-                        <th class="col col-lg-2 text-center">Detalle</th>
-                        <th class="col col-lg-2 text-center">Apuntarse</th>
-                        <th class="col col-lg-2 text-center">Borrar Partida</th>
+                        <th class="col col-lg-2 text-center">Acciones</th>
+
 
 
                     </tr>
@@ -63,7 +62,7 @@ class VistaPartidas
                                 <?= $partida->getLugar() ?>
                             </td>
                             <td class="col col-lg-2 text-center">
-                                <?= $partida->getCubierto() ?>
+                                <?= $partida->getCubierto() == 1 ? 'Si' : 'No' ?>
                             </td>
                             <td class="col col-lg-2 text-center">
                                 <?= $partida->getEstado() ?>
@@ -79,17 +78,8 @@ class VistaPartidas
 
                             <td class="col col-lg-2 text-center">
                                 <!-- Botón para mostrar detalles de un partida -->
-                                <a href="?accion=verDetallePartida&id=<?= $partida->getId() ?>" class="btn btn-primary">DETALLE</a>
-                            </td>
-
-                            <!-- Modify Button (Open Modal) -->
-                            <td class="col col-lg-2 text-center">
-                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#apuntarsePartida<?= $partida->getId() ?>"> APUNTARSE
-                                </button>
-                            </td>
-                            <td class="col col-lg-2 text-center">
-                                <!-- Delete Button -->
-                                <a href="index.php?accion=eliminarPartida&id=<?= $partida->getId() ?>" class="btn btn-danger">🔥</a>
+                                <a href="?accion=verDetallePartida&id=<?= $partida->getId() ?>" class="btn btn-info">Ver</a>
+                                <a href="index.php?accion=eliminarPartida&id=<?= $partida->getId() ?>" class="btn btn-danger"> X </a>
                             </td>
                         </tr>
                 <?php
