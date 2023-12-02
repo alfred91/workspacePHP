@@ -84,8 +84,8 @@ if (isset($_REQUEST)) {
         if (strcmp($_REQUEST['accion'], 'apuntarsePartida') == 0) {
             $idPartida = $_REQUEST['id'];
             $idJugador = $_SESSION['usuario'];
-            ControladorPartida::apuntarsePartida($idPartida, $idJugador);
-            ControladorPartida::mostrarPartidas();
+            ControladorPartida::apuntarsePartida($idPartida);
+                ControladorPartida::mostrarPartidas();
         }
 
         if (strcmp($_REQUEST['accion'], 'borrarsePartida') == 0) {

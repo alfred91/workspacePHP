@@ -49,11 +49,10 @@ class ModeloPartida
     {
         $conn = new Conectar();
         $conexion = $conn->getConexion();
-    
+
         try {
             $conexion->beginTransaction(); // Start a transaction
-    
-            // Insert the new partida
+
             $stmt = $conexion->prepare('INSERT INTO Partidas (Fecha, Hora, Ciudad, Lugar, Cubierto, Estado)
                                     VALUES (:Fecha, :Hora, :Ciudad, :Lugar, :Cubierto, "Abierta")');
             $stmt->bindValue(':Fecha', $fecha, PDO::PARAM_STR);
@@ -61,25 +60,24 @@ class ModeloPartida
             $stmt->bindValue(':Ciudad', $ciudad, PDO::PARAM_STR);
             $stmt->bindValue(':Lugar', $lugar, PDO::PARAM_STR);
             $stmt->bindValue(':Cubierto', $cubierto, PDO::PARAM_STR);
-    
+
             $stmt->execute();
-            $idPartida = $conexion->lastInsertId();  // Obtain the ID of the newly created partida
-    
-            // Insert the player into PartidasJugadores
+            $idPartida = $conexion->lastInsertId();
+
             $stmt = $conexion->prepare('INSERT INTO PartidasJugadores (IdPartida, IdJugador) VALUES (:IdPartida, :IdJugador)');
             $stmt->bindValue(':IdPartida', $idPartida, PDO::PARAM_INT);
             $stmt->bindValue(':IdJugador', $jugador, PDO::PARAM_INT);
             $stmt->execute();
-    
-            $conexion->commit(); // Commit the transaction
+
+            $conexion->commit();
         } catch (PDOException $e) {
-            $conexion->rollBack(); // Roll back the transaction on error
+            $conexion->rollBack();
             echo 'Error al crear la partida: ' . $e->getMessage();
         } finally {
             $conn->finishConection();
         }
     }
-    
+
     public static function apuntarsePartida($idPartida, $idJugador)
     {
         $conn = new Conectar();
@@ -143,13 +141,13 @@ class ModeloPartida
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $stmt->execute();
 
-        // Utilizamos el método setJugadores en la clase Partida
         $partida->setJugadores($stmt->fetchAll());
 
         $conn->finishConection();
 
         return $partida;
     }
+
 
     public static function mostrarJugadoresPartida($idPartida, $idJugador)
     {
@@ -158,8 +156,8 @@ class ModeloPartida
         try {
             $stmt = $conexion->prepare("SELECT j.*
             FROM Jugadores j
-            INNER JOIN PartidasJugadores pj ON j.id = pj.IdJugador
-            WHERE pj.IdPartida = :idPartida;
+            INNER JOIN PartidasJugadores pj ON j.id = pj.idJugador
+            WHERE pj.idPartida = :idPartida;
 ");
             $stmt->bindParam(':idPartida', $idPartida, PDO::PARAM_STR);
             $stmt->bindParam(':idJugador', $idJugador, PDO::PARAM_STR);
@@ -169,6 +167,39 @@ class ModeloPartida
             die();
         }
     }
+
+    public static function cerrarPartida($id)
+{
+    $conn = new Conectar();
+    $conexion = $conn->getConexion();
+
+    try {
+        $stmt = $conexion->prepare('UPDATE Partidas SET estado = "Cerrada" WHERE id = :id');
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+
+    } catch (PDOException $e) {
+        echo 'Error closing the game: ' . $e->getMessage();
+    } finally {
+        $conn->finishConection();
+    }
+}
+public static function abrirPartida($id)
+{
+    $conn = new Conectar();
+    $conexion = $conn->getConexion();
+
+    try {
+        $stmt = $conexion->prepare('UPDATE Partidas SET estado = "Abierta" WHERE id = :id');
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+    } catch (PDOException $e) {
+        echo 'Error closing the game: ' . $e->getMessage();
+    } finally {
+        $conn->finishConection();
+    }
+}
+
     public static function eliminarPartida($id)
     {
         $conn = new Conectar();
