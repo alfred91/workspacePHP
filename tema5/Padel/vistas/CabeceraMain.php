@@ -22,26 +22,16 @@
             <div class="w-100 d-flex justify-content-between">
                 <div>
                     <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:alfred.91.mc@gmail.com<">alfred.91.mc@gmail.com</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:alfred.91.mc@gmail.com<"></a>
                     <i class="fa fa-phone mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:662040002">Contacto</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:662040002"></a>
                 </div>
-                <div>
-              
-              <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
-
-              <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
-
-              <a class="text-light" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw me-2"></i></a>
-
-              <a class="text-light" href="https://github.com/alfred91" target="_blank"><i class="fab fa-github fa-sm fa-fw "></i></a>
-
-          </div>
+        
                 <div>
                 <?php
                     $usuario = unserialize($_SESSION['usuario']);
-                    echo '<a href="index.php?accion=cerrarSesion" class="nav-link px-2 link-secondary">';
-                    echo $usuario->getEmail() . " 🔥 CERRAR SESION 🔥";
+                    echo '<a href="index.php?accion=cerrarSesion" class="nav-link link-secondary">';
+                    echo $usuario->getEmail();
                     echo "</a>";
                 ?>
 

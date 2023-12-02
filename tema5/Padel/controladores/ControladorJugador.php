@@ -25,12 +25,5 @@ class ControladorJugador
       
         
     }
-
-    public static function mostrarJugadoresPartida($idPartida){
-      $partida= Modelopartida::buscarPartidaPorId($idPartida);
-    }
-    public static function mostrarTodos(){
-      $partidas = ModeloPartida::mostrarTodos();
-      return $partidas;
-    }
+    
 }

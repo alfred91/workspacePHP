@@ -171,34 +171,38 @@ class Partida
     {
         return $this->jugadores;
     }
-    
+
     public function setJugadores(array $jugadores)
     {
         $this->jugadores = $jugadores;
     }
-   
 
     public function addJugador($nombre, $apodo, $nivel, $edad)
     {
-        $jugador = new Jugador($nombre, $apodo, $nivel, $edad);
-        $this->jugadores[] = $jugador;
+        if ($this->estado === 'Abierta') {
+            $jugador = new Jugador($nombre, $apodo, $nivel, $edad);
+            $this->jugadores[] = $jugador;
 
-        if (count($this->jugadores) === 4) {
-            $this->estado = 'cerrada';
-            $this->enviarEmailConfirmacion();
+            if (count($this->jugadores) === 4) {
+                $this->cerrarPartida();
+                $this->enviarEmailConfirmacion();
+            } else {
+                echo "No es posible agregar más jugadores a la partida.";
+            }
         } else {
-            echo "No es posible agregar más jugadores a la partida.";
+            echo "La partida está cerrada. No se pueden agregar más jugadores.";
         }
     }
 
+
     public function rmJugador(Jugador $jugador)
     {
-        // Buscar al jugador y quitarlo de la partida
+
         foreach ($this->jugadores as $index => $jug) {
             if ($jug->getId() === $jugador->getId()) {
                 unset($this->jugadores[$index]);
                 echo "Te has quitado de la partida.";
-                $this->estado = 'abierta';
+                $this->estado = 'Abierta';
                 return;
             }
         }
@@ -207,9 +211,14 @@ class Partida
 
     public function cerrarPartida()
     {
-        $this->estado = 'cerrada';
-        $this->enviarEmailConfirmacion();
+        
+            $this->estado = "Cerrada";
+            $this->enviarEmailConfirmacion();
+       
     }
+
+
+
     private function enviarEmailConfirmacion()
     {
         echo ("enviando email de confirmacion.. ");
