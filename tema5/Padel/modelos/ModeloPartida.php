@@ -117,12 +117,10 @@ class ModeloPartida
 
         // Obtener datos de la partida
         $stmt = $conexion->prepare('
-        SELECT p.*, j.Nombre AS JugadorNombre, j.Apodo AS JugadorApodo, j.Nivel AS JugadorNivel, j.Edad AS JugadorEdad
-        FROM Partidas p
-        LEFT JOIN PartidasJugadores pj ON p.id = pj.IdPartida
-        LEFT JOIN Jugadores j ON pj.IdJugador = j.id
-        WHERE p.id = :idPartida
-    ');
+    SELECT p.*
+    FROM Partidas p
+    WHERE p.id = :idPartida
+');
 
         $stmt->bindValue(':idPartida', $idPartida, PDO::PARAM_INT);
         $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Padel\modelos\Partida');
@@ -130,23 +128,27 @@ class ModeloPartida
 
         $partida = $stmt->fetch();
 
-        // MOSTRAR LOS DATOS DE LOS JUGADORES EN LA PARTIDA
+        // Obtener los jugadores asociados a la partida
         $stmt = $conexion->prepare('
-        SELECT j.Nombre, j.Apodo, j.Nivel, j.Edad
-        FROM PartidasJugadores pj
-        INNER JOIN Jugadores j ON pj.IdJugador = j.id
-        WHERE pj.IdPartida = :idPartida
-    ');
+    SELECT j.*
+    FROM Jugadores j
+    INNER JOIN PartidasJugadores pj ON j.id = pj.IdJugador
+    WHERE pj.IdPartida = :idPartida
+');
         $stmt->bindValue(':idPartida', $idPartida, PDO::PARAM_INT);
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Padel\modelos\Jugador');
         $stmt->execute();
 
-        $partida->setJugadores($stmt->fetchAll());
+        $jugadores = $stmt->fetchAll();
+
+        // Establecer los jugadores en la partida
+        $partida->setJugadores($jugadores);
 
         $conn->finishConection();
 
         return $partida;
     }
+
 
 
     public static function mostrarJugadoresPartida($idPartida, $idJugador)
@@ -169,36 +171,35 @@ class ModeloPartida
     }
 
     public static function cerrarPartida($id)
-{
-    $conn = new Conectar();
-    $conexion = $conn->getConexion();
+    {
+        $conn = new Conectar();
+        $conexion = $conn->getConexion();
 
-    try {
-        $stmt = $conexion->prepare('UPDATE Partidas SET estado = "Cerrada" WHERE id = :id');
-        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-
-    } catch (PDOException $e) {
-        echo 'Error closing the game: ' . $e->getMessage();
-    } finally {
-        $conn->finishConection();
+        try {
+            $stmt = $conexion->prepare('UPDATE Partidas SET estado = "Cerrada" WHERE id = :id');
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo 'Error CLOSING the game: ' . $e->getMessage();
+        } finally {
+            $conn->finishConection();
+        }
     }
-}
-public static function abrirPartida($id)
-{
-    $conn = new Conectar();
-    $conexion = $conn->getConexion();
+    public static function abrirPartida($id)
+    {
+        $conn = new Conectar();
+        $conexion = $conn->getConexion();
 
-    try {
-        $stmt = $conexion->prepare('UPDATE Partidas SET estado = "Abierta" WHERE id = :id');
-        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-    } catch (PDOException $e) {
-        echo 'Error closing the game: ' . $e->getMessage();
-    } finally {
-        $conn->finishConection();
+        try {
+            $stmt = $conexion->prepare('UPDATE Partidas SET estado = "Abierta" WHERE id = :id');
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo 'Error OPENING the game: ' . $e->getMessage();
+        } finally {
+            $conn->finishConection();
+        }
     }
-}
 
     public static function eliminarPartida($id)
     {

@@ -11,7 +11,7 @@ class VistaDetallePartida
         <div class="container-fluid">
             <h1 class="mt-5 text-center"> Detalle <?= $partida->getId(); ?>
                 <a class="navbar-brand text-success logo h1 align-self-center" href="?accion=mostrarpartidas">
-                    
+
                 </a>
             </h1>
 
@@ -53,8 +53,6 @@ class VistaDetallePartida
                         <td class="col col-lg-2 text-center">
                             <a href="?accion=apuntarsePartida&id=<?= $partida->getId() ?>" class="btn btn-success">-></a>
                         </td>
-
-
                     <?php
                     }
                     ?>
@@ -82,11 +80,12 @@ class VistaDetallePartida
                     $jugadores = $partida->getJugadores();
                     if (!empty($jugadores)) {
                         foreach ($jugadores as $jugador) {
-                            echo '<td class="col col-lg-2 text-center">' . $jugador['Nombre'] . '</td>';
-                            echo '<td class="col col-lg-2 text-center">' . $jugador['Apodo'] . '</td>';
-                            echo '<td class="col col-lg-2 text-center">' . $jugador['Nivel'] . '</td>';
-                            echo '<td class="col col-lg-2 text-center">' . $jugador['Edad'] . '</td>';
+                            echo '<td class="col col-lg-2 text-center">' . $jugador->getNombre() . '</td>';
+                            echo '<td class="col col-lg-2 text-center">' . $jugador->getApodo() . '</td>';
+                            echo '<td class="col col-lg-2 text-center">' . $jugador->getNivel() . '</td>';
+                            echo '<td class="col col-lg-2 text-center">' . $jugador->getEdad() . '</td>';
                             echo '</tr><tr>';
+                        
                         }
                     } else {
                         echo '<td class="col col-lg-8 text-center" colspan="4">No hay jugadores inscritos.</td>';
@@ -96,7 +95,7 @@ class VistaDetallePartida
             </table>
         </div>
 <?php
-        include "PieMain.php";
+        //include "PieMain.php";
     }
 }
 ?>
