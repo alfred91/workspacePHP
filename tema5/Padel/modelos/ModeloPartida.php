@@ -149,8 +149,6 @@ class ModeloPartida
         return $partida;
     }
 
-
-
     public static function mostrarJugadoresPartida($idPartida, $idJugador)
     {
         $conn = new Conectar();
@@ -214,5 +212,19 @@ class ModeloPartida
         } finally {
             $conn->finishConection();
         }
+    }
+    public static function buscarPartida($partida){
+        $conn = new Conectar();
+        $conexion = $conn->getConexion();
+        try{
+            $stmt=$conexion -> prepare("SELECT * FROM Partidas WHERE Id= ?");
+            $stmt -> bindparam(1,$id, PDO::PARAM_STR);
+            $stmt -> execute();
+            return $stmt -> fetchAll(PDO::FETCH_ASSOC);
+            }catch(PDOexception $e){
+                echo 'Error en el select de las partidas' .$e -> getMessage();
+                }finally{
+                    $conn->finishConection();
+                    }
     }
 }

@@ -47,19 +47,15 @@ if (isset($_REQUEST)) {
             ControladorLogin::cerrarSesion();
             die();
         }
-        if (strcmp($_REQUEST["accion"], 'mostrarTodos') == 0) {
+        if (strcmp($_REQUEST["accion"], 'mostrarTodos') == 0) { // TODAS LAS PARTIDAS
             ControladorPartida::mostrarTodos();
         }
 
-        if (strcmp($_REQUEST['accion'], 'mostrarJugadores') == 0) {
+        if (strcmp($_REQUEST['accion'], 'mostrarJugadores') == 0) { // TODOS LOS JUGADORES
             ControladorJugador::mostrarJugadores();
-            die();
         }
 
-        if (strcmp($_REQUEST['accion'], 'mostrarJugadores') == 0) {
-            ControladorJugador::mostrarJugadores();
-        }
-        if (strcmp($_REQUEST['accion'], 'nuevaPartida') == 0) {  //INSERTAR UNA PARTIDA
+        if (strcmp($_REQUEST['accion'], 'nuevaPartida') == 0) {  // CREAR UNA PARTIDA
 
             $fecha = $_REQUEST['fecha'];
             $hora = $_REQUEST['hora'];
@@ -71,28 +67,32 @@ if (isset($_REQUEST)) {
             ControladorPartida::nuevaPartida($fecha, $hora, $ciudad, $lugar, $cubierto);
             ControladorPartida::mostrarPartidas();
         }
-        if (strcmp($_REQUEST['accion'], 'eliminarPartida') == 0) {   //ELIMINAR UNA PARTIDA
+        if (strcmp($_REQUEST['accion'], 'eliminarPartida') == 0) {   // ELIMINAR UNA PARTIDA
             $id = $_REQUEST['id'];
             ControladorPartida::eliminarPartida($id);
             ControladorPartida::mostrarPartidas();
         }
-        if (strcmp($_REQUEST['accion'], 'verDetallePartida') == 0) {
+        if (strcmp($_REQUEST['accion'], 'verDetallePartida') == 0) {    // DETALLE PARTIDA
             $id = $_REQUEST['id'];
             ControladorPartida::detallePartida($id);
         }
 
-        if (strcmp($_REQUEST['accion'], 'apuntarsePartida') == 0) {
+        if (strcmp($_REQUEST['accion'], 'apuntarsePartida') == 0) {     // APUNTARSE A UNA PARTIDA
             $idPartida = $_REQUEST['id'];
             $idJugador = $_SESSION['usuario'];
             ControladorPartida::apuntarsePartida($idPartida);
-                ControladorPartida::mostrarPartidas();
+            ControladorPartida::mostrarPartidas();
         }
 
-        if (strcmp($_REQUEST['accion'], 'borrarsePartida') == 0) {
+        if (strcmp($_REQUEST['accion'], 'borrarsePartida') == 0) {      // DESINSCRIBIRSE DE UNA PARTIDA
             $idPartida = $_REQUEST['id'];
             $idJugador = $_SESSION['usuario'];
             ControladorPartida::borrarsePartida($idPartida, $idJugador);
             ControladorPartida::mostrarPartidas();
+        }
+        if (strcmp($_REQUEST['accion'], 'buscarPartida') == 0) {
+            $nombre = $_REQUEST['nombre'];
+            ControladorPartida::buscarPartida($nombre);
         }
     } else
         VistaInicio::render();

@@ -26,15 +26,34 @@ class VistaDetallePartida
                         <th class="col col-lg-2 text-center">Cubierto</th>
                         <th class="col col-lg-2 text-center">Estado</th>
                         <?php
+                        $jugadores = $partida->getJugadores();
+                        $idUsuario = unserialize($_SESSION['usuario'])->getId();
+
+                        $usuarioInscrito = false;
+                        foreach ($jugadores as $jugador) {
+                            if ($idUsuario !== null && $idUsuario === $jugador->getId()) {
+                                $usuarioInscrito = true;
+                                break;
+                            }
+                        }
                         $estado = $partida->getEstado();
-                        if ($estado == 'Abierta') {
+                        if ($estado == 'Abierta' && !$usuarioInscrito) {
                         ?>
                             <th class="col col-lg-2 text-center">Apuntarse</th>
+
                         <?php
                         }
+
+                        if ($usuarioInscrito && $estado == 'Abierta') {
+                        ?> <th class="col col-lg-2 text-center">Borrarse</th>
+                            <th class="col col-lg-2 text-center">Borrar Partida</th>
+                        <?php }
+                        if ($usuarioInscrito && $estado == 'Cerrada') {
+                        ?> <th class="col col-lg-2 text-center">Borrar Partida</th>
+
+                        <?php }
+
                         ?>
-                        <th class="col col-lg-2 text-center">Borrarse</th>
-                        <th class="col col-lg-2 text-center">Borrar Partida</th>
                     </tr>
                 </thead>
                 <tr>
@@ -47,20 +66,32 @@ class VistaDetallePartida
                     <td class="col col-lg-2 text-center"><?= $partida->getEstado() ?></td>
 
                     <?php
-                    $estado = $partida->getEstado();
-                    if ($estado == 'Abierta') {
+                    if ($estado == 'Abierta' && !$usuarioInscrito) {
                     ?>
                         <td class="col col-lg-2 text-center">
                             <a href="?accion=apuntarsePartida&id=<?= $partida->getId() ?>" class="btn btn-success">-></a>
                         </td>
                     <?php
                     }
+                    if ($usuarioInscrito && $estado == 'Abierta') {
                     ?>
-                    <td class="col col-lg-2 text-center">
-                        <a href="?accion=borrarsePartida&id=<?= $partida->getId() ?>" class="btn btn-warning">x</a>
-                    </td>
-                    <td class="col col-lg-2 text-center">
-                        <a href="?accion=eliminarPartida&id=<?= $partida->getId() ?>" class="btn btn-danger">X</a>
+
+                        <td class="col col-lg-2 text-center">
+                            <a href="?accion=borrarsePartida&id=<?= $partida->getId() ?>" class="btn btn-warning">x</a>
+                        </td>
+                        <td class="col col-lg-2 text-center">
+                            <a href="?accion=eliminarPartida&id=<?= $partida->getId() ?>" class="btn btn-danger">X</a>
+                        </td>
+
+                    <?php
+                    }
+                    if ($usuarioInscrito && $estado == 'Cerrada') { ?>
+                        <td class="col col-lg-2 text-center">
+                            <a href="?accion=eliminarPartida&id=<?= $partida->getId() ?>" class="btn btn-danger">X</a>
+                        </td>
+                    <?php }
+
+                    ?>
                     </td>
                 </tr>
             </table>
@@ -85,7 +116,6 @@ class VistaDetallePartida
                             echo '<td class="col col-lg-2 text-center">' . $jugador->getNivel() . '</td>';
                             echo '<td class="col col-lg-2 text-center">' . $jugador->getEdad() . '</td>';
                             echo '</tr><tr>';
-                        
                         }
                     } else {
                         echo '<td class="col col-lg-8 text-center" colspan="4">No hay jugadores inscritos.</td>';
@@ -95,7 +125,6 @@ class VistaDetallePartida
             </table>
         </div>
 <?php
-        //include "PieMain.php";
     }
 }
 ?>

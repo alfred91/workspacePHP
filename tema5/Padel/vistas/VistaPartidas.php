@@ -30,7 +30,7 @@ class VistaPartidas
                         No tienes partidas, puedes crear una aquí
                     </h3>
                     <div class="text-center mt-3">
-                        <a class="btn btn-primary" href="#" data-bs-toggle="modal" data-bs-target="#nuevaPartidaModal">Añadir
+                        <a class="btn btn-primary" href="#" data-bs-toggle="modal" data-bs-target="#nuevaPartida">Añadir
                             partida</a>
                     </div>
 
