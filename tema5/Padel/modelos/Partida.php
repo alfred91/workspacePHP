@@ -186,14 +186,9 @@ class Partida
             if (count($this->jugadores) === 4) {
                 $this->cerrarPartida();
                 $this->enviarEmailConfirmacion();
-            } else {
-                echo "No es posible agregar más jugadores a la partida.";
             }
-        } else {
-            echo "La partida está cerrada. No se pueden agregar más jugadores.";
         }
     }
-
     public function rmJugador(Jugador $jugador)
     {
 
@@ -210,10 +205,9 @@ class Partida
 
     public function cerrarPartida()
     {
-        
-            $this->estado = "Cerrada";
-            $this->enviarEmailConfirmacion();
-       
+
+        $this->estado = "Cerrada";
+        $this->enviarEmailConfirmacion();
     }
 
 

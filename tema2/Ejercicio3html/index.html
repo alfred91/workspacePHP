@@ -4,88 +4,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="./estilo.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <title>World of Warcraft</title>
+    <title>Inicio - World of Warcraft</title>
 </head>
 
 <body>
-    
-    <nav class="horizontal-nav">
-        <div class="nav-item">
-            <img src="img/logo.png" alt="Logo de World of Warcraft" class="img-fluid">
-        </div>
-        <div class="nav-item"><a href="index.html">Inicio</a></div>
-        <div class="nav-item"><a href="fichas.html">Fichas</a></div>
-        <div class="nav-item"><a href="fichas.html">Noticias y Eventos</a></div>
-        <div class="nav-item"><a href="fichas.html">Videos y galería</a></div>
-        <div class="nav-item"><a href="fichas.html">Comunidad</a></div>
-
-
-        <div class="nav-item"><a href="https://us.shop.battle.net/es-es/product/world-of-warcraft-free-trial">Prueba
-                World of Warcraft</a></div>
-        <div class="nav-item">
-
-        </div>
+    <nav class="navbar">
+        <img src="img/logo.png" alt="Logo de World of Warcraft" class="logo">
+        <a href="index.html">Inicio</a>
+        <a href="fichas.html">Fichas</a>
+        <a href="noticias.html">Noticias y Eventos</a>
+        <a href="galeria.html">Videos y galería</a>
+        <a href="comunidad.html">Comunidad</a>
+        <a href="https://us.shop.battle.net/es-es/product/world-of-warcraft-free-trial">Prueba World of Warcraft</a>
     </nav>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 mb-4">
-                <h2>Bienvenido al mundo de World of Warcraft. Descubre más sobre los personajes del juego en nuestra
-                    sección de <a href="fichas.html">Fichas</a>.</p>
-            </div>
-        </div>
+    <header class="hero-section">
+        <h1>Bienvenido al Mundo de World of Warcraft</h1>
+        <p>Explora el vasto mundo de Azeroth</p>
+    </header>
 
-        <!-- Sección Destacada -->
-        <div class="row">
-            <div class="col-md-8">
-                <h2>Últimas Noticias y Eventos</h2>
-                <!-- Insertar aquí las noticias y eventos destacados -->
-            </div>
-            <div class="col-md-4">
-                <h2>Redes Sociales</h2>
-                <!-- Insertar aquí enlaces a redes sociales -->
-            </div>
-        </div>
+    <div class="main-container">
+        <section class="intro-section">
+            <h2>Descubre Azeroth</h2>
+            <p>Únete a millones de jugadores y entra en un mundo de mitos, magia y aventuras sin fin.</p>
+        </section>
+        <section class="magical-landscape">
+            <h2>Explora el Paisaje Mágico de Azeroth</h2>
+            <img src="img/azeroth.png" alt="Paisaje Mágico de Azeroth" class="magical-landscape-image">
+            <p>Descubre las maravillas de Azeroth, desde sus castillos grandiosos hasta islas flotantes mágicas. ¡Aventúrate en un mundo donde la fantasía cobra vida!</p>
+        </section>
 
-        <!-- Sección de Videos o Galería -->
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Videos y Galería</h2>
-                <!-- Insertar aquí videos o galería de imágenes -->
-            </div>
-        </div>
+        <section class="features-section">
+            <h2>Características del Juego</h2>
+            <ul>
+                <li>Explora vastos paisajes</li>
+                <li>Enfréntate a desafíos épicos</li>
+                <li>Únete a la comunidad global</li>
+            </ul>
+        </section>
 
-        <!-- Noticias y Actualizaciones -->
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Noticias y Actualizaciones</h2>
-                <!-- Insertar aquí noticias y actualizaciones -->
-            </div>
-        </div>
+        <section class="news-section">
+            <h2>Últimas Noticias y Eventos</h2>
+            <!-- Aquí puedes agregar tus noticias y eventos -->
+        </section>
 
-        <!-- Enlaces Rápidos -->
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Recursos Útiles</h2>
-                <!-- Insertar aquí enlaces rápidos -->
-            </div>
-        </div>
-
-        <!-- Sección de Comunidad -->
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Comunidad</h2>
-                <!-- Insertar aquí área de comentarios o enlaces a foros -->
-            </div>
-        </div>
+        <section class="community-section">
+            <h2>Comunidad</h2>
+            <p>Conecta con otros héroes en el foro de World of Warcraft.</p>
+        </section>
     </div>
 
-    <!-- Scripts y enlaces a bibliotecas JS -->
+    <footer class="footer">
+        <p>&copy; 2023 Blizzard Entertainment, Inc. Todos los derechos reservados.</p>
+    </footer>
 </body>
 
 </html>
