@@ -70,17 +70,14 @@ class ControladorPartida
         if (count($partida->getJugadores()) === 4) {
           ModeloPartida::cerrarPartida($id);
           echo "Estado de la partida: " . $partida->getEstado() . "<br>";
-          echo "Número de jugadores: " . count($partida->getJugadores()) . "<br>";
-          echo "La partida se ha cerrado."; 
+          echo "La partida se ha cerrado.";
         } else {
           echo "Te has apuntado a la partida.";
         }
-      } else {
-        echo "No es posible apuntarse a la partida.";
       }
     }
   }
-  
+
   public static function borrarsePartida($idPartida, $idJugador)
   {
     if (isset($_SESSION['usuario'])) {
@@ -95,9 +92,8 @@ class ControladorPartida
 
         ModeloPartida::abrirPartida($idPartida);
         echo "Estado de la partida: " . $partida->getEstado() . "<br>";
-        echo "La partida se ha Abierto."; 
+        echo "La partida se ha Abierto.";
         echo "Número de jugadores: " . count($partida->getJugadores());
-
       } else {
         echo "Te has borrado de la partida.";
       }
@@ -142,8 +138,9 @@ class ControladorPartida
 
     VistaDetallePartida::render($partida);
   }
-  public static function buscarPartida($partida){
-    $resultado=ModeloPartida::buscarPartida($partida);
+  public static function buscarPartida($partida)
+  {
+    $resultado = ModeloPartida::buscarPartida($partida);
     return $resultado;
   }
 }
