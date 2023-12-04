@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 
 </head>
+
 <body>
     <!-- Start Top Nav -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
@@ -26,16 +27,16 @@
                     <i class="fa fa-phone mx-2"></i>
                     <a class="navbar-sm-brand text-light text-decoration-none" href="tel:662040002"></a>
                 </div>
-        
+
                 <div>
-                <?php
+                    <?php
                     $usuario = unserialize($_SESSION['usuario']);
                     echo '<a href="index.php?accion=cerrarSesion" class="nav-link link-secondary">';
                     echo $usuario->getEmail();
                     echo "</a>";
-                ?>
+                    ?>
 
-            </div>
+                </div>
 
             </div>
         </div>
@@ -46,7 +47,7 @@
         <div class="container d-flex justify-content-between align-items-center">
 
             <a class="navbar-brand text-success logo h1 align-self-center" href="?accion=mostrarPartidas">
-            PADELEA
+                PADELEA
             </a>
             <img class="d-block mx-auto mb-4" src="./assets/img/padel.png" alt="Padelea" width="300" height="130">
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,18 +57,18 @@
             <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
-                   
+
                         <li class="nav-item">
 
-                        <a href="?accion=mostrarTodos" class="nav-link"> Todas las Partidas</a> 
+                            <a href="?accion=mostrarTodos" class="nav-link"> Todas las Partidas</a>
                         </li>
                         <li class="nav-item">
 
-                        <a href="?accion=mostrarJugadores" class="nav-link"> Jugadores</a> 
+                            <a href="?accion=mostrarJugadores" class="nav-link"> Jugadores</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="#" data-bs-toggle="modal"
-                    data-bs-target="#nuevaPartida">Nueva Partida</a></td></tr>
+                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#nuevaPartida">Nueva Partida</a></td>
+                            </tr>
                         </li>
 
                         <li class="nav-item">
@@ -75,38 +76,35 @@
                     </ul>
                 </div>
                 <div class="container my-4">
-                <form action="" method="get">
-    <input type="hidden" name="accion" value="buscarPartida">
-    <label for="inputYear" class="form-label">Buscar por Fecha/Ciudad</label>
-    <div class="input-group">
-        <input type="text" class="form-control" id="inputYear" name="anio" placeholder="Almeria 2023">
-        <button type="submit" class="btn btn-danger">🔍</button>
-    </div>
-</form>
-
-</div>
-                    
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
-                    </a>
+                    <form action="" method="post">
+                        <input type="hidden" name="accion" value="buscarPartida">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="busqueda" placeholder="Buscar por Ciudad o Fecha">
+                            <button type="submit" class="btn btn-danger">🔍 Buscar</button>
+                        </div>
+                    </form>
                 </div>
+                <a class="nav-icon position-relative text-decoration-none" href="#">
+                    <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
+                    <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
+                </a>
+                <a class="nav-icon position-relative text-decoration-none" href="#">
+                    <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                    <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
+                </a>
             </div>
+        </div>
 
         </div>
     </nav>
     <!-- Close Header -->
-<!-- Start Script -->
-<script src="assets/js/jquery-1.11.0.min.js"></script>
-<script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
-<script src="assets/js/bootstrap.bundle.min.js"></script>
-<script src="assets/js/templatemo.js"></script>
-<script src="assets/js/custom.js"></script>
-<!-- End Script -->
+    <!-- Start Script -->
+    <script src="assets/js/jquery-1.11.0.min.js"></script>
+    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/templatemo.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <!-- End Script -->
     <!-- Modal -->
     <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -123,4 +121,3 @@
             </form>
         </div>
     </div>
-    

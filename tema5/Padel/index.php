@@ -9,6 +9,7 @@ use Padel\vistas\VistaInicio;
 use Padel\controladores\ControladorPartida;
 use Padel\controladores\ControladorLogin;
 use Padel\controladores\ControladorJugador;
+use Padel\vistas\VistaPartidas;
 
 //Autocargar las clases --------------------------
 spl_autoload_register(function ($class) {
@@ -91,9 +92,10 @@ if (isset($_REQUEST)) {
             ControladorPartida::mostrarPartidas();
         }
         if (strcmp($_REQUEST['accion'], 'buscarPartida') == 0) {
-            $nombre = $_REQUEST['nombre'];
-            ControladorPartida::buscarPartida($nombre);
+            $busqueda = $_REQUEST['busqueda'];
+            ControladorPartida::buscarPartida($busqueda);
         }
+        
     } else
         VistaInicio::render();
 }

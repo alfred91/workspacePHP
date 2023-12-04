@@ -53,27 +53,38 @@ class ControladorPartida
 
   public static function apuntarsePartida($id)
   {
+
     if (isset($_SESSION['usuario'])) {
+
       $usuario = unserialize($_SESSION['usuario']);
       $idJugador = $usuario->getId();
-
       $partida = ModeloPartida::detallePartida($id);
 
-      echo "Estado de la partida: " . $partida->getEstado() . "<br>";
-      echo "Número de jugadores: " . count($partida->getJugadores()) . "<br>";
+
 
       if ($partida->getEstado() === 'Abierta' && count($partida->getJugadores()) < 4) {
-        $partida->addJugador($usuario->getNombre(), $usuario->getApodo(), $usuario->getNivel(), $usuario->getEdad());
 
-        ModeloPartida::apuntarsePartida($id, $idJugador);
+        foreach ($partida->getJugadores() as $jugador) {
 
-        if (count($partida->getJugadores()) === 4) {
-          ModeloPartida::cerrarPartida($id);
-          echo "Estado de la partida: " . $partida->getEstado() . "<br>";
-          echo "La partida se ha cerrado.";
-        } else {
-          echo "Te has apuntado a la partida.";
+          if ($jugador->getNivel() !== $usuario->getNivel()) {
+
+            $partida->addJugador($usuario->getNombre(), $usuario->getApodo(), $usuario->getNivel(), $usuario->getEdad());
+
+            ModeloPartida::apuntarsePartida($id, $idJugador);
+
+            if (count($partida->getJugadores()) === 4) {
+              ModeloPartida::cerrarPartida($id);
+              echo "Te has apuntado a la partida.";
+              echo "La partida se ha cerrado.";
+            } else {
+              echo "Estado de la partida: " . $partida->getEstado() . "<br>";
+              echo "Número de jugadores: " . count($partida->getJugadores()) . "<br>";
+              echo "Te has apuntado a la partida.";
+            }
+          }
         }
+
+        echo "No ha sido posible unirse";
       }
     }
   }
@@ -138,9 +149,12 @@ class ControladorPartida
 
     VistaDetallePartida::render($partida);
   }
+
   public static function buscarPartida($partida)
   {
-    $resultado = ModeloPartida::buscarPartida($partida);
-    return $resultado;
+
+    $partidas = Modelopartida::buscarPartida($partida);
+
+    VistaPartidas::render($partidas);
   }
 }

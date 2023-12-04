@@ -13,7 +13,6 @@ class ModeloPartida
 
         $conn = new Conectar();
         $conexion = $conn->getConexion();
-
         $stmt = $conexion->prepare("SELECT p.* FROM Partidas p
                                     INNER JOIN PartidasJugadores pj ON p.id = pj.idPartida
                                     WHERE pj.idJugador = ? 
@@ -141,7 +140,6 @@ class ModeloPartida
 
         $jugadores = $stmt->fetchAll();
 
-        // Establecer los jugadores en la partida
         $partida->setJugadores($jugadores);
 
         $conn->finishConection();
@@ -213,18 +211,19 @@ class ModeloPartida
             $conn->finishConection();
         }
     }
-    public static function buscarPartida($partida){
-        $conn = new Conectar();
-        $conexion = $conn->getConexion();
-        try{
-            $stmt=$conexion -> prepare("SELECT * FROM Partidas WHERE Id= ?");
-            $stmt -> bindparam(1,$id, PDO::PARAM_STR);
-            $stmt -> execute();
-            return $stmt -> fetchAll(PDO::FETCH_ASSOC);
-            }catch(PDOexception $e){
-                echo 'Error en el select de las partidas' .$e -> getMessage();
-                }finally{
-                    $conn->finishConection();
-                    }
+    public static function buscarPartida($partida)
+    {
+        $conexionObject = new Conectar();
+        $conexion = $conexionObject->getConexion();
+        $consulta = $conexion->prepare("SELECT * FROM Partidas WHERE ciudad LIKE ? OR fecha LIKE ?");
+        $consulta->bindValue(1, "%" . $partida . "%");
+        $consulta->bindValue(2, "%" . $partida . "%");
+        $consulta->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Padel\modelos\Partida');
+        $consulta->execute();
+
+        $partidas = $consulta->fetchAll();
+        $conexionObject->finishConection();
+
+        return $partidas;
     }
 }
