@@ -91,7 +91,7 @@ if (isset($_REQUEST)) {
             ControladorPartida::borrarsePartida($idPartida, $idJugador);
             ControladorPartida::mostrarPartidas();
         }
-        if (strcmp($_REQUEST['accion'], 'buscarPartida') == 0) {
+        if (strcmp($_REQUEST['accion'], 'buscarPartida') == 0) {        // BUSCAR UNA PARTIDA POR CIUDAD O FECHA
             $busqueda = $_REQUEST['busqueda'];
             ControladorPartida::buscarPartida($busqueda);
         }

@@ -1,4 +1,5 @@
 <?php
+
 namespace Padel\controladores;
 
 use Padel\vistas\VistaInicio;
@@ -23,9 +24,11 @@ class ControladorLogin
     public static function mostrarFormulario()
     {
         VistaLogin::render();
-
     }
 
+    /** 
+     * Comprobar datos de login
+     */
     public static function checkLogin($email, $password)
     {
 
@@ -35,15 +38,15 @@ class ControladorLogin
         if (!$resultado) {
             echo '<script>alert("Datos incorrectos");</script>';
             ControladorLogin::mostrarFormulario();
-
         } else {
             $_SESSION['usuario'] = serialize($resultado);
             ControladorPartida::mostrarPartidas();
-
         }
     }
 
-
+    /** 
+     * Cerrar sesion
+     */
     public static function cerrarSesion()
     {
         session_destroy();
@@ -51,5 +54,3 @@ class ControladorLogin
         VistaInicio::render();
     }
 }
-
-?>
