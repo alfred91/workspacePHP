@@ -7,6 +7,7 @@ use \PDO;
 class ModeloJugador
 {
 
+    //Comprobar el login en la base de datos
     public static function checkLogin($email, $password)
     {
 
@@ -26,6 +27,7 @@ class ModeloJugador
         return $resultado;
     }
 
+    //Mostrar todos los jugadores de la base de datos
     public static function mostrarJugadores()
     {
         $conn = new Conectar();

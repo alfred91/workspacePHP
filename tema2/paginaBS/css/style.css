@@ -1,0 +1,209 @@
+/* Estilo general del cuerpo de la página */
+body {
+    background-image: url('../img/fondo.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #333333;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin-top: 10rem;
+}
+
+/* Estilo del encabezado (header) */
+header {
+    background-color: rgba(26, 26, 26, 0.151);
+    padding: 10px 0;
+    backdrop-filter: blur(5px);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+/* Logo */
+.logo {
+    max-width: 10rem;
+    height: auto;
+}
+
+.logo:hover {
+    animation: rotateLogo 2s infinite linear;
+}
+
+@keyframes rotateLogo {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Estilo del Navbar */
+.navbar-light .navbar-nav .nav-link {
+    color: #555;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link:focus {
+    color: #d6249f;
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+.navbar-brand {
+    transition: transform 0.3s ease-in-out;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.1);
+}
+
+/* Centrado del contenido del navbar */
+.navbar-collapse {
+    justify-content: center;
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1rem;
+    }
+
+    .navbar-nav .nav-link {
+        padding: 0.5rem 1rem;
+    }
+}
+
+/* Estilo del carrusel */
+.carousel {
+    margin-top: 8rem;
+}
+
+.carousel-item {
+    height: 30rem;
+}
+
+.carousel-item img {
+    max-height: 100%;
+    width: auto;
+    object-fit: contain;
+    margin: auto;
+}
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+    height: 200px;
+    /* Ajusta la altura según tus necesidades */
+    object-fit: cover;
+    /* Asegura que la imagen cubra bien el espacio sin distorsionarse */
+}
+
+.card-body {
+    background-color: rgba(255, 255, 255, 0.9);
+    /* Transparencia ligera para un look moderno */
+}
+
+.btn-primary {
+    background-color: #d6249f;
+    /* Color temático para botones basado en tu esquema de colores */
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #bb1f87;
+    /* Color más oscuro para el hover */
+}
+
+/* Estilo de las secciones principales */
+section {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 5rem;
+    border-radius: 3rem;
+    padding: 15px;
+    margin-top: 10rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-height: 100vh;
+    scroll-behavior: smooth;
+    /* Scrolling suave */
+}
+
+
+/* Títulos de las secciones */
+h2 {
+    color: #4a4a4a;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Transiciones suaves para enlaces */
+a {
+    transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+    color: #007bff;
+}
+
+.parallax-section {
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffffb6;
+}
+
+#miVideo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: fit-content;
+    height: fit-content;
+    z-index: 0;
+}
+
+.parallax-section .container {
+    position: absolute;
+    z-index: 100;
+}
+
+footer {
+    background-color: rgba(35, 28, 56, 0.856);
+    color: #d9d9d9;
+    text-align: center;
+    padding: 15px 0;
+    backdrop-filter: blur(5px);
+    position: fixed;
+    bottom: 0;
+    width: 75%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+
+    header,
+    footer {
+        padding: 1rem 0;
+    }
+}

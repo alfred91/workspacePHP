@@ -9,16 +9,17 @@ use Padel\vistas\VistaDetallePartida;
 
 class ControladorPartida
 {
-
+  // Muestra la página de inicio.
   public static function mostrarInicio()
   {
     VistaInicio::render();
   }
 
+  // Muestra todas las partidas asociadas al usuario actualmente logueado.
   public static function mostrarPartidas()
   {
     if (isset($_SESSION['usuario'])) {
-
+      // Obtiene el usuario de la sesión.
       $usuario = unserialize($_SESSION['usuario']);
 
       $partidas = ModeloPartida::mostrarPartidas($usuario->getId());
@@ -26,12 +27,15 @@ class ControladorPartida
       VistaPartidas::render($partidas);
     }
   }
+
+  // Muestra todas las partidas disponibles.
   public static function mostrarTodos()
   {
     $partidas = ModeloPartida::mostrarTodos();
     VistaPartidas::render($partidas);
   }
 
+  // Crear una nueva partida.
   public static function nuevaPartida($fecha, $hora, $ciudad, $lugar, $cubierto)
   {
     if (isset($_SESSION['usuario'])) {
@@ -51,22 +55,24 @@ class ControladorPartida
     VistaPartidas::render("");
   }
 
+  // Apuntarse a una partida.
   public static function apuntarsePartida($id)
   {
 
-    if (isset($_SESSION['usuario'])) {
+// Verifica si el usuario está logueado
+    if (isset($_SESSION['usuario'])) {      
 
       $usuario = unserialize($_SESSION['usuario']);
       $idJugador = $usuario->getId();
       $partida = ModeloPartida::detallePartida($id);
 
-
+// Comprueba que la partida esté abierta y tenga menos de 4 jugadores, tambien comrpueba que el nivel sea el mismo
 
       if ($partida->getEstado() === 'Abierta' && count($partida->getJugadores()) < 4) {
 
         foreach ($partida->getJugadores() as $jugador) {
 
-          if ($jugador->getNivel() !== $usuario->getNivel()) {
+          if ($jugador->getNivel() == $usuario->getNivel()) {
 
             $partida->addJugador($usuario->getNombre(), $usuario->getApodo(), $usuario->getNivel(), $usuario->getEdad());
 
@@ -89,6 +95,7 @@ class ControladorPartida
     }
   }
 
+  // Borrar un jugador de una partida
   public static function borrarsePartida($idPartida, $idJugador)
   {
     if (isset($_SESSION['usuario'])) {
@@ -113,6 +120,7 @@ class ControladorPartida
     }
   }
 
+  // Borrar una partida
   public static function eliminarPartida($id)
   {
 
@@ -122,6 +130,8 @@ class ControladorPartida
 
     ModeloPartida::mostrarPartidas($user->getId());
   }
+
+  // Cerrar una partida
   public static function cerrarPartida($id)
   {
     $partida = ModeloPartida::detallePartida($id);
@@ -129,9 +139,11 @@ class ControladorPartida
     if ($partida->getEstado() == 'Abierta') {
       ModeloPartida::cerrarPartida($id);
     } else {
-      echo "The game is already closed.";
+      echo "La partida esta cerrada.";
     }
   }
+
+  // Reabrir una partida, permitiendo la unión de más jugadores.
   public static function abrirPartida($id)
   {
     $partida = ModeloPartida::detallePartida($id);
@@ -139,9 +151,10 @@ class ControladorPartida
     if ($partida->getEstado() == 'Cerrada') {
       ModeloPartida::abrirPartida($id);
     } else {
-      echo "The game is already opened.";
+      echo "La partida se ha abierto.";
     }
   }
+  // Muestra los detalles de una partida en concreto
   public static function detallePartida($idPartida)
   {
 
@@ -150,6 +163,7 @@ class ControladorPartida
     VistaDetallePartida::render($partida);
   }
 
+    // Busca partidas
   public static function buscarPartida($partida)
   {
 

@@ -15,7 +15,7 @@ class ModeloPartida
         $conexion = $conn->getConexion();
         $stmt = $conexion->prepare("SELECT p.* FROM Partidas p
                                     INNER JOIN PartidasJugadores pj ON p.id = pj.idPartida
-                                    WHERE pj.idJugador = ? 
+                                    WHERE pj.idJugador = ? AND p.Fecha >= CURDATE()
                                     ORDER BY p.Fecha DESC");
         $stmt->bindValue(1, $idJugador, PDO::PARAM_INT);
         $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Padel\modelos\Partida');
@@ -186,15 +186,12 @@ class ModeloPartida
         $conn = new Conectar();
         $conexion = $conn->getConexion();
 
-        try {
-            $stmt = $conexion->prepare('UPDATE Partidas SET estado = "Abierta" WHERE id = :id');
-            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
-            $stmt->execute();
-        } catch (PDOException $e) {
-            echo 'Error OPENING the game: ' . $e->getMessage();
-        } finally {
-            $conn->finishConection();
-        }
+
+        $stmt = $conexion->prepare('UPDATE Partidas SET estado = "Abierta" WHERE id = :id');
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $conn->finishConection();
     }
 
     public static function eliminarPartida($id)

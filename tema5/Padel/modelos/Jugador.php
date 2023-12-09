@@ -24,7 +24,6 @@ class Jugador
 
     }
 
-
     /**
      * Get the value of id
      */
