@@ -1,5 +1,5 @@
-/* Estilo general del cuerpo de la página */
 body {
+  padding-top: 0.5rem;
   margin: 0;
   padding: 0;
   display: flex;
@@ -16,8 +16,11 @@ body {
   color: #333333;
   margin-top: 10rem;
 }
-
-/* Estilo del encabezado (header) */
+main {
+  width: calc(100% - 15rem);
+  margin-left: auto;
+  margin-right: auto;
+}
 header {
   background-color: rgba(26, 26, 26, 0.151);
   padding: 10px 0;
@@ -28,7 +31,6 @@ header {
   z-index: 1;
 }
 
-/* Logo */
 .logo {
   max-width: 10rem;
   height: auto;
@@ -46,8 +48,20 @@ header {
     transform: rotate(360deg);
   }
 }
+.progress {
+  height: 5px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  background-color: #e0e0e0;
+}
 
-/* Estilo del Navbar */
+.progress-bar {
+  background-color: #007bff;
+}
+
 .navbar-light .navbar-nav .nav-link {
   color: #555;
   transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
@@ -68,8 +82,6 @@ header {
   transform: scale(1.1);
 }
 
-
-/* Centrado del contenido del navbar */
 .navbar-collapse {
   justify-content: center;
 }
@@ -77,7 +89,6 @@ header {
   align-self: center;
 }
 
-/* Ajustes para dispositivos móviles */
 @media (max-width: 768px) {
   .navbar-brand {
     font-size: 1rem;
@@ -88,7 +99,6 @@ header {
   }
 }
 
-/* Estilo del carrusel */
 .carousel {
   margin-top: 8rem;
   background-color: #55555546;
@@ -99,7 +109,7 @@ header {
   color: #333;
   margin-bottom: 0.5rem;
   font-weight: bold;
-  text-align: center; /* Alineación central para todos los títulos h2 */
+  text-align: center;
 }
 
 #carrousel .text-center p {
@@ -140,16 +150,59 @@ header {
 }
 
 .card-img-top {
-  height: 200px;
+  height: 13rem;
   object-fit: cover;
 }
 
 .card-body {
   background-color: rgba(255, 255, 255, 0.432);
 }
+#navbarScrollSpy {
+  width: 3rem;
+  position: flex;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 1000;
+}
 
-/* Estilo de las secciones principales */
+.nav-link {
+  color: #007bff73;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-link:hover {
+  color: #0057b359;
+}
+
+.nav-link.active {
+  color: white;
+  background-color: #007bff5b;
+}
+
+.nav-link {
+  color: #007bff73;
+}
+
+.nav-link:hover {
+  color: #0057b359;
+}
+
+.nav-link.active {
+  color: white;
+  background-color: #007bff5b;
+}
+
+@media (min-width: 992px) {
+  main {
+    margin-left: 120px;
+  }
+}
+
 section {
+  scroll-margin-top: 5rem;
   padding: 5rem;
   background-color: rgba(255, 255, 255, 0.514);
   margin-bottom: 5rem;
@@ -160,14 +213,12 @@ section {
   scroll-behavior: smooth;
 }
 
-/* Títulos de las secciones */
 h2 {
   color: #4a4a4a;
   text-align: center;
   margin-bottom: 10px;
 }
 
-/* Transiciones suaves para enlaces */
 a {
   transition: color 0.3s ease-in-out;
 }
@@ -241,16 +292,11 @@ a:hover {
 }
 
 .welcome-overlay h1 {
-  background-color: rgba(
-    0,
-    0,
-    0,
-    0.75
-  ); /* Fondo más oscuro para resaltar el texto */
-  border: 3px solid #858585; /* Color de borde brillante */
-  box-shadow: 0 0 15px #af4c99; /* Sombra con color temático */
+  background-color: rgba(0, 0, 0, 0.75);
+  border: 3px solid #858585;
+  box-shadow: 0 0 15px #af4c99;
   padding: 30px;
-  border-radius: 10px; /* Bordes redondeados */
+  border-radius: 10px;
 }
 
 .welcome-overlay.fade-out {
@@ -272,7 +318,6 @@ footer {
   z-index: 100;
 }
 
-/* Media queries para responsividad */
 @media (max-width: 768px) {
   header,
   footer {
