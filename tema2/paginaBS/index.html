@@ -11,295 +11,637 @@
 </head>
 
 <body>
+    <div id="welcomeMessage" class="welcome-overlay">
+        <h1>Bienvenidos a mi pagina de League of Legends</h1>
+    </div>
     <header>
-        <!-- Menú de Navegación -->
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #f4f4f4;">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light" role="navigation">
+            <a class="navbar-brand" href="#introVideo">
+                <img src="img/logo.png" class="logo" alt="Logo LoL">
+            </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Introducción <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#champions">Campeones</a>
-                    </li>
-                    <li class="nav-item">
-                        <img src="img/logo.png" class="logo"></img>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#strategies">Estrategias</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#news">Noticias</a>
-                    </li>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="#introVideo">Introducción</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#strategies">Estrategias</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#champions">Campeones</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#carrousel">Carrousel</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#videos">Videos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#championStats">Estadísticas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#news">Noticias</a></li>
                 </ul>
             </div>
         </nav>
     </header>
+
     <main>
         <div id="introVideo">
-            <section id="Parallax" class="parallax-section">
+            <section class="parallax-section">
                 <video autoplay loop id="miVideo">
-                    <source src="img/lol1.mp4" type="video/mp4">
+                    <source src="img/lol3.mp4" type="video/mp4">
                     Tu navegador no soporta videos HTML5.
                 </video>
                 <div class="video-overlay">
-                   
                     <p>Bienvenido al emocionante mundo de League of Legends, un juego multijugador de arena de batalla
-                        en
-                        línea
-                        que ha cautivado a millones de jugadores alrededor del mundo. En League of Legends, los
-                        jugadores
-                        asumen
-                        el rol de un 'invocador' que controla un 'campeón' con habilidades únicas y luchan contra un
-                        equipo
-                        de
-                        jugadores o campeones controlados por computadora. El objetivo es destruir el 'Nexo' enemigo,
-                        una
-                        estructura clave situada en el corazón de la base defendida por torres. La estrategia, la
-                        habilidad
-                        y el
-                        trabajo en equipo son fundamentales para lograr la victoria en este dinámico campo de batalla
+                        en línea que ha cautivado a millones de jugadores alrededor del mundo. En League of Legends, los
+                        jugadores asumen el rol de un 'invocador' que controla un 'campeón' con habilidades únicas y
+                        luchan contra un
+                        equipo de jugadores o campeones controlados por computadora. El objetivo es destruir el 'Nexo'
+                        enemigo
                     </p>
+                </div>
             </section>
             <div id=" container">
-            <section id="champions" class="container mt-5 mb-5 py-5">
-                <h2>Campeones</h2>
-                <p>League of Legends ofrece una vasta galería de campeones, cada uno con un conjunto de habilidades
-                    únicas y
-                    un estilo de juego distintivo. Desde guerreros valientes hasta magos astutos, cada campeón trae una
-                    experiencia de juego única. Aquí encontrarás una breve descripción de sus habilidades y roles en el
-                    juego, lo que te permitirá elegir el campeón que mejor se adapte a tu estilo de juego</p>
-                <div class="row">
-                    <!-- Tarjeta para el campeón Ashe -->
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="img/ashecard.png" class="card-img-top" alt="Ashe">
-                            <div class="card-body">
-                                <h5 class="card-title">Ashe</h5>
-                                <p class="card-text">Bot Lane - Marksman, AD</p>
-                                <a href="#" class="btn btn-primary">Más información</a>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="img/nasuscard.png" class="card-img-top" alt="Ashe">
-                            <div class="card-body">
-                                <h5 class="card-title">Ashe</h5>
-                                <p class="card-text">Bot Lane - Marksman, AD</p>
-                                <a href="#" class="btn btn-primary">Más información</a>
-                            </div>
-                        </div>
-                    </div>
+                <section id="strategies" class="container mt-5 mb-5 py-5">
+                    <h2>Estrategias Avanzadas en League of Legends</h2>
+                    <div id="accordionStrategy">
 
-                    <div class="col-md-4">
+                        <!-- Acordeón 1: Estrategia de Inicio de Juego -->
                         <div class="card">
-                            <img src="img/ahricard.png" class="card-img-top" alt="Ashe">
-                            <div class="card-body">
-                                <h5 class="card-title">Ashe</h5>
-                                <p class="card-text">Bot Lane - Marksman, AD</p>
-                                <a href="#" class="btn btn-primary">Más información</a>
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                                        aria-expanded="true" aria-controls="collapseOne">
+                                        Estrategia de Inicio de Juego
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                data-parent="#accordionStrategy">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p> Consejos sobre cómo empezar fuerte en el juego, seleccionando los
+                                                campeones y objetos adecuados. Conoce las mejores tácticas para el early
+                                                game, incluyendo cómo administrar tus recursos, cuándo y cómo atacar, y
+                                                la importancia de controlar los objetivos tempranos.</p>
+                                            <p>Aprende a establecer una ventaja desde el principio y a dominar las
+                                                primeras fases del juego, lo que te permitirá tomar el control del mapa
+                                                y preparar el terreno para victorias decisivas.</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <img src="img/gnar.png" alt="Gnar" class="img-fluid mb-3">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-4">
+                        <!-- Acordeón 2: Dominio del Mapa y Visión -->
                         <div class="card">
-                            <img src="img/teemocard.png" class="card-img-top" alt="Ashe">
-                            <div class="card-body">
-                                <h5 class="card-title">Ashe</h5>
-                                <p class="card-text">Bot Lane - Marksman, AD</p>
-                                <a href="#" class="btn btn-primary">Más información</a>
+                            <div class="card-header" id="headingTwo">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo"
+                                        aria-expanded="false" aria-controls="collapseTwo">
+                                        Dominio del Mapa y Visión
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                data-parent="#accordionStrategy">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p>Descubre las técnicas para controlar el mapa y mantener una buena visión,
+                                                esenciales para tomar decisiones tácticas. Aprende a colocar guardianes
+                                                de visión estratégicamente y a anticipar los movimientos del enemigo, lo
+                                                que es crucial para evitar emboscadas y controlar los recursos del mapa.
+                                            </p>
+                                            <p>Entiende la importancia de la visión en áreas clave y cómo esto puede
+                                                influir en la toma de decisiones durante las fases de laning y
+                                                teamfights.</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <img src="img/mapa.jpg" alt="Imagen Descriptiva" class="img-fluid mb-3">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-4">
+                        <!-- Acordeón 3: Estrategias de Equipo -->
                         <div class="card">
-                            <img src="img/gnarcard.png" class="card-img-top" alt="Ashe">
-                            <div class="card-body">
-                                <h5 class="card-title">Ashe</h5>
-                                <p class="card-text">Bot Lane - Marksman, AD</p>
-                                <a href="#" class="btn btn-primary">Más información</a>
+                            <div class="card-header" id="headingThree">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree"
+                                        aria-expanded="false" aria-controls="collapseThree">
+                                        Estrategias de Equipo
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                data-parent="#accordionStrategy">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p>Obtén consejos para coordinar efectivamente con tu equipo, desde
+                                                composiciones de campeones hasta tácticas de lucha en equipo. Descubre
+                                                cómo seleccionar campeones que sinergicen bien y cómo aprovechar sus
+                                                fortalezas para ganar en teamfights.</p>
+                                            <p>Aprende sobre la importancia de la comunicación y el juego en equipo, y
+                                                cómo esto puede hacer la diferencia entre ganar y perder en situaciones
+                                                críticas del juego.</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <img src="img/header.jpg" alt="Imagen Descriptiva" class="img-fluid mb-3">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-4">
+                        <!-- Acordeón 4: Manejo de Objetivos y Jungla -->
                         <div class="card">
-                            <img src="img/mfcard.png" class="card-img-top" alt="Ashe">
-                            <div class="card-body">
-                                <h5 class="card-title">Ashe</h5>
-                                <p class="card-text">Bot Lane - Marksman, AD</p>
-                                <a href="#" class="btn btn-primary">Más información</a>
+                            <div class="card-header" id="headingFour">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFour"
+                                        aria-expanded="false" aria-controls="collapseFour">
+                                        Manejo de Objetivos y Jungla
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                                data-parent="#accordionStrategy">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p>Explora estrategias para el manejo eficiente de los objetivos del mapa y
+                                                la jungla, claves para obtener una ventaja en el juego. Aprende la
+                                                importancia de controlar los dragones, el Barón Nashor y los heraldos, y
+                                                cómo estos objetivos pueden cambiar el curso del juego.</p>
+                                            <p>Conoce las mejores prácticas para el jungling, incluyendo rutas de
+                                                jungla, ganking y cómo aprovechar al máximo las ventajas del jungler en
+                                                tu equipo.</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <img src="img/jungla.jpg" alt="Imagen Descriptiva" class="img-fluid mb-3">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </section>
 
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="img/renektoncard.png" class="card-img-top" alt="Ashe">
-                            <div class="card-body">
-                                <h5 class="card-title">Ashe</h5>
-                                <p class="card-text">Bot Lane - Marksman, AD</p>
-                                <a href="#" class="btn btn-primary">Más información</a>
-                            </div>
-                        </div>
-                    </div>
+                <section id="champions" class="container mt-5 mb-5 py-5">
+                    <h2>Campeones</h2>
+                    <p>League of Legends ofrece una vasta galería de campeones, cada uno con un conjunto de habilidades
+                        únicas y un estilo de juego distintivo. Desde guerreros valientes hasta magos astutos, cada
+                        campeón trae una experiencia de juego única. Aquí encontrarás una breve descripción de sus
+                        habilidades y roles en el juego, lo que te permitirá elegir el campeón que mejor se adapte a tu
+                        estilo de juego.</p>
+                    <div class="row">
 
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="img/rammuscard.png" class="card-img-top" alt="Ashe">
-                            <div class="card-body">
-                                <h5 class="card-title">Ashe</h5>
-                                <p class="card-text">Bot Lane - Marksman, AD</p>
-                                <a href="#" class="btn btn-primary">Más información</a>
+                        <!-- Tarjeta Ashe -->
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img src="img/ashecard.png" class="card-img-top" alt="Ashe">
+                                <div class="card-body">
+                                    <h5 class="card-title">Ashe</h5>
+                                    <p class="card-text">Arquera de Freljord, especialista en controlar y ralentizar
+                                        enemigos.</p>
+                                    <a href="#" class="btn btn-primary">Más información</a>
+                                </div>
                             </div>
                         </div>
+
+                        <!-- Tarjeta Nasus -->
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img src="img/nasuscard.png" class="card-img-top" alt="Nasus">
+                                <div class="card-body">
+                                    <h5 class="card-title">Nasus</h5>
+                                    <p class="card-text">Guerrero de Shurima, con poder creciente y un devastador golpe
+                                        sifónico.</p>
+                                    <a href="#" class="btn btn-primary">Más información</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tarjeta Ahri -->
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img src="img/ahricard.png" class="card-img-top" alt="Ahri">
+                                <div class="card-body">
+                                    <h5 class="card-title">Ahri</h5>
+                                    <p class="card-text">Zorro de nueve colas con habilidades de encanto y daño mágico.
+                                    </p>
+                                    <a href="#" class="btn btn-primary">Más información</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tarjeta Teemo -->
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img src="img/teemocard.png" class="card-img-top" alt="Teemo">
+                                <div class="card-body">
+                                    <h5 class="card-title">Teemo</h5>
+                                    <p class="card-text">Explorador astuto de Bandle City, experto en trampas venenosas.
+                                    </p>
+                                    <a href="#" class="btn btn-primary">Más información</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tarjeta Gnar -->
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img src="img/gnarcard.png" class="card-img-top" alt="Gnar">
+                                <div class="card-body">
+                                    <h5 class="card-title">Gnar</h5>
+                                    <p class="card-text">Yordle prehistórico con habilidades transformacionales únicas.
+                                    </p>
+                                    <a href="#" class="btn btn-primary">Más información</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tarjeta Miss Fortune -->
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img src="img/mfcard.png" class="card-img-top" alt="Miss Fortune">
+                                <div class="card-body">
+                                    <h5 class="card-title">Miss Fortune</h5>
+                                    <p class="card-text">Cazarrecompensas temida, con un letal doble disparo.</p>
+                                    <a href="#" class="btn btn-primary">Más información</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tarjeta Renekton -->
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img src="img/renektoncard.png" class="card-img-top" alt="Renekton">
+                                <div class="card-body">
+                                    <h5 class="card-title">Renekton</h5>
+                                    <p class="card-text">Destructor de Shurima, un luchador imparable en la línea del
+                                        frente.</p>
+                                    <a href="#" class="btn btn-primary">Más información</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tarjeta Rammus -->
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img src="img/rammuscard.png" class="card-img-top" alt="Rammus">
+                                <div class="card-body">
+                                    <h5 class="card-title">Rammus</h5>
+                                    <p class="card-text">Armordillo espinoso, maestro del rollo rápido y la defensa
+                                        impenetrable.</p>
+                                    <a href="#" class="btn btn-primary">Más información</a>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
+                </section>
+
+
+                <section id="carrousel" class="container mt-5 mb-5 py-5">
+                    <div class="text-center mb-4">
+                        <h2>Galería de Campeones</h2>
+                        <p>Explora una selección de campeones icónicos de League of Legends</p>
+                    </div>
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
+
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="d-block w-100" src="img/rumble.jpg" alt="Gnar">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="img/gnar.png" alt="Gnar">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="img/teemopng.png" alt="Teemo">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="img/ashepng.png" alt="Ashe">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="img/yasuo.png" alt="Yasuo">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="img/blitz.png" alt="Blitzcrank">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="img/twich.png" alt="Twich">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                            data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Anterior</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                            data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Siguiente</span>
+                        </a>
+                    </div>
+                    <div class="text-center">
+                        <blockquote class="quote">
+                            <p>“La justicia es una serpiente que muerde a los fuertes y a los débiles.” - Kayle</p>
+                        </blockquote>
+                        <blockquote class="quote">
+                            <p>“¡Puedo ser odiado, pero siempre seré honorable!” - Garen</p>
+                        </blockquote>
+                    </div>
+            </div>
             </section>
 
-            <section id="strategies" class="container mt-5 mb-5 py-5">
-                <h2>Estrategias</h2>
-                <p>Dominar League of Legends no solo requiere habilidad, sino también una buena estrategia. Aquí
-                    compartimos
-                    algunos consejos básicos para ayudarte a mejorar tu juego. Aprende a elegir campeones que
-                    complementen a
-                    tu equipo, comprende la importancia de farmear minions para adquirir oro y descubre cómo controlar
-                    el
-                    mapa para obtener ventajas estratégicas. ¡Estos consejos te pondrán en camino hacia la victoria!</p>
-            </section>
-
-            <section id="Parallax" class="parallax-section">
+            <section id="videos" class="parallax-section">
                 <video autoplay muted loop id="miVideo">
                     <source src="img/lol.mp4" type="video/mp4">
                     Tu navegador no soporta videos HTML5.
                 </video>
                 <div class="container text-center">
                     <h2 class="text-white mb-4">Explora nuestros videos</h2>
-                    <!-- Miniaturas de video que actúan como botón para el modal -->
                     <div class="row">
+
                         <div class="col-md-6 mb-4">
-                            <!-- Miniatura para el Video 1 -->
-                            <img src="https://img.youtube.com/vi/TUVIDEOID1/0.jpg" class="img-fluid"
-                                alt="Miniatura del video" data-toggle="modal" data-target="#videoModal1">
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/U-Rndl_2dNw"
+                                    allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            </div>
                         </div>
+
                         <div class="col-md-6 mb-4">
-                            <!-- Miniatura para el Video 2 -->
-                            <img src="https://img.youtube.com/vi/TUVIDEOID2/0.jpg" class="img-fluid"
-                                alt="Miniatura del video" data-toggle="modal" data-target="#videoModal2">
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/PC7aqh5iaxE"
+                                    allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/FoiO64AuDQ4"
+                                    allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/1qGkmv80KD0"
+                                    allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            </div>
                         </div>
                     </div>
-                      <!-- Carrusel -->
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="d-block w-100" src="img/gnar.png" alt="Gnar">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="img/teemopng.png" alt="Teemo">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="img/ashepng.png" alt="Ashe">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="img/yasuo.png" alt="Yasuo">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="img/blitz.png" alt="Blitzcrank">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="img/twich.png" alt="Twich">
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Anterior</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Siguiente</span>
-            </a>
-        </div>
                 </div>
             </section>
 
-            <!-- Modal para Video 1 -->
-            <div class="modal fade" id="videoModal1" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel1"
-                aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content bg-transparent border-0">
-                        <div class="modal-body">
-                            <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <!-- Incrustación de Video 1 de YouTube -->
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item"
-                                    src="https://www.youtube.com/watch?v=w17AA7gBASg&t=10068s"
-                                    allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- Estadísticas de Campeones -->
+            <section id="championStats" class="container mt-5 mb-5">
+                <h2 class="text-center mb-4">Estadísticas de Campeones</h2>
 
-            <!-- Modal para Video 2 -->
-            <div class="modal fade" id="videoModal2" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel2"
-                aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content bg-transparent border-0">
-                        <div class="modal-body">
-                            <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <!-- Incrustación de Video 2 de YouTube -->
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item"
-                                    src="https://www.youtube.com/embed/TUVIDEOID2?autoplay=1"
-                                    allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </div>
+                <div id="tabla1" class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Campeón</th>
+                                <th>Win Rate</th>
+                                <th>Pick Rate</th>
+                                <th>Rol Principal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Ashe</td>
+                                <td>51.2%</td>
+                                <td>13.5%</td>
+                                <td>Bot Lane - Marksman</td>
+                            </tr>
+                            <tr>
+                                <td>Yasuo</td>
+                                <td>47.8%</td>
+                                <td>14.7%</td>
+                                <td>Mid Lane - Fighter</td>
+                            </tr>
+                            <tr>
+                                <td>Garen</td>
+                                <td>50.4%</td>
+                                <td>12.9%</td>
+                                <td>Top Lane - Tank</td>
+                            </tr>
+                            <tr>
+                                <td>Ahri</td>
+                                <td>52.6%</td>
+                                <td>11.3%</td>
+                                <td>Mid Lane - Mage</td>
+                            </tr>
+                            <tr>
+                                <td>Teemo</td>
+                                <td>49.8%</td>
+                                <td>10.5%</td>
+                                <td>Top Lane - Scout</td>
+                            </tr>
+                            <tr>
+                                <td>Lee Sin</td>
+                                <td>50.1%</td>
+                                <td>15.2%</td>
+                                <td>Jungle - Fighter</td>
+                            </tr>
+                            <tr>
+                                <td>Jinx</td>
+                                <td>53.2%</td>
+                                <td>12.8%</td>
+                                <td>Bot Lane - Marksman</td>
+                            </tr>
+                            <tr>
+                                <td>Thresh</td>
+                                <td>48.6%</td>
+                                <td>13.9%</td>
+                                <td>Bot Lane - Support</td>
+                            </tr>
+                            <tr>
+                                <td>Darius</td>
+                                <td>49.7%</td>
+                                <td>11.6%</td>
+                                <td>Top Lane - Fighter</td>
+                            </tr>
+                            <tr>
+                                <td>Katarina</td>
+                                <td>50.9%</td>
+                                <td>14.4%</td>
+                                <td>Mid Lane - Assassin</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-            </div>
 
+                <div id="tabla2" class="table-responsive" style="display: none;">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Campeón</th>
+                                <th>Win Rate</th>
+                                <th>Pick Rate</th>
+                                <th>Rol Principal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Malphite</td>
+                                <td>51.7%</td>
+                                <td>9.2%</td>
+                                <td>Top Lane - Tank</td>
+                            </tr>
+                            <tr>
+                                <td>Kayn</td>
+                                <td>48.9%</td>
+                                <td>10.1%</td>
+                                <td>Jungle - Assassin</td>
+                            </tr>
+                            <tr>
+                                <td>Zoe</td>
+                                <td>47.5%</td>
+                                <td>11.7%</td>
+                                <td>Mid Lane - Mage</td>
+                            </tr>
+                            <tr>
+                                <td>Senna</td>
+                                <td>50.3%</td>
+                                <td>12.4%</td>
+                                <td>Bot Lane - Support</td>
+                            </tr>
+                            <tr>
+                                <td>Mordeka</td>
+                                <td>52.0%</td>
+                                <td>8.8%</td>
+                                <td>Top Lane - Fighter</td>
+                            </tr>
+                            <tr>
+                                <td>Ezreal</td>
+                                <td>49.6%</td>
+                                <td>13.0%</td>
+                                <td>Bot Lane - Marksman</td>
+                            </tr>
+                            <tr>
+                                <td>Blitzcrank</td>
+                                <td>50.1%</td>
+                                <td>9.9%</td>
+                                <td>Bot Lane - Support</td>
+                            </tr>
+                            <tr>
+                                <td>Ekko</td>
+                                <td>48.3%</td>
+                                <td>10.5%</td>
+                                <td>Mid Lane - Assassin</td>
+                            </tr>
+                            <tr>
+                                <td>Varus</td>
+                                <td>47.8%</td>
+                                <td>10.2%</td>
+                                <td>Bot Lane - Marksman</td>
+                            </tr>
+                            <tr>
+                                <td>Aatrox</td>
+                                <td>49.9%</td>
+                                <td>11.1%</td>
+                                <td>Top Lane - Fighter</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="text-center">
+                    <button onclick="mostrarTabla('tabla1')" class="btn btn-info">1</button>
+                    <button onclick="mostrarTabla('tabla2')" class="btn btn-info">2</button>
+                </div>
+                <div class="centered-image">
+                    <img src="img/campeones.png" alt="Tabla de campeones">
+                </div>
+            </section>
             <section id="news" class="container mt-4">
-                <h2>Últimas Noticias</h2>
-                <p>"Mantente al día con las últimas noticias y actualizaciones de League of Legends. Aquí encontrarás
-                    información sobre los últimos eventos de eSports, cambios en el juego, y anuncios de nuevos
-                    campeones.
-                    ¡Sigue visitando para no perderte ninguna novedad</p>
+                <h2 class="text-center">Últimas Noticias</h2>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card mb-4 mt-5">
+                            <img src="img/noticia1.png" class="card-img-top" alt="Noticia 1">
+                            <div class="card-body">
+                                <h5 class="card-title">Nueva Actualización de Temporada</h5>
+                                <p class="card-text">Descubre todas las novedades de la última actualización de la
+                                    temporada, incluyendo cambios en campeones, objetos y más.</p>
+                                <a href="https://www.leagueoflegends.com/es-es/news/" class="btn btn-primary">Leer más</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="card mb-4 mt-5">
+                            <img src="img/noticia2.png" class="card-img-top" alt="Noticia 2">
+                            <div class="card-body">
+                                <h5 class="card-title">Torneo Mundial de eSports</h5>
+                                <p class="card-text">Sigue la emocionante acción del torneo mundial de League of Legends
+                                    con equipos de todo el mundo compitiendo por la gloria.</p>
+                                <a href="https://www.leagueoflegends.com/es-es/news/" class="btn btn-primary">Leer más</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="card mb-4 mt-5">
+                            <img src="img/noticia3.png" class="card-img-top" alt="Noticia 3">
+                            <div class="card-body">
+                                <h5 class="card-title">Nuevo Campeón Revelado</h5>
+                                <p class="card-text">Conoce al último campeón revelado en League of Legends y descubre
+                                    sus habilidades únicas y su historia de fondo.</p>
+                                <a href="https://www.leagueoflegends.com/es-es/news/" class="btn btn-primary">Leer más</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="card mb-4 mt-5"> <img src="img/noticia.png" class="card-img-top" alt="Noticia 4">
+                            <div class="card-body">
+                                <h5 class="card-title">Guía de Estrategia</h5>
+                                <p class="card-text">Mejora tus habilidades en League of Legends con nuestra guía de
+                                    estrategia que te ayudará a dominar el juego.</p>
+                                <a href="https://www.leagueoflegends.com/es-es/news/" class="btn btn-primary">Leer más</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
+
+
         </div>
         <footer class="footer">
-            <p>&copy; 2023 League of Legends Fan Page</p>
+            <div class="container text-center">
+                <a href="https://twitter.com/tucuenta" class="mx-2">
+                    <img src="https://icons.getbootstrap.com/assets/icons/twitter.svg" alt="Twitter" width="30"
+                        height="30">
+                </a>
+                <a href="https://facebook.com/tucuenta" class="mx-2">
+                    <img src="https://icons.getbootstrap.com/assets/icons/facebook.svg" alt="Facebook" width="30"
+                        height="30">
+                </a>
+                <p>&copy; 2023 League of Legends Alfredo's Project Page</p>
+            </div>
         </footer>
+
 
         <!-- Bootstrap JS, Popper.js, and jQuery -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.polyfills.min.js"></script>
-        <script>
-            var scroll = new SmoothScroll('a[href*="#"]', {
-                speed: 800,
-                speedAsDuration: true
-            });
-        </script>
+        <script src="js/script.js"></script>
 
 </body>
 
