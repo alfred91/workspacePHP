@@ -1,28 +1,46 @@
+<<<<<<< HEAD
 body {
   padding-top: 0.5rem;
+=======
+/* Estilos Body y elementos de texto */
+body, h1, h2, h3, p, ul, li {
+>>>>>>> e37168c (1)
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #333;
   background-image: url("../img/fondo.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #333333;
-  margin-top: 10rem;
+  min-height: 100vh;
+  padding-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+<<<<<<< HEAD
 main {
   width: calc(100% - 15rem);
   margin-left: auto;
   margin-right: auto;
 }
+=======
+
+main {
+  width: calc(100% - 15rem);
+  margin: 0 auto;
+}
+
+/* Estilos para el encabezado */
+>>>>>>> e37168c (1)
 header {
-  background-color: rgba(26, 26, 26, 0.151);
+  background-color: rgba(168, 168, 168, 0.267);
   padding: 10px 0;
   backdrop-filter: blur(5px);
   position: fixed;
@@ -31,15 +49,21 @@ header {
   z-index: 1;
 }
 
+<<<<<<< HEAD
+=======
+/* Estilos para el logo en el encabezado */
+>>>>>>> e37168c (1)
 .logo {
   max-width: 10rem;
   height: auto;
+  transition: transform 0.3s ease-in-out;
 }
 
 .logo:hover {
   animation: rotateLogo 2s infinite linear;
 }
 
+/* Animación del logo */
 @keyframes rotateLogo {
   from {
     transform: rotate(0deg);
@@ -62,6 +86,21 @@ header {
   background-color: #007bff;
 }
 
+<<<<<<< HEAD
+=======
+/* Barra de progreso superior */
+.progress {
+  height: 1px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  background-color: #b6599e65;
+}
+
+/* Estilos para enlaces de navegación */
+>>>>>>> e37168c (1)
 .navbar-light .navbar-nav .nav-link {
   color: #555;
   transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
@@ -74,6 +113,7 @@ header {
   transform: translateY(-2px);
 }
 
+/* Estilos para el logo en la barra de navegación */
 .navbar-brand {
   transition: transform 0.3s ease-in-out;
 }
@@ -82,13 +122,23 @@ header {
   transform: scale(1.1);
 }
 
+<<<<<<< HEAD
+=======
+/* Estilos para la barra de navegación colapsada */
+>>>>>>> e37168c (1)
 .navbar-collapse {
   justify-content: center;
 }
+
+/* Estilos para imágenes */
 .img {
   align-self: center;
 }
 
+<<<<<<< HEAD
+=======
+/* Estilos para pantallas pequeñas */
+>>>>>>> e37168c (1)
 @media (max-width: 768px) {
   .navbar-brand {
     font-size: 1rem;
@@ -99,15 +149,40 @@ header {
   }
 }
 
+<<<<<<< HEAD
+=======
+/* Estilos para secciones */
+section {
+  scroll-margin-top: 5rem;
+  background-color: rgba(255, 255, 255, 0.514);
+  margin-bottom: 5rem;
+  border-radius: 3rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  min-height: 100vh;
+  scroll-behavior: smooth;
+}
+
+/* Estilos para encabezados de sección */
+section h2 {
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Estilos para el carrusel */
+>>>>>>> e37168c (1)
 .carousel {
   margin-top: 8rem;
   background-color: #55555546;
   border-radius: 5rem;
 }
 
-#carrousel .text-center h2 {
+#carrousel .text-center h2,
+#carrousel .text-center p {
   color: #333;
   margin-bottom: 0.5rem;
+<<<<<<< HEAD
   font-weight: bold;
   text-align: center;
 }
@@ -115,10 +190,13 @@ header {
 #carrousel .text-center p {
   color: #555;
   margin-bottom: 2rem;
+=======
+  text-align: center;
+>>>>>>> e37168c (1)
 }
 
 .carousel-item {
-  height: 30rem;
+  height: 40rem;
   transition: transform 0.5s ease;
 }
 
@@ -133,20 +211,25 @@ header {
 .carousel-item img:hover {
   transform: scale(1.25);
 }
+
+/* Estilos para citas */
 .quote {
   font-style: italic;
   color: #555;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 0.6rem;
+  margin-bottom: 0.6rem;
 }
+
+/* Estilos para tarjetas */
 .card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+  border-radius: 50rem;
 }
 
 .card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1rem);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
 }
 
 .card-img-top {
@@ -201,6 +284,7 @@ header {
   }
 }
 
+<<<<<<< HEAD
 section {
   scroll-margin-top: 5rem;
   padding: 5rem;
@@ -221,10 +305,69 @@ h2 {
 
 a {
   transition: color 0.3s ease-in-out;
+=======
+/* Estilos para la barra de navegación lateral */
+#navbarScrollSpy {
+  width: 4rem;
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 100;
 }
 
-a:hover {
-  color: #007bff;
+.nav-link {
+  color: #007bff7c;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-link:hover {
+  color: #0057b359;
+>>>>>>> e37168c (1)
+}
+
+.nav-link.active {
+  color: white;
+  background-color: #007bff5b;
+}
+
+/* Estilos adicionales para enlaces */
+.nav-link {
+  color: #007bff73;
+}
+
+.nav-link:hover {
+  color: #0057b359;
+}
+
+.nav-link.active {
+  color: white;
+  background-color: #007bff5b;
+}
+
+/* Estilos para contenido principal en pantallas grandes */
+@media (min-width: 992px) {
+  main {
+    margin-left: 120px;
+  }
+}
+
+/* Estilos para superposiciones y video */
+.centered-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+#miVideo {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  z-index: 0;
 }
 
 .parallax-section {
@@ -238,27 +381,12 @@ a:hover {
   height: 100%;
 }
 
-.centered-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-}
-
-#miVideo {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-}
-
 .parallax-section .container {
   position: absolute;
   z-index: 2;
 }
+
+/* Estilos para superposición de bienvenida */
 .welcome-overlay {
   position: fixed;
   top: 0;
@@ -278,6 +406,7 @@ a:hover {
   animation: fadeInOut 6s ease-in-out forwards;
 }
 
+/* Animación de superposición de bienvenida */
 @keyframes fadeInOut {
   0% {
     opacity: 1;
@@ -299,25 +428,33 @@ a:hover {
   border-radius: 10px;
 }
 
+/* Estilos para ocultar superposición de bienvenida */
 .welcome-overlay.fade-out {
   opacity: 0;
   visibility: hidden;
 }
 
+/* Estilos para el pie de página */
 footer {
   background-color: rgba(35, 28, 56, 0.856);
   color: #d9d9d9;
   text-align: center;
-  padding: 15px 0;
-  backdrop-filter: blur(5px);
+  padding: 1rem 0;
+  backdrop-filter: blur(00.5rem);
   position: fixed;
   bottom: 0;
-  width: 75%;
+  height: min-content;
+  width: 90%;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 100;
+  z-index: 1;
+  border-radius: 2rem;
 }
 
+<<<<<<< HEAD
+=======
+/* Estilos para encabezado y pie de página en pantallas pequeñas */
+>>>>>>> e37168c (1)
 @media (max-width: 768px) {
   header,
   footer {

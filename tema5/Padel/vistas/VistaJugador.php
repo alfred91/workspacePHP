@@ -47,13 +47,13 @@ class VistaJugador
                             </td>
                             <td class="col col-lg-2 text-center">
                                 <?= $jugador->getEmail() ?>
-                            </td>       <td class="col col-lg-2 text-center">
+                            </td>
+                            <td class="col col-lg-2 text-center">
                                 <?= $jugador->getNombre() ?>
                             </td>
                             <td class="col col-lg-2 text-center">
                                 <?= $jugador->getPassword() ?>
                             </td>
-                     
                             <td class="col col-lg-2 text-center">
                                 <?= $jugador->getApodo() ?>
                             </td>
@@ -68,12 +68,12 @@ class VistaJugador
                     }
                 }
                 include "VistaNuevaPartida.php";
-                include "VistaActualizarPartida.php";?>
+                include "VistaActualizarPartida.php"; ?>
             </table>
         </div>
 
-<?php 
-include "PieMain.php";
+<?php
+        include "PieMain.php";
     }
 }
 ?>

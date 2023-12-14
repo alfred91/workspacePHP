@@ -9,7 +9,6 @@ use Padel\vistas\VistaInicio;
 use Padel\controladores\ControladorPartida;
 use Padel\controladores\ControladorLogin;
 use Padel\controladores\ControladorJugador;
-use Padel\vistas\VistaPartidas;
 
 //Autocargar las clases --------------------------
 spl_autoload_register(function ($class) {
