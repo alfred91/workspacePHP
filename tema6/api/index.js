@@ -1,7 +1,7 @@
 const app = require("./app");
 const port = 3000;
 const mongoose = require("mongoose");
-const urlMongo = "mongodb://root:toor@localhost:27018/tareas";
+const urlMongo = "mongodb://root:toor@localhost:27018/apitask";
 
 mongoose.connect(urlMongo);
 

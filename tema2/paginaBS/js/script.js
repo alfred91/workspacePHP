@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 window.onload = function () {
   document.getElementById("introVideo").scrollIntoView();
 };
@@ -7,22 +8,47 @@ let scroll = new SmoothScroll('a[href*="#"]', {
   speedAsDuration: true,
   offset: function (anchor, toggle) {
     let href = anchor.getAttribute("href");
+=======
+// BARRA DE PROGRESO ANIMADA AL DESPLAZARSE
+document.addEventListener("scroll", function () {
+  var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  var height =
+    document.documentElement.scrollHeight -
+    document.documentElement.clientHeight;
+  var scrolled = (winScroll / height) * 100;
+  var progressBar = document.querySelector(".progress-bar");
+  progressBar.style.width = scrolled + "%";
+  progressBar.setAttribute("aria-valuenow", scrolled);
+});
+>>>>>>> e37168c (1)
 
-    if (href === "#introVideo") {
-      return 0;
-    } else {
-      return 50;
+// ACTIVAR ENLACES DE NAVEGACIÓN SEGÚN LA SECCION
+document.addEventListener("DOMContentLoaded", (event) => {
+  updateNavLinks();
+});
+
+window.addEventListener("scroll", updateNavLinks);
+function updateNavLinks() {
+  const sections = document.querySelectorAll("section");
+  const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+  let currentSection = "";
+  sections.forEach((section) => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.offsetHeight;
+    if (pageYOffset >= sectionTop - sectionHeight / 3) {
+      currentSection = section.getAttribute("id");
     }
-  },
-});
-
-$(document).ready(function () {
-  $(".nav-link").on("click", function () {
-    $(".nav-link").removeClass("active");
-    $(this).addClass("active");
   });
-});
+  
+  navLinks.forEach((link) => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === "#" + currentSection) {
+      link.classList.add("active");
+    }
+  });
+}
 
+<<<<<<< HEAD
 $(document).ready(function () {
   $('[data-toggle="tooltip"]').tooltip();
 });
@@ -64,10 +90,12 @@ document.addEventListener("scroll", function () {
   progressBar.setAttribute("aria-valuenow", progress);
 });
 
+=======
+// FUNCION PARA ALTERNAR ENTRE DOS TABLAS CON BOTON
+>>>>>>> e37168c (1)
 function mostrarTabla(tablaId) {
   var tabla1 = document.getElementById("tabla1");
   var tabla2 = document.getElementById("tabla2");
-
   if (tablaId === "tabla1") {
     tabla1.style.display = "";
     tabla2.style.display = "none";

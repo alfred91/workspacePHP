@@ -50,7 +50,7 @@ class ModeloPartida
         $conexion = $conn->getConexion();
 
         try {
-            $conexion->beginTransaction(); // Start a transaction
+            $conexion->beginTransaction(); // Comenzar una transaccion, insercion doble
 
             $stmt = $conexion->prepare('INSERT INTO Partidas (Fecha, Hora, Ciudad, Lugar, Cubierto, Estado)
                                     VALUES (:Fecha, :Hora, :Ciudad, :Lugar, :Cubierto, "Abierta")');
