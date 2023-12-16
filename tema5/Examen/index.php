@@ -54,6 +54,7 @@ if (isset($_REQUEST)) {
             $id = $_REQUEST['id'];
             ControladorAmigo::detalleAmigo($id);
             VistaAmigos::render($id);
+            
         } else
             VistaInicio::render();
     }

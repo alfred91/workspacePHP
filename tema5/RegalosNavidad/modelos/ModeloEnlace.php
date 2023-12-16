@@ -11,8 +11,7 @@ class ModeloEnlace
         $conexion = new Conectar();
         $stmt=$conexion->getConexion()->prepare("SELECT * FROM Enlaces WHERE idRegalo = ?");
         $stmt -> bindValue(1,$idRegalo);
-        //echo "SQL: " . $stmt->queryString . PHP_EOL;
-        //echo "Bound Parameter: " . $idRegalo . PHP_EOL;
+
         $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'RegalosNavidad\modelos\Enlace');
         
         $stmt->execute();
@@ -28,6 +27,7 @@ class ModeloEnlace
 {
     $conexion = new Conectar();
     $stmt = $conexion->getConexion()->prepare("SELECT * FROM Enlaces WHERE id = ?");
+
     $stmt->bindValue(1, $id);
     $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'RegalosNavidad\modelos\Enlace');
     $stmt->execute();
@@ -39,14 +39,11 @@ class ModeloEnlace
     return $enlace;
 }
 
-
     public static function insertarEnlace($nombre, $enlaceWeb, $precio, $imagen, $prioridad, $idRegalo){
-        $conn = new Conectar();
 
-        $conexion = $conn->getConexion();
-
-        $stmt = $conexion->prepare("INSERT INTO Enlaces (nombre, enlaceWeb, precio, imagen, prioridad, idRegalo) VALUES (?,?,?,?,?,?)");
- 
+        $conexion = new Conectar();
+        $stmt = $conexion->getConexion()->prepare("INSERT INTO Enlaces (nombre, enlaceWeb, precio, imagen, prioridad, idRegalo) VALUES (?,?,?,?,?,?)");
+        
         $stmt -> bindValue(1,$nombre);
         $stmt -> bindValue(2,$enlaceWeb);
         $stmt -> bindValue(3,$precio);
@@ -55,7 +52,7 @@ class ModeloEnlace
         $stmt -> bindValue(6,$idRegalo);
         $stmt -> execute();
 
-        $conn -> finishConection();
+        $conexion -> finishConection();
 
     }
     
@@ -97,10 +94,6 @@ class ModeloEnlace
         $stmt->bindValue(1, $idRegalo);
         $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'RegalosNavidad\modelos\Enlace');
         $stmt->execute();
-    
-        // Debugging: imprimir la consulta y el valor del precio
-        //echo "SQL: " . $stmt->queryString . PHP_EOL;
-        //echo "Bound Parameter: " . $idRegalo . PHP_EOL;
     
         $enlaces = $stmt->fetchAll();
     
