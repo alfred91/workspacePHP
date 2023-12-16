@@ -141,10 +141,10 @@ class ModeloAmigo
         $consulta->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Padel\modelos\AmigoInvisible');
         $consulta->execute();
 
-        $partidas = $consulta->fetchAll();
+        $amigos = $consulta->fetchAll();
         $conexionObject->finishConection();
 
-        return $partidas;
+        return $amigos;
     }
     public static function borrarAmigo($id)
     {

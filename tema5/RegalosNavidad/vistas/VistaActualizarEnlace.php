@@ -26,7 +26,7 @@
                     <label for="imagen">Imagen:</label>
                     <p></p>
                     <input type="file" name="imagen">
-                    <input type="hidden" name="imagen_existente" value="<?= base64_encode($enlace->getImagen()) ?>">
+                    <input type="hidden" name="imagen" value="<?= base64_encode($enlace->getImagen()) ?>">
                     <br><br>
 
                     <label for="prioridad">Prioridad: </label>

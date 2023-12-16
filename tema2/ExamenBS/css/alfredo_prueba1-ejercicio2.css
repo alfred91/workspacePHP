@@ -1,0 +1,19 @@
+  .navbar {
+      background-color: #3498db;
+      border-radius: 1rem;
+      box-shadow: 0 0.3rem 0.3rem rgba(0, 0, 0, 0.2); 
+  }
+
+  .navbar-nav .nav-item:hover {
+      transform: scale(1.2); 
+      transition: transform 0.3s ease;
+      position: sticky;
+  }
+
+  .card {
+      margin-bottom: 1rem;
+  }
+
+  .row {
+      margin-top: 1rem;
+  }
