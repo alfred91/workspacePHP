@@ -98,7 +98,7 @@ if (isset($_REQUEST["accion"])) {
         ControladorRegalo::filtrarPorAnio($idUsuario, $anio);
     }
 
-    if (strcmp($_REQUEST['accion'], 'insertarEnlaceModal') == 0) {
+    if (strcmp($_REQUEST['accion'], 'insertarEnlaceModal') == 0) {  // INSERTA UN ENLACE PARA UN REGALO ESPECIFICO
 
         $nombre = $_REQUEST['nombre'];
         $enlaceWeb = $_REQUEST['enlaceWeb'];
@@ -113,24 +113,23 @@ if (isset($_REQUEST["accion"])) {
             $imagen = null;
         }
         ControladorEnlace::insertarEnlace($nombre, $enlaceWeb, $precio, $imagen, $prioridad, $idRegalo);
-}
-
-if (isset($_REQUEST['accion']) && $_REQUEST['accion'] == 'actualizarEnlaceModal') {
-    $id = $_REQUEST['id'];
-    $nombre = $_REQUEST['nombre'];
-    $enlaceWeb = $_REQUEST['enlaceWeb'];
-    $precio = $_REQUEST['precio'];
-    $prioridad = $_REQUEST['prioridad'];
-
-    if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
-        $archivoTemporal = $_FILES['imagen']['tmp_name'];
-        $imagen = file_get_contents($archivoTemporal);
-    } else {
-        $imagen = base64_decode($_REQUEST['imagen']);
     }
-    ControladorEnlace::actualizarEnlaceModal($nombre, $enlaceWeb, $precio, $imagen, $prioridad, $id);
-}
 
+    if (isset($_REQUEST['accion']) && $_REQUEST['accion'] == 'actualizarEnlaceModal') {     //ACTUALIZAR UN ENLACE
+        $id = $_REQUEST['id'];
+        $nombre = $_REQUEST['nombre'];
+        $enlaceWeb = $_REQUEST['enlaceWeb'];
+        $precio = $_REQUEST['precio'];
+        $prioridad = $_REQUEST['prioridad'];
+
+        if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
+            $archivoTemporal = $_FILES['imagen']['tmp_name'];
+            $imagen = file_get_contents($archivoTemporal);
+        } else {
+            $imagen = base64_decode($_REQUEST['imagen']);
+        }
+        ControladorEnlace::actualizarEnlaceModal($nombre, $enlaceWeb, $precio, $imagen, $prioridad, $id);
+    }
 
     if (strcmp($_REQUEST['accion'], 'borrarEnlace') == 0) { // BORRAR UN ENLACE DE UN REGALO
 
