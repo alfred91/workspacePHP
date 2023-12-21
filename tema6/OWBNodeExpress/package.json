@@ -1,0 +1,19 @@
+{
+  "name": "node-express",
+  "version": "0.0.1",
+  "description": "Rest API Curso",
+  "main": "index.js",
+  "author": "Alfredo Trujillo",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^8.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
