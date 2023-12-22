@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Incidencias</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@heroicons/vue@1.0.4/dist/heroicons.js"></script>
+
 </head>
+
 <body class="bg-gray-100">
     <h2 class="text-3xl font-bold text-gray-800 mt-8 ml-8">Incidencias</h2>
     <h3 class="ml-8 mt-4">
@@ -35,10 +39,14 @@
                     <td class="px-6 py-4">{{$incidencia->estado}}</td>
                     <td class="px-6 py-4">
                         <a href="/incidencias/{{$incidencia->id}}" class="text-blue-600 hover:text-blue-800">
-                            <i class="zmdi zmdi-lamp"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h1m0 0h-1m1 0H7" />
+                            </svg>
                         </a>
                         <a href="/incidencias/delete/{{$incidencia->id}}" class="text-blue-600 hover:text-blue-800">
-                            <i class="zmdi zmdi-delete"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
                         </a>
                     </td>
                 </tr>
@@ -47,4 +55,5 @@
         </table>
     </div>
 </body>
+
 </html>

@@ -22,6 +22,6 @@ Route::get('/', function () {
 
 Route::get('/incidencias', [IncidenciaController::class, 'index']);
 
-Route::get('/incidencias/delete/{id}');
+Route::get('/incidencias/delete/{id}', [IncidenciaController::class, 'destroy']);
 
 Route::resource('incidencias', IncidenciaController::class);
