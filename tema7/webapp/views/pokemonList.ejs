@@ -1,0 +1,42 @@
+<!-- searchResults.ejs -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Resultados de Búsqueda</title>
+    <!-- Estilos y demás elementos del head -->
+</head>
+
+<body>
+    <div class="title-container">
+        <h1>Resultados de Búsqueda</h1>
+    </div>
+
+    <div class="container">
+        <% if (pokemons.length > 0) { %>
+            <% pokemons.forEach(function (pokemon) { %>
+                <!-- Código para mostrar cada Pokémon -->
+                <div class="card">
+                    <img src="http://localhost:3000/images/<%= pokemon.imagen %>" alt="<%= pokemon.nombre %>">
+                    <h2><%= pokemon.nombre %></h2>
+                    <!-- Detalles del Pokémon -->
+                    <ul class="list-disc pl-4">
+                        <li>Especie: <%= pokemon.especie %></li>
+                        <li>Tipo: <%= pokemon.tipo.join(', ') %></li>
+                        <li>Altura: <%= pokemon.altura %> metros</li>
+                        <li>Peso: <%= pokemon.peso %> kg</li>
+                        <li>Vida: <%= pokemon.vida %></li>
+                        <li>Puntos de Salud en Juego: <%= pokemon.puntosSaludJuego %></li>
+                        <!-- Agregar más detalles si es necesario -->
+                    </ul>
+                    <a href="/pokemon/<%= pokemon._id %>">Ver Detalles</a>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <p>No se encontraron Pokémon.</p>
+        <% } %>
+    </div>
+</body>
+
+</html>

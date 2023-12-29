@@ -79,6 +79,27 @@
         <h1>Listado de Pokémon <img src="/images/pokeball.png"></h1>
     </div>
 
+    <div class="search-filter-container">
+        <form id="searchForm">
+            <input type="text" id="searchInput" placeholder="Buscar por nombre...">
+            <button type="submit">Buscar</button>
+        </form>
+
+        <script>
+            document.getElementById('searchForm').onsubmit = function (event) {
+                event.preventDefault();
+                const nombre = document.getElementById('searchInput').value;
+
+                // En lugar de redirigir a la ruta de la API, redirige a la ruta de detalles
+                window.location.href = '/pokemon/' + nombre;
+            };
+
+
+        </script>
+
+
+    </div>
+
 
     <div class="container">
         <% pokemons.forEach(function(pokemon) { %>
