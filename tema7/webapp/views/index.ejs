@@ -6,45 +6,84 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        .container {
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
         }
-        th, td {
+        img{
+            width: 100px;
+            height: 100px;
+        }
+        .card {
+            background-color: #fff;
             border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
+            margin: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            text-align: center;
+            transition: transform 0.2s ease-in-out;
         }
-        th {
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+        .card h2 {
+            margin: 0;
+            padding: 10px;
             background-color: #f4f4f4;
         }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
+        .card a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #007bff;
+            border-top: 1px solid #ddd;
         }
-        tr:hover {
-            background-color: #ddd;
+        .card a:hover {
+            background-color: #f4f4f4;
         }
     </style>
 </head>
 <body>
-    <h1>Listado de Pokémon</h1>
-    <img src="../images/pokeball.png">
-    <table>
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Detalles</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% pokemons.forEach(function(pokemon) { %>
-                <tr>
-                    <td><%= pokemon.nombre %></td>
-                    <td><a href="/pokemon/<%= pokemon._id %>">Ver Detalles</a></td>
-                </tr>
-            <% }); %>
-        </tbody>
-    </table>
+    <h1>Listado de Pokémon <img src="/images/pokeball.png"></h1>
+    
+    <div class="container">
+        <% pokemons.forEach(function(pokemon) { %>
+            <div class="card">
+                <img src="http://localhost:3000/images/<%= pokemon.imagen %>" alt="<%= pokemon.nombre %>">                <h2><%= pokemon.nombre %></h2>
+                <!-- Detalles del Pokémon -->
+                <ul class="list-disc pl-4">
+                    <li>Especie: <%= pokemon.especie %></li>
+                    <li>Tipo: <%= pokemon.tipo.join(", ") %></li>
+                    <li>Altura: <%= pokemon.altura %> metros</li>
+                    <li>Peso: <%= pokemon.peso %> kg</li>
+                    <li>Vida: <%= pokemon.vida %></li>
+                    <li>Puntos de Salud en Juego: <%= pokemon.puntosSaludJuego %></li>
+                    <% if(pokemon.preevolucion) { %>
+                        <li>Preevolución: <%= pokemon.preevolucion %></li>
+                    <% } %>
+                    <% if(pokemon.evolucion) { %>
+                        <li>Evolución: <%= pokemon.evolucion %></li>
+                    <% } %>
+                    <li>Habilidades:</li>
+                    <ul>
+                        <% pokemon.habilidades.forEach(function(habilidad) { %>
+                            <li><%= habilidad.nombre %>: <%= habilidad.damage %> daño</li>
+                        <% }); %>
+                    </ul>
+                </ul>
+                <a href="/pokemon/<%= pokemon._id %>">Ver Detalles</a>
+            </div>
+        <% }); %>
+    </div>
 </body>
 </html>

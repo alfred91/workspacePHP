@@ -20,6 +20,8 @@ services:
       MONGO_USERNAME: root
       MONGO_PASSWORD: toor
       MONGO_HOSTNAME: mongo
+    volumes:
+      - ./Pokemon:/usr/src/app 
 
   webapp:
     build: ./webapp
@@ -27,6 +29,10 @@ services:
       - "8080:8080"
     depends_on:
       - api
+    volumes:
+      - ./webapp:/usr/src/app 
+      - ./webapp/public:/usr/src/app/public # Esta línea es opcional, ya que la anterior ya monta todo el directorio webapp
 
 volumes:
   mongo-data:
+    driver: local
