@@ -18,7 +18,6 @@ const MONGO_USERNAME = process.env.MONGO_USERNAME;
 const MONGO_PASSWORD = process.env.MONGO_PASSWORD;
 const MONGO_DB = process.env.MONGO_DB;
 
-// La dirección del host de MongoDB debe ser el nombre del servicio en Docker Compose, y el puerto es el puerto interno del contenedor de MongoDB.
 const urlMongoDb = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongo:27017/${MONGO_DB}?authSource=admin`;
 
 mongoose.connect(urlMongoDb).then(() => {
