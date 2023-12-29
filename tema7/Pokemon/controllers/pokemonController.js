@@ -11,24 +11,25 @@ exports.createPokemon = async (req, res) => {
   }
 };
 
-// Define la función para buscar Pokémon por nombre
+
+// Controlador para buscar Pokémon por nombre
 exports.buscarPokemonPorNombre = async (req, res) => {
   try {
-    const nombre = req.params.nombre; // Obtiene el nombre del Pokémon de los parámetros de la URL
-    const pokemon = await Pokemon.findOne({ nombre }); // Busca el Pokémon en la base de datos por nombre
+    const nombre = req.params.nombre; // Cambia a req.params.nombre
+    const pokemon = await Pokemon.findOne({ nombre: new RegExp(nombre, 'i') });
 
     if (!pokemon) {
-      // Si no se encuentra el Pokémon, devuelve un mensaje de error
       return res.status(404).json({ message: "Pokémon no encontrado" });
     }
 
-    // Si se encuentra el Pokémon, devuelve los detalles del mismo
     res.status(200).json(pokemon);
   } catch (error) {
-    // Si ocurre un error, devuelve un mensaje de error
     res.status(500).json({ message: "Error al buscar el Pokémon", error });
   }
 };
+
+
+
 
 // Obtener todos los Pokémon
 exports.getAllPokemons = async (req, res) => {

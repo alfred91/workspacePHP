@@ -9,6 +9,7 @@ app.set("views", "views");
 
 // Middleware para servir archivos estáticos
 app.use(express.static("public"));
+app.use('/images', express.static('../images/'));
 
 // Middleware para parsear el cuerpo de las peticiones POST
 app.use(express.json());
@@ -34,16 +35,25 @@ app.get("/register", (req, res) => res.render("register"));
 app.get("/pokemon/create", (req, res) => res.render("create-pokemon"));
 
 // Ruta para ver los detalles de un Pokémon específico
-app.get("/pokemon/:id", (req, res) => {
-    axios.get(`http://api:3000/api/pokemon/id/${req.params.id}`)
-        .then(response => {
-            // Renderizamos la plantilla con los datos del Pokémon
-            res.render("pokemonDetail", { pokemon: response.data });
-        })
-        .catch(error => {
+app.get("/pokemon/:id", async (req, res) => {
+    const idOrName = req.params.id;
+
+    // Intenta buscar el Pokémon por ID
+    try {
+        const response = await axios.get(`http://api:3000/api/pokemon/id/${idOrName}`);
+        const pokemon = response.data;
+        res.render("pokemonDetail", { pokemon });
+    } catch (error) {
+        // Si no se encuentra por ID, intenta buscar por nombre
+        try {
+            const response = await axios.get(`http://api:3000/api/pokemon/find/${idOrName}`);
+            const pokemon = response.data;
+            res.render("pokemonDetail", { pokemon });
+        } catch (error) {
             console.error("Error al obtener los detalles del Pokémon:", error.message);
             res.status(500).send("Error al obtener los detalles del Pokémon");
-        });
+        }
+    }
 });
 
 // Iniciar el servidor
