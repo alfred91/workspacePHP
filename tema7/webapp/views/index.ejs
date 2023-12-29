@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Pokemon Lista</title>
@@ -10,16 +11,30 @@
             padding: 0;
             background-color: #f7f7f7;
         }
+
+        .title-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .title-container h1 {
+            font-size: 2.5em;
+            color: #007bff;
+            font-weight: bold;
+        }
+
         .container {
             padding: 20px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
         }
-        img{
+
+        img {
             width: 100px;
             height: 100px;
         }
+
         .card {
             background-color: #fff;
             border: 1px solid #ddd;
@@ -29,18 +44,22 @@
             text-align: center;
             transition: transform 0.2s ease-in-out;
         }
+
         .card:hover {
             transform: scale(1.05);
         }
+
         .card img {
             width: 100%;
             height: auto;
         }
+
         .card h2 {
             margin: 0;
             padding: 10px;
             background-color: #f4f4f4;
         }
+
         .card a {
             display: block;
             padding: 10px;
@@ -48,21 +67,30 @@
             color: #007bff;
             border-top: 1px solid #ddd;
         }
+
         .card a:hover {
             background-color: #f4f4f4;
         }
     </style>
 </head>
+
 <body>
-    <h1>Listado de Pokémon <img src="/images/pokeball.png"></h1>
-    
+    <div class="title-container">
+        <h1>Listado de Pokémon <img src="/images/pokeball.png"></h1>
+    </div>
+
+
     <div class="container">
         <% pokemons.forEach(function(pokemon) { %>
             <div class="card">
-                <img src="http://localhost:3000/images/<%= pokemon.imagen %>" alt="<%= pokemon.nombre %>">                <h2><%= pokemon.nombre %></h2>
+                <img src="http://localhost:3000/images/<%= pokemon.imagen %>" alt="<%= pokemon.nombre %>">
+                <h2>
+                    <%= pokemon.nombre %>
+                </h2>
                 <!-- Detalles del Pokémon -->
                 <ul class="list-disc pl-4">
-                    <li>Especie: <%= pokemon.especie %></li>
+                    <li>Especie: <%= pokemon.especie %>
+                    </li>
                     <li>Tipo: <%= pokemon.tipo.join(", ") %></li>
                     <li>Altura: <%= pokemon.altura %> metros</li>
                     <li>Peso: <%= pokemon.peso %> kg</li>
@@ -81,9 +109,10 @@
                         <% }); %>
                     </ul>
                 </ul>
-                <a href="/pokemon/<%= pokemon._id %>">Ver Detalles</a>
+                <a href=" /pokemon/<%=pokemon._id %>">Ver Detalles</a>
             </div>
-        <% }); %>
+            <% }); %>
     </div>
 </body>
+
 </html>
