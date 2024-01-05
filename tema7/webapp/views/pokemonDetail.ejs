@@ -1,41 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Detalle de <%= pokemon.nombre %></title>
+    <title>Detalle de <%= pokemon.nombre %>
+    </title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
 </head>
+
 <body class="bg-gray-100">
     <div class="container mx-auto py-8">
-        <h1 class="text-3xl font-semibold text-center mb-4"><%= pokemon.nombre %></h1>
+        <h1 class="text-3xl font-semibold text-center mb-4">
+            <%= pokemon.nombre %>
+        </h1>
         <% if (pokemon.imagen) { %>
             <div class="flex justify-center mb-4">
-                <img src="http://localhost:3000/images/<%= pokemon.imagen %>" alt="Imagen de <%= pokemon.nombre %>" class="max-w-xs" />
+                <img src="http://localhost:3000/images/<%= pokemon.imagen %>" alt="Imagen de <%= pokemon.nombre %>"
+                    class="max-w-xs" />
             </div>
-        <% } else { %>
-            <p class="text-gray-600 text-center mb-4">No tiene imagen asociada.</p>
-        <% } %>
-        <ul class="list-disc pl-4">
-            <li class="mb-2">Especie: <%= pokemon.especie %></li>
-            <li class="mb-2">Tipo: <%= pokemon.tipo.join(", ") %></li>
-            <li class="mb-2">Altura: <%= pokemon.altura %> metros</li>
-            <li class="mb-2">Peso: <%= pokemon.peso %> kg</li>
-            <li class="mb-2">Vida: <%= pokemon.vida %></li>
-            <li class="mb-2">Puntos de Salud en Juego: <%= pokemon.puntosSaludJuego %></li>
-            <% if(pokemon.preevolucion) { %>
-                <li class="mb-2">Preevolución: <%= pokemon.preevolucion %></li>
-            <% } %>
-            <% if(pokemon.evolucion) { %>
-                <li class="mb-2">Evolución: <%= pokemon.evolucion %></li>
-            <% } %>
-            <li class="mb-2">Habilidades:</li>
-            <ul class="list-disc pl-4">
-                <% pokemon.habilidades.forEach(function(habilidad) { %>
-                    <li><%= habilidad.nombre %>: <%= habilidad.damage %> daño</li>
-                <% }); %>
-            </ul>
-        </ul>
-        <a href="/" class="block text-blue-500 mt-4 text-center hover:underline">Volver al Pokedex</a>
+            <% } else { %>
+                <p class="text-gray-600 text-center mb-4">No tiene imagen asociada.</p>
+                <% } %>
+                    <ul class="list-disc pl-4">
+                        <li class="mb-2">Especie: <%= pokemon.especie %>
+                        </li>
+                        <li class="mb-2">Tipo: <%= pokemon.tipo.join(", ") %></li>
+            <li class=" mb-2">Altura: <%= pokemon.altura %> metros</li>
+                        <li class="mb-2">Peso: <%= pokemon.peso %> kg</li>
+                        <li class="mb-2">Vida: <%= pokemon.vida %>
+                        </li>
+                        <li class="mb-2">Puntos de Salud en Juego: <%= pokemon.puntosSaludJuego %>
+                        </li>
+                        <% if(pokemon.preevolucion) { %>
+                            <li class="mb-2">Preevolución: <%= pokemon.preevolucion %>
+                            </li>
+                            <% } %>
+                                <% if(pokemon.evolucion) { %>
+                                    <li class="mb-2">Evolución: <%= pokemon.evolucion %>
+                                    </li>
+                                    <% } %>
+                                        <li class="mb-2">Habilidades:</li>
+                                        <ul class="list-disc pl-4">
+                                            <% pokemon.habilidades.forEach(function(habilidad) { %>
+                                                <li>
+                                                    <%= habilidad.nombre %>: <%= habilidad.damage %> daño
+                                                </li>
+                                                <% }); %>
+                                        </ul>
+                    </ul>
+                    <a href="/" class="block text-blue-500 mt-4 text-center hover:underline">Volver al Pokedex</a>
     </div>
 </body>
+
 </html>
