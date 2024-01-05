@@ -1,4 +1,4 @@
-const Pokemon = require("../models/Pokemon"); // Asegúrate de que el path al modelo es correcto
+const Pokemon = require("../models/Pokemon"); // RUTA AL MODELO POKEMON
 
 // Crear un nuevo Pokémon
 exports.createPokemon = async (req, res) => {
@@ -11,13 +11,12 @@ exports.createPokemon = async (req, res) => {
   }
 };
 
-
 // Controlador para buscar Pokémon por nombre
 exports.buscarPokemonPorNombre = async (req, res) => {
   try {
-    const nombre = req.params.nombre; // Cambia a req.params.nombre
-    const pokemon = await Pokemon.findOne({ nombre: new RegExp(nombre, 'i') });
-
+    const nombre = req.params.nombre;
+    const pokemon = await Pokemon.findOne({ nombre: new RegExp(nombre, "i") });
+ 
     if (!pokemon) {
       return res.status(404).json({ message: "Pokémon no encontrado" });
     }
@@ -28,13 +27,10 @@ exports.buscarPokemonPorNombre = async (req, res) => {
   }
 };
 
-
-
-
 // Obtener todos los Pokémon
 exports.getAllPokemons = async (req, res) => {
   try {
-    const pokemons = await Pokemon.find().sort({ nombre: 1 }); // Ordenados alfabéticamente por nombre
+    const pokemons = await Pokemon.find().sort({ nombre: 1 }); // Ordenados alfabeticamente por nombre
     res.status(200).send(pokemons);
   } catch (error) {
     res.status(500).send({ message: "Error al obtener los Pokémon", error });
@@ -88,6 +84,7 @@ exports.deletePokemon = async (req, res) => {
 exports.getPokemonByType = async (req, res) => {
   try {
     const tipo = req.params.tipo;
+    console.log('Received type:', tipo);
     const pokemons = await Pokemon.find({ tipo: tipo }).sort({ nombre: 1 });
     if (pokemons.length === 0) {
       return res
@@ -99,5 +96,39 @@ exports.getPokemonByType = async (req, res) => {
     res
       .status(500)
       .json({ message: "Error al obtener los Pokémon por tipo", error });
+  }
+};
+
+// Atacar a un pokemon
+exports.atacarPokemon = async (req, res) => {
+  try {
+    const pokemonId = req.params.id;
+    const puntosAtaque = parseInt(req.params.puntosAtaque);
+
+    // Obtener el Pokémon por ID
+    const pokemon = await Pokemon.findById(pokemonId);
+
+    if (!pokemon) {
+      return res.status(404).json({ message: "Pokémon no encontrado" });
+    }
+
+    // Restar puntos de ataque a los puntos de salud del juego
+    pokemon.puntosSaludJuego -= puntosAtaque;
+
+    // Verificar si el Pokémon está fuera de combate
+    const fueraCombate = pokemon.puntosSaludJuego <= 0;
+
+    if (fueraCombate) {
+      // Marcar el Pokémon como fuera de combate si no tiene puntos de salud
+      pokemon.fueraCombate = true;
+    }
+
+    // Guardar los cambios en el Pokémon
+    const updatedPokemon = await pokemon.save();
+
+    // Devolver el Pokémon modificado
+    res.status(200).json({ pokemon: updatedPokemon, fueraCombate });
+  } catch (error) {
+    res.status(500).json({ message: "Error al atacar al Pokémon", error });
   }
 };
