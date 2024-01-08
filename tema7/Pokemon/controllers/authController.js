@@ -1,6 +1,6 @@
 const User = require('../models/User'); // Asegúrate de tener el modelo de usuario
 const bcrypt = require('bcrypt'); // Para cifrar contraseñas
-//const jwt = require('jsonwebtoken'); // Para manejar tokens JWT
+const jwt = require('jsonwebtoken'); // Para manejar tokens JWT
 
 // Función de registro de usuario
 exports.register = async (req, res) => {
