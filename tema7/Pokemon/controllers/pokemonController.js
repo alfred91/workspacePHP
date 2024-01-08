@@ -11,7 +11,7 @@ exports.createPokemon = async (req, res) => {
   }
 };
 
-// Controlador para buscar Pokémon por nombre
+/// Controlador para buscar Pokémon por nombre
 exports.buscarPokemonPorNombre = async (req, res) => {
   try {
     const nombre = req.params.nombre;
@@ -26,6 +26,7 @@ exports.buscarPokemonPorNombre = async (req, res) => {
     res.status(500).json({ message: "Error al buscar el Pokémon", error });
   }
 };
+
 
 // Obtener todos los Pokémon
 exports.getAllPokemons = async (req, res) => {

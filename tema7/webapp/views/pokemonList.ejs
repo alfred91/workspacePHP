@@ -17,7 +17,7 @@
         <% if (pokemons.length > 0) { %>
             <% pokemons.forEach(function (pokemon) { %>
                 <!-- Código para mostrar cada Pokémon -->
-                <div class="card">
+                <a href="/pokemon/<%= pokemon._id %>" class="card">
                     <img src="http://localhost:3000/images/<%= pokemon.imagen %>" alt="<%= pokemon.nombre %>">
                     <h2><%= pokemon.nombre %></h2>
                     <!-- Detalles del Pokémon -->
@@ -28,10 +28,9 @@
                         <li>Peso: <%= pokemon.peso %> kg</li>
                         <li>Vida: <%= pokemon.vida %></li>
                         <li>Puntos de Salud en Juego: <%= pokemon.puntosSaludJuego %></li>
-                        <!-- Agregar más detalles si es necesario -->
                     </ul>
-                    <a href="/pokemon/<%= pokemon._id %>">Ver Detalles</a>
-                </div>
+                    <p>Detalles</p>
+                </a>
             <% }); %>
         <% } else { %>
             <p>No se encontraron Pokémon.</p>
