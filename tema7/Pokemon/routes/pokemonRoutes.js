@@ -16,7 +16,7 @@ router.get('/register', (req, res) => {
 });
 
 // Ruta para manejar la solicitud POST desde el formulario de registro
-router.post('/register', authController.register, authController.loginRedirect);
+router.post('/api/pokemon/register', authController.register);
 
 // Ruta para la página de inicio de sesión (vista)
 router.get('/pokemon/login', (req, res) => {

@@ -114,6 +114,11 @@
 <body>
 
     <div class="title-container">
+        <div class="session-container" id="sessionContainer">
+            <button onclick="login()">Iniciar Sesión</button>
+            <button onclick="logout()">Cerrar Sesión</button>
+        </div>
+        
         <a href="/">
             <h1>Listado de Pokémon <img src="/images/pokeball.png"></h1>
         </a>
@@ -254,6 +259,72 @@
             }
         };
 
+
+        // Función para iniciar sesión
+    async function login() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        try {
+            // Realizar una solicitud para autenticar al usuario y obtener un token
+            const response = await fetch('/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username, password }),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Error en la respuesta del servidor: ${response.status} ${response.statusText}`);
+            }
+
+            const data = await response.json();
+
+            // Almacenar el token en el localStorage
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('username', username);
+
+            // Redirigir al usuario a la página principal o actualizar la sesión en la UI
+            updateSessionState();
+        } catch (error) {
+            console.error('Error al iniciar sesión:', error);
+        }
+    }
+
+    // Función para cerrar sesión
+    function logout() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('username');
+        updateSessionState();
+    }
+
+    // Función para actualizar el estado de la sesión en la UI
+    function updateSessionState() {
+        const sessionContainer = document.querySelector('.session-container');
+        const token = localStorage.getItem('token');
+        const username = localStorage.getItem('username');
+
+        sessionContainer.innerHTML = '';
+
+        if (token && username) {
+            // Usuario logueado
+            sessionContainer.innerHTML = `
+                <p>Sesión iniciada como: ${username}</p>
+                <button onclick="logout()">Cerrar Sesión</button>
+            `;
+        } else {
+            // Usuario no logueado
+            sessionContainer.innerHTML = `
+                <input type="text" id="username" placeholder="Nombre de usuario">
+                <input type="password" id="password" placeholder="Contraseña">
+                <button onclick="login()">Iniciar Sesión</button>
+            `;
+        }
+    }
+
+    // Llamar a updateSessionState al cargar la página para verificar el estado de la sesión
+    document.addEventListener('DOMContentLoaded', updateSessionState);
     </script>
 
 </body>
