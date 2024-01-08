@@ -1,57 +1,81 @@
-const User = require('../models/user');
-const bcrypt = require('bcrypt');
-const passport = require('passport');
-const jwt = require('jsonwebtoken');
+const User = require('../models/User'); // Asegúrate de tener el modelo de usuario
+const bcrypt = require('bcrypt'); // Para cifrar contraseñas
+const jwt = require('jsonwebtoken'); // Para manejar tokens JWT
 
-// Registro de usuario
+// Función de registro de usuario
 exports.register = async (req, res) => {
-  const { username, email, password } = req.body;
-
   try {
+    // Extraer datos del cuerpo de la solicitud
+    const { username, password } = req.body;
+
     // Verificar si el usuario ya existe
-    const existingUser = await User.findOne({ $or: [{ username }, { email }] });
+    const existingUser = await User.findOne({ username });
 
     if (existingUser) {
-      return res.status(400).json({ message: 'El nombre de usuario o correo electrónico ya está en uso.' });
+      return res.status(400).json({ message: 'El usuario ya existe' });
     }
 
-    // Crear un nuevo usuario
-    const newUser = new User({ username, email, password });
+    // Cifrar la contraseña antes de almacenarla en la base de datos
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Hash de la contraseña
-    const salt = await bcrypt.genSalt(10);
-    newUser.password = await bcrypt.hash(password, salt);
+    // Crear un nuevo usuario
+    const newUser = new User({
+      username,
+      password: hashedPassword,
+    });
 
     // Guardar el nuevo usuario en la base de datos
     await newUser.save();
 
-    res.status(201).json({ message: 'Usuario registrado con éxito.' });
+    res.status(201).json({ message: 'Usuario registrado correctamente' });
   } catch (error) {
-    res.status(500).json({ message: 'Error al registrar el usuario.', error });
+    console.error('Error al registrar usuario:', error);
+    res.status(500).json({ message: 'Error interno del servidor al registrar usuario' });
   }
 };
 
-// Inicio de sesión
-exports.login = (req, res, next) => {
-  passport.authenticate('local', (err, user, info) => {
-    if (err) {
-      return next(err);
-    }
+// Función de inicio de sesión
+exports.login = async (req, res) => {
+  try {
+    // Extraer datos del cuerpo de la solicitud
+    const { username, password } = req.body;
+
+    // Buscar el usuario en la base de datos
+    const user = await User.findOne({ username });
+
     if (!user) {
-      return res.status(401).json({ message: 'Credenciales incorrectas.' });
+      return res.status(401).json({ message: 'Credenciales incorrectas' });
     }
-    req.logIn(user, async (err) => {
-      if (err) {
-        return next(err);
-      }
-      // Generar token al iniciar sesión
-      const token = generateAuthToken(user);
-      return res.status(200).json({ message: 'Inicio de sesión exitoso.', token });
-    });
-  })(req, res, next);
+
+    // Verificar la contraseña
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+
+    if (!isPasswordValid) {
+      return res.status(401).json({ message: 'Credenciales incorrectas' });
+    }
+
+    // Generar un token JWT para el usuario
+    const token = jwt.sign({ userId: user._id }, 'secreto', { expiresIn: '24h' });
+
+    // Enviar el token en la respuesta
+    res.status(200).json({ token, userId: user._id });
+  } catch (error) {
+    console.error('Error al iniciar sesión:', error);
+    res.status(500).json({ message: 'Error interno del servidor al iniciar sesión' });
+  }
 };
 
-// Método para generar un token JWT
-function generateAuthToken(user) {
-  return jwt.sign({ _id: user._id, username: user.username }, 'tu_secreto', { expiresIn: '99h' });
-}
+// Middleware para redirigir al usuario después del registro
+exports.loginRedirect = (req, res, next) => {
+  res.redirect('/'); // Redirige a la página principal
+};
+
+// Middleware para redirigir al usuario después del inicio de sesión
+exports.registerRedirect = (req, res, next) => {
+  res.redirect('/'); // Redirige a la página principal
+};
+
+// Middleware para cerrar sesión
+exports.logout = (req, res) => {
+  res.redirect('/login'); // Redirige a la página de inicio de sesión
+};

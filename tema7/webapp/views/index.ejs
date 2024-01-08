@@ -3,13 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Pokemon Lista</title>
+    <title>Listado de Pokémon</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #c0c0c0;
+            background: url(/images/bg.jpg) no-repeat center center fixed;
+            background-size: cover;
         }
 
         .title-container {
@@ -36,8 +37,8 @@
         }
 
         .card {
-            background-color: #fff;
-            border: 1px solid #ddd;
+            background-color: #ffffffe3;
+            border: 1px solid #1c576e;
             margin: 10px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             width: 200px;
@@ -71,29 +72,63 @@
         .card a:hover {
             background-color: #f4f4f4;
         }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+        }
+
+        .button-container button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .filter-container {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .filter-container label {
+            margin-right: 10px;
+        }
+
+        .filter-container select {
+            padding: 5px;
+            font-size: 16px;
+        }
     </style>
 </head>
 
 <body>
+
     <div class="title-container">
-        <h1>Listado de Pokémon <img src="/images/pokeball.png"></h1>
+        <a href="/">
+            <h1>Listado de Pokémon <img src="/images/pokeball.png"></h1>
+        </a>
     </div>
 
-    <div class="search-filter-container">
+    <div class="button-container">
+        <a href="/pokemon/create">
+            <button>Crear Nuevo Pokémon</button>
+        </a>
         <form id="searchForm">
             <input type="text" id="searchInput" placeholder="Buscar por nombre...">
             <button type="submit">Buscar</button>
         </form>
 
-        <script>
-            document.getElementById('searchForm').onsubmit = function (event) {
-                event.preventDefault();
-                const nombre = document.getElementById('searchInput').value;
 
-                // En lugar de redirigir a la ruta de la API, redirige a la ruta de detalles
-                window.location.href = '/pokemon/' + nombre;
-            };
-        </script>
     </div>
 
     <div class="filter-container">
@@ -121,7 +156,6 @@
         <button id="filterButton">Filtrar</button>
     </div>
 
-
     <div class="container">
         <% pokemons.forEach(function(pokemon) { %>
             <div class="card">
@@ -134,29 +168,38 @@
                     <li>Especie: <%= pokemon.especie %>
                     </li>
                     <li>Tipo: <%= pokemon.tipo.join(", ") %></li>
-                    <li>Altura: <%= pokemon.altura %> metros</li>
-                    <li>Peso: <%= pokemon.peso %> kg</li>
-                    <li>Vida: <%= pokemon.vida %></li>
-                    <li>Puntos de Salud en Juego: <%= pokemon.puntosSaludJuego %></li>
-                    <% if(pokemon.preevolucion) { %>
-                        <li>Preevolución: <%= pokemon.preevolucion %></li>
-                    <% } %>
-                    <% if(pokemon.evolucion) { %>
-                        <li>Evolución: <%= pokemon.evolucion %></li>
-                    <% } %>
-                    <li>Habilidades:</li>
-                    <ul>
-                        <% pokemon.habilidades.forEach(function(habilidad) { %>
-                            <li><%= habilidad.nombre %>: <%= habilidad.damage %> daño</li>
-                        <% }); %>
-                    </ul>
+                <li>Altura: <%= pokemon.altura %> metros</li>
+                <li>Peso: <%= pokemon.peso %> kg</li>
+                <li>Vida: <%= pokemon.vida %></li>
+                <li>Puntos de Salud en Juego: <%= pokemon.puntosSaludJuego %></li>
+                <% if(pokemon.preevolucion) { %>
+                <li>Preevolución: <%= pokemon.preevolucion %></li>
+                <% } %>
+                <% if(pokemon.evolucion) { %>
+                <li>Evolución: <%= pokemon.evolucion %></li>
+                <% } %>
+                <p>
+                <li>Habilidades:</li>
+                <ul>
+                    <% pokemon.habilidades.forEach(function(habilidad) { %>
+                    <li><%= habilidad.nombre %>: <%= habilidad.damage %> daño</li>
+                    <% }); %>
                 </ul>
-                <a href=" /pokemon/<%=pokemon._id %>">Ver Detalles</a>
+            </ul>
+            <a href=" /pokemon/<%=pokemon._id %>">Ver Detalles</a>
             </div>
             <% }); %>
     </div>
 
     <script>
+        document.getElementById('searchForm').onsubmit = function (event) {
+            event.preventDefault();
+            const nombre = document.getElementById('searchInput').value;
+
+            // En lugar de redirigir a la ruta de la API, redirige a la ruta de detalles
+            window.location.href = '/pokemon/' + nombre;
+        };
+
         document.getElementById('filterButton').onclick = async function () {
             // Obtain the selected type from the dropdown
             const selectedType = document.getElementById('typeSelect').value;
@@ -179,16 +222,30 @@
                     // Create a new card for each Pokémon
                     const card = document.createElement('div');
                     card.className = 'card';
-
-                    // Populate the card with Pokémon details (similar to your existing code)
                     card.innerHTML = `
-                    <img src="http://localhost:3000/images/${pokemon.imagen}" alt="${pokemon.nombre}">
-                    <h2>${pokemon.nombre}</h2>
-                    <!-- Add more details if needed -->
-
-                    <a href="/pokemon/${pokemon._id}">Ver Detalles</a>
-                `;
-
+                        <img src="http://localhost:3000/images/${pokemon.imagen}" alt="${pokemon.nombre}">
+                        <h2>${pokemon.nombre}</h2>
+                        <ul class="list-disc pl-4">
+                            <li>Especie: ${pokemon.especie}</li>
+                            <li>Tipo: ${pokemon.tipo.join(', ')}</li>
+                            <li>Altura: ${pokemon.altura} metros</li>
+                            <li>Peso: ${pokemon.peso} kg</li>
+                            <li>Vida: ${pokemon.vida}</li>
+                            <li>Puntos de Salud en Juego: ${pokemon.puntosSaludJuego}</li>
+                            
+                            ${pokemon.preevolucion ? `<li>Preevolución: ${pokemon.preevolucion}</li>` : ''}
+                            ${pokemon.evolucion ? `<li>Evolución: ${pokemon.evolucion}</li>` : ''}
+                            <p>
+                            <li>Habilidades:</li>
+                            <ul>
+                                ${pokemon.habilidades.map(habilidad => `<li>${habilidad.nombre}: ${habilidad.damage} daño</li>`).join('')}
+                            </ul>
+                        </ul>
+                        </ul
+                        </ul>
+                        
+                        <a href="/pokemon/${pokemon._id}">Ver Detalles</a>
+                    `;
                     // Append the card to the container
                     container.appendChild(card);
                 });
@@ -196,6 +253,7 @@
                 console.error('Error fetching Pokémon by type:', error);
             }
         };
+
     </script>
 
 </body>

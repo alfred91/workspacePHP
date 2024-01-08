@@ -1,16 +1,178 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
   <meta charset="UTF-8">
-  <title>Create Pokémon</title>
+  <title>Crear Pokémon</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url(/images/bg.jpg) no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .form-container {
+      max-width: 600px;
+      margin: 50px auto;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-container label,
+    .form-container input,
+    .form-container select {
+      display: block;
+      margin-bottom: 15px;
+      width: 100%;
+    }
+
+    .form-container button {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .form-container button:hover {
+      background-color: #0056b3;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Create a New Pokémon</h1>
-  <form action="/pokemon/create" method="post">
-    <!-- Campos para la creación del Pokémon -->
-    <input type="text" name="nombre" placeholder="Nombre" required>
-    <!-- Añade más campos según sea necesario -->
-    <button type="submit">Create</button>
-  </form>
+
+  <div class="form-container">
+    <h1>Crear Nuevo Pokémon</h1>
+    <form action="/pokemon/create" method="post"> <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required>
+
+      <label for="especie">Especie:</label>
+      <input type="text" id="especie" name="especie" required>
+
+      <label for="tipo">Tipo:</label>
+      <select id="tipo" name="tipo[]" multiple required>
+        <option value="Acero">Acero</option>
+        <option value="Agua">Agua</option>
+        <option value="Bicho">Bicho</option>
+        <option value="Dragon">Dragon</option>
+        <option value="Electrico">Electrico</option>
+        <option value="Fuego">Fuego</option>
+        <option value="Fantasma">Fantasma</option>
+        <option value="Hada">Hada</option>
+        <option value="Hielo">Hielo</option>
+        <option value="Lucha">Lucha</option>
+        <option value="Normal">Normal</option>
+        <option value="Planta">Planta</option>
+        <option value="Psiquico">Psiquico</option>
+        <option value="Roca">Roca</option>
+        <option value="Siniestro">Siniestro</option>
+        <option value="Tierra">Tierra</option>
+        <option value="Veneno">Veneno</option>
+        <option value="Volador">Volador</option>
+      </select>
+
+      <label for="imagen">Imagen:</label>
+      <input type="file" id="imagen" name="imagen" accept="image/*" required>
+
+      <label for="altura">Altura (metros):</label>
+      <input type="number" id="altura" name="altura" required>
+
+      <label for="peso">Peso (kg):</label>
+      <input type="number" id="peso" name="peso" required>
+
+      <label for="vida">Vida:</label>
+      <input type="number" id="vida" name="vida" required>
+
+      <label for="puntosSaludJuego">Puntos de Salud en Juego:</label>
+      <input type="number" id="puntosSaludJuego" name="puntosSaludJuego" required>
+
+      <label for="preevolucion">Preevolución:</label>
+      <input type="text" id="preevolucion" name="preevolucion">
+
+      <label for="evolucion">Evolución:</label>
+      <input type="text" id="evolucion" name="evolucion">
+
+      <label for="habilidades">Habilidades:</label>
+      <div id="habilidadesContainer">
+        <div class="habilidad">
+          <input type="text" name="habilidades[0][nombre]" placeholder="Nombre" required>
+          <input type="number" name="habilidades[0][damage]" placeholder="Daño" required>
+        </div>
+      </div>
+      <button type="button" onclick="agregarHabilidad()">Agregar Habilidad</button>
+
+      <button type="submit">Crear Pokémon</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('createForm').onsubmit = async function (event) {
+      event.preventDefault();
+
+      // Recoger los datos del formulario y construir el objeto a enviar
+      const formData = {
+        nombre: document.getElementById('nombre').value,
+        especie: document.getElementById('especie').value,
+        tipo: Array.from(document.getElementById('tipo').selectedOptions).map(option => option.value),
+        imagen: document.getElementById('imagen').value,
+        altura: parseFloat(document.getElementById('altura').value),
+        peso: parseFloat(document.getElementById('peso').value),
+        vida: parseInt(document.getElementById('vida').value),
+        puntosSaludJuego: parseInt(document.getElementById('puntosSaludJuego').value),
+        preevolucion: document.getElementById('preevolucion').value || null,
+        evolucion: document.getElementById('evolucion').value || null,
+        habilidades: []
+      };
+
+      // Agregar habilidades
+      const habilidadesElements = document.querySelectorAll('.habilidad');
+      habilidadesElements.forEach(el => {
+        const nombreHabilidad = el.querySelector('[name*="nombre"]').value;
+        const dañoHabilidad = parseInt(el.querySelector('[name*="damage"]').value);
+        formData.habilidades.push({ nombre: nombreHabilidad, damage: dañoHabilidad });
+      });
+
+      // Enviar la solicitud POST a la API
+      try {
+        const response = await fetch('/api/pokemon/create', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+
+        if (!response.ok) {
+          throw new Error(`Error en la respuesta del servidor: ${response.status}`);
+        }
+
+        // Redirigir a la lista de Pokémon o manejar la respuesta
+        window.location.href = '/pokemon/list';
+      } catch (error) {
+        console.error('Error al crear el Pokémon:', error);
+      }
+    };
+
+    function agregarHabilidad() {
+      const habilidadesContainer = document.getElementById('habilidadesContainer');
+      const habilidadCount = document.querySelectorAll('.habilidad').length;
+      const nuevaHabilidad = document.createElement('div');
+      nuevaHabilidad.className = 'habilidad';
+      nuevaHabilidad.innerHTML = `
+        <input type="text" name="habilidades[${habilidadCount}][nombre]" placeholder="Nombre habilidad" required>
+        <input type="number" name="habilidades[${habilidadCount}][damage]" placeholder="Daño" required>
+      `;
+      habilidadesContainer.appendChild(nuevaHabilidad);
+    }
+  </script>
+
+
 </body>
+
 </html>
