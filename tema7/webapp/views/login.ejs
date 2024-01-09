@@ -1,52 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <title>Login Pokemon</title>
   <link rel="stylesheet" href="/public/css/estilos.css">
 </head>
-
 <body>
   <h1>Login</h1>
-  <form action="/login" method="post">
+  <form id="loginForm">
     <input type="text" name="username" placeholder="Username" required>
     <input type="password" name="password" placeholder="Password" required>
     <button type="submit">Login</button>
   </form>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      console.log('DOMContentLoaded event fired'); // Agrega esta línea para verificar
-      const form = document.querySelector('form');
-
+      const form = document.getElementById('loginForm');
+      
       form.onsubmit = function (event) {
         event.preventDefault();
 
         const username = document.querySelector('input[name="username"]').value;
         const password = document.querySelector('input[name="password"]').value;
 
-        fetch('/login', {
+        fetch('http://localhost:3000/api/login', { // Asegúrate de que esta ruta apunte a tu servidor backend
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({ username, password })
         })
-          .then(response => response.json())
-          .then(data => {
-            if (data.token) {
-              // Almacenar el token en localStorage
-              localStorage.setItem('token', data.token);
-
-              window.location.href = '/';
-            } else {
-              alert(data.message || 'Error al iniciar sesión.');
-            }
-          })
-          .catch(error => console.error('Error:', error));
+        .then(response => response.json())
+        .then(data => {
+          if (data.token) {
+            localStorage.setItem('token', data.token); // Almacenar el token en localStorage
+            localStorage.setItem('username', username); // Almacenar el nombre de usuario en localStorage
+            window.location.href = '/'; // Redirige a la página principal
+          } else {
+            alert('Error al iniciar sesión');
+          }
+        })
+        .catch(error => console.error('Error:', error));
       };
     });
   </script>
 </body>
-
 </html>

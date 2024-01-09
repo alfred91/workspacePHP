@@ -35,9 +35,16 @@ app.get("/register", (req, res) => {
 
 // Ruta para manejar la solicitud POST desde el formulario de registro
 app.post("/register", (req, res) => {
-  // Implementa aquí la lógica para manejar la creación de un nuevo usuario
-  res.send("Registro exitoso");
+  axios.post('http://localhost:3000/api/register', req.body)
+    .then(response => {
+      res.redirect('/');
+    })
+    .catch(error => {
+      console.error("Error al registrar:", error.message);
+      res.render("register", { error: "Error al registrar" });
+    });
 });
+
 
 // Ruta para mostrar el formulario de creación de Pokémon
 app.get("/pokemon/create", (req, res) => res.render("createPokemon"));
@@ -93,9 +100,20 @@ app.get("/login", (req, res) => {
 
 // Ruta para manejar la solicitud POST desde el formulario de inicio de sesión
 app.post("/login", (req, res) => {
-  // Aquí va la lógica para manejar el inicio de sesión
-  res.send("Inicio de sesión exitoso o fallido");
+  axios.post('http://localhost:3000/api/login', {
+    username: req.body.username,
+    password: req.body.password
+  })
+  .then(response => {
+    // Aquí manejas la respuesta del backend, como almacenar el token JWT si es necesario
+    res.redirect('/');
+  })
+  .catch(error => {
+    console.error("Error al iniciar sesión:", error.message);
+    res.render("login", { error: "Error al iniciar sesión" });
+  });
 });
+
 // Iniciar el servidor en el puerto especificado
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en el puerto ${PORT}`);

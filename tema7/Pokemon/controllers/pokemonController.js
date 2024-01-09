@@ -16,7 +16,6 @@ exports.buscarPokemonPorNombre = async (req, res) => {
   try {
     const nombre = req.params.nombre;
     const pokemon = await Pokemon.findOne({ nombre: new RegExp(nombre, "i") });
- 
     if (!pokemon) {
       return res.status(404).json({ message: "Pokémon no encontrado" });
     }
@@ -26,7 +25,6 @@ exports.buscarPokemonPorNombre = async (req, res) => {
     res.status(500).json({ message: "Error al buscar el Pokémon", error });
   }
 };
-
 
 // Obtener todos los Pokémon
 exports.getAllPokemons = async (req, res) => {
@@ -85,7 +83,7 @@ exports.deletePokemon = async (req, res) => {
 exports.getPokemonByType = async (req, res) => {
   try {
     const tipo = req.params.tipo;
-    console.log('Received type:', tipo);
+    console.log("Received type:", tipo);
     const pokemons = await Pokemon.find({ tipo: tipo }).sort({ nombre: 1 });
     if (pokemons.length === 0) {
       return res
