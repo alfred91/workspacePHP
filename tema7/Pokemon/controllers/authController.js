@@ -1,30 +1,27 @@
-const User = require('../models/User'); // Asegúrate de tener el modelo de usuario
+const User = require('../models/User');
 const bcrypt = require('bcrypt'); // Para cifrar contraseñas
 const jwt = require('jsonwebtoken'); // Para manejar tokens JWT
 
-// Función de registro de usuario
 exports.register = async (req, res) => {
   try {
-    // Extraer datos del cuerpo de la solicitud
     const { username, password } = req.body;
 
     // Verificar si el usuario ya existe
     const existingUser = await User.findOne({ username });
-
     if (existingUser) {
       return res.status(400).json({ message: 'El usuario ya existe' });
     }
 
-    // Cifrar la contraseña antes de almacenarla en la base de datos
+    // Cifrar la contraseña
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Crear un nuevo usuario
+    // Crear un nuevo usuario con la contraseña cifrada
     const newUser = new User({
       username,
-      password: hashedPassword,
+      password: hashedPassword, // Guardar la contraseña cifrada
     });
 
-    // Guardar el nuevo usuario en la base de datos
+    // Guardar el usuario en la base de datos
     await newUser.save();
 
     res.status(201).json({ message: 'Usuario registrado correctamente' });
@@ -44,14 +41,14 @@ exports.login = async (req, res) => {
     const user = await User.findOne({ username });
 
     if (!user) {
-      return res.status(401).json({ message: 'Credenciales incorrectas' });
+      return res.status(401).json({ message: 'Credenciales incorrectas 1' });
     }
 
     // Verificar la contraseña
     const isPasswordValid = await bcrypt.compare(password, user.password);
 
     if (!isPasswordValid) {
-      return res.status(401).json({ message: 'Credenciales incorrectas' });
+      return res.status(401).json({ message: 'Credenciales incorrectas 2' });
     }
 
     // Generar un token JWT para el usuario
@@ -72,7 +69,7 @@ exports.loginRedirect = (req, res, next) => {
 
 // Middleware para redirigir al usuario después del inicio de sesión
 exports.registerRedirect = (req, res, next) => {
-  res.redirect('/'); // Redirige a la página principal
+  res.redirect('/login');
 };
 
 // Middleware para cerrar sesión
