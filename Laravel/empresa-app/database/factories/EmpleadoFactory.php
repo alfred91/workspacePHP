@@ -18,6 +18,7 @@ class EmpleadoFactory extends Factory
     {
         return [
             'nombre' => $this->faker->name,
+            'email' => $this->faker->email,
             'dni' => $this->faker->dni,
             'telefono' =>  $this->faker->phoneNumber,
             'salario' => $this->faker->randomFloat($nbMaxDecimals = null, $min = 0, $max = null)
