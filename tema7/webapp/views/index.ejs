@@ -202,34 +202,36 @@
             localStorage.removeItem('token');
             localStorage.removeItem('username');
             updateSessionState();
+            window.location.href = '/'; // Redirige al inicio
         }
+
 
         document.addEventListener('DOMContentLoaded', updateSessionState);
 
         document.addEventListener('DOMContentLoaded', function () {
-    const token = localStorage.getItem('token');
-    if (token) {
-        fetch('http://localhost:3000/api/pokemon/list', {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        })
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error('No autorizado');
-            }
-        })
-        .then(pokemons => {
-            // Aquí puedes procesar y mostrar los pokemons
-            const container = document.querySelector('.container');
-            container.innerHTML = ''; // Limpia el contenido existente
-            
-            pokemons.forEach(pokemon => {
-                const card = document.createElement('div');
-                card.className = 'card';
-                card.innerHTML = `
+            const token = localStorage.getItem('token');
+            if (token) {
+                fetch('http://localhost:3000/api/pokemon/list', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json();
+                        } else {
+                            throw new Error('No autorizado');
+                        }
+                    })
+                    .then(pokemons => {
+                        // Aquí puedes procesar y mostrar los pokemons
+                        const container = document.querySelector('.container');
+                        container.innerHTML = ''; // Limpia el contenido existente
+
+                        pokemons.forEach(pokemon => {
+                            const card = document.createElement('div');
+                            card.className = 'card';
+                            card.innerHTML = `
                     <img src="http://localhost:3000/images/${pokemon.imagen}" alt="${pokemon.nombre}">
                     <h2>${pokemon.nombre}</h2>
                     <ul class="list-disc pl-4">
@@ -247,17 +249,17 @@
                     </ul>
                     <a href="/pokemon/${pokemon._id}">Ver Detalles</a>
                 `;
-                container.appendChild(card);
-            });
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            // Redirigir al login o mostrar un mensaje
+                            container.appendChild(card);
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        // Redirigir al login o mostrar un mensaje
+                    });
+            } else {
+                // Redirigir al login o mostrar un mensaje
+            }
         });
-    } else {
-        // Redirigir al login o mostrar un mensaje
-    }
-});
 
 
     </script>
