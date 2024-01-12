@@ -3,17 +3,26 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const app = express();
 const authRoutes = require("./routes/authRoutes");
-const pokemonRoutes = require("./routes/pokemonRoutes"); // Configuraciones de Middleware
-app.use(cors());
+const pokemonRoutes = require("./routes/pokemonRoutes");
+
+app.use(cors({
+  origin: ['http://localhost:8080', 'http://localhost:3000'], 
+  methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
+  credentials: true,
+  exposedHeaders: ['Authorization']
+}));
+app.options('*', cors()); 
+
 app.use(express.json());
 app.use("/api", require("./routes/pokemonRoutes"));
 app.use("/images", express.static("images"));
+app.use(express.static("public"));
 
 app.get("/", (req, res) => {
   res.send("API de Pokémon funcionando!");
 });
 
-// Usa las rutas de autenticación con el prefijo '/api'
+// Rutas de autenticación con el prefijo /api
 app.use("/api", authRoutes);
 
 // Usando variables de entorno para configurar la conexión a MongoDB

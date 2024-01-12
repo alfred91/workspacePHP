@@ -20,4 +20,8 @@ Route::get('/', function () {
 
 //Route::get('/empleados', [EmpleadoController::class, 'index']);
 
+Route::post ('/empleados/{empleado}/update', [EmpleadoController::class, 'update']);
+
 Route::resource('/empleados', EmpleadoController::class);
+
+//Route:get ('/empleados',)

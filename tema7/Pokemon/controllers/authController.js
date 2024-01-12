@@ -69,12 +69,12 @@ exports.login = async (req, res) => {
   }
 };
 
-// Middleware para redirigir al usuario después del registro
+// Middleware para redirigir al usuario después del login
 exports.loginRedirect = (req, res, next) => {
   res.redirect("/"); // Redirige a la página principal
 };
 
-// Middleware para redirigir al usuario después del inicio de sesión
+// Middleware para redirigir al usuario después de registrarse
 exports.registerRedirect = (req, res, next) => {
   res.redirect("/login");
 };

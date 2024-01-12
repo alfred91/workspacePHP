@@ -3,10 +3,16 @@ const Pokemon = require("../models/Pokemon"); // RUTA AL MODELO POKEMON
 // Crear un nuevo Pokémon
 exports.createPokemon = async (req, res) => {
   try {
+    console.log("Datos del formulario:", req.body); // Agregar esta línea
+
     const newPokemon = new Pokemon(req.body);
     const savedPokemon = await newPokemon.save();
+
+    console.log("Pokemon creado:", savedPokemon); // Agregar esta línea
+
     res.status(201).send(savedPokemon);
   } catch (error) {
+    console.error("Error al crear el Pokémon:", error);
     res.status(500).send({ message: "Error al crear el Pokémon", error });
   }
 };
@@ -49,23 +55,6 @@ exports.getPokemonById = async (req, res) => {
   }
 };
 
-// Actualizar un Pokémon
-exports.updatePokemon = async (req, res) => {
-  try {
-    const updatedPokemon = await Pokemon.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    );
-    if (!updatedPokemon) {
-      return res.status(404).send({ message: "Pokémon no encontrado" });
-    }
-    res.status(200).send(updatedPokemon);
-  } catch (error) {
-    res.status(500).send({ message: "Error al actualizar el Pokémon", error });
-  }
-};
-
 // Eliminar un Pokémon
 exports.deletePokemon = async (req, res) => {
   try {
@@ -83,7 +72,7 @@ exports.deletePokemon = async (req, res) => {
 exports.getPokemonByType = async (req, res) => {
   try {
     const tipo = req.params.tipo;
-    console.log("Received type:", tipo);
+    //console.log("Received type:", tipo);
     const pokemons = await Pokemon.find({ tipo: tipo }).sort({ nombre: 1 });
     if (pokemons.length === 0) {
       return res
@@ -95,6 +84,23 @@ exports.getPokemonByType = async (req, res) => {
     res
       .status(500)
       .json({ message: "Error al obtener los Pokémon por tipo", error });
+  }
+};
+
+// Actualizar un Pokémon
+exports.updatePokemon = async (req, res) => {
+  try {
+    const updatedPokemon = await Pokemon.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+    if (!updatedPokemon) {
+      return res.status(404).send({ message: "Pokémon no encontrado" });
+    }
+    res.status(200).send(updatedPokemon);
+  } catch (error) {
+    res.status(500).send({ message: "Error al actualizar el Pokémon", error });
   }
 };
 
