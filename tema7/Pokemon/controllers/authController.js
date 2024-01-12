@@ -79,7 +79,8 @@ exports.registerRedirect = (req, res, next) => {
   res.redirect("/login");
 };
 
-// Middleware para cerrar sesión
+// authController.logout
 exports.logout = (req, res) => {
-  res.redirect("/login"); // Redirige a la página de inicio de sesión
+  req.logout();
+  res.redirect("/login"); // Redirige al inicio de sesión después de cerrar sesión
 };
