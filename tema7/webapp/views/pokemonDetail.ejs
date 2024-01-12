@@ -154,17 +154,36 @@
             </div>
         </div>
         <script>
+
+            
             function borrarPokemon(id) {
+
+                console.log(`Token enviado: ${localStorage.getItem('token')}`);
+
                 fetch(`http://localhost:3000/api/pokemon/delete/${id}`, {
                     method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`
+                    }
                 })
-                    .then(response => response.json())
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Error al borrar el Pokémon');
+                        }
+                        return response.json();
+                    })
                     .then(data => {
+                        console.log('Pokémon borrado:', data);
                         window.location.href = '/';
                     })
-                    .catch(error => console.error('Error:', error));
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('No se pudo borrar el Pokémon. Asegúrate de estar autenticado.');
+                    });
             }
+
         </script>
+
 </body>
 
 </html>

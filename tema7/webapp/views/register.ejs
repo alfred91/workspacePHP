@@ -1,53 +1,60 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <title>Register</title>
+  <link rel="stylesheet" href="/css/styles.css">
+
 </head>
+
 <body>
-  <h1>Register</h1>
-  <!-- No es necesario especificar "method" o "action" ya que se maneja en JavaScript -->
-  <form id="registerForm">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" placeholder="Enter your username" required>
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+  <div class="form-container">
+    <h1>Registrarse</h1>
+    <form id="registerForm">
+      <label for="username">Nombre de usuario:</label>
+      <input type="text" id="username" name="username" placeholder="Introduce tu nombre de usuario" required>
 
-    <button type="submit">Register</button>
-  </form>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" placeholder="Introduce tu password" required>
+
+      <button type="submit">Register</button>
+    </form>
+  </div>
 
   <script>
     document.getElementById('registerForm').addEventListener('submit', function (event) {
-  event.preventDefault();
-  
-  // Obtén los valores de los inputs
-  const username = document.getElementById('username').value;
-  const password = document.getElementById('password').value;
+      event.preventDefault();
 
-  // Envía los datos al backend
-  fetch('http://localhost:3000/api/register', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ username, password })
-  })
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Error en la respuesta del servidor');
-    }
-    return response.json();
-  })
-  .then(data => {
-    alert(data.message);
-    window.location.href = '/login'; // Redirige al usuario al login
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
-});
+      // Obtén los valores de los inputs
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      // Envía los datos al backend
+      fetch('http://localhost:3000/api/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, password })
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Error en la respuesta del servidor');
+          }
+          return response.json();
+        })
+        .then(data => {
+          alert(data.message);
+          window.location.href = '/login'; // Redirige al usuario al login
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    });
 
   </script>
 </body>
+
 </html>

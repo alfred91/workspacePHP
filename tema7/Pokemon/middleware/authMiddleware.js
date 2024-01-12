@@ -1,20 +1,29 @@
 const jwt = require("jsonwebtoken");
 
 exports.authenticateToken = (req, res, next) => {
-  // Obtener el token del encabezado de la solicitud
-  const token = req.header("Authorization");
+  const authHeader = req.headers.authorization;
+
+  if (!authHeader) {
+    return res
+      .status(401)
+      .json({ message: "No hay un token de autenticación" });
+  }
+
+  // Separar el token del prefijo 'Bearer'
+  const token = authHeader.split(" ")[1];
 
   if (!token) {
-    return res.status(401).json({ message: "Acceso no autorizado" });
+    return res.status(401).json({ message: "Formato de token incorrecto" });
   }
 
   // Verificar el token
-  jwt.verify(token, "secreto", (err, user) => {
+  jwt.verify(token, process.env.TOKEN_SECRET || "secreto", (err, user) => {
     if (err) {
-      return res.status(403).json({ message: "Token no válido" });
+      return res.status(403).json({ message: "Token no válido o expirado" });
     }
 
-    req.user = user; // Almacenar el usuario autenticado en el objeto de solicitud
-    next(); // Continuar con la ruta protegida
+    // Adjuntar el usuario decodificado a la solicitud
+    req.user = user;
+    next();
   });
 };

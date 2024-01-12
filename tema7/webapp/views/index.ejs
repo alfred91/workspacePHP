@@ -4,132 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Listado de Pokémon</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: url(/images/bg.jpg) no-repeat center center fixed;
-            background-size: cover;
-        }
-
-        .title-container {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .title-container h1 {
-            font-size: 2.5em;
-            color: #007bff;
-            font-weight: bold;
-        }
-
-        .container {
-            padding: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        img {
-            width: 100px;
-            height: 100px;
-        }
-
-        .card {
-            background-color: #ffffffe3;
-            border: 1px solid #1c576e;
-            margin: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            width: 200px;
-            text-align: center;
-            transition: transform 0.2s ease-in-out;
-        }
-
-        .card:hover {
-            transform: scale(1.05);
-        }
-
-        .card img {
-            width: 100%;
-            height: auto;
-        }
-
-        .card h2 {
-            margin: 0;
-            padding: 10px;
-            background-color: #f4f4f4;
-        }
-
-        .card a {
-            display: block;
-            padding: 10px;
-            text-decoration: none;
-            color: #007bff;
-            border-top: 1px solid #ddd;
-        }
-
-        .card a:hover {
-            background-color: #f4f4f4;
-        }
-
-        .button-container {
-            display: flex;
-            justify-content: center;
-            margin: 20px;
-        }
-
-        .button-container button {
-            margin: 0 10px;
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .button-container button:hover {
-            background-color: #0056b3;
-        }
-
-        .filter-container {
-            display: flex;
-            align-items: center;
-            margin-top: 20px;
-        }
-
-        .filter-container label {
-            margin-right: 10px;
-        }
-
-        .filter-container select {
-            padding: 5px;
-            font-size: 16px;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
 
     <div class="title-container">
-        <a href="/">
-            <h1>Listado de Pokémon <img src="/images/pokeball.png"></h1>
+        <a href="/" class="logo-link">
+            <h1 class="main-title">
+                Listado de Pokémon <img src="/images/pokeball.png" class="pokeball-icon">
+            </h1>
         </a>
-        <div id="sessionContainer">
-            <!-- Aquí se mostrará el nombre de usuario y el botón de logout cuando el usuario haya iniciado sesión -->
+        <div id="sessionContainer" class="session-container">
+            <!-- Estado de sesión-->
         </div>
         <div class="button-container">
-            <a href="/pokemon/create">
-                <button>Crear Nuevo Pokémon</button>
-            </a>
-            <form id="searchForm">
-                <input type="text" id="searchInput" placeholder="Buscar por nombre...">
-                <button type="submit">Buscar</button>
+            <a href="/pokemon/create" class="button link-button">Crear Nuevo Pokémon</a>
+            <form id="searchForm" class="search-form">
+                <input type="text" id="searchInput" placeholder="Buscar por nombre..." class="search-input">
+                <button type="submit" class="button search-button">Buscar</button>
             </form>
         </div>
     </div>
+
 
     <div class="filter-container">
         <label for="typeSelect">Filtrar por tipo:</label>
@@ -154,6 +51,9 @@
             <option value="Volador">Volador</option>
         </select>
         <button id="filterButton">Filtrar</button>
+    </div>
+    <div>
+        <a href="/batalla">Iniciar Batalla</a>
     </div>
 
     <div class="container">
@@ -192,67 +92,95 @@
     </div>
 
     <script>
-        document.getElementById('searchForm').onsubmit = function (event) {
+
+        // Función para manejar la búsqueda
+        document.getElementById('searchForm').onsubmit = async function (event) {
             event.preventDefault();
             const nombre = document.getElementById('searchInput').value;
+            const token = localStorage.getItem('token');
 
-            // En lugar de redirigir a la ruta de la API, redirige a la ruta de detalles
-            window.location.href = '/pokemon/' + nombre;
-        };
-
-        document.getElementById('filterButton').onclick = async function () {
-            // Obtain the selected type from the dropdown
-            const selectedType = document.getElementById('typeSelect').value;
+            if (!token) {
+                alert('Debes estar autenticado para realizar esta acción.');
+                return;
+            }
 
             try {
-                // Make a fetch request to your server to get Pokémon by type
-                const response = await fetch(`http://localhost:3000/api/pokemon/tipo/${selectedType}`);
+                const response = await fetch(`http://localhost:3000/api/pokemon/find/${nombre}`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Error en la respuesta del servidor: ${response.status} ${response.statusText}`);
+                }
+
+                const pokemon = await response.json();
+                // Aquí puedes redirigir a la página de detalles del Pokémon o actualizar la UI como sea necesario
+                window.location.href = `/pokemon/${pokemon._id}`; // Asegúrate de que esta ruta esté manejada en tu servidor
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+
+
+
+        // Función para filtrar Pokémon por tipo
+        document.getElementById('filterButton').onclick = async function () {
+            const selectedType = document.getElementById('typeSelect').value;
+            const token = localStorage.getItem('token');
+
+            if (!token) {
+                alert('Debes estar autenticado para realizar esta acción.');
+                return;
+            }
+
+            try {
+                const response = await fetch(`http://localhost:3000/api/pokemon/tipo/${selectedType}`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
 
                 if (!response.ok) {
                     throw new Error(`Error en la respuesta del servidor: ${response.status} ${response.statusText}`);
                 }
 
                 const data = await response.json();
-
-                // Update the DOM with the new Pokémon cards
                 const container = document.querySelector('.container');
-                container.innerHTML = ''; // Clear existing cards
+                container.innerHTML = '';
 
                 data.forEach(pokemon => {
-                    // Create a new card for each Pokémon
                     const card = document.createElement('div');
                     card.className = 'card';
                     card.innerHTML = `
-                    <img src="http://localhost:3000/images/${pokemon.imagen}" alt="${pokemon.nombre}">
-                    <h2>${pokemon.nombre}</h2>
-                    <ul class="list-disc pl-4">
-                        <li>Especie: ${pokemon.especie}</li>
-                        <li>Tipo: ${pokemon.tipo.join(', ')}</li>
-                        <li>Altura: ${pokemon.altura} metros</li>
-                        <li>Peso: ${pokemon.peso} kg</li>
-                        <li>Vida: ${pokemon.vida}</li>
-                        <li>Puntos de Salud en Juego: ${pokemon.puntosSaludJuego}</li>
-                        
-                        ${pokemon.preevolucion ? `<li>Preevolución: ${pokemon.preevolucion}</li>` : ''}
-                        ${pokemon.evolucion ? `<li>Evolución: ${pokemon.evolucion}</li>` : ''}
-                        <p>
-                        <li>Habilidades:</li>
-                        <ul>
-                            ${pokemon.habilidades.map(habilidad => `<li>${habilidad.nombre}: ${habilidad.damage} daño</li>`).join('')}
+                        <img src="http://localhost:3000/images/${pokemon.imagen}" alt="${pokemon.nombre}">
+                        <h2>${pokemon.nombre}</h2>
+                        <ul class="list-disc pl-4">
+                            <li>Especie: ${pokemon.especie}</li>
+                            <li>Tipo: ${pokemon.tipo.join(', ')}</li>
+                            <li>Altura: ${pokemon.altura} metros</li>
+                            <li>Peso: ${pokemon.peso} kg</li>
+                            <li>Vida: ${pokemon.vida}</li>
+                            <li>Puntos de Salud en Juego: ${pokemon.puntosSaludJuego}</li>
+                            ${pokemon.preevolucion ? `<li>Preevolución: ${pokemon.preevolucion}</li>` : ''}
+                            ${pokemon.evolucion ? `<li>Evolución: ${pokemon.evolucion}</li>` : ''}
+                            <ul>
+                                ${pokemon.habilidades.map(habilidad => `<li>${habilidad.nombre}: ${habilidad.damage} daño</li>`).join('')}
+                            </ul>
                         </ul>
-                    </ul>
-                    <a href="/pokemon/${pokemon._id}">Ver Detalles</a>
-                `;
-                    // Append the card to the container
+                        <a href="/pokemon/${pokemon._id}">Ver Detalles</a>
+                    `;
                     container.appendChild(card);
                 });
             } catch (error) {
-                console.error('Error fetching Pokémon by type:', error);
+                console.error('Error:', error);
             }
         };
 
-        // Aquí el JavaScript necesario para actualizar el estado de la sesión
-
+        // Funciones para gestionar el estado de la sesión
         function updateSessionState() {
             const sessionContainer = document.getElementById('sessionContainer');
             const token = localStorage.getItem('token');
@@ -260,13 +188,13 @@
 
             if (token && username) {
                 sessionContainer.innerHTML = `
-                <p>Sesión iniciada como: ${username}</p>
-                <button onclick="logout()">Cerrar Sesión</button>
-            `;
+                    <p>Sesión iniciada como: ${username}</p>
+                    <button onclick="logout()">Cerrar Sesión</button>
+                `;
             } else {
                 sessionContainer.innerHTML = `
-                <a href="/login">Iniciar Sesión</a>
-            `;
+                    <a href="/login">Iniciar Sesión</a>
+                `;
             }
         }
 
@@ -277,7 +205,63 @@
         }
 
         document.addEventListener('DOMContentLoaded', updateSessionState);
+
+        document.addEventListener('DOMContentLoaded', function () {
+    const token = localStorage.getItem('token');
+    if (token) {
+        fetch('http://localhost:3000/api/pokemon/list', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('No autorizado');
+            }
+        })
+        .then(pokemons => {
+            // Aquí puedes procesar y mostrar los pokemons
+            const container = document.querySelector('.container');
+            container.innerHTML = ''; // Limpia el contenido existente
+            
+            pokemons.forEach(pokemon => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <img src="http://localhost:3000/images/${pokemon.imagen}" alt="${pokemon.nombre}">
+                    <h2>${pokemon.nombre}</h2>
+                    <ul class="list-disc pl-4">
+                        <li>Especie: ${pokemon.especie}</li>
+                        <li>Tipo: ${pokemon.tipo.join(', ')}</li>
+                        <li>Altura: ${pokemon.altura} metros</li>
+                        <li>Peso: ${pokemon.peso} kg</li>
+                        <li>Vida: ${pokemon.vida}</li>
+                        <li>Puntos de Salud en Juego: ${pokemon.puntosSaludJuego}</li>
+                        ${pokemon.preevolucion ? `<li>Preevolución: ${pokemon.preevolucion}</li>` : ''}
+                        ${pokemon.evolucion ? `<li>Evolución: ${pokemon.evolucion}</li>` : ''}
+                        <ul>
+                            ${pokemon.habilidades.map(habilidad => `<li>${habilidad.nombre}: ${habilidad.damage} daño</li>`).join('')}
+                        </ul>
+                    </ul>
+                    <a href="/pokemon/${pokemon._id}">Ver Detalles</a>
+                `;
+                container.appendChild(card);
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Redirigir al login o mostrar un mensaje
+        });
+    } else {
+        // Redirigir al login o mostrar un mensaje
+    }
+});
+
+
     </script>
+
 
 </body>
 
