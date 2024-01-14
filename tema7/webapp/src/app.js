@@ -65,11 +65,11 @@ app.post("/pokemon/create", (req, res) => {
     });
 });
 
-// Ruta para ver los detalles de un Pokémon
+// Ruta para ver detalles de un Pokémon
 app.get("/pokemon/:id", async (req, res) => {
   const idOrName = req.params.id;
 
-  // Intenta buscar el Pokémon por ID
+  // Intenta buscar por ID
   try {
     const response = await axios.get(
       `http://api:3000/api/pokemon/id/${idOrName}`
@@ -77,7 +77,7 @@ app.get("/pokemon/:id", async (req, res) => {
     const pokemon = response.data;
     res.render("pokemonDetail", { pokemon });
   } catch (error) {
-    // Si no se encuentra por ID, intenta buscar por nombre
+    // Si no encuentra por ID, busca por nombre
     try {
       const response = await axios.get(
         `http://api:3000/api/pokemon/find/${idOrName}`
@@ -94,12 +94,12 @@ app.get("/pokemon/:id", async (req, res) => {
   }
 });
 
-// Ruta para mostrar el formulario de inicio de sesión
+// Ruta para mostrar el form de login
 app.get("/login", (req, res) => {
   res.render("login");
 });
 
-// Ruta para manejar la solicitud POST desde el formulario de inicio de sesión
+// Ruta para manejar el POST desde el form de login
 app.post("/login", (req, res) => {
   axios
     .post("http://localhost:3000/api/login", {
@@ -107,7 +107,6 @@ app.post("/login", (req, res) => {
       password: req.body.password,
     })
     .then((response) => {
-      // Aquí manejas la respuesta del backend, como almacenar el token JWT si es necesario
       res.redirect("/");
     })
     .catch((error) => {
@@ -116,7 +115,7 @@ app.post("/login", (req, res) => {
     });
 });
 
-// Iniciar el servidor en el puerto especificado
+// Iniciar el servidor
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en el puerto ${PORT}`);
 });

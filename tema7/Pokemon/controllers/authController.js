@@ -54,7 +54,7 @@ exports.login = async (req, res) => {
       return res.status(401).json({ message: "Credenciales incorrectas 2" });
     }
 
-    // Generar un token JWT para el usuario
+    // Generar un token JWT
     const token = jwt.sign({ userId: user._id }, "secreto", {
       expiresIn: "24h",
     });
@@ -71,7 +71,7 @@ exports.login = async (req, res) => {
 
 // Middleware para redirigir al usuario después del login
 exports.loginRedirect = (req, res, next) => {
-  res.redirect("/"); // Redirige a la página principal
+  res.redirect("/");
 };
 
 // Middleware para redirigir al usuario después de registrarse
@@ -82,5 +82,5 @@ exports.registerRedirect = (req, res, next) => {
 // authController.logout
 exports.logout = (req, res) => {
   req.logout();
-  res.redirect("/login"); // Redirige al inicio de sesión después de cerrar sesión
+  res.redirect("/login");
 };

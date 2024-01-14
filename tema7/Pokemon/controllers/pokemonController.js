@@ -17,25 +17,25 @@ exports.createPokemon = async (req, res) => {
   }
 };
 
-/// Controlador para buscar Pokémon por nombre
+// Controlador para buscar Pokémon por nombre
 exports.buscarPokemonPorNombre = async (req, res) => {
   try {
     const nombre = req.params.nombre;
-    const pokemon = await Pokemon.findOne({ nombre: new RegExp(nombre, "i") });
-    if (!pokemon) {
+    const pokemones = await Pokemon.find({ nombre: new RegExp(nombre, "i") });
+    if (!pokemones || pokemones.length === 0) {
       return res.status(404).json({ message: "Pokémon no encontrado" });
     }
 
-    res.status(200).json(pokemon);
+    res.status(200).json(pokemones);
   } catch (error) {
-    res.status(500).json({ message: "Error al buscar el Pokémon", error });
+    res.status(500).json({ message: "Error al buscar Pokémon", error });
   }
 };
 
 // Obtener todos los Pokémon
 exports.getAllPokemons = async (req, res) => {
   try {
-    const pokemons = await Pokemon.find().sort({ nombre: 1 }); // Ordenados alfabeticamente por nombre
+    const pokemons = await Pokemon.find().sort({ nombre: 1 });
     res.status(200).send(pokemons);
   } catch (error) {
     res.status(500).send({ message: "Error al obtener los Pokémon", error });
@@ -72,7 +72,6 @@ exports.deletePokemon = async (req, res) => {
 exports.getPokemonByType = async (req, res) => {
   try {
     const tipo = req.params.tipo;
-    //console.log("Received type:", tipo);
     const pokemons = await Pokemon.find({ tipo: tipo }).sort({ nombre: 1 });
     if (pokemons.length === 0) {
       return res

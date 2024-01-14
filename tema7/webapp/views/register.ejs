@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <title>Register</title>
   <link rel="stylesheet" href="/css/styles.css">
-
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -23,38 +23,8 @@
     </form>
   </div>
 
-  <script>
-    document.getElementById('registerForm').addEventListener('submit', function (event) {
-      event.preventDefault();
+  <script src="/js/register.js"></script>
 
-      // Obtén los valores de los inputs
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
-
-      // Envía los datos al backend
-      fetch('http://localhost:3000/api/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ username, password })
-      })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Error en la respuesta del servidor');
-          }
-          return response.json();
-        })
-        .then(data => {
-          alert(data.message);
-          window.location.href = '/login'; // Redirige al usuario al login
-        })
-        .catch(error => {
-          console.error('Error:', error);
-        });
-    });
-
-  </script>
 </body>
 
 </html>
