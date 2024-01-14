@@ -5,13 +5,15 @@ const app = express();
 const authRoutes = require("./routes/authRoutes");
 const pokemonRoutes = require("./routes/pokemonRoutes");
 
-app.use(cors({
-  origin: ['http://localhost:8080', 'http://localhost:3000'], 
-  methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
-  credentials: true,
-  exposedHeaders: ['Authorization']
-}));
-app.options('*', cors()); 
+app.use(
+  cors({
+    origin: ["http://localhost:8080", "http://localhost:3000"],
+    methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
+    credentials: true,
+    exposedHeaders: ["Authorization"],
+  })
+);
+app.options("*", cors());
 
 app.use(express.json());
 app.use("/api", require("./routes/pokemonRoutes"));
@@ -25,7 +27,6 @@ app.get("/", (req, res) => {
 // Rutas de autenticación con el prefijo /api
 app.use("/api", authRoutes);
 
-// Usando variables de entorno para configurar la conexión a MongoDB
 const MONGO_USERNAME = process.env.MONGO_USERNAME;
 const MONGO_PASSWORD = process.env.MONGO_PASSWORD;
 const MONGO_DB = process.env.MONGO_DB;

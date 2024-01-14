@@ -16,13 +16,13 @@ exports.authenticateToken = (req, res, next) => {
     return res.status(401).json({ message: "Formato de token incorrecto" });
   }
 
-  // Verificar el token
+  // Verificar token
   jwt.verify(token, process.env.TOKEN_SECRET || "secreto", (err, user) => {
     if (err) {
       return res.status(403).json({ message: "Token no válido o expirado" });
     }
 
-    // Adjuntar el usuario decodificado a la solicitud
+  // Adjuntar el usuario decodificado a la solicitud
     req.user = user;
     next();
   });
