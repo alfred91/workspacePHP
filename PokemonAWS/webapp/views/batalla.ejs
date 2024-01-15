@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Seleccionar Pokémon para Batalla</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <div class="title-container">
+        <h1>Elige dos Pokémon para la Batalla</h1>
+    </div>
+
+    <form id="formBatalla">
+        <!-- Seleccionar Pokémon 1 -->
+        <select name="pokemonId1">
+            <% pokemons.forEach(pokemon=> { %>
+                <option value="<%= pokemon._id %>">
+                    <%= pokemon.nombre %>
+                </option>
+                <% }); %>
+        </select>
+
+        <!-- Seleccionar ataque para Pokémon 1 -->
+        <!-- Asume que cada Pokémon tiene un array de habilidades -->
+        <select name="ataque1">
+            <% pokemons[0].habilidades.forEach(habilidad=> { %>
+                <option value="<%= habilidad.damage %>">
+                    <%= habilidad.nombre %>
+                </option>
+                <% }); %>
+        </select>
+
+        <!-- Seleccionar Pokémon 2 y ataque similar a Pokémon 1 -->
+
+        <button type="submit">Iniciar Batalla</button>
+    </form>
+
+    <script>
+        document.getElementById('batallaForm').onsubmit = function (event) {
+            // Verificar que se hayan seleccionado exactamente dos Pokémon
+            const seleccionados = document.querySelectorAll('input[name="pokemonId"]:checked');
+            if (seleccionados.length !== 2) {
+                event.preventDefault();
+                alert('Debes seleccionar exactamente dos Pokémon para la batalla.');
+            }
+        };
+    </script>
+
+</body>
+
+</html>

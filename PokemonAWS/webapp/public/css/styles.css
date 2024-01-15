@@ -1,0 +1,251 @@
+/* Reset de estilos para el body */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: url(/images/bg.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* Estilos para el contenedor del formulario */
+.form-container {
+  max-width: 600px;
+  margin: 50px auto;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para las etiquetas, input y select en el formulario */
+.form-container label,
+.form-container input,
+.form-container select {
+  display: block;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+/* Estilos para el botón de enviar en el formulario */
+.form-container button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Estilos para el botón de enviar en el formulario al pasar el mouse */
+.form-container button:hover {
+  background-color: #0056b3;
+}
+
+/* Estilos para la imagen de fondo del título */
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8f8f8;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para la lista de Pokémon */
+.container {
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
+/* Estilos para las tarjetas de Pokémon */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: url(/images/bg.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+
+.title-container {
+  text-align: center;
+  margin: 20px 0;
+}
+.main-title {
+  margin: 0;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.pokeball-icon {
+  width: 30px;
+  height: auto;
+}
+
+.logo-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.link-button,
+.search-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.link-button:hover,
+.search-button:hover {
+  background-color: #0056b3;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 5px;
+}
+
+.title-container h1 {
+  font-size: 2.5em;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.container {
+  padding: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+img {
+  width: 100px;
+  height: 100px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra horizontalmente el contenido */
+  padding: 20px; /* Añade espacio entre las cartas */
+  background-color: #ffffffe3;
+  border: 1px solid #1c576e;
+  margin: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+}
+
+.card h2 {
+  margin: 0;
+  padding: 10px;
+  background-color: #f4f4f4;
+}
+
+.card a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #007bff;
+  border-top: 1px solid #ddd;
+}
+
+.card a:hover {
+  background-color: #f4f4f4;
+}
+
+.modal {
+  
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.modal-content {
+  background-color: #fefefea6;
+  margin: auto; 
+  position: fixed; 
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border: 1px solid #888888bd;
+  width: 50%;
+  max-height: 100vh;
+  overflow-y: auto;
+}
+.modal-footer {
+  text-align: right;
+}
+
+.pokemon-background {
+  background-image: url("/images/bgpokemon.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  max-height: 400px;
+}
+
+.pokemon-image {
+  position: relative;
+  width: 50%;
+  height: auto;
+  z-index: 9;
+}
+
+.table-translucent {
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.div-translucent {
+  background-color: rgba(255, 255, 255, 0.3);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.centered-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
