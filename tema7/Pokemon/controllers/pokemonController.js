@@ -1,14 +1,31 @@
 const Pokemon = require("../models/Pokemon"); // RUTA AL MODELO POKEMON
 
+// Importa el módulo Multer
+const multer = require("multer");
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "images/"); // Directorio donde se guardarán las imágenes
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  },
+});
+
+const upload = multer({ storage: storage });
+
+
 // Crear un nuevo Pokémon
 exports.createPokemon = async (req, res) => {
   try {
-    console.log("Datos del formulario:", req.body); // Agregar esta línea
+    console.log("Datos del formulario:", req.body);
+    console.log("Archivo de imagen:", req.file);
 
     const newPokemon = new Pokemon(req.body);
+    newPokemon.imagen = req.file.filename; // Guarda el nombre del archivo de imagen en el modelo Pokemon
     const savedPokemon = await newPokemon.save();
 
-    console.log("Pokemon creado:", savedPokemon); // Agregar esta línea
+    console.log("Pokemon creado:", savedPokemon);
 
     res.status(201).send(savedPokemon);
   } catch (error) {

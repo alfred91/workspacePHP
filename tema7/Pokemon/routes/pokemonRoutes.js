@@ -3,7 +3,7 @@ const pokemonController = require("../controllers/pokemonController");
 const { authenticateToken } = require("../middleware/authMiddleware");
 
 const multer = require('multer');
-const upload = multer({ dest: 'uploads/' });
+const upload = multer({ dest: 'images/' });
 
 const router = express.Router();
 
@@ -23,8 +23,7 @@ router.get("/pokemon/create", (req, res) => {
 });
 
 // Rutas para funcionalidades
-router.post('/pokemon/create', authenticateToken, pokemonController.createPokemon);
-router.get("/pokemon/list", authenticateToken, pokemonController.getAllPokemons);
+router.post('/pokemon/create', authenticateToken, upload.single('imagen'), pokemonController.createPokemon);router.get("/pokemon/list", authenticateToken, pokemonController.getAllPokemons);
 router.get("/pokemon/id/:id", authenticateToken,pokemonController.getPokemonById);
 router.put("/pokemon/update/:id", authenticateToken,pokemonController.updatePokemon);
 router.delete("/pokemon/delete/:id", authenticateToken, pokemonController.deletePokemon);
