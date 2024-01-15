@@ -224,8 +224,10 @@ img {
 }
 
 .pokemon-image {
-  width: 60%;
+  position: relative;
+  width: 50%;
   height: auto;
+  z-index: 9;
 }
 
 .table-translucent {

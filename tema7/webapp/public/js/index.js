@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <img src="http://localhost:3000/images/${pokemon.imagen}" alt="${
             pokemon.nombre
           }">
-            <h2>${pokemon.nombre}</h2>
+            <h2><b>${pokemon.nombre}</b></h2>
             <ul class="list-disc pl-4">
                 <li>Especie: ${pokemon.especie}</li>
                 <li>Tipo: ${pokemon.tipo.join(", ")}</li>
@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     ? `<li>Evolución: ${pokemon.evolucion}</li>`
                     : ""
                 }
+                <b>HABILIDADES:</b>
                 <ul>
                     ${pokemon.habilidades
                       .map(
@@ -310,8 +311,9 @@ function cerrarModal() {
 function renderPokemonDetails(pokemon) {
   const pokemonBackground = pokemon.imagen ? `/images/bgpokemon.jpg` : "";
   const pokemonImage = pokemon.imagen
-    ? `<img src="http://localhost:3000/images/${pokemon.imagen}" alt="Imagen de ${pokemon.nombre}" class="pokemon-image">`
-    : `<p class="text-gray-600 text-center mb-4">No tiene imagen asociada.</p>`;
+  ? `<img src="http://localhost:3000/images/${pokemon.imagen}" alt="Imagen de ${pokemon.nombre}" class="pokemon-image">`
+  : `<p class="text-gray-600 text-center mb-4">No tiene imagen asociada.</p>`;
+
 
   const habilidadesHtml = pokemon.habilidades
     .map(
