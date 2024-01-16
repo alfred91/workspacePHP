@@ -1,27 +1,32 @@
-document.getElementById('registerForm').addEventListener('submit', function (event) {
+document
+  .getElementById("registerForm")
+  .addEventListener("submit", function (event) {
     event.preventDefault();
 
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
 
-    fetch('http://localhost:3000/api/register', {
-      method: 'POST',
+    fetch("http://localhost:3000/api/register", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username, password })
+      body: JSON.stringify({ username, password }),
     })
-      .then(response => {
+      .then((response) => {
         if (!response.ok) {
-          throw new Error('Error en la respuesta del servidor');
+          throw new Error("Error en la respuesta del servidor");
         }
         return response.json();
       })
-      .then(data => {
+      .then((data) => {
         alert(data.message);
-        window.location.href = '/login';
+        window.location.href = "/login";
       })
-      .catch(error => {
-        console.error('Error:', error);
+      .catch((error) => {
+        console.error("Error:", error);
       });
   });
+document.getElementById("loginButton").addEventListener("click", function () {
+  window.location.href = "/login";
+});
