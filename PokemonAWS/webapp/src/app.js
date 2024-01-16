@@ -36,7 +36,7 @@ app.get("/register", (req, res) => {
 // Ruta para manejar la solicitud POST desde el formulario de registro
 app.post("/register", (req, res) => {
   axios
-    .post("http://localhost:3000/api/register", req.body)
+    .post("http://44.211.39.123:3000/api/register", req.body)
     .then((response) => {
       res.redirect("/");
     })
@@ -102,7 +102,7 @@ app.get("/login", (req, res) => {
 // Ruta para manejar el POST desde el form de login
 app.post("/login", (req, res) => {
   axios
-    .post("http://localhost:3000/api/login", {
+    .post("http://44.211.39.123:3000/api/login", {
       username: req.body.username,
       password: req.body.password,
     })
