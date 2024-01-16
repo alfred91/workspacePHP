@@ -22,7 +22,7 @@ app.use("/images", express.static("images"));
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  res.send("API de Pokémon funcionando!");
+  res.send("API de Pokémon funcionando");
 });
 
 // Rutas de autenticación con el prefijo /api

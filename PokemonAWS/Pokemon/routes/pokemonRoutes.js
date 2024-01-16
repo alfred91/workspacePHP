@@ -1,10 +1,8 @@
 const express = require("express");
 const pokemonController = require("../controllers/pokemonController");
 const { authenticateToken } = require("../middleware/authMiddleware");
-
 const multer = require('multer');
 const upload = multer({ dest: 'images/' });
-
 const router = express.Router();
 
 // Ruta Index
