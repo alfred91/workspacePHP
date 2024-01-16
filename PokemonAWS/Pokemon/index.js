@@ -7,13 +7,12 @@ const pokemonRoutes = require("./routes/pokemonRoutes");
 
 app.use(
   cors({
-    origin: ["http://44.211.39.123:8080","http://44.211.39.123:3000","http://localhost:3000"],
+    origin: ["http://localhost:8080"],
     methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
     credentials: true,
     exposedHeaders: ["Authorization"],
   })
 );
-
 app.options("*", cors());
 
 app.use(express.json());
@@ -22,7 +21,7 @@ app.use("/images", express.static("images"));
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  res.send("API de Pokémon funcionando");
+  res.send("API de Pokémon funcionando!");
 });
 
 // Rutas de autenticación con el prefijo /api

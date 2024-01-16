@@ -7,18 +7,22 @@ exports.register = async (req, res) => {
   try {
     const { username, password } = req.body;
 
+    // Verificar si el usuario existe
     const existingUser = await User.findOne({ username });
     if (existingUser) {
       return res.status(400).json({ message: "El usuario ya existe" });
     }
 
+    // Cifrar la contraseña
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    // Crear un nuevo usuario con la contraseña cifrada
     const newUser = new User({
       username,
-      password: hashedPassword, 
+      password: hashedPassword, // Guardar la contraseña cifrada
     });
 
+    // Guardar el usuario en la base de datos
     await newUser.save();
 
     res.status(201).json({ message: "Usuario registrado correctamente" });
@@ -33,21 +37,24 @@ exports.register = async (req, res) => {
 // Inicio de sesión
 exports.login = async (req, res) => {
   try {
+    // Extraer datos del cuerpo de la solicitud
     const { username, password } = req.body;
 
+    // Buscar el usuario en la base de datos
     const user = await User.findOne({ username });
 
     if (!user) {
       return res.status(401).json({ message: "Credenciales incorrectas 1" });
     }
 
+    // Verificar la contraseña
     const isPasswordValid = await bcrypt.compare(password, user.password);
 
     if (!isPasswordValid) {
       return res.status(401).json({ message: "Credenciales incorrectas 2" });
     }
 
-    // Generar token JWT
+    // Generar un token JWT
     const token = jwt.sign({ userId: user._id }, "secreto", {
       expiresIn: "24h",
     });
