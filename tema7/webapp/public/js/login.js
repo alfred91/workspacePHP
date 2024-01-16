@@ -28,3 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((error) => console.error("Error:", error));
   };
 });
+document.getElementById('registerButton').addEventListener('click', function () {
+  window.location.href = '/register';
+});
+

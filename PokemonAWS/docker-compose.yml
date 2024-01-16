@@ -31,7 +31,7 @@ services:
       - api
     volumes:
       - ./webapp:/usr/src/app 
-      - ./webapp/public:/usr/src/app/public # Esta línea es opcional, ya que la anterior ya monta todo el directorio webapp
+      - ./webapp/public:/usr/src/app/public
 
 volumes:
   mongo-data:
