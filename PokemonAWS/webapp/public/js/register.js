@@ -6,7 +6,7 @@ document
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
-    fetch("http://localhost:3000/api/register", {
+    fetch("http://35.174.172.112:3000/api/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
