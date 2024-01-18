@@ -106,20 +106,22 @@ async function getPokemonInfo(pokemonId) {
 
 function updatePokemonModal(pokemon, modalId) {
     
+    
     const modal = document.getElementById(modalId);
     modal.querySelector("h2").textContent = pokemon.nombre;
     modal.querySelector("img").src = `http://localhost:3000/images/${pokemon.imagen}`;
+    modal.querySelector(".tipo").textContent = `Tipo: ${pokemon.tipo || "No disponible"}`;
     modal.querySelector(".especie").textContent = `Especie: ${pokemon.especie || "No disponible"}`;
     modal.querySelector(".preevolucion").textContent = `Preevolución: ${pokemon.preevolucion || "Ninguna"}`;
     modal.querySelector(".evolucion").textContent = `Evolución: ${pokemon.evolucion || "Ninguna"}`;
-    modal.querySelector(".vida").textContent = `Vida: ${pokemon.vida || "No disponible"}`;
     modal.querySelector(".puntosSaludJuego").textContent = `Puntos de Salud en Juego: ${pokemon.puntosSaludJuego || "No disponible"}`;
 }
 
-async function atacarPokemon(pokemonAtacanteId, modalInfoId, indexHabilidad, pokemonObjetivoId) {
+async function atacarPokemon(pokemonAtacanteId, abilitiesContainerId, indexHabilidad, pokemonObjetivoId) {
     try {
-        const pokemonAtacante = await getPokemonInfo(pokemonAtacanteId);
-        const habilidadSeleccionada = pokemonAtacante.habilidades[indexHabilidad];
+        const habilidadSeleccionada = pokemon1Data._id === pokemonAtacanteId
+            ? pokemon1Data.habilidades[indexHabilidad]
+            : pokemon2Data.habilidades[indexHabilidad];
         const puntosAtaque = habilidadSeleccionada.damage;
 
         const attackResponse = await fetch(`http://localhost:3000/api/pokemon/${pokemonObjetivoId}/ataque/${puntosAtaque}`, {
@@ -131,14 +133,33 @@ async function atacarPokemon(pokemonAtacanteId, modalInfoId, indexHabilidad, pok
             throw new Error(`Error en la respuesta del servidor al atacar: ${attackResponse.status}`);
         }
 
-        // Realiza una nueva solicitud GET para obtener la información actualizada del Pokémon objetivo
-        const updatedTargetPokemon = await getPokemonInfo(pokemonObjetivoId);
-        const targetModalId = pokemonAtacanteId === pokemon1Data._id ? "pokemon2InfoModal" : "pokemon1InfoModal";
-        updatePokemonModal(updatedTargetPokemon, targetModalId);
-        if (updatedTargetPokemon.fueraCombate) {
-            alert(`${updatedTargetPokemon.nombre} está fuera de combate!`);
+        const attackResult = await attackResponse.json();
+        const fueraCombate = attackResult.fueraCombate;
+
+        const targetPokemonData = pokemonAtacanteId === pokemon1Data._id ? pokemon2Data : pokemon1Data;
+        targetPokemonData.puntosSaludJuego = attackResult.pokemon.puntosSaludJuego;
+        
+        updatePokemonModal(targetPokemonData, pokemonAtacanteId === pokemon1Data._id ? "pokemon2InfoModal" : "pokemon1InfoModal");
+
+        if (fueraCombate) {
+            targetPokemonData.fueraCombate = true;
+            alert(`${targetPokemonData.nombre} está fuera de combate!}`);
+            finalizarBatalla();
         }
     } catch (error) {
         console.error("Error al realizar el ataque:", error);
     }
 }
+function finalizarBatalla() {
+    document.querySelectorAll(".button").forEach(button => {
+        button.disabled = true;
+    });
+
+    setTimeout(() => {
+        const modal = document.getElementById("pokemonModal");
+        modal.style.display = "none";
+        window.location.href = "/pokemon/batalla";
+
+    }, 2000);
+}
+
