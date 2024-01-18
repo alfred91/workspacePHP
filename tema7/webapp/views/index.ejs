@@ -1,81 +1,72 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Listado de Pokémon</title>
-    <link rel="stylesheet" href="/css/styles.css" />
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
 
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <title>Listado de Pokémon</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
 
-  <body>
-    <div class="title-container">
-      <a href="/" class="logo-link">
-        <h1 class="main-title">
-          Listado de Pokémon
-          <img src="/images/pokeball.png" class="pokeball-icon" />
-        </h1>
-      </a>
-     
-      <div class="button-container">
-        <a class="button link-button" onclick="redirectToCreatePokemon()"
-          >Crear Nuevo Pokémon</a
-        >
-        <label for="typeSelect">Filtrar por tipo:</label>
-        <select id="typeSelect">
-          <option value="Acero">Acero</option>
-          <option value="Agua">Agua</option>
-          <option value="Bicho">Bicho</option>
-          <option value="Dragon">Dragon</option>
-          <option value="Electrico">Electrico</option>
-          <option value="Fuego">Fuego</option>
-          <option value="Fantasma">Fantasma</option>
-          <option value="Hada">Hada</option>
-          <option value="Hielo">Hielo</option>
-          <option value="Lucha">Lucha</option>
-          <option value="Normal">Normal</option>
-          <option value="Planta">Planta</option>
-          <option value="Psiquico">Psiquico</option>
-          <option value="Roca">Roca</option>
-          <option value="Siniestro">Siniestro</option>
-          <option value="Tierra">Tierra</option>
-          <option value="Veneno">Veneno</option>
-          <option value="Volador">Volador</option>
-        </select>
-        <a class="button link-button filter-button" id="filterButton"
-          >Filtrar</a
-        >
-        <a class="button link-button battle-button" href="/batalla"
-          >Iniciar Batalla</a
-        >
-        <form id="searchForm" class="search-form">
-          <input
-            type="text"
-            id="searchInput"
-            placeholder="Buscar por nombre..."
-            class="search-input"
-          />
-          <button type="submit" class="button search-button">Buscar</button>
-        </form>
+</head>
+
+<body>
+  <div class="title-container">
+    <a href="/" class="logo-link">
+      <h1 class="main-title">
+        <img src="/images/pokedex.png"/>
+      </h1>
+    </a>
+
+    <div class="button-container">
+      <a class="button link-button" onclick="redirectToCreatePokemon()">Crear Nuevo Pokémon</a>
+      <label for="typeSelect">Filtrar por tipo:</label>
+      <select id="typeSelect">
+        <option value="Acero">Acero</option>
+        <option value="Agua">Agua</option>
+        <option value="Bicho">Bicho</option>
+        <option value="Dragon">Dragon</option>
+        <option value="Electrico">Electrico</option>
+        <option value="Fuego">Fuego</option>
+        <option value="Fantasma">Fantasma</option>
+        <option value="Hada">Hada</option>
+        <option value="Hielo">Hielo</option>
+        <option value="Lucha">Lucha</option>
+        <option value="Normal">Normal</option>
+        <option value="Planta">Planta</option>
+        <option value="Psiquico">Psiquico</option>
+        <option value="Roca">Roca</option>
+        <option value="Siniestro">Siniestro</option>
+        <option value="Tierra">Tierra</option>
+        <option value="Veneno">Veneno</option>
+        <option value="Volador">Volador</option>
+      </select>
+      <a class="button link-button filter-button" id="filterButton">Filtrar</a>
+      <a class="button link-button battle-button" id="battleButton">Iniciar Batalla</a>
+      <form id="searchForm" class="search-form">
+        <input type="text" id="searchInput" placeholder="Buscar por nombre..." class="search-input" />
+        <button type="submit" class="button search-button">Buscar</button>
+      </form>
+    </div>
+
+    <div id="sessionContainer" class="session-container">
+
+    </div>
+  </div>
+
+  <div class="container mx-auto"></div>
+
+  <div id="pokemonModal" class="modal hidden">
+    <div class="modal-content">
+      <div id="modalContent">
       </div>
-      <div id="sessionContainer" class="session-container">
-        <!-- Estado de sesión-->
+      <div class="modal-footer">
       </div>
     </div>
-    
-    <div class="container mx-auto"></div>
-
-    <div id="pokemonModal" class="modal hidden">
-      <div class="modal-content">
-        <div id="modalContent">
-        </div>
-        <div class="modal-footer">
-        </div>
-      </div>
-    </div>
-    
+  </div>
 
 
-    <script src="/js/index.js"></script>
-  </body>
+
+  <script src="/js/index.js"></script>
+</body>
+
 </html>
