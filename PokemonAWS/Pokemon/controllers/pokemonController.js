@@ -1,7 +1,15 @@
 const Pokemon = require("../models/Pokemon"); // RUTA AL MODELO POKEMON
-
-// Importa el módulo Multer
 const multer = require("multer");
+
+// Obtener todos los Pokémon
+exports.getAllPokemons = async (req, res) => {
+  try {
+    const pokemons = await Pokemon.find().sort({ nombre: 1 });
+    res.status(200).send(pokemons);
+  } catch (error) {
+    res.status(500).send({ message: "Error al obtener los Pokémon", error });
+  }
+};
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -13,7 +21,6 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage });
-
 
 // Crear un nuevo Pokémon
 exports.createPokemon = async (req, res) => {
@@ -46,16 +53,6 @@ exports.buscarPokemonPorNombre = async (req, res) => {
     res.status(200).json(pokemones);
   } catch (error) {
     res.status(500).json({ message: "Error al buscar Pokémon", error });
-  }
-};
-
-// Obtener todos los Pokémon
-exports.getAllPokemons = async (req, res) => {
-  try {
-    const pokemons = await Pokemon.find().sort({ nombre: 1 });
-    res.status(200).send(pokemons);
-  } catch (error) {
-    res.status(500).send({ message: "Error al obtener los Pokémon", error });
   }
 };
 
@@ -133,8 +130,16 @@ exports.atacarPokemon = async (req, res) => {
       return res.status(404).json({ message: "Pokémon no encontrado" });
     }
 
+    if (pokemon.fueraCombate) {
+      return res.status(400).json({ message: "El Pokémon ya está fuera de combate" });
+    }
+
     // Restar puntos de ataque a los puntos de salud del juego
     pokemon.puntosSaludJuego -= puntosAtaque;
+
+    if (pokemon.puntosSaludJuego < 0) {
+      pokemon.puntosSaludJuego = 0;
+    }
 
     // Verificar si el Pokémon está fuera de combate
     const fueraCombate = pokemon.puntosSaludJuego <= 0;

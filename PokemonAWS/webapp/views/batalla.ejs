@@ -5,49 +5,52 @@
     <meta charset="UTF-8">
     <title>Seleccionar Pokémon para Batalla</title>
     <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
 <body>
-    <div class="title-container">
-        <h1>Elige dos Pokémon para la Batalla</h1>
+    <div class="form-container">
+        <h1>Seleccionar Pokémon para Batalla</h1>
+        <form id="formBatalla">
+            <label for="pokemonId1">Pokémon 1:</label>
+            <select name="pokemonId1" id="pokemonId1" class="select-pokemon" required></select>
+
+            <label for="pokemonId2">Pokémon 2:</label>
+            <select name="pokemonId2" id="pokemonId2" class="select-pokemon" required></select>
+
+            <button id="openModalButton" type="button" class="button">Batalla!</button>
+            <button onclick="window.location.href='/'" class="button close-btn">Volver</button>
+        </form>
+
+        <div id="pokemonModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="pokemon1InfoModal" class="pokemonInfoModal">
+                    <h2>Nombre del Pokémon 1</h2>
+                    <img src="" alt="Imagen del Pokémon 1" id="pokemon1Image" />
+                    <p class="especie">Especie: Especie del Pokémon 1</p>
+                    <p class="tipo">Tipo: Tipo del Pokémon 1</p>
+                    <p class="preevolucion">Preevolución: Preevolución del Pokémon 1</p>
+                    <p class="evolucion">Evolución: Evolución del Pokémon 1</p>
+                    <p class="puntosSaludJuego">Puntos de Salud en Juego: Puntos del Pokémon 1</p>
+                    <h3>Habilidades:</h3>
+                    <div id="abilitiesContainer1" class="abilities-container"></div>
+                </div>
+                <div id="pokemon2InfoModal" class="pokemonInfoModal">
+                    <h2>Nombre del Pokémon 2</h2>
+                    <img src="" alt="Imagen del Pokémon 2" id="pokemon2Image" />
+                    <p class="especie">Especie: Especie del Pokémon 2</p>
+                    <p class="tipo">Tipo: Tipo del Pokémon 2</p>
+                    <p class="preevolucion">Preevolución: Preevolución del Pokémon 2</p>
+                    <p class="evolucion">Evolución: Evolución del Pokémon 2</p>
+                    <p class="puntosSaludJuego">Puntos de Salud en Juego: Puntos del Pokémon 2</p>
+                    <h3>Habilidades:</h3>
+                    <div id="abilitiesContainer2" class="abilities-container"></div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <form id="formBatalla">
-        <!-- Seleccionar Pokémon 1 -->
-        <select name="pokemonId1">
-            <% pokemons.forEach(pokemon=> { %>
-                <option value="<%= pokemon._id %>">
-                    <%= pokemon.nombre %>
-                </option>
-                <% }); %>
-        </select>
-
-        <!-- Seleccionar ataque para Pokémon 1 -->
-        <!-- Asume que cada Pokémon tiene un array de habilidades -->
-        <select name="ataque1">
-            <% pokemons[0].habilidades.forEach(habilidad=> { %>
-                <option value="<%= habilidad.damage %>">
-                    <%= habilidad.nombre %>
-                </option>
-                <% }); %>
-        </select>
-
-        <!-- Seleccionar Pokémon 2 y ataque similar a Pokémon 1 -->
-
-        <button type="submit">Iniciar Batalla</button>
-    </form>
-
-    <script>
-        document.getElementById('batallaForm').onsubmit = function (event) {
-            // Verificar que se hayan seleccionado exactamente dos Pokémon
-            const seleccionados = document.querySelectorAll('input[name="pokemonId"]:checked');
-            if (seleccionados.length !== 2) {
-                event.preventDefault();
-                alert('Debes seleccionar exactamente dos Pokémon para la batalla.');
-            }
-        };
-    </script>
-
+    <script src="/js/batalla.js"></script>
 </body>
 
 </html>

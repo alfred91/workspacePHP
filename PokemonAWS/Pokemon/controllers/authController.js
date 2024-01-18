@@ -19,7 +19,7 @@ exports.register = async (req, res) => {
     // Crear un nuevo usuario con la contraseña cifrada
     const newUser = new User({
       username,
-      password: hashedPassword, // Guardar la contraseña cifrada
+      password: hashedPassword,
     });
 
     // Guardar el usuario en la base de datos

@@ -12,7 +12,6 @@ document.getElementById("createForm").onsubmit = async function (event) {
     (option) => option.value
   );
 
-  // Agrega la imagen al FormData
   formData.append("altura", parseFloat(document.getElementById("altura").value));
   formData.append("peso", parseFloat(document.getElementById("peso").value));
   formData.append("vida", parseInt(document.getElementById("vida").value));
@@ -44,7 +43,7 @@ document.getElementById("createForm").onsubmit = async function (event) {
 
     window.location.href = "/";
   } catch (error) {
-    console.error("Error al crear el Pokémon:", error);
+    alert("Error al crear el Pokémon", error);
   }
 };
 
