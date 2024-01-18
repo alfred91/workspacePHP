@@ -23,7 +23,8 @@ class User extends Authenticatable
         'password',
         'ciudad',
         'nick',
-        'juegoPreferido'
+        'juegoPreferido',
+        'rol',
     ];
 
     /**

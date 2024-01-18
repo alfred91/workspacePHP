@@ -207,8 +207,8 @@ img {
 }
 .pokemonInfoModal {
   flex: 1; /* Ocupar equitativamente el espacio disponible */
-  padding: 20px; /* Espaciado interno */
-  margin: 10px; /* Espaciado externo */
+  padding: 2rem; /* Espaciado interno */
+  margin: 1rem; /* Espaciado externo */
   
 }
 

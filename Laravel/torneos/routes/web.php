@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TorneoController;
+use Illuminate\Auth\Authenticatable;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\JuegoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,12 +22,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', [TorneoController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [TorneoController::class, 'index'])->middleware(['auth', 'verified', 'mdrol:admin'])->name('dashboard');
+Route::get('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('milogout');
+
+Route::get('/torneos/{id}',[TorneoController::class, '']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
 
 require __DIR__.'/auth.php';
