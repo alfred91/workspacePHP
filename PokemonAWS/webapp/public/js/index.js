@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <li>Altura: ${pokemon.altura} metros</li>
                 <li>Peso: ${pokemon.peso} kg</li>
                 <li>Vida: ${pokemon.vida}</li>
-                <li>Puntos de Salud en Juego: ${pokemon.puntosSaludJuego}</li>
+                <li>PS en Juego: ${pokemon.puntosSaludJuego}</li>
                 ${
                   pokemon.preevolucion
                     ? `<li>Preevolución: ${pokemon.preevolucion}</li>`
@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     ? `<li>Evolución: ${pokemon.evolucion}</li>`
                     : ""
                 }
+                <br>
                 <b>HABILIDADES:</b>
                 <ul>
                     ${pokemon.habilidades
@@ -56,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <a href="#" onclick="obtenerDetallesPokemon('${
               pokemon._id
             }'); return false;">Ver Detalles</a>
-       `;
+          `;
           container.appendChild(card);
         });
       })
@@ -132,7 +133,7 @@ document.getElementById("searchForm").onsubmit = async function (event) {
               <li>Altura: ${pokemon.altura} metros</li>
               <li>Peso: ${pokemon.peso} kg</li>
               <li>Vida: ${pokemon.vida}</li>
-              <li>Puntos de Salud en Juego: ${pokemon.puntosSaludJuego}</li>
+              <li>PS en Juego: ${pokemon.puntosSaludJuego}</li>
               ${
                 pokemon.preevolucion
                   ? `<li>Preevolución: ${pokemon.preevolucion}</li>`
@@ -209,7 +210,7 @@ document.getElementById("filterButton").onclick = async function () {
                     <li>Altura: ${pokemon.altura} metros</li>
                     <li>Peso: ${pokemon.peso} kg</li>
                     <li>Vida: ${pokemon.vida}</li>
-                    <li>Puntos de Salud en Juego: ${
+                    <li>PS en Juego: ${
                       pokemon.puntosSaludJuego
                     }</li>
                     ${
@@ -251,7 +252,9 @@ function updateSessionState() {
   if (token && username) {
     sessionContainer.innerHTML = `
             <p>Sesión iniciada como: ${username}</p>
-            <button id="logoutButton" class="button link-button" onclick="logout()">        `;
+            <br>
+                
+            <a class="button link-button battle-button" id="logoutButton" onclick="logout()">Cerrar Sesion</a>   `;
   } else {
     sessionContainer.innerHTML = `
             <a href="/login">Iniciar Sesión</a>
@@ -263,7 +266,7 @@ function logout() {
   localStorage.removeItem("token");
   localStorage.removeItem("username");
   updateSessionState();
-  window.location.href = "/"; // Redirige al inicio
+  window.location.href = "/login";
 }
 
 document.addEventListener("DOMContentLoaded", updateSessionState);
@@ -309,15 +312,17 @@ function cerrarModal() {
 }
 
 function renderPokemonDetails(pokemon) {
-  const pokemonBackground = pokemon.imagen ? `/images/bgpokemon.jpg` : "";
+  const pokemonBackground = pokemon.imagen
+    ? `/images/bgpokemon.jpg`
+    : "";
   const pokemonImage = pokemon.imagen
-  ? `<img src="http://localhost:3000/images/${pokemon.imagen}" alt="Imagen de ${pokemon.nombre}" class="pokemon-image">`
-  : `<p class="text-gray-600 text-center mb-4">No tiene imagen asociada.</p>`;
-
+    ? `<img src="http://localhost:3000/images/${pokemon.imagen}" alt="Imagen de ${pokemon.nombre}" class="pokemon-image">`
+    : `<p class="text-gray-600 text-center mb-4">No tiene imagen asociada.</p>`;
 
   const habilidadesHtml = pokemon.habilidades
     .map(
-      (habilidad) => `<li>${habilidad.nombre}: ${habilidad.damage} daño</li>`
+      (habilidad) =>
+        `<li>${habilidad.nombre}: ${habilidad.damage} daño</li>`
     )
     .join("");
 
@@ -394,3 +399,19 @@ function borrarPokemon(id) {
       alert("No se pudo borrar el Pokémon. Asegúrate de estar autenticado.");
     });
 }
+document.addEventListener("DOMContentLoaded", (event) => {
+  const battleButton = document.getElementById("battleButton");
+  if (battleButton) {
+    battleButton.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      const token = localStorage.getItem("token");
+      if (!token) {
+        alert("Debes estar autenticado para iniciar una batalla.");
+        window.location.href = "/login";
+      } else {
+        window.location.href = "/pokemon/batalla";
+      }
+    });
+  }
+});

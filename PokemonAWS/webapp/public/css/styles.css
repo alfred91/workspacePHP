@@ -1,4 +1,4 @@
-/* Reset de estilos para el body */
+/* Estilos generales para el cuerpo de la página */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -9,24 +9,27 @@ body {
 
 /* Estilos para el contenedor del formulario */
 .form-container {
-  max-width: 600px;
+  max-width: 500px;
   margin: 50px auto;
   background-color: rgba(255, 255, 255, 0.8);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  align-items: center;
 }
 
-/* Estilos para las etiquetas, input y select en el formulario */
-.form-container label,
+.form-container label {
+  width: fit-content;
+  align-items: center;
+}
+
 .form-container input,
 .form-container select {
   display: block;
   margin-bottom: 15px;
-  width: 100%;
+  width: 80%;
 }
 
-/* Estilos para el botón de enviar en el formulario */
 .form-container button {
   background-color: #007bff;
   color: #fff;
@@ -38,15 +41,15 @@ body {
 
 /* Estilos para el botón de enviar en el formulario al pasar el mouse */
 .form-container button:hover {
-  background-color: #0056b3;
+  background-color: #42b300ce;
 }
 
-/* Estilos para la imagen de fondo del título */
+/* Estilos para el contenedor del título */
 .title-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Agregar espaciado entre los elementos */
   align-items: center;
-  background-color: #f8f8f8;
+  background-color: #f8f8f8c7;
   padding: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -58,30 +61,21 @@ body {
   flex-wrap: wrap;
   justify-content: center;
 }
+.session-container {
+  display: flex;
+  justify-content: flex-end; /* Alinear al extremo derecho */
+  align-items: center;
+  background-color: #f8f8f8d7;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
 
 /* Estilos para las tarjetas de Pokémon */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background: url(/images/bg.jpg) no-repeat center center fixed;
-  background-size: cover;
-}
-
-.title-container {
-  text-align: center;
-  margin: 20px 0;
-}
 .main-title {
   margin: 0;
   font-size: 1.5em;
   color: #333;
-}
-
-.pokeball-icon {
-  width: 30px;
-  height: auto;
 }
 
 .logo-link {
@@ -109,7 +103,7 @@ body {
 
 .link-button:hover,
 .search-button:hover {
-  background-color: #0056b3;
+  background-color: #2e9425;
 }
 
 .search-form {
@@ -123,13 +117,6 @@ body {
   border-radius: 4px;
   margin-right: 5px;
 }
-
-.title-container h1 {
-  font-size: 2.5em;
-  color: #007bff;
-  font-weight: bold;
-}
-
 .container {
   padding: auto;
   display: flex;
@@ -138,26 +125,27 @@ body {
 }
 
 img {
-  width: 100px;
-  height: 100px;
+  min-width: 180px;
+  width: auto;
+  height: auto;
 }
 
 .card {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centra horizontalmente el contenido */
-  padding: 20px; /* Añade espacio entre las cartas */
+  align-items: center;
+  padding: 20px;
   background-color: #ffffffe3;
   border: 1px solid #1c576e;
   margin: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 200px;
+  width: 250px;
   text-align: center;
   transition: transform 0.2s ease-in-out;
 }
 
 .card:hover {
-  transform: scale(1.05);
+  transform: scale(1.06);
 }
 
 .card img {
@@ -176,15 +164,15 @@ img {
   padding: 10px;
   text-decoration: none;
   color: #007bff;
-  border-top: 1px solid #ddd;
+  border-top: 10px;
 }
 
 .card a:hover {
-  background-color: #f4f4f4;
+  background-color: #f4f4f4c5;
 }
 
+/* Estilos para el modal */
 .modal {
-  
   display: none;
   position: fixed;
   z-index: 1;
@@ -195,23 +183,39 @@ img {
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
 }
+
 .modal-content {
   background-color: #fefefea6;
-  margin: auto; 
-  position: fixed; 
-  top: 50%; 
+  margin: auto;
+  position: fixed;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 20px;
   border: 1px solid #888888bd;
-  width: 50%;
+  width: 60%;
   max-height: 100vh;
   overflow-y: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
 }
+
 .modal-footer {
   text-align: right;
 }
+.pokemonInfoModal {
+  flex: 1; /* Ocupar equitativamente el espacio disponible */
+  padding: 2rem; /* Espaciado interno */
+  margin: 1rem; /* Espaciado externo */
+  
+}
 
+.pokemonInfoModal img {
+  max-width: 100%;
+  height: auto;
+}
 .pokemon-background {
   background-image: url("/images/bgpokemon.jpg");
   background-size: cover;
@@ -230,6 +234,7 @@ img {
   z-index: 9;
 }
 
+/* Estilos para elementos con fondo translúcido */
 .table-translucent {
   background-color: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
