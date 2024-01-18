@@ -46,6 +46,18 @@ app.post("/register", (req, res) => {
     });
 });
 
+// Ruta para mostrar la vista de batalla
+app.get("/pokemon/batalla", async (req, res) => {
+  try {
+    const response = await axios.get("http://api:3000/api/pokemon/list");
+    const pokemons = response.data;
+    res.render("batalla", { pokemons });
+  } catch (error) {
+    console.error("Error al obtener los pokemons:", error.message);
+    res.render("batalla", { pokemons: [] });
+  }
+});
+
 // Ruta para mostrar el formulario de creación de Pokémon
 app.get("/pokemon/create", (req, res) => res.render("createPokemon"));
 
