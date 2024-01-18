@@ -29,8 +29,14 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
+            'ciudad'=> fake()->city(),
+            'nick'=>fake()->name(),
+            'juegoPreferido'=>'Baldurs Gate 3',
+            'rol' => 'usuario', //usuario normal
+
         ];
     }
+
 
     /**
      * Indicate that the model's email address should be unverified.

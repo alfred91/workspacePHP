@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('ciudad');
             $table->string('nick');
             $table->string('juegoPreferido');
+            $table->string('rol')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
