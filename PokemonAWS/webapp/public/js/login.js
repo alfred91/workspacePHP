@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const username = document.querySelector('input[name="username"]').value;
     const password = document.querySelector('input[name="password"]').value;
 
-    fetch("http://54.164.66.113:3000/api/login", {
+    fetch("http://3.211.131.204:3000/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
