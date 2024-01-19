@@ -137,7 +137,6 @@ img {
 .card:hover {
   transform: scale(1.05);
 }
-
 .card img {
   width: 100%;
   height: auto;
@@ -188,7 +187,7 @@ img {
   transform: translate(-50%, -50%);
   padding: 20px;
   border: 1px solid #888888bd;
-  width: 60%;
+  width: 66%;
   max-height: 100vh;
   overflow-y: auto;
   display: flex;
@@ -206,7 +205,7 @@ img {
   padding: 20px;
   border: 1px solid #888888bd;
   width: 60%;
-  max-height: 90vh;
+  max-height: 95vh;
   max-width: 60vh;
   overflow-y: auto;
   display: flex;
@@ -218,20 +217,20 @@ img {
   text-align: right;
 }
 
-.pokemonInfoModal {
+.pokemonBattleModal {
   flex: 1;
   padding: 2rem;
   margin: 1rem;
 }
 
 .login-container img {
-  max-width: 250px; /* Ajusta el ancho máximo de la imagen según tus necesidades */
+  max-width: 250px;
   height: auto;
   transform: translate(35%, 0%);
 
 }
 
-.pokemonInfoModal img {
+.pokemonBattleModal img {
   max-width: 100%;
   height: auto;
 }
@@ -244,12 +243,11 @@ img {
   justify-content: center;
   align-items: center;
   position: relative;
-  max-height: 400px;
-}
+  width: 500px;}
 
 .pokemon-image {
   position: relative;
-  width: 50%;
+  width: 60%;
   height: auto;
   z-index: 9;
 }
