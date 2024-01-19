@@ -50,7 +50,7 @@ async function loadAbilities(pokemonId, abilitiesContainerId, opponentPokemonId)
         pokemon.habilidades.forEach((habilidad, index) => {
             const attackButton = document.createElement("button");
             attackButton.className = "centered-buttons";
-            attackButton.textContent = `Atacar con ${habilidad.nombre} : ${habilidad.damage}`;
+            attackButton.textContent = `${habilidad.nombre} : ${habilidad.damage}`;
             attackButton.onclick = async () => {
                 await atacarPokemon(pokemonId, abilitiesContainerId, index, opponentPokemonId);
             };
@@ -112,8 +112,6 @@ function updatePokemonModal(pokemon, modalId) {
     modal.querySelector("img").src = `http://3.211.131.204:3000/images/${pokemon.imagen}`;
     modal.querySelector(".tipo").textContent = `Tipo: ${pokemon.tipo || "No disponible"}`;
     modal.querySelector(".especie").textContent = `Especie: ${pokemon.especie || "No disponible"}`;
-    modal.querySelector(".preevolucion").textContent = `Preevolución: ${pokemon.preevolucion || "Ninguna"}`;
-    modal.querySelector(".evolucion").textContent = `Evolución: ${pokemon.evolucion || "Ninguna"}`;
     modal.querySelector(".puntosSaludJuego").textContent = `Puntos de Salud en Juego: ${pokemon.puntosSaludJuego || "No disponible"}`;
 }
 
@@ -162,4 +160,3 @@ function finalizarBatalla() {
 
     }, 2000);
 }
-
