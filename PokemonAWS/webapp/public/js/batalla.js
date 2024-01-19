@@ -49,7 +49,7 @@ async function loadAbilities(pokemonId, abilitiesContainerId, opponentPokemonId)
 
         pokemon.habilidades.forEach((habilidad, index) => {
             const attackButton = document.createElement("button");
-            attackButton.className = "button";
+            attackButton.className = "centered-buttons";
             attackButton.textContent = `Atacar con ${habilidad.nombre} : ${habilidad.damage}`;
             attackButton.onclick = async () => {
                 await atacarPokemon(pokemonId, abilitiesContainerId, index, opponentPokemonId);
