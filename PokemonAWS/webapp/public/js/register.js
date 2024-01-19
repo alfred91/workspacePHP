@@ -6,7 +6,7 @@ document
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
-    fetch("http://54.164.66.113:3000/api/register", {
+    fetch("http://3.211.131.204:3000/api/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -7,7 +7,7 @@ const pokemonRoutes = require("./routes/pokemonRoutes");
 
 app.use(
   cors({
-    origin: ["http://localhost:8080","http://3.211.131.204:8080"],
+    origin: ["http://3.211.131.204:8080"],
     methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
     credentials: true,
     exposedHeaders: ["Authorization"],
