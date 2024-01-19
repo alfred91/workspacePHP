@@ -5,7 +5,7 @@ let pokemon2Data = null;
 
 document.addEventListener("DOMContentLoaded", async function () {
     try {
-        const response = await fetch("http://35.174.172.112:3000/api/pokemon/list", {
+        const response = await fetch("http://54.164.66.113:3000/api/pokemon/list", {
             headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 async function loadAbilities(pokemonId, abilitiesContainerId, opponentPokemonId) {
     try {
-        const response = await fetch(`http://35.174.172.112:3000/api/pokemon/id/${pokemonId}`, {
+        const response = await fetch(`http://54.164.66.113:3000/api/pokemon/id/${pokemonId}`, {
             headers: { Authorization: `Bearer ${token}` },
         });
         if (!response.ok) {
@@ -93,7 +93,7 @@ document.getElementById("openModalButton").addEventListener("click", async funct
 });
 
 async function getPokemonInfo(pokemonId) {
-    const response = await fetch(`http://35.174.172.112:3000/api/pokemon/id/${pokemonId}`, {
+    const response = await fetch(`http://54.164.66.113:3000/api/pokemon/id/${pokemonId}`, {
         headers: { Authorization: `Bearer ${token}` },
     });
 
@@ -109,7 +109,7 @@ function updatePokemonModal(pokemon, modalId) {
     
     const modal = document.getElementById(modalId);
     modal.querySelector("h2").textContent = pokemon.nombre;
-    modal.querySelector("img").src = `http://35.174.172.112:3000/images/${pokemon.imagen}`;
+    modal.querySelector("img").src = `http://54.164.66.113:3000/images/${pokemon.imagen}`;
     modal.querySelector(".tipo").textContent = `Tipo: ${pokemon.tipo || "No disponible"}`;
     modal.querySelector(".especie").textContent = `Especie: ${pokemon.especie || "No disponible"}`;
     modal.querySelector(".preevolucion").textContent = `Preevolución: ${pokemon.preevolucion || "Ninguna"}`;
@@ -124,7 +124,7 @@ async function atacarPokemon(pokemonAtacanteId, abilitiesContainerId, indexHabil
             : pokemon2Data.habilidades[indexHabilidad];
         const puntosAtaque = habilidadSeleccionada.damage;
 
-        const attackResponse = await fetch(`http://35.174.172.112:3000/api/pokemon/${pokemonObjetivoId}/ataque/${puntosAtaque}`, {
+        const attackResponse = await fetch(`http://54.164.66.113:3000/api/pokemon/${pokemonObjetivoId}/ataque/${puntosAtaque}`, {
             method: 'PUT',
             headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
         });
