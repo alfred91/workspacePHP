@@ -29,7 +29,7 @@ exports.createPokemon = async (req, res) => {
     console.log("Archivo de imagen:", req.file);
 
     const newPokemon = new Pokemon(req.body);
-    newPokemon.imagen = req.file.filename;
+    newPokemon.imagen = req.file.filename; // Guarda el nombre del archivo de imagen en el modelo Pokemon
     const savedPokemon = await newPokemon.save();
 
     console.log("Pokemon creado:", savedPokemon);
@@ -41,7 +41,7 @@ exports.createPokemon = async (req, res) => {
   }
 };
 
-// Buscar Pokémon por nombre
+// Controlador para buscar Pokémon por nombre
 exports.buscarPokemonPorNombre = async (req, res) => {
   try {
     const nombre = req.params.nombre;
@@ -100,12 +100,30 @@ exports.getPokemonByType = async (req, res) => {
   }
 };
 
+// Actualizar un Pokémon
+exports.updatePokemon = async (req, res) => {
+  try {
+    const updatedPokemon = await Pokemon.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+    if (!updatedPokemon) {
+      return res.status(404).send({ message: "Pokémon no encontrado" });
+    }
+    res.status(200).send(updatedPokemon);
+  } catch (error) {
+    res.status(500).send({ message: "Error al actualizar el Pokémon", error });
+  }
+};
+
 // Atacar a un pokemon
 exports.atacarPokemon = async (req, res) => {
   try {
     const pokemonId = req.params.id;
     const puntosAtaque = parseInt(req.params.puntosAtaque);
 
+    // Obtener el Pokémon por ID
     const pokemon = await Pokemon.findById(pokemonId);
 
     if (!pokemon) {
@@ -116,20 +134,25 @@ exports.atacarPokemon = async (req, res) => {
       return res.status(400).json({ message: "El Pokémon ya está fuera de combate" });
     }
 
+    // Restar puntos de ataque a los puntos de salud del juego
     pokemon.puntosSaludJuego -= puntosAtaque;
 
     if (pokemon.puntosSaludJuego < 0) {
       pokemon.puntosSaludJuego = 0;
     }
 
+    // Verificar si el Pokémon está fuera de combate
     const fueraCombate = pokemon.puntosSaludJuego <= 0;
 
     if (fueraCombate) {
+      // Marcar el Pokémon como fuera de combate si no tiene puntos de salud
       pokemon.fueraCombate = true;
     }
 
+    // Guardar los cambios en el Pokémon
     const updatedPokemon = await pokemon.save();
 
+    // Devolver el Pokémon modificado
     res.status(200).json({ pokemon: updatedPokemon, fueraCombate });
   } catch (error) {
     res.status(500).json({ message: "Error al atacar al Pokémon", error });

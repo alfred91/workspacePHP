@@ -54,9 +54,9 @@ document.addEventListener("DOMContentLoaded", function () {
                       .join("")}
                 </ul>
             </ul>
-            <a href="#" onclick="obtenerDetallesPokemon('${
-              pokemon._id
-            }'); return false;">Ver Detalles</a>
+            <div class="button-container">
+            <button class="button" onclick="obtenerDetallesPokemon('${pokemon._id}');">Ver Detalles</button>
+          </div>
           `;
           container.appendChild(card);
         });
