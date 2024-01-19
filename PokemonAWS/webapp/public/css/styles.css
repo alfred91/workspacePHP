@@ -1,4 +1,3 @@
-/* Estilos generales para el cuerpo de la página */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -7,7 +6,6 @@ body {
   background-size: cover;
 }
 
-/* Estilos para el contenedor del formulario */
 .form-container {
   max-width: 500px;
   margin: 50px auto;
@@ -39,22 +37,19 @@ body {
   cursor: pointer;
 }
 
-/* Estilos para el botón de enviar en el formulario al pasar el mouse */
 .form-container button:hover {
-  background-color: #42b300ce;
+  background-color: #429c0dc5;
 }
 
-/* Estilos para el contenedor del título */
 .title-container {
   display: flex;
-  justify-content: space-between; /* Agregar espaciado entre los elementos */
+  justify-content: space-between;
   align-items: center;
   background-color: #f8f8f8c7;
   padding: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilos para la lista de Pokémon */
 .container {
   padding: 20px;
   display: flex;
@@ -63,15 +58,13 @@ body {
 }
 .session-container {
   display: flex;
-  justify-content: flex-end; /* Alinear al extremo derecho */
+  justify-content: flex-end;
   align-items: center;
   background-color: #f8f8f8d7;
   padding: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-
-/* Estilos para las tarjetas de Pokémon */
 .main-title {
   margin: 0;
   font-size: 1.5em;
@@ -89,8 +82,7 @@ body {
   gap: 10px;
 }
 
-.link-button,
-.search-button {
+.button {
   background-color: #007bff;
   color: white;
   padding: 10px 15px;
@@ -100,9 +92,7 @@ body {
   cursor: pointer;
   font-size: 1em;
 }
-
-.link-button:hover,
-.search-button:hover {
+.button:hover {
   background-color: #2e9425;
 }
 
@@ -171,7 +161,6 @@ img {
   background-color: #f4f4f4c5;
 }
 
-/* Estilos para el modal */
 .modal {
   display: none;
   position: fixed;
@@ -201,21 +190,39 @@ img {
   align-items: center;
 
 }
+.modal-index {
+  background-color: #fefefea6;
+  margin: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border: 1px solid #888888bd;
+  width: 60%;
+  max-height: 90vh;
+  max-width: 60vh;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .modal-footer {
   text-align: right;
 }
+
 .pokemonInfoModal {
-  flex: 1; /* Ocupar equitativamente el espacio disponible */
-  padding: 2rem; /* Espaciado interno */
-  margin: 1rem; /* Espaciado externo */
-  
+  flex: 1;
+  padding: 2rem;
+  margin: 1rem;
 }
 
 .pokemonInfoModal img {
   max-width: 100%;
   height: auto;
 }
+
 .pokemon-background {
   background-image: url("/images/bgpokemon.jpg");
   background-size: cover;
@@ -234,7 +241,6 @@ img {
   z-index: 9;
 }
 
-/* Estilos para elementos con fondo translúcido */
 .table-translucent {
   background-color: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
@@ -247,7 +253,6 @@ img {
   padding: 10px;
   border-radius: 10px;
 }
-
 .centered-buttons {
   display: flex;
   justify-content: center;
