@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const token = localStorage.getItem("token");
   if (token) {
-    fetch("http://localhost:3000/api/pokemon/list", {
+    fetch("http://35.174.172.112:3000/api/pokemon/list", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
           const card = document.createElement("div");
           card.className = "card";
           card.innerHTML = `
-            <img src="http://localhost:3000/images/${pokemon.imagen}" alt="${
+            <img src="http://35.174.172.112:3000/images/${pokemon.imagen}" alt="${
             pokemon.nombre
           }">
             <h2><b>${pokemon.nombre}</b></h2>

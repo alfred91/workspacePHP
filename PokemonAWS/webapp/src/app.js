@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 // Ruta para la página principal que lista todos los Pokémon
 app.get("/", (req, res) => {
   axios
-    .get("http://api:3000/api/pokemon/list")
+    .get("http://35.174.172.112:3000/api/pokemon/list")
     .then((response) => {
       res.render("index", { pokemons: response.data });
     })
@@ -66,7 +66,7 @@ app.post("/pokemon/create", (req, res) => {
   // Lógica para crear un nuevo Pokémon con los datos del formulario
   console.log("Datos del formulario:", req.body);
   axios
-    .post("http://api:3000/api/pokemon/create", req.body)
+    .post("http://35.174.172.112:3000/api/pokemon/create", req.body)
     .then((response) => {
       // Redirigir al index
       res.redirect("/");
@@ -84,7 +84,7 @@ app.get("/pokemon/:id", async (req, res) => {
   // Intenta buscar por ID
   try {
     const response = await axios.get(
-      `http://api:3000/api/pokemon/id/${idOrName}`
+      `http://35.174.172.112:3000/api/pokemon/id/${idOrName}`
     );
     const pokemon = response.data;
     res.render("pokemonDetail", { pokemon });
@@ -92,7 +92,7 @@ app.get("/pokemon/:id", async (req, res) => {
     // Si no encuentra por ID, busca por nombre
     try {
       const response = await axios.get(
-        `http://api:3000/api/pokemon/find/${idOrName}`
+        `http://35.174.172.112:3000/api/pokemon/find/${idOrName}`
       );
       const pokemon = response.data;
       res.render("pokemonDetail", { pokemon });
