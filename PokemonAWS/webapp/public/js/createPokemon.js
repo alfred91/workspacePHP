@@ -29,7 +29,7 @@ document.getElementById("createForm").onsubmit = async function (event) {
 
   try {
     
-    const response = await fetch("http://localhost:3000/api/pokemon/create", {
+    const response = await fetch("http://35.174.172.112:3000/api/pokemon/create", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
