@@ -2,6 +2,7 @@ version: '3'
 services:
   mongo:
     image: mongo
+    restart: always
     ports:
       - "27018:27017"
     environment:
@@ -12,6 +13,7 @@ services:
 
   api:
     build: ./Pokemon
+    restart: always
     ports:
       - "3000:3000"
     depends_on:
@@ -25,6 +27,7 @@ services:
 
   webapp:
     build: ./webapp
+    restart: always
     ports:
       - "8080:8080"
     depends_on:
