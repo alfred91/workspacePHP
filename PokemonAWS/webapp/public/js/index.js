@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
                       .join("")}
                 </ul>
             </ul>
-                        <div class="button-container">
+            <div class="button-container">
     <button class="button" onclick="obtenerDetallesPokemon('${pokemon._id}');">Ver Detalles</button>
   </div>
           `;
@@ -81,7 +81,7 @@ function redirectToCreatePokemon() {
   }
 }
 
-// Función para manejar la búsqueda
+// Función para la búsqueda
 document.getElementById("searchForm").onsubmit = async function (event) {
   event.preventDefault();
   const nombre = document.getElementById("searchInput").value;
@@ -165,7 +165,7 @@ document.getElementById("searchForm").onsubmit = async function (event) {
   }
 };
 
-// Función para filtrar Pokémon por tipo
+// Función para filtrar por tipo
 document.getElementById("filterButton").onclick = async function () {
   const selectedType = document.getElementById("typeSelect").value;
   const token = localStorage.getItem("token");
@@ -243,7 +243,7 @@ document.getElementById("filterButton").onclick = async function () {
   }
 };
 
-// Funciones para el estado de la sesión
+// Funciones para estado de la sesión
 function updateSessionState() {
   const sessionContainer = document.getElementById("sessionContainer");
   const token = localStorage.getItem("token");
@@ -261,7 +261,6 @@ function updateSessionState() {
         `;
   }
 }
-
 function logout() {
   localStorage.removeItem("token");
   localStorage.removeItem("username");
@@ -270,6 +269,7 @@ function logout() {
 }
 
 document.addEventListener("DOMContentLoaded", updateSessionState);
+
 
 function obtenerDetallesPokemon(pokemonId) {
   console.log("obtenerDetallesPokemon llamado con ID:", pokemonId);
