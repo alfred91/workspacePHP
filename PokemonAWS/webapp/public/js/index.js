@@ -94,7 +94,7 @@ document.getElementById("searchForm").onsubmit = async function (event) {
 
   try {
     const response = await fetch(
-      `http://localhost:3000/api/pokemon/find/${nombre}`,
+      `http://35.174.172.112:3000/api/pokemon/find/${nombre}`,
       {
         method: "GET",
         headers: {
@@ -123,7 +123,7 @@ document.getElementById("searchForm").onsubmit = async function (event) {
         const card = document.createElement("div");
         card.className = "card";
         card.innerHTML = `
-            <img src="http://localhost:3000/images/${pokemon.imagen}" alt="${
+            <img src="http://35.174.172.112:3000/images/${pokemon.imagen}" alt="${
           pokemon.nombre
         }">
             <h2>${pokemon.nombre}</h2>
@@ -177,7 +177,7 @@ document.getElementById("filterButton").onclick = async function () {
 
   try {
     const response = await fetch(
-      `http://localhost:3000/api/pokemon/tipo/${selectedType}`,
+      `http://35.174.172.112:3000/api/pokemon/tipo/${selectedType}`,
       {
         method: "GET",
         headers: {
@@ -200,7 +200,7 @@ document.getElementById("filterButton").onclick = async function () {
       const card = document.createElement("div");
       card.className = "card";
       card.innerHTML = `
-                <img src="http://localhost:3000/images/${
+                <img src="http://35.174.172.112:3000/images/${
                   pokemon.imagen
                 }" alt="${pokemon.nombre}">
                 <h2>${pokemon.nombre}</h2>
@@ -280,7 +280,7 @@ function obtenerDetallesPokemon(pokemonId) {
     return;
   }
 
-  fetch(`http://localhost:3000/api/pokemon/id/${pokemonId}`, {
+  fetch(`http://35.174.172.112:3000/api/pokemon/id/${pokemonId}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -316,7 +316,7 @@ function renderPokemonDetails(pokemon) {
     ? `/images/bgpokemon.jpg`
     : "";
   const pokemonImage = pokemon.imagen
-    ? `<img src="http://localhost:3000/images/${pokemon.imagen}" alt="Imagen de ${pokemon.nombre}" class="pokemon-image">`
+    ? `<img src="http://35.174.172.112:3000/images/${pokemon.imagen}" alt="Imagen de ${pokemon.nombre}" class="pokemon-image">`
     : `<p class="text-gray-600 text-center mb-4">No tiene imagen asociada.</p>`;
 
   const habilidadesHtml = pokemon.habilidades
@@ -378,7 +378,7 @@ function renderPokemonDetails(pokemon) {
 function borrarPokemon(id) {
   console.log(`Token enviado: ${localStorage.getItem("token")}`);
 
-  fetch(`http://localhost:3000/api/pokemon/delete/${id}`, {
+  fetch(`http://35.174.172.112:3000/api/pokemon/delete/${id}`, {
     method: "DELETE",
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
