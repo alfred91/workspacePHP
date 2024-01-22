@@ -71,12 +71,12 @@ async function loadAbilities(pokemonId, abilitiesContainerId, opponentPokemonId)
 
 document.querySelector('select[name="pokemonId1"]').addEventListener("change", function () {
     const pokemonId = this.value;
-    loadPokemonData(pokemonId, "abilitiesContainer1", pokemon2Data ? pokemon2Data._id : null);
+    pokemon1Data(pokemonId, "abilitiesContainer1", pokemon2Data ? pokemon2Data._id : null);
 });
 
 document.querySelector('select[name="pokemonId2"]').addEventListener("change", function () {
     const pokemonId = this.value;
-    loadPokemonData(pokemonId, "abilitiesContainer2", pokemon1Data ? pokemon1Data._id : null);
+    pokemon2Data(pokemonId, "abilitiesContainer2", pokemon1Data ? pokemon1Data._id : null);
 });
 
 document.getElementById("openModalButton").addEventListener("click", async function () {
@@ -142,7 +142,7 @@ async function atacarPokemon(pokemonAtacanteId, abilitiesContainerId, indexHabil
 
         const targetPokemonData = pokemonAtacanteId === pokemon1Data._id ? pokemon2Data : pokemon1Data;
         targetPokemonData.puntosSaludJuego = attackResult.pokemon.puntosSaludJuego;
-        
+
         updatePokemonModal(targetPokemonData, pokemonAtacanteId === pokemon1Data._id ? "pokemon2InfoModal" : "pokemon1InfoModal");
 
         if (fueraCombate) {

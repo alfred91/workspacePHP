@@ -22,9 +22,9 @@ document.addEventListener("DOMContentLoaded", function () {
           const card = document.createElement("div");
           card.className = "card";
           card.innerHTML = `
-            <img src="http://3.211.131.204:3000/images/${pokemon.imagen}" alt="${
-            pokemon.nombre
-          }">
+            <img src="http://3.211.131.204:3000/images/${
+              pokemon.imagen
+            }" alt="${pokemon.nombre}">
             <h2><b>${pokemon.nombre}</b></h2>
             <ul class="list-disc pl-4">
                 <li>Especie: ${pokemon.especie}</li>
@@ -55,7 +55,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 </ul>
             </ul>
             <div class="button-container">
-    <button class="button" onclick="obtenerDetallesPokemon('${pokemon._id}');">Ver Detalles</button>
+    <button class="button" onclick="obtenerDetallesPokemon('${
+      pokemon._id
+    }');">Ver Detalles</button>
   </div>
           `;
           container.appendChild(card);
@@ -123,9 +125,9 @@ document.getElementById("searchForm").onsubmit = async function (event) {
         const card = document.createElement("div");
         card.className = "card";
         card.innerHTML = `
-            <img src="http://3.211.131.204:3000/images/${pokemon.imagen}" alt="${
-          pokemon.nombre
-        }">
+            <img src="http://3.211.131.204:3000/images/${
+              pokemon.imagen
+            }" alt="${pokemon.nombre}">
             <h2>${pokemon.nombre}</h2>
             <ul class="list-disc pl-4">
               <li>Especie: ${pokemon.especie}</li>
@@ -153,9 +155,7 @@ document.getElementById("searchForm").onsubmit = async function (event) {
                   .join("")}
               </ul>
             </ul>
-            <a href="#" onclick="obtenerDetallesPokemon('${
-              pokemon._id
-            }'); return false;">Ver Detalles</a>
+            <a href="#" onclick="obtenerDetallesPokemon('${pokemon._id}'); return false;" class="btn btn-primary">Ver Detalles</a>
           `;
         container.appendChild(card);
       });
@@ -210,9 +210,7 @@ document.getElementById("filterButton").onclick = async function () {
                     <li>Altura: ${pokemon.altura} metros</li>
                     <li>Peso: ${pokemon.peso} kg</li>
                     <li>Vida: ${pokemon.vida}</li>
-                    <li>PS en Juego: ${
-                      pokemon.puntosSaludJuego
-                    }</li>
+                    <li>PS en Juego: ${pokemon.puntosSaludJuego}</li>
                     ${
                       pokemon.preevolucion
                         ? `<li>Preevolución: ${pokemon.preevolucion}</li>`
@@ -232,9 +230,7 @@ document.getElementById("filterButton").onclick = async function () {
                           .join("")}
                     </ul>
                 </ul>
-                <a href="#" onclick="obtenerDetallesPokemon('${
-                  pokemon._id
-                }'); return false;">Ver Detalles</a>
+                <a href="#" onclick="obtenerDetallesPokemon('${pokemon._id}'); return false;" class="btn btn-primary">Ver Detalles</a>
                 `;
       container.appendChild(card);
     });
@@ -251,7 +247,8 @@ function updateSessionState() {
 
   if (token && username) {
     sessionContainer.innerHTML = `
-            <p>Sesión iniciada como: ${username}</p>
+           <p>Sesión iniciada como: <b> ${username}</b> </p>
+
             <br>
                 
             <a class="button link-button battle-button" id="logoutButton" onclick="logout()">Cerrar Sesion</a>   `;
@@ -269,7 +266,6 @@ function logout() {
 }
 
 document.addEventListener("DOMContentLoaded", updateSessionState);
-
 
 function obtenerDetallesPokemon(pokemonId) {
   console.log("obtenerDetallesPokemon llamado con ID:", pokemonId);
@@ -312,17 +308,14 @@ function cerrarModal() {
 }
 
 function renderPokemonDetails(pokemon) {
-  const pokemonBackground = pokemon.imagen
-    ? `/images/bgpokemon.jpg`
-    : "";
+  const pokemonBackground = pokemon.imagen ? `/images/bgpokemon.jpg` : "";
   const pokemonImage = pokemon.imagen
     ? `<img src="http://3.211.131.204:3000/images/${pokemon.imagen}" alt="Imagen de ${pokemon.nombre}" class="pokemon-image">`
     : `<p class="text-gray-600 text-center mb-4">No tiene imagen asociada.</p>`;
 
   const habilidadesHtml = pokemon.habilidades
     .map(
-      (habilidad) =>
-        `<li>${habilidad.nombre}: ${habilidad.damage} daño</li>`
+      (habilidad) => `<li>${habilidad.nombre}: ${habilidad.damage} daño</li>`
     )
     .join("");
 
