@@ -29,7 +29,7 @@ exports.createPokemon = async (req, res) => {
     console.log("Archivo de imagen:", req.file);
 
     const newPokemon = new Pokemon(req.body);
-    newPokemon.imagen = req.file.filename; // Guarda el nombre del archivo de imagen en el modelo Pokemon
+    newPokemon.imagen = req.file.filename;
     const savedPokemon = await newPokemon.save();
 
     console.log("Pokemon creado:", savedPokemon);
@@ -100,22 +100,6 @@ exports.getPokemonByType = async (req, res) => {
   }
 };
 
-// Actualizar un Pokémon
-exports.updatePokemon = async (req, res) => {
-  try {
-    const updatedPokemon = await Pokemon.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    );
-    if (!updatedPokemon) {
-      return res.status(404).send({ message: "Pokémon no encontrado" });
-    }
-    res.status(200).send(updatedPokemon);
-  } catch (error) {
-    res.status(500).send({ message: "Error al actualizar el Pokémon", error });
-  }
-};
 
 // Atacar a un pokemon
 exports.atacarPokemon = async (req, res) => {

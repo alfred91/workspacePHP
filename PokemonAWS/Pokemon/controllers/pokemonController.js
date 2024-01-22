@@ -1,84 +1,82 @@
-const Pokemon = require("../models/Pokemon"); // RUTA AL MODELO POKEMON
+const Pokemon = require("../models/Pokemon");
 const multer = require("multer");
-
-// Obtener todos los Pokémon
-exports.getAllPokemons = async (req, res) => {
-  try {
-    const pokemons = await Pokemon.find().sort({ nombre: 1 });
-    res.status(200).send(pokemons);
-  } catch (error) {
-    res.status(500).send({ message: "Error al obtener los Pokémon", error });
-  }
-};
-
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "images/"); // Directorio donde se guardarán las imágenes
+    cb(null, "images/");
   },
   filename: (req, file, cb) => {
     cb(null, file.originalname);
   },
 });
-
 const upload = multer({ storage: storage });
 
-// Crear un nuevo Pokémon
+// Obtener todos los Pokemon
+exports.getAllPokemons = async (req, res) => {
+  try {
+    const pokemons = await Pokemon.find().sort({ nombre: 1 });
+    res.status(200).send(pokemons);
+  } catch (error) {
+    res.status(500).send({ message: "Error al obtener los Pokemon", error });
+  }
+};
+
+// Crear un nuevo Pokemon
 exports.createPokemon = async (req, res) => {
   try {
     console.log("Datos del formulario:", req.body);
     console.log("Archivo de imagen:", req.file);
 
     const newPokemon = new Pokemon(req.body);
-    newPokemon.imagen = req.file.filename; // Guarda el nombre del archivo de imagen en el modelo Pokemon
+    newPokemon.imagen = req.file.filename;
     const savedPokemon = await newPokemon.save();
 
     console.log("Pokemon creado:", savedPokemon);
 
     res.status(201).send(savedPokemon);
   } catch (error) {
-    console.error("Error al crear el Pokémon:", error);
-    res.status(500).send({ message: "Error al crear el Pokémon", error });
+    console.error("Error al crear el Pokemon:", error);
+    res.status(500).send({ message: "Error al crear el Pokemon", error });
   }
 };
 
-// Controlador para buscar Pokémon por nombre
+// Buscar Pokemon por nombre
 exports.buscarPokemonPorNombre = async (req, res) => {
   try {
     const nombre = req.params.nombre;
     const pokemones = await Pokemon.find({ nombre: new RegExp(nombre, "i") });
     if (!pokemones || pokemones.length === 0) {
-      return res.status(404).json({ message: "Pokémon no encontrado" });
+      return res.status(404).json({ message: "Pokemon no encontrado" });
     }
 
     res.status(200).json(pokemones);
   } catch (error) {
-    res.status(500).json({ message: "Error al buscar Pokémon", error });
+    res.status(500).json({ message: "Error al buscar Pokemon", error });
   }
 };
 
-// Obtener un Pokémon por ID
+// Obtener un Pokemon por ID
 exports.getPokemonById = async (req, res) => {
   try {
     const pokemon = await Pokemon.findById(req.params.id);
     if (!pokemon) {
-      return res.status(404).send({ message: "Pokémon no encontrado" });
+      return res.status(404).send({ message: "Pokemon no encontrado" });
     }
     res.status(200).send(pokemon);
   } catch (error) {
-    res.status(500).send({ message: "Error al obtener el Pokémon", error });
+    res.status(500).send({ message: "Error al obtener el Pokemon", error });
   }
 };
 
-// Eliminar un Pokémon
+// Eliminar un Pokemon
 exports.deletePokemon = async (req, res) => {
   try {
     const deletedPokemon = await Pokemon.findByIdAndDelete(req.params.id);
     if (!deletedPokemon) {
-      return res.status(404).send({ message: "Pokémon no encontrado" });
+      return res.status(404).send({ message: "Pokemon no encontrado" });
     }
-    res.status(200).send({ message: "Pokémon eliminado" });
+    res.status(200).send({ message: "Pokemon eliminado" });
   } catch (error) {
-    res.status(500).send({ message: "Error al eliminar el Pokémon", error });
+    res.status(500).send({ message: "Error al eliminar el Pokemon", error });
   }
 };
 
@@ -90,30 +88,13 @@ exports.getPokemonByType = async (req, res) => {
     if (pokemons.length === 0) {
       return res
         .status(404)
-        .json({ message: "No se encontraron Pokémon del tipo especificado" });
+        .json({ message: "No se encontraron Pokemon del tipo especificado" });
     }
     res.status(200).json(pokemons);
   } catch (error) {
     res
       .status(500)
-      .json({ message: "Error al obtener los Pokémon por tipo", error });
-  }
-};
-
-// Actualizar un Pokémon
-exports.updatePokemon = async (req, res) => {
-  try {
-    const updatedPokemon = await Pokemon.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    );
-    if (!updatedPokemon) {
-      return res.status(404).send({ message: "Pokémon no encontrado" });
-    }
-    res.status(200).send(updatedPokemon);
-  } catch (error) {
-    res.status(500).send({ message: "Error al actualizar el Pokémon", error });
+      .json({ message: "Error al obtener los Pokemon por tipo", error });
   }
 };
 
@@ -123,38 +104,38 @@ exports.atacarPokemon = async (req, res) => {
     const pokemonId = req.params.id;
     const puntosAtaque = parseInt(req.params.puntosAtaque);
 
-    // Obtener el Pokémon por ID
+    // Obtener el Pokemon por ID
     const pokemon = await Pokemon.findById(pokemonId);
 
     if (!pokemon) {
-      return res.status(404).json({ message: "Pokémon no encontrado" });
+      return res.status(404).json({ message: "Pokemon no encontrado" });
     }
 
     if (pokemon.fueraCombate) {
-      return res.status(400).json({ message: "El Pokémon ya está fuera de combate" });
+      return res
+        .status(400)
+        .json({ message: "El Pokemon ya está fuera de combate" });
     }
 
-    // Restar puntos de ataque a los puntos de salud del juego
+    // Restar puntos del ataque a los PS del juego
     pokemon.puntosSaludJuego -= puntosAtaque;
 
     if (pokemon.puntosSaludJuego < 0) {
       pokemon.puntosSaludJuego = 0;
     }
 
-    // Verificar si el Pokémon está fuera de combate
+    // Verificar si el Pokemon está fuera de combate
     const fueraCombate = pokemon.puntosSaludJuego <= 0;
 
     if (fueraCombate) {
-      // Marcar el Pokémon como fuera de combate si no tiene puntos de salud
       pokemon.fueraCombate = true;
     }
 
-    // Guardar los cambios en el Pokémon
     const updatedPokemon = await pokemon.save();
 
-    // Devolver el Pokémon modificado
+    // Devolver el Pokemon modificado
     res.status(200).json({ pokemon: updatedPokemon, fueraCombate });
   } catch (error) {
-    res.status(500).json({ message: "Error al atacar al Pokémon", error });
+    res.status(500).json({ message: "Error al atacar al Pokemon", error });
   }
 };

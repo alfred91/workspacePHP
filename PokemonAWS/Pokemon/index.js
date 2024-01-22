@@ -1,4 +1,3 @@
-// Importar los módulos necesarios
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
@@ -6,7 +5,7 @@ const app = express();
 const authRoutes = require("./routes/authRoutes");
 const pokemonRoutes = require("./routes/pokemonRoutes");
 
-// Configuración de CORS
+// Configuración CORS
 app.use(
   cors({
     origin: ["http://3.211.131.204:8080"],
@@ -17,7 +16,7 @@ app.use(
 );
 app.options("*", cors());
 
-// Configuración de express
+// Configuración express
 app.use(express.json());
 app.use("/api", require("./routes/pokemonRoutes"));
 app.use("/images", express.static("images"));
@@ -31,11 +30,10 @@ app.get("/", (req, res) => {
 // Rutas de autenticación con el prefijo /api
 app.use("/api", authRoutes);
 
-// Conexión a MongoDB
+// Conexión MongoDB
 const MONGO_USERNAME = process.env.MONGO_USERNAME;
 const MONGO_PASSWORD = process.env.MONGO_PASSWORD;
 const MONGO_DB = process.env.MONGO_DB;
-
 const urlMongoDb = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongo:27017/${MONGO_DB}?authSource=admin`;
 
 mongoose

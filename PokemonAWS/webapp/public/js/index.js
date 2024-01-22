@@ -72,6 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+// Función para redirigir a la página de creación de Pokémon
 function redirectToCreatePokemon() {
   const token = localStorage.getItem("token");
 
@@ -258,6 +259,7 @@ function updateSessionState() {
         `;
   }
 }
+//Funcion para borrar el token al cerrar sesión
 function logout() {
   localStorage.removeItem("token");
   localStorage.removeItem("username");
