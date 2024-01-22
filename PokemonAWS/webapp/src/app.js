@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 // Ruta para la página principal que lista los Pokemon
 app.get("/", (req, res) => {
   axios
-    .get("http://3.211.131.204:3000/api/pokemon/list")
+    .get("http://api:3000/api/pokemon/list")
     .then((response) => {
       res.render("index", { pokemons: response.data });
     })
@@ -36,7 +36,7 @@ app.get("/register", (req, res) => {
 // Ruta para manejar la solicitud POST desde el formulario de registro
 app.post("/register", (req, res) => {
   axios
-    .post("http://3.211.131.204:3000/api/register", req.body)
+    .post("http://api:3000/api/register", req.body)
     .then(() => {
       res.redirect("/");
     })
@@ -54,7 +54,7 @@ app.get("/login", (req, res) => {
 // Ruta para manejar el POST desde el formulario de inicio de sesión
 app.post("/login", (req, res) => {
   axios
-    .post("http://3.211.131.204:3000/api/login", {
+    .post("http://api:3000/api/login", {
       username: req.body.username,
       password: req.body.password,
     })
@@ -71,7 +71,7 @@ app.post("/login", (req, res) => {
 app.get("/pokemon/batalla", async (req, res) => {
   try {
     const response = await axios.get(
-      "http://3.211.131.204:3000/api/pokemon/list"
+      "http://api:3000/api/pokemon/list"
     );
     const pokemons = response.data;
     res.render("batalla", { pokemons });
@@ -87,7 +87,7 @@ app.get("/pokemon/create", (req, res) => res.render("createPokemon"));
 // Ruta para manejar la solicitud POST desde el formulario
 app.post("/pokemon/create", (req, res) => {
   axios
-    .post("http://3.211.131.204:3000/api/pokemon/create", req.body)
+    .post("http://api:3000/api/pokemon/create", req.body)
     .then(() => {
       res.redirect("/");
     })
@@ -103,14 +103,14 @@ app.get("/pokemon/:id", async (req, res) => {
 
   try {
     const response = await axios.get(
-      `http://3.211.131.204:3000/api/pokemon/id/${idOrName}`
+      `http://api:3000/api/pokemon/id/${idOrName}`
     );
     const pokemon = response.data;
     res.render("pokemonDetail", { pokemon });
   } catch (error) {
     try {
       const response = await axios.get(
-        `http://3.211.131.204:3000/api/pokemon/find/${idOrName}`
+        `http://api:3000/api/pokemon/find/${idOrName}`
       );
       const pokemon = response.data;
       res.render("pokemonDetail", { pokemon });
