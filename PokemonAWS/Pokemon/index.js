@@ -1,3 +1,4 @@
+// Importar los módulos necesarios
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
@@ -5,6 +6,7 @@ const app = express();
 const authRoutes = require("./routes/authRoutes");
 const pokemonRoutes = require("./routes/pokemonRoutes");
 
+// Configuración de CORS
 app.use(
   cors({
     origin: ["http://3.211.131.204:8080"],
@@ -15,11 +17,13 @@ app.use(
 );
 app.options("*", cors());
 
+// Configuración de express
 app.use(express.json());
 app.use("/api", require("./routes/pokemonRoutes"));
 app.use("/images", express.static("images"));
 app.use(express.static("public"));
 
+// Ruta de inicio
 app.get("/", (req, res) => {
   res.send("API de Pokémon funcionando!");
 });
@@ -27,6 +31,7 @@ app.get("/", (req, res) => {
 // Rutas de autenticación con el prefijo /api
 app.use("/api", authRoutes);
 
+// Conexión a MongoDB
 const MONGO_USERNAME = process.env.MONGO_USERNAME;
 const MONGO_PASSWORD = process.env.MONGO_PASSWORD;
 const MONGO_DB = process.env.MONGO_DB;
@@ -42,6 +47,7 @@ mongoose
     console.error("Error al conectar a MongoDB", err);
   });
 
+// Configuración del puerto
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en el puerto ${PORT}`);

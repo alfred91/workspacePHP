@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 8080;
 app.set("view engine", "ejs");
 app.set("views", "./views");
 
-// Middleware para servir archivos estáticos desde la carpeta 'public' y 'images'
+// Middleware para servir archivos estáticos
 app.use(express.static("public"));
 app.use("/images", express.static("images"));
 
@@ -15,7 +15,7 @@ app.use("/images", express.static("images"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Ruta para la página principal que lista todos los Pokémon
+// Ruta para la página principal que lista los Pokemon
 app.get("/", (req, res) => {
   axios
     .get("http://3.211.131.204:3000/api/pokemon/list")
@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
     });
 });
 
-// Ruta para la página de registro (vista)
+// Ruta para la vista de registro
 app.get("/register", (req, res) => {
   res.render("register");
 });
@@ -37,19 +37,42 @@ app.get("/register", (req, res) => {
 app.post("/register", (req, res) => {
   axios
     .post("http://3.211.131.204:3000/api/register", req.body)
-    .then((response) => {
+    .then(() => {
       res.redirect("/");
     })
-    .catch((error) => {
-      console.error("Error al registrar:", error.message);
+    .catch(() => {
+      console.error("Error al registrar");
       res.render("register", { error: "Error al registrar" });
+    });
+});
+
+// Ruta para mostrar el formulario de inicio de sesión
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+
+// Ruta para manejar el POST desde el formulario de inicio de sesión
+app.post("/login", (req, res) => {
+  axios
+    .post("http://3.211.131.204:3000/api/login", {
+      username: req.body.username,
+      password: req.body.password,
+    })
+    .then(() => {
+      res.redirect("/");
+    })
+    .catch(() => {
+      console.error("Error al iniciar sesión");
+      res.render("login", { error: "Error al iniciar sesión" });
     });
 });
 
 // Ruta para mostrar la vista de batalla
 app.get("/pokemon/batalla", async (req, res) => {
   try {
-    const response = await axios.get("http://3.211.131.204:3000/api/pokemon/list");
+    const response = await axios.get(
+      "http://3.211.131.204:3000/api/pokemon/list"
+    );
     const pokemons = response.data;
     res.render("batalla", { pokemons });
   } catch (error) {
@@ -58,30 +81,26 @@ app.get("/pokemon/batalla", async (req, res) => {
   }
 });
 
-// Ruta para mostrar el formulario de creación de Pokémon
+// Ruta para mostrar el formulario de crear Pokemon
 app.get("/pokemon/create", (req, res) => res.render("createPokemon"));
 
-// Ruta para manejar la solicitud POST desde el formulario de creación de Pokémon
+// Ruta para manejar la solicitud POST desde el formulario
 app.post("/pokemon/create", (req, res) => {
-  // Lógica para crear un nuevo Pokémon con los datos del formulario
-  console.log("Datos del formulario:", req.body);
   axios
     .post("http://3.211.131.204:3000/api/pokemon/create", req.body)
-    .then((response) => {
-      // Redirigir al index
+    .then(() => {
       res.redirect("/");
     })
-    .catch((error) => {
-      console.error("Error al crear el Pokémon:", error.message);
-      res.status(500).send("Error al crear el Pokémon");
+    .catch(() => {
+      console.error("Error al crear el Pokemon");
+      res.status(500).send("Error al crear el Pokemon");
     });
 });
 
-// Ruta para ver detalles de un Pokémon
+// Ruta para ver detalles de un Pokemon
 app.get("/pokemon/:id", async (req, res) => {
   const idOrName = req.params.id;
 
-  // Intenta buscar por ID
   try {
     const response = await axios.get(
       `http://3.211.131.204:3000/api/pokemon/id/${idOrName}`
@@ -89,7 +108,6 @@ app.get("/pokemon/:id", async (req, res) => {
     const pokemon = response.data;
     res.render("pokemonDetail", { pokemon });
   } catch (error) {
-    // Si no encuentra por ID, busca por nombre
     try {
       const response = await axios.get(
         `http://3.211.131.204:3000/api/pokemon/find/${idOrName}`
@@ -97,34 +115,10 @@ app.get("/pokemon/:id", async (req, res) => {
       const pokemon = response.data;
       res.render("pokemonDetail", { pokemon });
     } catch (error) {
-      console.error(
-        "Error al obtener los detalles del Pokémon:",
-        error.message
-      );
-      res.status(500).send("Error al obtener los detalles del Pokémon");
+      console.error("Error al obtener los detalles del Pokemon");
+      res.status(500).send("Error al obtener los detalles del Pokemon");
     }
   }
-});
-
-// Ruta para mostrar el form de login
-app.get("/login", (req, res) => {
-  res.render("login");
-});
-
-// Ruta para manejar el POST desde el form de login
-app.post("/login", (req, res) => {
-  axios
-    .post("http://3.211.131.204:3000/api/login", {
-      username: req.body.username,
-      password: req.body.password,
-    })
-    .then((response) => {
-      res.redirect("/");
-    })
-    .catch((error) => {
-      console.error("Error al iniciar sesión:", error.message);
-      res.render("login", { error: "Error al iniciar sesión" });
-    });
 });
 
 // Iniciar el servidor

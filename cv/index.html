@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alfredo Trujillo - Web Developer</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" a href="css/style.css">
+</head>
+
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+    <div class="container mx-auto p-8">
+        <div class="w-full lg:w-4/5 mx-auto bg-gray-800 text-white shadow-lg rounded-lg overflow-hidden p-5">
+            <div class="flex justify-center">
+                <img class="rounded-full border border-gray-300 shadow-lg" src="img/html-logo.png"
+                    alt="Foto de Alfredo Trujillo Espejo" width="150" height="150">
+            </div>
+            <h1 class="text-center text-3xl font-bold pt-6">Alfredo Jesús Trujillo Espejo</h1>
+            <p class="text-center text-xl pb-6">Web Developer</p>
+
+            <div class="px-6 mt-6">
+                <h2 class="text-2xl font-bold border-b border-gray-200  pb-2 cursor-pointer text-center my-4 py-2 text-gray-300 shadow-sm"
+                    onclick="toggleSection('aboutSection')">Sobre mi</h2>
+                <div id="aboutSection" class="max-h-0 overflow-hidden transition-all duration-700 ease-in-out">
+                    <p class="text-gray-300 text-lg">
+                        Apasionado del desarrollo web, me dedico a la innovación tecnológica y al aprendizaje constante.
+                        Dinámico y colaborativo, me enfoco en crear soluciones web eficientes, siguiendo las últimas
+                        tendencias y mejores prácticas del sector.
+                    </p>
+                    <p class="text-gray-300 text-lg mt-4">
+                        Creo firmemente en el poder del trabajo en equipo y el compañerismo, y disfruto colaborando con
+                        colegas para superar desafíos complejos y alcanzar objetivos comunes. Mi enfoque se centra en
+                        crear soluciones web efectivas y eficientes, siempre con un ojo puesto en las últimas tendencias
+                        y mejores prácticas de la industria.
+                    </p>
+                </div>
+
+
+                <!-- Sección de Educación -->
+                <div class="px-6 mt-6">
+                    <h2 class="text-2xl font-bold border-b border-gray-200  pb-2 cursor-pointer text-center my-4 py-2 text-gray-300 shadow-sm"
+                        onclick="toggleSection('educationSection')">Educación</h2>
+                    <div id="educationSection" class="max-h-0 overflow-hidden transition-all duration-700 ease-in-out">
+                        <p class="pt-2"><strong>IES Mar Serena</strong> (2010 - 2012)<br>Ciclo Formativo Grado Medio:
+                            Explotación de Sistemas Informáticos</p>
+                        <p class="pt-2"><strong>IES Jaroso</strong> (2022 - 2024)<br>Ciclo Formativo Grado Superior:
+                            Desarrollo de Aplicaciones Web</p>
+                    </div>
+                </div>
+                <!-- Sección de Experiencia Laboral -->
+                <div class="px-6 mt-6">
+                    <h2 class="text-2xl font-bold border-b border-gray-200 pb-2 cursor-pointer text-center my-4 py-2 text-gray-300 shadow-sm"
+                        onclick="toggleSection('workSection')">Experiencia Laboral</h2>
+                    <div id="workSection" class="max-h-0 overflow-hidden transition-all duration-700 ease-in-out">
+                        <p class="pt-2"><strong>Beep Informática Garrucha - Técnico Informático</strong>
+                            (2012-2016)<br>[Descripción de responsabilidades y logros]</p>
+                        <p class="pt-2"><strong>Parador de Turismo Mojácar - Camarero</strong>
+                            (2016-2018)<br>[Descripción
+                            de responsabilidades y logros]</p>
+                        <p class="pt-2"><strong>Hotel Vera Playa – Encargado de Cafetería</strong>
+                            (2018-2022)<br>[Descripción de responsabilidades y logros]</p>
+                    </div>
+                </div>
+
+                <!-- Sección de Aptitudes -->
+                <div class="px-6 mt-6">
+                    <h2 class="text-2xl font-bold border-b border-gray-200 pb-2 cursor-pointer text-center my-4 py-2 text-gray-300 shadow-sm"
+                        onclick="toggleSection('skillsSection')">Aptitudes</h2>
+
+                    <div id="skillsSection" class="overflow-hidden transition-all duration-700 ease-in-out">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- Columna Izquierda -->
+                            <div>
+                                <p class="pt-2 text-center">Desarrollo Frontend</p>
+                                <div class="w-full bg-gray-200 rounded-full mt-2 text-center">
+                                    <div class="bg-blue-400 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full"
+                                        style="width: 75%;"></div>
+                                </div>
+                                <p class="pt-4 text-center">Amazon Web Services</p>
+                                <div class="w-full bg-gray-200 rounded-full mt-2 text-center">
+                                    <div class="bg-green-400 text-xs font-medium text-green-100 text-center p-0.5 leading-none rounded-l-full"
+                                        style="width: 70%;"></div>
+                                </div>
+                                <p class="pt-4 text-center">Docker Virtualizacion</p>
+                                <div class="w-full bg-gray-200 rounded-full mt-2 text-center">
+                                    <div class="bg-red-400 text-xs font-medium text-red-100 text-center p-0.5 leading-none rounded-l-full"
+                                        style="width: 80%;"></div>
+                                </div>
+                            </div>
+                            <!-- Columna Derecha -->
+                            <div>
+                                <p class="pt-2 text-center">Desarrollo Backend</p>
+                                <div class="w-full bg-gray-200 rounded-full mt-2 text-center">
+                                    <div class="bg-blue-400 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full"
+                                        style="width: 70%;"></div>
+                                </div>
+                                <p class="pt-4 text-center">Bases de Datos</p>
+                                <div class="w-full bg-gray-200 rounded-full mt-2 text-center">
+                                    <div class="bg-green-400 text-xs font-medium text-green-100 text-center p-0.5 leading-none rounded-l-full"
+                                        style="width: 80%;"></div>
+                                </div>
+                                <p class="pt-4 text-center">API REST</p>
+                                <div class="w-full bg-gray-200 rounded-full mt-2 text-center">
+                                    <div class="bg-yellow-400 text-xs font-medium text-yellow-100 text-center p-0.5 leading-none rounded-l-full"
+                                        style="width: 75%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <h1 class="text-2xl font-bold text-gray-300 text-center cursor-pointer"
+                        onclick="toggleSection('dawSection')">Conocimientos en DAW</h1>
+                    <div id="dawSection" class="overflow-hidden transition-all duration-700 ease-in-out">
+                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
+                            <div class="card p-4 bg-gray rounded-lg shadow hover:shadow-md">
+                                <img src="img/html-logo.png" alt="HTML Logo" class="h-12 mx-auto">
+                                <h2 class="font-bold text-lg mt-2">HTML</h2>
+                                <p>Lenguaje de marcado para la creación de páginas web</p>
+                            </div>
+                            <div class="card p-4 bg-gray rounded-lg shadow hover:shadow-md">
+                                <img src="img/css-logo.png" alt="CSS Logo" class="h-12 mx-auto">
+                                <h2 class="font-bold text-lg mt-2">CSS</h2>
+                                <p>Hojas de estilo utilizadas para dar estilo a las páginas web</p>
+                            </div>
+                            <div class="card p-4 bg-gray rounded-lg shadow hover:shadow-md">
+                                <img src="img/js-logo.png" alt="JavaScript Logo" class="h-12 mx-auto">
+                                <h2 class="font-bold text-lg mt-2">JavaScript</h2>
+                                <p>Lenguaje enfocado en la interactividad en el navegador</p>
+                            </div>
+                            <div class="card p-4 bg-gray rounded-lg shadow hover:shadow-md">
+                                <img src="img/java-logo.png" alt="Java Logo" class="h-12 mx-auto">
+                                <h2 class="font-bold text-lg mt-2">Java</h2>
+                                <p>Programación orientada a objetos</p>
+                            </div>
+                            <div class="card p-4 bg-gray rounded-lg shadow hover:shadow-md">
+                                <img src="img/aws-logo.png" alt="AWS Logo" class="h-12 mx-auto">
+                                <h2 class="font-bold text-lg mt-2">AWS</h2>
+                                <p>Servicios de computación en la nube y hosting</p>
+                            </div>
+                            <div class="card p-4 bg-gray rounded-lg shadow hover:shadow-md">
+                                <img src="img/php-logo.png" alt="PHP Logo" class="h-12 mx-auto">
+                                <h2 class="font-bold text-lg mt-2">PHP</h2>
+                                <p>Lenguaje de script del lado del servidor para desarrollo web</p>
+                            </div>
+
+
+                            <div class="card p-4 bg-gray rounded-lg shadow hover:shadow-md">
+                                <img src="img/sql-logo.png" alt="SQL Logo" class="h-12 mx-auto">
+                                <h2 class="font-bold text-lg mt-2">SQL</h2>
+                                <p>Lenguaje estructurado para gestionar bases de datos relacionales.
+                                </p>
+                            </div>
+                            <div class="card p-4 bg-gray rounded-lg shadow hover:shadow-md">
+                                <img src="img/mongodb-logo.png" alt="MongoDB Logo" class="h-12 mx-auto">
+                                <h2 class="font-bold text-lg mt-2">MongoDB</h2>
+                                <p>BBDD NoSQL para operar con datos de manera flexible.</p>
+                            </div>
+
+                            <div class="card p-4 bg-gray rounded-lg shadow hover:shadow-md">
+                                <img src="img/laravel-logo.png" alt="Laravel Logo" class="h-12 mx-auto">
+                                <h2 class="font-bold text-lg mt-2">Laravel</h2>
+                                <p>Framework PHP para el desarrollo de aplicaciones web sofisticadas</p>
+                            </div>
+
+                            <div class="card p-4 bg-gray rounded-lg shadow hover:shadow-md">
+                                <img src="img/nodejs-logo.png" alt="Node.js Logo" class="h-12 mx-auto">
+                                <h2 class="font-bold text-lg mt-2">Node.js</h2>
+                                <p>Entorno de tiempo de ejecución de JavaScript del lado del servidor.</p>
+                            </div>
+
+                            <div class="card p-4 bg-gray rounded-lg shadow hover:shadow-md">
+                                <img src="img/docker-logo.png" alt="Docker Logo" class="h-12 mx-auto">
+                                <h2 class="font-bold text-lg mt-2">Docker</h2>
+                                <p>Desarrolo y ejecución de aplicaciones en contenedores.</p>
+                            </div>
+                            <div class="card p-4 bg-gray rounded-lg shadow hover:shadow-md">
+                                <img src="img/mariadb-logo.png" alt="MariaDB Logo" class="h-12 mx-auto">
+                                <h2 class="font-bold text-lg mt-2">MariaDB</h2>
+                                <p>Sistema de gestión de bases de datos relacionales.</p>
+                            </div>
+                            <div class="card p-4 bg-gray rounded-lg shadow hover:shadow-md">
+                                <img src="img/git-logo.png" alt="Git Logo" class="h-12 mx-auto">
+                                <h2 class="font-bold text-lg mt-2">Git</h2>
+                                <p>Sistema de control de versiones distribuido</p>
+                            </div>
+
+                            <div class="card p-4 bg-gray rounded-lg shadow hover:shadow-md">
+                                <img src="img/composer-logo.png" alt="Composer Logo" class="h-12 mx-auto">
+                                <h2 class="font-bold text-lg mt-2">Composer</h2>
+                                <p>Gestión de dependencias para PHP. </p>
+                            </div>
+                            <div class="card p-4 bg-gray rounded-lg shadow hover:shadow-md">
+                                <img src="img/react-logo.png" alt="React Logo" class="h-12 mx-auto">
+                                <h2 class="font-bold text-lg mt-2">React</h2>
+                                <p>Biblioteca de JavaScript para la creación de UI.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-6 mt-6 text-white flex flex-wrap items-center justify-between">
+                    <h2 class="text-2xl font-bold border-b border-gray-200 pb-2">Contacto</h2>
+                    <div class="flex items-center space-x-4 pt-2">
+                        <p>Teléfono: 662-040-002</p>
+                        <p>Email: alfred.91.mc@gmail.com</p>
+                        <p><a href="www.linkedin.com/in/alfredo-trujillo-31ab8b29b" target="_blank"> Sitio Web
+                            </a>
+                        </p>
+                        <a href="www.linkedin.com/in/alfredo-trujillo-31ab8b29b" target="_blank"
+                            rel="noopener noreferrer">
+                            <img src="img/linkedin-logo.png" alt="LinkedIn Logo" class="h-9 w-10">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="js/script.js"></script>
+        <script>
+            window.onload = function () {
+                var skillsSection = document.getElementById('skillsSection');
+                skillsSection.style.maxHeight = skillsSection.scrollHeight + "px";
+            };
+        </script>
+    </div>
+</body>
+
+</html>

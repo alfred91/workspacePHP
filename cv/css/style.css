@@ -1,0 +1,14 @@
+    .card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            background-color: rgba(78, 78, 78, 0.63);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.226);
+        }
+
+        body {
+            background: url('../img/blackbg.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
