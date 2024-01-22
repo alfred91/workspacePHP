@@ -1,9 +1,11 @@
-const token = localStorage.getItem("token");
+const token = localStorage.getItem("token"); 
 let pokemon1Data = null;
-let pokemon2Data = null;
+let pokemon2Data = null; 
 
+// Evento que se ejecuta al cargar la página
 document.addEventListener("DOMContentLoaded", async function () {
     try {
+        // Obtener la lista de Pokémon desde el servidor
         const response = await fetch("http://3.211.131.204:3000/api/pokemon/list", {
             headers: { Authorization: `Bearer ${token}` },
         });
@@ -12,6 +14,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             throw new Error(`Error en la respuesta del servidor: ${response.status}`);
         }
 
+        // Rellenar la selección del Pokémon en el formulario
         const pokemons = await response.json();
         const select1 = document.querySelector('select[name="pokemonId1"]');
         const select2 = document.querySelector('select[name="pokemonId2"]');
@@ -32,15 +35,19 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 });
 
+// Función para cargar las habilidades de un Pokémon
 async function loadAbilities(pokemonId, abilitiesContainerId, opponentPokemonId) {
     try {
+        // Obtener los datos del Pokémon desde el servidor
         const response = await fetch(`http://3.211.131.204:3000/api/pokemon/id/${pokemonId}`, {
             headers: { Authorization: `Bearer ${token}` },
         });
+
         if (!response.ok) {
             throw new Error(`Error en la respuesta del servidor: ${response.status}`);
         }
 
+        // Obtener los datos y hablidades del Pokémon
         const pokemon = await response.json();
         const abilitiesContainer = document.getElementById(abilitiesContainerId);
 
@@ -56,7 +63,7 @@ async function loadAbilities(pokemonId, abilitiesContainerId, opponentPokemonId)
             abilitiesContainer.appendChild(attackButton);
         });
 
-        // Botón de Volver
+        // Botón Rendirse
         const backButton = document.createElement("button");
         backButton.className = "centered-buttons";
         backButton.textContent = "Rendirse";
@@ -69,6 +76,7 @@ async function loadAbilities(pokemonId, abilitiesContainerId, opponentPokemonId)
     }
 }
 
+// Manejar la selección
 document.querySelector('select[name="pokemonId1"]').addEventListener("change", function () {
     const pokemonId = this.value;
     pokemon1Data(pokemonId, "abilitiesContainer1", pokemon2Data ? pokemon2Data._id : null);
@@ -79,10 +87,12 @@ document.querySelector('select[name="pokemonId2"]').addEventListener("change", f
     pokemon2Data(pokemonId, "abilitiesContainer2", pokemon1Data ? pokemon1Data._id : null);
 });
 
+// Abrir el modal de batalla
 document.getElementById("openModalButton").addEventListener("click", async function () {
     const modal = document.getElementById("pokemonModal");
     modal.style.display = "block";
 
+    // Obtener los datos y cargar habilidades
     const pokemonId1 = document.querySelector('select[name="pokemonId1"]').value;
     const pokemonId2 = document.querySelector('select[name="pokemonId2"]').value;
 
@@ -100,6 +110,7 @@ document.getElementById("openModalButton").addEventListener("click", async funct
     }
 });
 
+// Función para obtener información de un Pokémon
 async function getPokemonInfo(pokemonId) {
     const response = await fetch(`http://3.211.131.204:3000/api/pokemon/id/${pokemonId}`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -112,6 +123,7 @@ async function getPokemonInfo(pokemonId) {
     return await response.json();
 }
 
+// Actualizar el modal con los datos del Pokémon
 function updatePokemonModal(pokemon, modalId) {
     const modal = document.getElementById(modalId);
     modal.querySelector("h2").textContent = pokemon.nombre;
@@ -121,6 +133,7 @@ function updatePokemonModal(pokemon, modalId) {
     modal.querySelector(".puntosSaludJuego").textContent = `Puntos de Salud en Juego: ${pokemon.puntosSaludJuego || "No disponible"}`;
 }
 
+// Función para atacar
 async function atacarPokemon(pokemonAtacanteId, abilitiesContainerId, indexHabilidad, pokemonObjetivoId) {
     try {
         const habilidadSeleccionada = pokemon1Data._id === pokemonAtacanteId
@@ -142,7 +155,7 @@ async function atacarPokemon(pokemonAtacanteId, abilitiesContainerId, indexHabil
 
         const targetPokemonData = pokemonAtacanteId === pokemon1Data._id ? pokemon2Data : pokemon1Data;
         targetPokemonData.puntosSaludJuego = attackResult.pokemon.puntosSaludJuego;
-        
+
         updatePokemonModal(targetPokemonData, pokemonAtacanteId === pokemon1Data._id ? "pokemon2InfoModal" : "pokemon1InfoModal");
 
         if (fueraCombate) {
@@ -155,6 +168,7 @@ async function atacarPokemon(pokemonAtacanteId, abilitiesContainerId, indexHabil
     }
 }
 
+// Función para finalizar la batalla
 function finalizarBatalla() {
     document.querySelectorAll(".button").forEach(button => {
         button.disabled = true;
@@ -164,5 +178,5 @@ function finalizarBatalla() {
         const modal = document.getElementById("pokemonModal");
         modal.style.display = "none";
         window.location.href = "/pokemon/batalla";
-    }, 2000);
+    }, 1000);
 }

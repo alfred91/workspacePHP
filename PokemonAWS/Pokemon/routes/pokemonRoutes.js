@@ -25,7 +25,6 @@ router.get ("/pokemon/batalla",authenticateToken, async (req, res) => {
   res.render("batalla");
 });
 
-
 // Rutas para funcionalidades
 router.post('/pokemon/create', authenticateToken, upload.single('imagen'), pokemonController.createPokemon);
 router.get("/pokemon/list", authenticateToken, pokemonController.getAllPokemons);

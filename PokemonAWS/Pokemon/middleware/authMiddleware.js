@@ -9,7 +9,7 @@ exports.authenticateToken = (req, res, next) => {
       .json({ message: "No hay un token de autenticación" });
   }
 
-  // Separar el token del prefijo 'Bearer'
+  // Separar el token del prefijo Bearer
   const token = authHeader.split(" ")[1];
 
   if (!token) {
@@ -22,7 +22,7 @@ exports.authenticateToken = (req, res, next) => {
       return res.status(403).json({ message: "Token no válido o expirado" });
     }
 
-  // Adjuntar el usuario decodificado a la solicitud
+  // Adjuntar el usuario a la solicitud
     req.user = user;
     next();
   });
