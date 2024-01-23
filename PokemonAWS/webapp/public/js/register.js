@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("loginForm");
 
-  // Recogemos los valores del formulario Register y los enviamos al servidor
+  // Recogemos los valores del formulario y los enviamos al servidor
   form.onsubmit = function (event) {
     event.preventDefault();
 
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((error) => console.error("Error:", error));
   };
 
-  document.getElementById('registerButton').addEventListener('click', function () {
-    window.location.href = '/register';
+  document.getElementById("loginButton").addEventListener("click", function () {
+    window.location.href = "/login";
   });
 });
