@@ -48,12 +48,11 @@ exports.login = async (req, res) => {
       return res.status(401).json({ message: "Credenciales incorrectas 2" });
     }
 
-    // Generar un token JWT
+    // Generar un token JWT y enviarlo en la respuesta
     const token = jwt.sign({ userId: user._id }, "secreto", {
       expiresIn: "24h",
     });
 
-    // Enviar el token en la respuesta
     res.status(200).json({ token, userId: user._id });
   } catch (error) {
     console.error("Error al iniciar sesión:", error);

@@ -38,7 +38,6 @@ document.addEventListener("DOMContentLoaded", async function () {
 // Función para cargar las habilidades de un Pokémon
 async function loadAbilities(pokemonId, abilitiesContainerId, opponentPokemonId) {
     try {
-        // Obtener los datos del Pokémon desde el servidor
         const response = await fetch(`http://3.211.131.204:3000/api/pokemon/id/${pokemonId}`, {
             headers: { Authorization: `Bearer ${token}` },
         });
@@ -92,7 +91,7 @@ document.getElementById("openModalButton").addEventListener("click", async funct
     const modal = document.getElementById("pokemonModal");
     modal.style.display = "block";
 
-    // Obtener los datos y cargar habilidades
+    // Obtener los datos y habilidades
     const pokemonId1 = document.querySelector('select[name="pokemonId1"]').value;
     const pokemonId2 = document.querySelector('select[name="pokemonId2"]').value;
 

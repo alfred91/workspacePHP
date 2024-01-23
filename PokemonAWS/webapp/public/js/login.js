@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("loginForm");
 
+  // Recogemos los valores del formulario Login y los enviamos al servidor
   form.onsubmit = function (event) {
     event.preventDefault();
 

@@ -84,7 +84,7 @@ function redirectToCreatePokemon() {
   }
 }
 
-// Función para la búsqueda
+// Función para buscar por nombre
 document.getElementById("searchForm").onsubmit = async function (event) {
   event.preventDefault();
   const nombre = document.getElementById("searchInput").value;
@@ -113,7 +113,7 @@ document.getElementById("searchForm").onsubmit = async function (event) {
     }
 
     const pokemones = await response.json();
-
+  // Manejar mostrar el modal de un pokemon en detalle o mostrar las cards si se encunentra mas de uno
     if (pokemones.length === 0) {
       alert("No se encontraron Pokémon con ese nombre.");
     } else if (pokemones.length === 1) {
@@ -193,6 +193,8 @@ document.getElementById("filterButton").onclick = async function () {
       );
     }
 
+    // Crear tarjetas para cada Pokemon
+
     const data = await response.json();
     const container = document.querySelector(".container");
     container.innerHTML = "";
@@ -269,6 +271,7 @@ function logout() {
 
 document.addEventListener("DOMContentLoaded", updateSessionState);
 
+//función para obtener los detalles de un Pokemon
 function obtenerDetallesPokemon(pokemonId) {
   console.log("obtenerDetallesPokemon llamado con ID:", pokemonId);
   const token = localStorage.getItem("token");
@@ -301,6 +304,7 @@ function obtenerDetallesPokemon(pokemonId) {
     });
 }
 
+// Mostrar y cerrar Modal
 function mostrarModal() {
   document.getElementById("pokemonModal").style.display = "block";
 }
@@ -308,7 +312,7 @@ function mostrarModal() {
 function cerrarModal() {
   document.getElementById("pokemonModal").style.display = "none";
 }
-
+// Renderizar los detalles de un Pokemon
 function renderPokemonDetails(pokemon) {
   const pokemonBackground = pokemon.imagen ? `/images/bgpokemon.jpg` : "";
   const pokemonImage = pokemon.imagen
@@ -370,6 +374,7 @@ function renderPokemonDetails(pokemon) {
 `;
 }
 
+// Función para borrar un Pokemon por su ID
 function borrarPokemon(id) {
   console.log(`Token enviado: ${localStorage.getItem("token")}`);
 
@@ -394,6 +399,7 @@ function borrarPokemon(id) {
       alert("No se pudo borrar el Pokémon. Asegúrate de estar autenticado.");
     });
 }
+// Event listener para el botón de batalla
 document.addEventListener("DOMContentLoaded", (event) => {
   const battleButton = document.getElementById("battleButton");
   if (battleButton) {
