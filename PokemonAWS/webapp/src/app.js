@@ -3,19 +3,17 @@ const axios = require("axios");
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-// Configuración de EJS para el motor de plantillas
+// Motor de plantillas
 app.set("view engine", "ejs");
 app.set("views", "./views");
 
-// Middleware para servir archivos estáticos
+// Middleware
 app.use(express.static("public"));
 app.use("/images", express.static("images"));
-
-// Middleware para parsear el cuerpo de las peticiones POST
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Ruta para la página principal que lista los Pokemon
+// Ruta al index que lista los Pokemon
 app.get("/", (req, res) => {
   axios
     .get("http://api:3000/api/pokemon/list")
@@ -33,7 +31,7 @@ app.get("/register", (req, res) => {
   res.render("register");
 });
 
-// Ruta para manejar la solicitud POST desde el formulario de registro
+// Ruta para manejar la solicitud POST desde el form de registro
 app.post("/register", (req, res) => {
   axios
     .post("http://api:3000/api/register", req.body)
