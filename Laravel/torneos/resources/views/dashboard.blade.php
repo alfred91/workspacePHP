@@ -1,76 +1,39 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
+<x-mi-layout>
+    <x-slot name="titulo"> Torneos
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                
-                 
-                    
+    <x-table>
+        <x-slot name="tcabecera">
+            <x-table.th>Nombre</x-table.th>
 
+            <x-table.th>Juego</x-table.th>
 
-                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                            <tr>
-                                <th scope="col" class="px-6 py-3">
-                                    Nombre
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Juego
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Fecha Inicio
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    1º Premio
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    2º Premio
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Max Participantes
-                                </th>
-                                
-                            </tr>
-                        </thead>
-                        @foreach ($torneos as $torneo)
-                        <tbody>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $torneo -> nombre}}
-                                </th>
-                                <td class="px-6 py-4">
-                                    {{ $torneo -> juego}}
-                                </td>
-                                <td class="px-6 py-4">
-                                    {{ $torneo -> fechaIncio}}
-                                </td>
-                                <td class="px-6 py-4">
-                                    {{ $torneo -> premio}}
-                                </td>
-                                <td class="px-6 py-4">
-                                    {{ $torneo -> premio2}}
-                                </td>
-                                <td class="px-6 py-4">
-                                    {{ $torneo -> maxParticipantes}}
-                                </td>
-                            </tr>
-                        </tbody>
-                        @endforeach
-                    </table>
+            <x-table.th>Fecha Inicio</x-table.th>
 
-                    
-                </div>
-                
-                
+            <x-table.th>1 Premio</x-table.th>
 
-            </div>
-            {{ $torneos -> links() }}
-        </div>
-    </div>
-</x-app-layout>
+            <x-table.th>2 Premio</x-table.th>
+
+            <x-table.th>Max participates</x-table.th>
+
+        </x-slot>
+
+        @foreach ($torneos as $torneo)
+
+        <tr>
+            <x-table.td>{{ $torneo -> nombre}}</x-table.td>
+            <x-table.td>{{ $torneo -> juego}}</x-table.td>
+            <x-table.td>{{ $torneo -> fechaIncio}}</x-table.td>
+            <x-table.td>{{ $torneo -> premio}}</x-table.td>
+            <x-table.td>{{ $torneo -> premio2}}</x-table.td>
+            <x-table.td>{{ $torneo -> maxParticipantes}}</x-table.td>
+        </tr>
+
+        @endforeach
+
+        <x-slot name="tlinks">
+            {{ $torneos->links() }}
+        </x-slot>
+    </x-table>
+
+</x-mi-layout>
