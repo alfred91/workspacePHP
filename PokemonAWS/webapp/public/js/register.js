@@ -1,34 +1,32 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("loginForm");
-
-  // Recogemos los valores del formulario y los enviamos al servidor
-  form.onsubmit = function (event) {
+document
+  .getElementById("registerForm")
+  .addEventListener("submit", function (event) {
     event.preventDefault();
 
-    const username = document.querySelector('input[name="username"]').value;
-    const password = document.querySelector('input[name="password"]').value;
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
 
-    fetch("http://3.211.131.204:3000/api/login", {
+    fetch("http://3.211.131.204:3000/api/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ username, password }),
     })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.token) {
-          localStorage.setItem("token", data.token);
-          localStorage.setItem("username", username);
-          window.location.href = "/";
-        } else {
-          alert("Error al iniciar sesión");
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Error en la respuesta del servidor");
         }
+        return response.json();
       })
-      .catch((error) => console.error("Error:", error));
-  };
-
-  document.getElementById("loginButton").addEventListener("click", function () {
-    window.location.href = "/login";
+      .then((data) => {
+        alert(data.message);
+        window.location.href = "/login";
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   });
+document.getElementById("loginButton").addEventListener("click", function () {
+  window.location.href = "/login";
 });
