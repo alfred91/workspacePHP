@@ -39,13 +39,13 @@ exports.login = async (req, res) => {
     const user = await User.findOne({ username });
 
     if (!user) {
-      return res.status(401).json({ message: "Credenciales incorrectas 1" });
+      return res.status(401).json({ message: "Nombre de Usuario incorrecto" });
     }
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
 
     if (!isPasswordValid) {
-      return res.status(401).json({ message: "Credenciales incorrectas 2" });
+      return res.status(401).json({ message: "Contraseña incorrecta" });
     }
 
     // Generar un token JWT y enviarlo en la respuesta
@@ -58,7 +58,7 @@ exports.login = async (req, res) => {
     console.error("Error al iniciar sesión:", error);
     res
       .status(500)
-      .json({ message: "Error interno del servidor al iniciar sesión" });
+      .json({ message: "Error del servidor al iniciar sesión" });
   }
 };
 

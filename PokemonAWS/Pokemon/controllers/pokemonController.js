@@ -133,7 +133,6 @@ exports.atacarPokemon = async (req, res) => {
 
     const updatedPokemon = await pokemon.save();
 
-    // Devolver el Pokemon modificado
     res.status(200).json({ pokemon: updatedPokemon, fueraCombate });
   } catch (error) {
     res.status(500).json({ message: "Error al atacar al Pokemon", error });
