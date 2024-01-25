@@ -3,17 +3,15 @@ const axios = require("axios");
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-// Motor de plantillas
 app.set("view engine", "ejs");
 app.set("views", "./views");
 
-// Middleware
 app.use(express.static("public"));
 app.use("/images", express.static("images"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Ruta al index que lista los Pokemon
+//  Ruta Index
 app.get("/", (req, res) => {
   axios
     .get("http://api:3000/api/pokemon/list")
@@ -26,12 +24,11 @@ app.get("/", (req, res) => {
     });
 });
 
-// Ruta para la vista de registro
+// Ruta para el Registro
 app.get("/register", (req, res) => {
   res.render("register");
 });
 
-// Ruta para manejar la solicitud POST desde el form de registro
 app.post("/register", (req, res) => {
   axios
     .post("http://api:3000/api/register", req.body)
@@ -44,12 +41,11 @@ app.post("/register", (req, res) => {
     });
 });
 
-// Ruta para mostrar el formulario de inicio de sesión
+// Ruta para el Inicio de Sesion
 app.get("/login", (req, res) => {
   res.render("login");
 });
 
-// Ruta para manejar el POST desde el formulario de inicio de sesión
 app.post("/login", (req, res) => {
   axios
     .post("http://api:3000/api/login", {
@@ -65,12 +61,10 @@ app.post("/login", (req, res) => {
     });
 });
 
-// Ruta para mostrar la vista de batalla
+// Ruta para mostrar la vista de Batalla
 app.get("/pokemon/batalla", async (req, res) => {
   try {
-    const response = await axios.get(
-      "http://api:3000/api/pokemon/list"
-    );
+    const response = await axios.get("http://api:3000/api/pokemon/list");
     const pokemons = response.data;
     res.render("batalla", { pokemons });
   } catch (error) {
@@ -79,10 +73,9 @@ app.get("/pokemon/batalla", async (req, res) => {
   }
 });
 
-// Ruta para mostrar el formulario de crear Pokemon
+// Ruta para Crear Pokemon
 app.get("/pokemon/create", (req, res) => res.render("createPokemon"));
 
-// Ruta para manejar la solicitud POST desde el formulario
 app.post("/pokemon/create", (req, res) => {
   axios
     .post("http://api:3000/api/pokemon/create", req.body)
