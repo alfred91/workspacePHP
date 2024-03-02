@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Listado de Pokémon</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <div class="title-container">
+    <a href="/" class="logo-link">
+      <h1 class="main-title">
+        <img src="/images/pokedex.png" />
+      </h1>
+    </a>
+
+    <div class="button-container">
+      <a class="button link-button" onclick="redirectToCreatePokemon()">Crear Pokémon</a>
+      <a class="button link-button battle-button" id="battleButton">Iniciar Batalla</a>
+
+      <label for="typeSelect"><b>Tipo:</b></label>
+      <select id="typeSelect">
+        <option value="Acero">Acero</option>
+        <option value="Agua">Agua</option>
+        <option value="Bicho">Bicho</option>
+        <option value="Dragon">Dragon</option>
+        <option value="Electrico">Electrico</option>
+        <option value="Fuego">Fuego</option>
+        <option value="Fantasma">Fantasma</option>
+        <option value="Hada">Hada</option>
+        <option value="Hielo">Hielo</option>
+        <option value="Lucha">Lucha</option>
+        <option value="Normal">Normal</option>
+        <option value="Planta">Planta</option>
+        <option value="Psiquico">Psiquico</option>
+        <option value="Roca">Roca</option>
+        <option value="Siniestro">Siniestro</option>
+        <option value="Tierra">Tierra</option>
+        <option value="Veneno">Veneno</option>
+        <option value="Volador">Volador</option>
+      </select>
+      <a class="button link-button filter-button" id="filterButton">Filtrar</a>
+      <form id="searchForm" class="search-form">
+        <input type="text" id="searchInput" placeholder="Buscar por nombre..." class="search-input" />
+        <button type="submit" class="button search-button">Buscar</button>
+      </form>
+    </div>
+
+    <div id="sessionContainer" class="session-container">
+
+    </div>
+  </div>
+
+  <div class="container mx-auto"></div>
+
+  <div id="pokemonModal" class="modal hidden">
+    <div class="modal-index">
+      <div id="modalContent">
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+  
+  <script src="/js/index.js"></script>
+</body>
+
+</html>

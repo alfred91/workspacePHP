@@ -21,15 +21,14 @@ router.get("/pokemon/create", authenticateToken, async (req, res) => {
 });
 
 // Iniciar batalla
-router.get("/pokemon/batalla", authenticateToken, async (req, res) => {
+router.get ("/pokemon/batalla",authenticateToken, async (req, res) => {
   res.render("batalla");
 });
-
 
 // Rutas para funcionalidades
 router.post('/pokemon/create', authenticateToken, upload.single('imagen'), pokemonController.createPokemon);
 router.get("/pokemon/list", authenticateToken, pokemonController.getAllPokemons);
-router.get("/pokemon/id/:id", authenticateToken, pokemonController.getPokemonById);
+router.get("/pokemon/id/:id", authenticateToken,pokemonController.getPokemonById);
 router.delete("/pokemon/delete/:id", authenticateToken, pokemonController.deletePokemon);
 router.get("/pokemon/find/:nombre", authenticateToken, pokemonController.buscarPokemonPorNombre);
 router.get('/pokemon/tipo/:tipo', authenticateToken, pokemonController.getPokemonByType);

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Crear Pokémon</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <div class="form-container">
+    <h1>Crear Nuevo Pokémon</h1>
+    <form action="/pokemon/create" method="post" id="createForm" enctype="multipart/form-data">
+
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" value="1" required>
+
+      <label for="especie">Especie:</label>
+      <input type="text" id="especie" name="especie" value="1" required>
+
+      <label for="tipo">Tipo:</label>
+      <select id="tipo" name="tipo[]" multiple required>
+
+        <option value="Acero" selected>Acero</option>
+        <option value="Agua">Agua</option>
+        <option value="Bicho">Bicho</option>
+        <option value="Dragon">Dragon</option>
+        <option value="Electrico">Electrico</option>
+        <option value="Fuego">Fuego</option>
+        <option value="Fantasma">Fantasma</option>
+        <option value="Hada">Hada</option>
+        <option value="Hielo">Hielo</option>
+        <option value="Lucha">Lucha</option>
+        <option value="Normal">Normal</option>
+        <option value="Planta">Planta</option>
+        <option value="Psiquico">Psiquico</option>
+        <option value="Roca">Roca</option>
+        <option value="Siniestro">Siniestro</option>
+        <option value="Tierra">Tierra</option>
+        <option value="Veneno">Veneno</option>
+        <option value="Volador">Volador</option>
+      </select>
+
+      <label for="imagen">Imagen:</label>
+      <input type="file" id="imagen" name="imagen" accept="image/png" required>
+
+      <label for="altura">Altura (metros):</label>
+      <input type="number" id="altura" name="altura" value="1" required>
+
+      <label for="peso">Peso (kg):</label>
+      <input type="number" id="peso" name="peso" value="1" required>
+
+      <label for="vida">Vida:</label>
+      <input type="number" id="vida" name="vida" value="1" required>
+
+      <label for="puntosSaludJuego">Puntos de Salud en Juego:</label>
+      <input type="number" id="puntosSaludJuego" name="puntosSaludJuego" value="1" required>
+
+      <label for="preevolucion">Preevolución:</label>
+      <input type="text" id="preevolucion" name="preevolucion">
+
+      <label for="evolucion">Evolución:</label>
+      <input type="text" id="evolucion" name="evolucion">
+
+      <label for="habilidades">Habilidades:</label>
+      <div id="habilidadesContainer">
+        <div class="habilidad">
+          <input type="text" name="habilidades[0][nombre]" placeholder="Nombre" value="1" required>
+          <input type="number" name="habilidades[0][damage]" placeholder="Daño" value="1" required>
+        </div>
+      </div>
+      
+      <button type="button" onclick="agregarHabilidad()">Agregar Habilidad</button>
+      <button type="submit">Crear Pokémon</button>
+      <button onclick="window.location.href='/'" class="close-btn">Volver</button>
+
+    </form>
+  </div>
+  <script src="/js/createPokemon.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,2762 @@
+[{
+  "_id": {
+    "$oid": "65e38b17497099d87b08032d"
+  },
+  "nombre": "a",
+  "especie": "Pokemon Arcoíris",
+  "preevolucion": null,
+  "evolucion": null,
+  "tipo": [
+    "Fuego",
+    "Volador"
+  ],
+  "imagen": "250.png",
+  "altura": 3.8,
+  "peso": 199,
+  "vida": 110,
+  "puntosSaludJuego": 110,
+  "habilidades": [
+    {
+      "nombre": "Ataque Alarido",
+      "damage": 85
+    },
+    {
+      "nombre": "Vuelo Solar",
+      "damage": 150
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38b9e497099d87b08032f"
+  },
+  "nombre": "Bulbasaur",
+  "especie": "Pokemon Planta",
+  "preevolucion": null,
+  "evolucion": "Ivysaur",
+  "tipo": [
+    "Planta",
+    "Veneno"
+  ],
+  "imagen": "001.png",
+  "altura": 0.7,
+  "peso": 6.9,
+  "vida": 45,
+  "puntosSaludJuego": 45,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 35
+    },
+    {
+      "nombre": "Ataque Hoja",
+      "damage": 45
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38bc9497099d87b080331"
+  },
+  "nombre": "Ivysaur",
+  "especie": "Pokemon Planta",
+  "preevolucion": "Bulbasaur",
+  "evolucion": "Venusaur",
+  "tipo": [
+    "Planta",
+    "Veneno"
+  ],
+  "imagen": "002.png",
+  "altura": 1,
+  "peso": 13,
+  "vida": 60,
+  "puntosSaludJuego": 60,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 40
+    },
+    {
+      "nombre": "Ataque Hoja",
+      "damage": 50
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38bd2497099d87b080333"
+  },
+  "nombre": "Venusaur",
+  "especie": "Pokemon Planta",
+  "preevolucion": "Ivysaur",
+  "evolucion": null,
+  "tipo": [
+    "Planta",
+    "Veneno"
+  ],
+  "imagen": "003.png",
+  "altura": 2,
+  "peso": 100,
+  "vida": 80,
+  "puntosSaludJuego": 80,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 55
+    },
+    {
+      "nombre": "Ataque Hoja",
+      "damage": 65
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38c11497099d87b080335"
+  },
+  "nombre": "Charmander",
+  "especie": "Pokemon Fuego",
+  "preevolucion": null,
+  "evolucion": "Charmeleon",
+  "tipo": [
+    "Fuego"
+  ],
+  "imagen": "004.png",
+  "altura": 0.6,
+  "peso": 8.5,
+  "vida": 39,
+  "puntosSaludJuego": 39,
+  "habilidades": [
+    {
+      "nombre": "Ataque Llamas",
+      "damage": 52
+    },
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 40
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38c27497099d87b080337"
+  },
+  "nombre": "Charmeleon",
+  "especie": "Pokemon Fuego",
+  "preevolucion": "Charmander",
+  "evolucion": "Charizard",
+  "tipo": [
+    "Fuego",
+    "Volador"
+  ],
+  "imagen": "005.png",
+  "altura": 1.1,
+  "peso": 19,
+  "vida": 58,
+  "puntosSaludJuego": 58,
+  "habilidades": [
+    {
+      "nombre": "Ataque Llamas",
+      "damage": 64
+    },
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 50
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38cca497099d87b080339"
+  },
+  "nombre": "Charizard",
+  "especie": "Pokemon Fuego/Volador",
+  "preevolucion": "Charmeleon",
+  "evolucion": null,
+  "tipo": [
+    "Fuego",
+    "Volador"
+  ],
+  "imagen": "006.png",
+  "altura": 1.7,
+  "peso": 90.5,
+  "vida": 78,
+  "puntosSaludJuego": 78,
+  "habilidades": [
+    {
+      "nombre": "Ataque Llamas",
+      "damage": 84
+    },
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 65
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38cca497099d87b08033a"
+  },
+  "nombre": "Squirtle",
+  "especie": "Pokemon Agua",
+  "preevolucion": null,
+  "evolucion": "Wartortle",
+  "tipo": [
+    "Agua"
+  ],
+  "imagen": "007.png",
+  "altura": 0.5,
+  "peso": 9,
+  "vida": 44,
+  "puntosSaludJuego": 44,
+  "habilidades": [
+    {
+      "nombre": "Ataque Agua",
+      "damage": 48
+    },
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 40
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38cca497099d87b08033b"
+  },
+  "nombre": "Wartortle",
+  "especie": "Pokemon Agua",
+  "preevolucion": "Squirtle",
+  "evolucion": "Blastoise",
+  "tipo": [
+    "Agua"
+  ],
+  "imagen": "008.png",
+  "altura": 1,
+  "peso": 22.5,
+  "vida": 59,
+  "puntosSaludJuego": 59,
+  "habilidades": [
+    {
+      "nombre": "Ataque Agua",
+      "damage": 63
+    },
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 50
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38cca497099d87b08033c"
+  },
+  "nombre": "Blastoise",
+  "especie": "Pokemon Agua",
+  "preevolucion": "Wartortle",
+  "evolucion": null,
+  "tipo": [
+    "Agua"
+  ],
+  "imagen": "009.png",
+  "altura": 1.6,
+  "peso": 85.5,
+  "vida": 79,
+  "puntosSaludJuego": 79,
+  "habilidades": [
+    {
+      "nombre": "Ataque Agua",
+      "damage": 83
+    },
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 65
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38cca497099d87b08033d"
+  },
+  "nombre": "Caterpie",
+  "especie": "Pokemon Insecto",
+  "preevolucion": null,
+  "evolucion": "Metapod",
+  "tipo": [
+    "Insecto"
+  ],
+  "imagen": "010.png",
+  "altura": 0.3,
+  "peso": 2.9,
+  "vida": 45,
+  "puntosSaludJuego": 45,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 30
+    },
+    {
+      "nombre": "Ataque Veneno",
+      "damage": 20
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38cf7497099d87b08033f"
+  },
+  "nombre": "Metapod",
+  "especie": "Pokemon Insecto",
+  "preevolucion": "Caterpie",
+  "evolucion": "Butterfree",
+  "tipo": [
+    "Insecto"
+  ],
+  "imagen": "011.png",
+  "altura": 0.7,
+  "peso": 9.9,
+  "vida": 50,
+  "puntosSaludJuego": 50,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 20
+    },
+    {
+      "nombre": "Ataque Veneno",
+      "damage": 15
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38cf7497099d87b080340"
+  },
+  "nombre": "Butterfree",
+  "especie": "Pokemon Insecto/Volador",
+  "preevolucion": "Metapod",
+  "evolucion": null,
+  "tipo": [
+    "Insecto",
+    "Volador"
+  ],
+  "imagen": "012.png",
+  "altura": 1,
+  "peso": 32,
+  "vida": 60,
+  "puntosSaludJuego": 60,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 45
+    },
+    {
+      "nombre": "Ataque Veneno",
+      "damage": 30
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38cf7497099d87b080341"
+  },
+  "nombre": "Weedle",
+  "especie": "Pokemon Insecto",
+  "preevolucion": null,
+  "evolucion": "Kakuna",
+  "tipo": [
+    "Insecto",
+    "Veneno"
+  ],
+  "imagen": "013.png",
+  "altura": 0.3,
+  "peso": 3.2,
+  "vida": 40,
+  "puntosSaludJuego": 40,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 35
+    },
+    {
+      "nombre": "Ataque Veneno",
+      "damage": 25
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38cf7497099d87b080342"
+  },
+  "nombre": "Kakuna",
+  "especie": "Pokemon Insecto",
+  "preevolucion": "Weedle",
+  "evolucion": "Beedrill",
+  "tipo": [
+    "Insecto",
+    "Veneno"
+  ],
+  "imagen": "014.png",
+  "altura": 0.6,
+  "peso": 10,
+  "vida": 45,
+  "puntosSaludJuego": 45,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 50
+    },
+    {
+      "nombre": "Ataque Veneno",
+      "damage": 40
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38cf7497099d87b080343"
+  },
+  "nombre": "Beedrill",
+  "especie": "Pokemon Insecto/Veneno",
+  "preevolucion": "Kakuna",
+  "evolucion": null,
+  "tipo": [
+    "Insecto",
+    "Veneno"
+  ],
+  "imagen": "015.png",
+  "altura": 1,
+  "peso": 29.5,
+  "vida": 65,
+  "puntosSaludJuego": 65,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 90
+    },
+    {
+      "nombre": "Ataque Veneno",
+      "damage": 75
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38d0f497099d87b080345"
+  },
+  "nombre": "Pidgey",
+  "especie": "Pokemon Normal/Volador",
+  "preevolucion": null,
+  "evolucion": "Pidgeotto",
+  "tipo": [
+    "Normal",
+    "Volador"
+  ],
+  "imagen": "016.png",
+  "altura": 0.3,
+  "peso": 1.8,
+  "vida": 40,
+  "puntosSaludJuego": 40,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 40
+    },
+    {
+      "nombre": "Ataque Vuelo",
+      "damage": 40
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38d0f497099d87b080346"
+  },
+  "nombre": "Pidgeotto",
+  "especie": "Pokemon Normal/Volador",
+  "preevolucion": "Pidgey",
+  "evolucion": "Pidgeot",
+  "tipo": [
+    "Normal",
+    "Volador"
+  ],
+  "imagen": "017.png",
+  "altura": 1.1,
+  "peso": 30,
+  "vida": 63,
+  "puntosSaludJuego": 63,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 60
+    },
+    {
+      "nombre": "Ataque Vuelo",
+      "damage": 60
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38d0f497099d87b080347"
+  },
+  "nombre": "Pidgeot",
+  "especie": "Pokemon Normal/Volador",
+  "preevolucion": "Pidgeotto",
+  "evolucion": null,
+  "tipo": [
+    "Normal",
+    "Volador"
+  ],
+  "imagen": "018.png",
+  "altura": 1.5,
+  "peso": 39.5,
+  "vida": 83,
+  "puntosSaludJuego": 83,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 80
+    },
+    {
+      "nombre": "Ataque Vuelo",
+      "damage": 80
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38d0f497099d87b080348"
+  },
+  "nombre": "Rattata",
+  "especie": "Pokemon Normal",
+  "preevolucion": null,
+  "evolucion": "Raticate",
+  "tipo": [
+    "Normal"
+  ],
+  "imagen": "019.png",
+  "altura": 0.3,
+  "peso": 3.5,
+  "vida": 30,
+  "puntosSaludJuego": 30,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 56
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38d0f497099d87b080349"
+  },
+  "nombre": "Raticate",
+  "especie": "Pokemon Normal",
+  "preevolucion": "Rattata",
+  "evolucion": null,
+  "tipo": [
+    "Normal"
+  ],
+  "imagen": "020.png",
+  "altura": 0.7,
+  "peso": 20,
+  "vida": 55,
+  "puntosSaludJuego": 55,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 81
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38d33497099d87b08034b"
+  },
+  "nombre": "Spearow",
+  "especie": "Pokemon Normal/Volador",
+  "preevolucion": null,
+  "evolucion": "Fearow",
+  "tipo": [
+    "Normal",
+    "Volador"
+  ],
+  "imagen": "021.png",
+  "altura": 0.3,
+  "peso": 2,
+  "vida": 40,
+  "puntosSaludJuego": 40,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 30
+    },
+    {
+      "nombre": "Ataque Vuelo",
+      "damage": 30
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38d33497099d87b08034c"
+  },
+  "nombre": "Fearow",
+  "especie": "Pokemon Normal/Volador",
+  "preevolucion": "Spearow",
+  "evolucion": null,
+  "tipo": [
+    "Normal",
+    "Volador"
+  ],
+  "imagen": "022.png",
+  "altura": 1.2,
+  "peso": 38,
+  "vida": 65,
+  "puntosSaludJuego": 65,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 65
+    },
+    {
+      "nombre": "Ataque Vuelo",
+      "damage": 65
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38d33497099d87b08034d"
+  },
+  "nombre": "Ekans",
+  "especie": "Pokemon Veneno",
+  "preevolucion": null,
+  "evolucion": "Arbok",
+  "tipo": [
+    "Veneno"
+  ],
+  "imagen": "023.png",
+  "altura": 2,
+  "peso": 69.5,
+  "vida": 55,
+  "puntosSaludJuego": 55,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 55
+    },
+    {
+      "nombre": "Ataque Veneno",
+      "damage": 40
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38d33497099d87b08034e"
+  },
+  "nombre": "Arbok",
+  "especie": "Pokemon Veneno",
+  "preevolucion": "Ekans",
+  "evolucion": null,
+  "tipo": [
+    "Veneno"
+  ],
+  "imagen": "024.png",
+  "altura": 3.5,
+  "peso": 65,
+  "vida": 90,
+  "puntosSaludJuego": 90,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 85
+    },
+    {
+      "nombre": "Ataque Veneno",
+      "damage": 65
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38d33497099d87b08034f"
+  },
+  "nombre": "Pikachu",
+  "especie": "Pokemon Eléctrico",
+  "preevolucion": null,
+  "evolucion": "Raichu",
+  "tipo": [
+    "Eléctrico"
+  ],
+  "imagen": "025.png",
+  "altura": 0.4,
+  "peso": 6,
+  "vida": 35,
+  "puntosSaludJuego": 35,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 55
+    },
+    {
+      "nombre": "Ataque Eléctrico",
+      "damage": 40
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38d4e497099d87b080351"
+  },
+  "nombre": "Raichu",
+  "especie": "Pokemon Eléctrico",
+  "preevolucion": "Pikachu",
+  "evolucion": null,
+  "tipo": [
+    "Eléctrico"
+  ],
+  "imagen": "026.png",
+  "altura": 0.8,
+  "peso": 30,
+  "vida": 90,
+  "puntosSaludJuego": 90,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 90
+    },
+    {
+      "nombre": "Ataque Eléctrico",
+      "damage": 80
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38d4e497099d87b080352"
+  },
+  "nombre": "Sandshrew",
+  "especie": "Pokemon Tierra",
+  "preevolucion": null,
+  "evolucion": "Sandslash",
+  "tipo": [
+    "Tierra"
+  ],
+  "imagen": "027.png",
+  "altura": 0.6,
+  "peso": 12,
+  "vida": 50,
+  "puntosSaludJuego": 50,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 55
+    },
+    {
+      "nombre": "Ataque Tierra",
+      "damage": 40
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38d4e497099d87b080353"
+  },
+  "nombre": "Sandslash",
+  "especie": "Pokemon Tierra",
+  "preevolucion": "Sandshrew",
+  "evolucion": null,
+  "tipo": [
+    "Tierra"
+  ],
+  "imagen": "028.png",
+  "altura": 1,
+  "peso": 29.5,
+  "vida": 75,
+  "puntosSaludJuego": 75,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 85
+    },
+    {
+      "nombre": "Ataque Tierra",
+      "damage": 65
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38d4e497099d87b080354"
+  },
+  "nombre": "Nidoran",
+  "especie": "Pokemon Veneno",
+  "preevolucion": null,
+  "evolucion": "Nidorina",
+  "tipo": [
+    "Veneno"
+  ],
+  "imagen": "029.png",
+  "altura": 0.4,
+  "peso": 7,
+  "vida": 55,
+  "puntosSaludJuego": 55,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 40
+    },
+    {
+      "nombre": "Ataque Veneno",
+      "damage": 30
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38d4e497099d87b080355"
+  },
+  "nombre": "Nidorina",
+  "especie": "Pokemon Veneno",
+  "preevolucion": "Nidoran",
+  "evolucion": "Nidoqueen",
+  "tipo": [
+    "Veneno"
+  ],
+  "imagen": "030.png",
+  "altura": 0.8,
+  "peso": 20,
+  "vida": 70,
+  "puntosSaludJuego": 70,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 60
+    },
+    {
+      "nombre": "Ataque Veneno",
+      "damage": 50
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38d86497099d87b080357"
+  },
+  "nombre": "Nidoqueen",
+  "especie": "Pokemon Veneno/Tierra",
+  "preevolucion": "Nidorina",
+  "evolucion": null,
+  "tipo": [
+    "Veneno",
+    "Tierra"
+  ],
+  "imagen": "031.png",
+  "altura": 1.3,
+  "peso": 60,
+  "vida": 90,
+  "puntosSaludJuego": 90,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 85
+    },
+    {
+      "nombre": "Ataque Veneno",
+      "damage": 75
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38d86497099d87b080358"
+  },
+  "nombre": "Nidoran",
+  "especie": "Pokemon Veneno",
+  "preevolucion": null,
+  "evolucion": "Nidorino",
+  "tipo": [
+    "Veneno"
+  ],
+  "imagen": "032.png",
+  "altura": 0.4,
+  "peso": 9,
+  "vida": 55,
+  "puntosSaludJuego": 55,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 40
+    },
+    {
+      "nombre": "Ataque Veneno",
+      "damage": 30
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38d86497099d87b080359"
+  },
+  "nombre": "Nidorino",
+  "especie": "Pokemon Veneno",
+  "preevolucion": "Nidoran",
+  "evolucion": "Nidoking",
+  "tipo": [
+    "Veneno"
+  ],
+  "imagen": "033.png",
+  "altura": 0.9,
+  "peso": 19.5,
+  "vida": 70,
+  "puntosSaludJuego": 70,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 60
+    },
+    {
+      "nombre": "Ataque Veneno",
+      "damage": 50
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38d86497099d87b08035a"
+  },
+  "nombre": "Nidoking",
+  "especie": "Pokemon Veneno/Lucha",
+  "preevolucion": "Nidorino",
+  "evolucion": null,
+  "tipo": [
+    "Veneno",
+    "Lucha"
+  ],
+  "imagen": "034.png",
+  "altura": 1.4,
+  "peso": 62,
+  "vida": 92,
+  "puntosSaludJuego": 92,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 85
+    },
+    {
+      "nombre": "Ataque Veneno",
+      "damage": 75
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38d86497099d87b08035b"
+  },
+  "nombre": "Clefairy",
+  "especie": "Pokemon Fantasma",
+  "preevolucion": null,
+  "evolucion": "Clefable",
+  "tipo": [
+    "Fantasma"
+  ],
+  "imagen": "035.png",
+  "altura": 0.6,
+  "peso": 75,
+  "vida": 70,
+  "puntosSaludJuego": 70,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 45
+    },
+    {
+      "nombre": "Ataque Fantasma",
+      "damage": 40
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38da5497099d87b08035d"
+  },
+  "nombre": "Clefable",
+  "especie": "Pokemon Fantasma",
+  "preevolucion": "Clefairy",
+  "evolucion": null,
+  "tipo": [
+    "Fantasma"
+  ],
+  "imagen": "036.png",
+  "altura": 1.3,
+  "peso": 40,
+  "vida": 95,
+  "puntosSaludJuego": 95,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 80
+    },
+    {
+      "nombre": "Ataque Fantasma",
+      "damage": 75
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38da5497099d87b08035e"
+  },
+  "nombre": "Vulpix",
+  "especie": "Pokemon Fuego",
+  "preevolucion": null,
+  "evolucion": "Ninetales",
+  "tipo": [
+    "Fuego"
+  ],
+  "imagen": "037.png",
+  "altura": 0.6,
+  "peso": 9.9,
+  "vida": 38,
+  "puntosSaludJuego": 38,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 35
+    },
+    {
+      "nombre": "Ataque Fuego",
+      "damage": 30
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38da5497099d87b08035f"
+  },
+  "nombre": "Ninetales",
+  "especie": "Pokemon Fuego",
+  "preevolucion": "Vulpix",
+  "evolucion": null,
+  "tipo": [
+    "Fuego"
+  ],
+  "imagen": "038.png",
+  "altura": 1.1,
+  "peso": 19.9,
+  "vida": 73,
+  "puntosSaludJuego": 73,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 60
+    },
+    {
+      "nombre": "Ataque Fuego",
+      "damage": 55
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38da5497099d87b080360"
+  },
+  "nombre": "Jigglypuff",
+  "especie": "Pokemon Normal/Fantasma",
+  "preevolucion": null,
+  "evolucion": "Wigglytuff",
+  "tipo": [
+    "Normal",
+    "Fantasma"
+  ],
+  "imagen": "039.png",
+  "altura": 0.5,
+  "peso": 5.5,
+  "vida": 115,
+  "puntosSaludJuego": 115,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 40
+    },
+    {
+      "nombre": "Ataque Fantasma",
+      "damage": 35
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38da5497099d87b080361"
+  },
+  "nombre": "Wigglytuff",
+  "especie": "Pokemon Normal/Fantasma",
+  "preevolucion": "Jigglypuff",
+  "evolucion": null,
+  "tipo": [
+    "Normal",
+    "Fantasma"
+  ],
+  "imagen": "040.png",
+  "altura": 1,
+  "peso": 12,
+  "vida": 140,
+  "puntosSaludJuego": 140,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 65
+    },
+    {
+      "nombre": "Ataque Fantasma",
+      "damage": 60
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38dc8497099d87b080363"
+  },
+  "nombre": "Zubat",
+  "especie": "Pokemon Volador/Veneno",
+  "preevolucion": null,
+  "evolucion": "Golbat",
+  "tipo": [
+    "Volador",
+    "Veneno"
+  ],
+  "imagen": "041.png",
+  "altura": 0.8,
+  "peso": 7.5,
+  "vida": 40,
+  "puntosSaludJuego": 40,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 30
+    },
+    {
+      "nombre": "Ataque Veneno",
+      "damage": 25
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38dc8497099d87b080364"
+  },
+  "nombre": "Golbat",
+  "especie": "Pokemon Volador/Veneno",
+  "preevolucion": "Zubat",
+  "evolucion": null,
+  "tipo": [
+    "Volador",
+    "Veneno"
+  ],
+  "imagen": "042.png",
+  "altura": 1.6,
+  "peso": 55,
+  "vida": 75,
+  "puntosSaludJuego": 75,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 55
+    },
+    {
+      "nombre": "Ataque Veneno",
+      "damage": 45
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38dc8497099d87b080365"
+  },
+  "nombre": "Oddish",
+  "especie": "Pokemon Planta/Veneno",
+  "preevolucion": null,
+  "evolucion": "Gloom",
+  "tipo": [
+    "Planta",
+    "Veneno"
+  ],
+  "imagen": "043.png",
+  "altura": 0.5,
+  "peso": 5.4,
+  "vida": 45,
+  "puntosSaludJuego": 45,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 30
+    },
+    {
+      "nombre": "Ataque Veneno",
+      "damage": 25
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38dc8497099d87b080366"
+  },
+  "nombre": "Gloom",
+  "especie": "Pokemon Planta/Veneno",
+  "preevolucion": "Oddish",
+  "evolucion": "Vileplume",
+  "tipo": [
+    "Planta",
+    "Veneno"
+  ],
+  "imagen": "044.png",
+  "altura": 0.8,
+  "peso": 6.9,
+  "vida": 60,
+  "puntosSaludJuego": 60,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 45
+    },
+    {
+      "nombre": "Ataque Veneno",
+      "damage": 40
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38dc8497099d87b080367"
+  },
+  "nombre": "Vileplume",
+  "especie": "Pokemon Planta/Veneno",
+  "preevolucion": "Gloom",
+  "evolucion": null,
+  "tipo": [
+    "Planta",
+    "Veneno"
+  ],
+  "imagen": "045.png",
+  "altura": 1.2,
+  "peso": 18.6,
+  "vida": 85,
+  "puntosSaludJuego": 85,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 60
+    },
+    {
+      "nombre": "Ataque Veneno",
+      "damage": 55
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38df2497099d87b080369"
+  },
+  "nombre": "Paras",
+  "especie": "Pokemon Planta/Veneno",
+  "preevolucion": null,
+  "evolucion": "Parasect",
+  "tipo": [
+    "Planta",
+    "Veneno"
+  ],
+  "imagen": "046.png",
+  "altura": 0.3,
+  "peso": 5.4,
+  "vida": 34,
+  "puntosSaludJuego": 34,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 25
+    },
+    {
+      "nombre": "Ataque Veneno",
+      "damage": 20
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38df2497099d87b08036a"
+  },
+  "nombre": "Parasect",
+  "especie": "Pokemon Planta/Veneno",
+  "preevolucion": "Paras",
+  "evolucion": null,
+  "tipo": [
+    "Planta",
+    "Veneno"
+  ],
+  "imagen": "047.png",
+  "altura": 0.9,
+  "peso": 29.5,
+  "vida": 64,
+  "puntosSaludJuego": 64,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 40
+    },
+    {
+      "nombre": "Ataque Veneno",
+      "damage": 35
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38df2497099d87b08036b"
+  },
+  "nombre": "Venonat",
+  "especie": "Pokemon Insecto/Veneno",
+  "preevolucion": null,
+  "evolucion": "Venomoth",
+  "tipo": [
+    "Insecto",
+    "Veneno"
+  ],
+  "imagen": "048.png",
+  "altura": 1,
+  "peso": 30,
+  "vida": 50,
+  "puntosSaludJuego": 50,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 30
+    },
+    {
+      "nombre": "Ataque Veneno",
+      "damage": 25
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38df2497099d87b08036c"
+  },
+  "nombre": "Venomoth",
+  "especie": "Pokemon Insecto/Veneno",
+  "preevolucion": "Venonat",
+  "evolucion": null,
+  "tipo": [
+    "Insecto",
+    "Veneno"
+  ],
+  "imagen": "049.png",
+  "altura": 1.5,
+  "peso": 12.5,
+  "vida": 65,
+  "puntosSaludJuego": 65,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 50
+    },
+    {
+      "nombre": "Ataque Veneno",
+      "damage": 45
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38df2497099d87b08036d"
+  },
+  "nombre": "Diglett",
+  "especie": "Pokemon Tierra",
+  "preevolucion": null,
+  "evolucion": "Dugtrio",
+  "tipo": [
+    "Tierra"
+  ],
+  "imagen": "050.png",
+  "altura": 0.2,
+  "peso": 0.8,
+  "vida": 10,
+  "puntosSaludJuego": 10,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 20
+    },
+    {
+      "nombre": "Ataque Tierra",
+      "damage": 15
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38df2497099d87b08036e"
+  },
+  "nombre": "Dugtrio",
+  "especie": "Pokemon Tierra",
+  "preevolucion": "Diglett",
+  "evolucion": null,
+  "tipo": [
+    "Tierra"
+  ],
+  "imagen": "051.png",
+  "altura": 0.7,
+  "peso": 333.3,
+  "vida": 35,
+  "puntosSaludJuego": 35,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 40
+    },
+    {
+      "nombre": "Ataque Tierra",
+      "damage": 35
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38e1f497099d87b080370"
+  },
+  "nombre": "Meowth",
+  "especie": "Pokemon Normal",
+  "preevolucion": null,
+  "evolucion": "Persian",
+  "tipo": [
+    "Normal"
+  ],
+  "imagen": "052.png",
+  "altura": 0.4,
+  "peso": 4.2,
+  "vida": 40,
+  "puntosSaludJuego": 40,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 35
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38e1f497099d87b080371"
+  },
+  "nombre": "Persian",
+  "especie": "Pokemon Normal",
+  "preevolucion": "Meowth",
+  "evolucion": null,
+  "tipo": [
+    "Normal"
+  ],
+  "imagen": "053.png",
+  "altura": 1,
+  "peso": 32,
+  "vida": 65,
+  "puntosSaludJuego": 65,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 55
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38e1f497099d87b080372"
+  },
+  "nombre": "Psyduck",
+  "especie": "Pokemon Agua",
+  "preevolucion": null,
+  "evolucion": "Golduck",
+  "tipo": [
+    "Agua"
+  ],
+  "imagen": "054.png",
+  "altura": 0.8,
+  "peso": 19.6,
+  "vida": 52,
+  "puntosSaludJuego": 52,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 40
+    },
+    {
+      "nombre": "Ataque Agua",
+      "damage": 35
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38e1f497099d87b080373"
+  },
+  "nombre": "Golduck",
+  "especie": "Pokemon Agua",
+  "preevolucion": "Psyduck",
+  "evolucion": null,
+  "tipo": [
+    "Agua"
+  ],
+  "imagen": "055.png",
+  "altura": 1.7,
+  "peso": 76.6,
+  "vida": 80,
+  "puntosSaludJuego": 80,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 60
+    },
+    {
+      "nombre": "Ataque Agua",
+      "damage": 55
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38e1f497099d87b080374"
+  },
+  "nombre": "Abra",
+  "especie": "Pokemon Psíquico",
+  "preevolucion": null,
+  "evolucion": "Kadabra",
+  "tipo": [
+    "Psíquico"
+  ],
+  "imagen": "056.png",
+  "altura": 0.9,
+  "peso": 19.5,
+  "vida": 25,
+  "puntosSaludJuego": 25,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 25
+    },
+    {
+      "nombre": "Ataque Psíquico",
+      "damage": 20
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38e1f497099d87b080375"
+  },
+  "nombre": "Kadabra",
+  "especie": "Pokemon Psíquico",
+  "preevolucion": "Abra",
+  "evolucion": "Alakazam",
+  "tipo": [
+    "Psíquico"
+  ],
+  "imagen": "057.png",
+  "altura": 1.3,
+  "peso": 56.5,
+  "vida": 40,
+  "puntosSaludJuego": 40,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 40
+    },
+    {
+      "nombre": "Ataque Psíquico",
+      "damage": 35
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38e1f497099d87b080376"
+  },
+  "nombre": "Alakazam",
+  "especie": "Pokemon Psíquico",
+  "preevolucion": "Kadabra",
+  "evolucion": null,
+  "tipo": [
+    "Psíquico"
+  ],
+  "imagen": "058.png",
+  "altura": 1.5,
+  "peso": 48,
+  "vida": 55,
+  "puntosSaludJuego": 55,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 55
+    },
+    {
+      "nombre": "Ataque Psíquico",
+      "damage": 45
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38e6d497099d87b080378"
+  },
+  "nombre": "Machop",
+  "especie": "Pokemon Lucha",
+  "preevolucion": null,
+  "evolucion": "Machoke",
+  "tipo": [
+    "Lucha"
+  ],
+  "imagen": "059.png",
+  "altura": 0.8,
+  "peso": 19.5,
+  "vida": 70,
+  "puntosSaludJuego": 70,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 50
+    },
+    {
+      "nombre": "Ataque Lucha",
+      "damage": 45
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38e6d497099d87b080379"
+  },
+  "nombre": "Machoke",
+  "especie": "Pokemon Lucha",
+  "preevolucion": "Machop",
+  "evolucion": "Machamp",
+  "tipo": [
+    "Lucha"
+  ],
+  "imagen": "060.png",
+  "altura": 1.5,
+  "peso": 70.5,
+  "vida": 90,
+  "puntosSaludJuego": 90,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 70
+    },
+    {
+      "nombre": "Ataque Lucha",
+      "damage": 65
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38e6d497099d87b08037a"
+  },
+  "nombre": "Machamp",
+  "especie": "Pokemon Lucha",
+  "preevolucion": "Machoke",
+  "evolucion": null,
+  "tipo": [
+    "Lucha"
+  ],
+  "imagen": "061.png",
+  "altura": 1.6,
+  "peso": 130,
+  "vida": 90,
+  "puntosSaludJuego": 90,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 90
+    },
+    {
+      "nombre": "Ataque Lucha",
+      "damage": 85
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38e6d497099d87b08037b"
+  },
+  "nombre": "Bellsprout",
+  "especie": "Pokemon Planta/Veneno",
+  "preevolucion": null,
+  "evolucion": "Weepinbell",
+  "tipo": [
+    "Planta",
+    "Veneno"
+  ],
+  "imagen": "062.png",
+  "altura": 0.7,
+  "peso": 4,
+  "vida": 50,
+  "puntosSaludJuego": 50,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 35
+    },
+    {
+      "nombre": "Ataque Veneno",
+      "damage": 30
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38e6d497099d87b08037c"
+  },
+  "nombre": "Weepinbell",
+  "especie": "Pokemon Planta/Veneno",
+  "preevolucion": "Bellsprout",
+  "evolucion": "Victreebel",
+  "tipo": [
+    "Planta",
+    "Veneno"
+  ],
+  "imagen": "063.png",
+  "altura": 1,
+  "peso": 6.4,
+  "vida": 65,
+  "puntosSaludJuego": 65,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 50
+    },
+    {
+      "nombre": "Ataque Veneno",
+      "damage": 45
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38e6d497099d87b08037d"
+  },
+  "nombre": "Victreebel",
+  "especie": "Pokemon Planta/Veneno",
+  "preevolucion": "Weepinbell",
+  "evolucion": null,
+  "tipo": [
+    "Planta",
+    "Veneno"
+  ],
+  "imagen": "064.png",
+  "altura": 1.7,
+  "peso": 15.4,
+  "vida": 80,
+  "puntosSaludJuego": 80,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 70
+    },
+    {
+      "nombre": "Ataque Veneno",
+      "damage": 65
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38e6d497099d87b08037e"
+  },
+  "nombre": "Tentacool",
+  "especie": "Pokemon Agua/Veneno",
+  "preevolucion": null,
+  "evolucion": "Tentacruel",
+  "tipo": [
+    "Agua",
+    "Veneno"
+  ],
+  "imagen": "065.png",
+  "altura": 0.8,
+  "peso": 45.5,
+  "vida": 40,
+  "puntosSaludJuego": 40,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 30
+    },
+    {
+      "nombre": "Ataque Agua",
+      "damage": 25
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38e6d497099d87b08037f"
+  },
+  "nombre": "Tentacruel",
+  "especie": "Pokemon Agua/Veneno",
+  "preevolucion": "Tentacool",
+  "evolucion": null,
+  "tipo": [
+    "Agua",
+    "Veneno"
+  ],
+  "imagen": "066.png",
+  "altura": 1.6,
+  "peso": 55,
+  "vida": 80,
+  "puntosSaludJuego": 80,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 55
+    },
+    {
+      "nombre": "Ataque Agua",
+      "damage": 50
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38ebf497099d87b080381"
+  },
+  "nombre": "Geodude",
+  "especie": "Pokemon Tierra/Roca",
+  "preevolucion": null,
+  "evolucion": "Graveler",
+  "tipo": [
+    "Tierra",
+    "Roca"
+  ],
+  "imagen": "067.png",
+  "altura": 0.4,
+  "peso": 20,
+  "vida": 40,
+  "puntosSaludJuego": 40,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 30
+    },
+    {
+      "nombre": "Ataque Tierra",
+      "damage": 25
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38ebf497099d87b080382"
+  },
+  "nombre": "Graveler",
+  "especie": "Pokemon Tierra/Roca",
+  "preevolucion": "Geodude",
+  "evolucion": "Golem",
+  "tipo": [
+    "Tierra",
+    "Roca"
+  ],
+  "imagen": "068.png",
+  "altura": 1,
+  "peso": 105,
+  "vida": 80,
+  "puntosSaludJuego": 80,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 50
+    },
+    {
+      "nombre": "Ataque Tierra",
+      "damage": 45
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38ebf497099d87b080383"
+  },
+  "nombre": "Golem",
+  "especie": "Pokemon Tierra/Roca",
+  "preevolucion": "Graveler",
+  "evolucion": null,
+  "tipo": [
+    "Tierra",
+    "Roca"
+  ],
+  "imagen": "069.png",
+  "altura": 1.4,
+  "peso": 305,
+  "vida": 120,
+  "puntosSaludJuego": 120,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 70
+    },
+    {
+      "nombre": "Ataque Tierra",
+      "damage": 65
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38ebf497099d87b080384"
+  },
+  "nombre": "Ponyta",
+  "especie": "Pokemon Fuego",
+  "preevolucion": null,
+  "evolucion": "Rapidash",
+  "tipo": [
+    "Fuego"
+  ],
+  "imagen": "070.png",
+  "altura": 0.9,
+  "peso": 30,
+  "vida": 50,
+  "puntosSaludJuego": 50,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 40
+    },
+    {
+      "nombre": "Ataque Fuego",
+      "damage": 35
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38ebf497099d87b080385"
+  },
+  "nombre": "Rapidash",
+  "especie": "Pokemon Fuego",
+  "preevolucion": "Ponyta",
+  "evolucion": null,
+  "tipo": [
+    "Fuego"
+  ],
+  "imagen": "071.png",
+  "altura": 1,
+  "peso": 95,
+  "vida": 65,
+  "puntosSaludJuego": 65,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 60
+    },
+    {
+      "nombre": "Ataque Fuego",
+      "damage": 55
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38ebf497099d87b080386"
+  },
+  "nombre": "Slowpoke",
+  "especie": "Pokemon Agua/Psíquico",
+  "preevolucion": null,
+  "evolucion": "Slowbro",
+  "tipo": [
+    "Agua",
+    "Psíquico"
+  ],
+  "imagen": "072.png",
+  "altura": 1.6,
+  "peso": 36,
+  "vida": 90,
+  "puntosSaludJuego": 90,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 35
+    },
+    {
+      "nombre": "Ataque Agua",
+      "damage": 30
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38ebf497099d87b080387"
+  },
+  "nombre": "Slowbro",
+  "especie": "Pokemon Agua/Psíquico",
+  "preevolucion": "Slowpoke",
+  "evolucion": null,
+  "tipo": [
+    "Agua",
+    "Psíquico"
+  ],
+  "imagen": "073.png",
+  "altura": 1.6,
+  "peso": 78.5,
+  "vida": 95,
+  "puntosSaludJuego": 95,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 55
+    },
+    {
+      "nombre": "Ataque Agua",
+      "damage": 45
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38ebf497099d87b080388"
+  },
+  "nombre": "Magnemite",
+  "especie": "Pokemon Eléctrico/Acero",
+  "preevolucion": null,
+  "evolucion": "Magneton",
+  "tipo": [
+    "Eléctrico",
+    "Acero"
+  ],
+  "imagen": "074.png",
+  "altura": 0.3,
+  "peso": 6,
+  "vida": 25,
+  "puntosSaludJuego": 25,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 25
+    },
+    {
+      "nombre": "Ataque Eléctrico",
+      "damage": 20
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38ebf497099d87b080389"
+  },
+  "nombre": "Magneton",
+  "especie": "Pokemon Eléctrico/Acero",
+  "preevolucion": "Magnemite",
+  "evolucion": null,
+  "tipo": [
+    "Eléctrico",
+    "Acero"
+  ],
+  "imagen": "075.png",
+  "altura": 0.9,
+  "peso": 60,
+  "vida": 50,
+  "puntosSaludJuego": 50,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 45
+    },
+    {
+      "nombre": "Ataque Eléctrico",
+      "damage": 40
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38ff3497099d87b08038b"
+  },
+  "nombre": "Farfetch'd",
+  "especie": "Pokemon Normal/Volador",
+  "preevolucion": null,
+  "evolucion": null,
+  "tipo": [
+    "Normal",
+    "Volador"
+  ],
+  "imagen": "076.png",
+  "altura": 0.8,
+  "peso": 15,
+  "vida": 52,
+  "puntosSaludJuego": 52,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 45
+    },
+    {
+      "nombre": "Ataque Vuelo",
+      "damage": 40
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38ff3497099d87b08038c"
+  },
+  "nombre": "Doduo",
+  "especie": "Pokemon Normal/Volador",
+  "preevolucion": null,
+  "evolucion": "Dodrio",
+  "tipo": [
+    "Normal",
+    "Volador"
+  ],
+  "imagen": "077.png",
+  "altura": 1.4,
+  "peso": 39.2,
+  "vida": 35,
+  "puntosSaludJuego": 35,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 30
+    },
+    {
+      "nombre": "Ataque Vuelo",
+      "damage": 25
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38ff3497099d87b08038d"
+  },
+  "nombre": "Dodrio",
+  "especie": "Pokemon Normal/Volador",
+  "preevolucion": "Doduo",
+  "evolucion": null,
+  "tipo": [
+    "Normal",
+    "Volador"
+  ],
+  "imagen": "078.png",
+  "altura": 1.8,
+  "peso": 85.2,
+  "vida": 60,
+  "puntosSaludJuego": 60,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 60
+    },
+    {
+      "nombre": "Ataque Vuelo",
+      "damage": 55
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38ff3497099d87b08038e"
+  },
+  "nombre": "Seel",
+  "especie": "Pokemon Agua",
+  "preevolucion": null,
+  "evolucion": "Dewgong",
+  "tipo": [
+    "Agua"
+  ],
+  "imagen": "079.png",
+  "altura": 1.1,
+  "peso": 90,
+  "vida": 65,
+  "puntosSaludJuego": 65,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 40
+    },
+    {
+      "nombre": "Ataque Agua",
+      "damage": 35
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38ff3497099d87b08038f"
+  },
+  "nombre": "Dewgong",
+  "especie": "Pokemon Agua",
+  "preevolucion": "Seel",
+  "evolucion": null,
+  "tipo": [
+    "Agua"
+  ],
+  "imagen": "080.png",
+  "altura": 1.7,
+  "peso": 120,
+  "vida": 90,
+  "puntosSaludJuego": 90,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 60
+    },
+    {
+      "nombre": "Ataque Agua",
+      "damage": 55
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38ff3497099d87b080390"
+  },
+  "nombre": "Grimer",
+  "especie": "Pokemon Lucha/Veneno",
+  "preevolucion": null,
+  "evolucion": "Muk",
+  "tipo": [
+    "Lucha",
+    "Veneno"
+  ],
+  "imagen": "081.png",
+  "altura": 0.9,
+  "peso": 30,
+  "vida": 80,
+  "puntosSaludJuego": 80,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 40
+    },
+    {
+      "nombre": "Ataque Veneno",
+      "damage": 35
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38ff3497099d87b080391"
+  },
+  "nombre": "Muk",
+  "especie": "Pokemon Lucha/Veneno",
+  "preevolucion": "Grimer",
+  "evolucion": null,
+  "tipo": [
+    "Lucha",
+    "Veneno"
+  ],
+  "imagen": "082.png",
+  "altura": 1.2,
+  "peso": 30,
+  "vida": 105,
+  "puntosSaludJuego": 105,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 60
+    },
+    {
+      "nombre": "Ataque Veneno",
+      "damage": 55
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38ff3497099d87b080392"
+  },
+  "nombre": "Shellder",
+  "especie": "Pokemon Agua",
+  "preevolucion": null,
+  "evolucion": "Cloyster",
+  "tipo": [
+    "Agua"
+  ],
+  "imagen": "083.png",
+  "altura": 0.3,
+  "peso": 4,
+  "vida": 30,
+  "puntosSaludJuego": 30,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 25
+    },
+    {
+      "nombre": "Ataque Agua",
+      "damage": 20
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38ff3497099d87b080393"
+  },
+  "nombre": "Cloyster",
+  "especie": "Pokemon Agua",
+  "preevolucion": "Shellder",
+  "evolucion": null,
+  "tipo": [
+    "Agua"
+  ],
+  "imagen": "084.png",
+  "altura": 1.5,
+  "peso": 132.5,
+  "vida": 55,
+  "puntosSaludJuego": 55,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 50
+    },
+    {
+      "nombre": "Ataque Agua",
+      "damage": 45
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38ff3497099d87b080394"
+  },
+  "nombre": "Gastly",
+  "especie": "Pokemon Fantasma/Veneno",
+  "preevolucion": null,
+  "evolucion": "Haunter",
+  "tipo": [
+    "Fantasma",
+    "Veneno"
+  ],
+  "imagen": "085.png",
+  "altura": 1.3,
+  "peso": 0.1,
+  "vida": 30,
+  "puntosSaludJuego": 30,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 20
+    },
+    {
+      "nombre": "Ataque Fantasma",
+      "damage": 15
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38ff3497099d87b080395"
+  },
+  "nombre": "Haunter",
+  "especie": "Pokemon Fantasma/Veneno",
+  "preevolucion": "Gastly",
+  "evolucion": "Gengar",
+  "tipo": [
+    "Fantasma",
+    "Veneno"
+  ],
+  "imagen": "086.png",
+  "altura": 1.6,
+  "peso": 0.1,
+  "vida": 65,
+  "puntosSaludJuego": 65,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 45
+    },
+    {
+      "nombre": "Ataque Fantasma",
+      "damage": 40
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e38ff3497099d87b080396"
+  },
+  "nombre": "Gengar",
+  "especie": "Pokemon Fantasma/Veneno",
+  "preevolucion": "Haunter",
+  "evolucion": null,
+  "tipo": [
+    "Fantasma",
+    "Veneno"
+  ],
+  "imagen": "087.png",
+  "altura": 1.5,
+  "peso": 0.1,
+  "vida": 90,
+  "puntosSaludJuego": 90,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 65
+    },
+    {
+      "nombre": "Ataque Fantasma",
+      "damage": 55
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e3908f497099d87b080398"
+  },
+  "nombre": "Onix",
+  "especie": "Pokemon Tierra/Roca",
+  "preevolucion": null,
+  "evolucion": null,
+  "tipo": [
+    "Tierra",
+    "Roca"
+  ],
+  "imagen": "088.png",
+  "altura": 0.8,
+  "peso": 210,
+  "vida": 35,
+  "puntosSaludJuego": 35,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 25
+    },
+    {
+      "nombre": "Ataque Tierra",
+      "damage": 20
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e3908f497099d87b080399"
+  },
+  "nombre": "Drowzee",
+  "especie": "Pokemon Psíquico",
+  "preevolucion": null,
+  "evolucion": "Hypno",
+  "tipo": [
+    "Psíquico"
+  ],
+  "imagen": "089.png",
+  "altura": 1,
+  "peso": 32.4,
+  "vida": 60,
+  "puntosSaludJuego": 60,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 30
+    },
+    {
+      "nombre": "Ataque Psíquico",
+      "damage": 25
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e3908f497099d87b08039a"
+  },
+  "nombre": "Hypno",
+  "especie": "Pokemon Psíquico",
+  "preevolucion": "Drowzee",
+  "evolucion": null,
+  "tipo": [
+    "Psíquico"
+  ],
+  "imagen": "090.png",
+  "altura": 1.6,
+  "peso": 75.6,
+  "vida": 95,
+  "puntosSaludJuego": 95,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 50
+    },
+    {
+      "nombre": "Ataque Psíquico",
+      "damage": 45
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e3908f497099d87b08039b"
+  },
+  "nombre": "Krabby",
+  "especie": "Pokemon Agua",
+  "preevolucion": null,
+  "evolucion": "Kingler",
+  "tipo": [
+    "Agua"
+  ],
+  "imagen": "091.png",
+  "altura": 0.4,
+  "peso": 6.5,
+  "vida": 30,
+  "puntosSaludJuego": 30,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 25
+    },
+    {
+      "nombre": "Ataque Agua",
+      "damage": 20
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e3908f497099d87b08039c"
+  },
+  "nombre": "Kingler",
+  "especie": "Pokemon Agua",
+  "preevolucion": "Krabby",
+  "evolucion": null,
+  "tipo": [
+    "Agua"
+  ],
+  "imagen": "092.png",
+  "altura": 1.3,
+  "peso": 60,
+  "vida": 55,
+  "puntosSaludJuego": 55,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 50
+    },
+    {
+      "nombre": "Ataque Agua",
+      "damage": 45
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e3908f497099d87b08039d"
+  },
+  "nombre": "Voltorb",
+  "especie": "Pokemon Eléctrico",
+  "preevolucion": null,
+  "evolucion": "Electrode",
+  "tipo": [
+    "Eléctrico"
+  ],
+  "imagen": "093.png",
+  "altura": 0.5,
+  "peso": 18,
+  "vida": 40,
+  "puntosSaludJuego": 40,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 25
+    },
+    {
+      "nombre": "Ataque Eléctrico",
+      "damage": 20
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e3908f497099d87b08039e"
+  },
+  "nombre": "Electrode",
+  "especie": "Pokemon Eléctrico",
+  "preevolucion": "Voltorb",
+  "evolucion": null,
+  "tipo": [
+    "Eléctrico"
+  ],
+  "imagen": "094.png",
+  "altura": 1.2,
+  "peso": 66.6,
+  "vida": 60,
+  "puntosSaludJuego": 60,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 50
+    },
+    {
+      "nombre": "Ataque Eléctrico",
+      "damage": 45
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e3908f497099d87b08039f"
+  },
+  "nombre": "Exeggcute",
+  "especie": "Pokemon Planta/Psíquico",
+  "preevolucion": null,
+  "evolucion": "Exeggutor",
+  "tipo": [
+    "Planta",
+    "Psíquico"
+  ],
+  "imagen": "095.png",
+  "altura": 0.4,
+  "peso": 0.5,
+  "vida": 60,
+  "puntosSaludJuego": 60,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 25
+    },
+    {
+      "nombre": "Ataque Psíquico",
+      "damage": 20
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e3908f497099d87b0803a0"
+  },
+  "nombre": "Exeggutor",
+  "especie": "Pokemon Planta/Psíquico",
+  "preevolucion": "Exeggcute",
+  "evolucion": null,
+  "tipo": [
+    "Planta",
+    "Psíquico"
+  ],
+  "imagen": "096.png",
+  "altura": 2,
+  "peso": 120,
+  "vida": 95,
+  "puntosSaludJuego": 95,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 50
+    },
+    {
+      "nombre": "Ataque Psíquico",
+      "damage": 45
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e3908f497099d87b0803a1"
+  },
+  "nombre": "Cubone",
+  "especie": "Pokemon Tierra",
+  "preevolucion": null,
+  "evolucion": "Marowak",
+  "tipo": [
+    "Tierra"
+  ],
+  "imagen": "097.png",
+  "altura": 0.4,
+  "peso": 6.5,
+  "vida": 50,
+  "puntosSaludJuego": 50,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 30
+    },
+    {
+      "nombre": "Ataque Tierra",
+      "damage": 25
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e3908f497099d87b0803a2"
+  },
+  "nombre": "Marowak",
+  "especie": "Pokemon Tierra",
+  "preevolucion": "Cubone",
+  "evolucion": null,
+  "tipo": [
+    "Tierra"
+  ],
+  "imagen": "098.png",
+  "altura": 1,
+  "peso": 45,
+  "vida": 65,
+  "puntosSaludJuego": 65,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 50
+    },
+    {
+      "nombre": "Ataque Tierra",
+      "damage": 45
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e3908f497099d87b0803a3"
+  },
+  "nombre": "Hitmonlee",
+  "especie": "Pokemon Lucha",
+  "preevolucion": null,
+  "evolucion": null,
+  "tipo": [
+    "Lucha"
+  ],
+  "imagen": "099.png",
+  "altura": 1.5,
+  "peso": 48.7,
+  "vida": 50,
+  "puntosSaludJuego": 50,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 60
+    },
+    {
+      "nombre": "Ataque Lucha",
+      "damage": 55
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65e3908f497099d87b0803a4"
+  },
+  "nombre": "Hitmonchan",
+  "especie": "Pokemon Lucha",
+  "preevolucion": null,
+  "evolucion": null,
+  "tipo": [
+    "Lucha"
+  ],
+  "imagen": "100.png",
+  "altura": 1.4,
+  "peso": 58,
+  "vida": 65,
+  "puntosSaludJuego": 65,
+  "habilidades": [
+    {
+      "nombre": "Ataque Cuchillo",
+      "damage": 60
+    },
+    {
+      "nombre": "Ataque Lucha",
+      "damage": 55
+    }
+  ]
+}]
