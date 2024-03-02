@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Seleccionar Pokémon para Batalla</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <div class="form-container">
+        <h1>Seleccionar Pokémon para Batalla</h1>
+        <form id="formBatalla">
+            <label for="pokemonId1">Pokémon 1:</label>
+            <select name="pokemonId1" id="pokemonId1" class="select-pokemon" required></select>
+
+            <label for="pokemonId2">Pokémon 2:</label>
+            <select name="pokemonId2" id="pokemonId2" class="select-pokemon" required></select>
+
+            <button id="openModalButton" type="button" class="button">Batalla!</button>
+            <a href="/" class="button">Volver</a>
+            </form>
+
+        <div id="pokemonModal" class="modal">
+            <div class="modal-content">
+                <div id="pokemon1InfoModal" class="pokemonBattleModal">
+                    <h2>Nombre del Pokémon 1</h2>
+                    <img src="" alt="Imagen del Pokémon 1" id="pokemon1Image" />
+                    <p class="especie">Especie: Especie del Pokémon 1</p>
+                    <p class="tipo">Tipo: Tipo del Pokémon 1</p>
+                    <p class="puntosSaludJuego">Puntos de Salud en Juego: Puntos del Pokémon 1</p>
+                    <h3>Habilidades:</h3>
+                    <div id="abilitiesContainer1" class="abilities-container"></div>
+                </div>
+                <div id="pokemon2InfoModal" class="pokemonBattleModal">
+                    <h2>Nombre del Pokémon 2</h2>
+                    <img src="" alt="Imagen del Pokémon 2" id="pokemon2Image" />
+                    <p class="especie">Especie: Especie del Pokémon 2</p>
+                    <p class="tipo">Tipo: Tipo del Pokémon 2</p>
+                    <p class="puntosSaludJuego">Puntos de Salud en Juego: Puntos del Pokémon 2</p>
+                    <h3>Habilidades:</h3>
+                    <div id="abilitiesContainer2" class="abilities-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/batalla.js"></script>
+</body>
+
+</html>
