@@ -59,3 +59,17 @@ exports.login = async (req, res) => {
       .json({ message: "Error interno del servidor al iniciar sesión" });
   }
 };
+
+// Middleware para redirigir al usuario
+exports.loginRedirect = (req, res, next) => {
+  res.redirect("/");
+};
+
+exports.registerRedirect = (req, res, next) => {
+  res.redirect("/login");
+};
+
+exports.logout = (req, res) => {
+  req.logout();
+  res.redirect("/login");
+};
