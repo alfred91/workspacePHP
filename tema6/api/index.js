@@ -1,7 +1,7 @@
 const app = require("./app");
 const port = 3000;
 const mongoose = require("mongoose");
-const urlMongo = "mongodb://root:<password>@localhost:27018/apitask";
+const urlMongo = `mongodb://root:${process.env.MONGO_PASSWORD}@localhost:27018/apitask`;
 
 mongoose.connect(urlMongo);
 

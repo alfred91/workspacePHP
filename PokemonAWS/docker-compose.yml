@@ -7,7 +7,7 @@ services:
       - "27018:27017"
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: ***REMOVED***
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD:?define MONGO_PASSWORD en .env}
     volumes:
       - mongo-data:/data/db
 
@@ -20,7 +20,7 @@ services:
       - mongo
     environment:
       MONGO_USERNAME: root
-      MONGO_PASSWORD: ***REMOVED***
+      MONGO_PASSWORD: ${MONGO_PASSWORD:?define MONGO_PASSWORD en .env}
       MONGO_HOSTNAME: mongo
     volumes:
       - ./Pokemon:/usr/src/app 

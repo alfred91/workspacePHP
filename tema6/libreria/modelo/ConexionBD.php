@@ -12,7 +12,7 @@ class ConexionBD {
         try {
             //CONEXIÓN A MONGODB CLOUD ATLAS. Comentar esta línea para conectar en local.
             //$host = "mongodb+srv://admin:<password>@cluster0.qmwhh.mongodb.net/".$database."?retryWrites=true&w=majority";
-            $host = "mongodb://root:<password>@172.18.0.2:27017/"; //MongoDB en Docker
+            $host = "mongodb://root:" . getenv('MONGO_PASSWORD') . "@172.18.0.2:27017/"; //MongoDB en Docker
             self::$conexion = (new Client($host))->{$database};
         } catch (Exception $e){
             echo $e->getMessage();
