@@ -8,7 +8,7 @@ class ConexionBD {
     private static $conexion;
 
     //Poned IP de vuestro MongoDB
-    public static function conectar($database,$host="mongodb://localhost:27017",$user="root",$password="***REMOVED***") {
+    public static function conectar($database,$host="mongodb://localhost:27017",$user="root",$password=null) {
         try {
             //CONEXIÓN A MONGODB CLOUD ATLAS. Comentar esta línea para conectar en local.
             //$host = "mongodb+srv://admin:<password>@cluster0.qmwhh.mongodb.net/".$database."?retryWrites=true&w=majority";

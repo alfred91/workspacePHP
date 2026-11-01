@@ -3,7 +3,7 @@ function conexion(){
 
     $bbdd="proyectos";
     $usuario="root";
-    $password="***REMOVED***";
+    $password=getenv('DB_PASSWORD');
 
         try {
             $dsn = "mysql:host=172.17.0.1:3306;dbname=$bbdd";

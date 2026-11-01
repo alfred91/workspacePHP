@@ -14,7 +14,7 @@ class Conectar
         $host = 'localhost';
         $puerto = 27018;
         $usuario = 'root';
-        $password = '***REMOVED***';
+        $password = getenv('DB_PASSWORD');
 
         try {
             $this->conexion = new Client(

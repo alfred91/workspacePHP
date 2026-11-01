@@ -11,7 +11,7 @@ class ConexionBaseDeDatos {
 
     public function __construct() {
     
-        $this->conexion = (new Client('mongodb://root:<password>@mongo:27017'))->deepracer;
+        $this->conexion = (new Client('mongodb://root:' . getenv('MONGO_PASSWORD') . '@mongo:27017'))->deepracer;
         
     }
 

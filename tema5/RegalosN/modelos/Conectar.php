@@ -14,7 +14,7 @@ class Conectar
         $host = 'mariadb:3306';
         $bd = 'Regalos';
         $usuario = 'root';
-        $password = '***REMOVED***';
+        $password = getenv('DB_PASSWORD');
 
         try {
             if ($this->conexion == null) {
