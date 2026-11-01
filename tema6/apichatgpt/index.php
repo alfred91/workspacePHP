@@ -11,7 +11,7 @@ $textoArticulo = "Escribe un artículo sobre " . $texto;
 $response = $client->request('POST', 'https://api.openai.com/v1/chat/completions', [
   'body' => '{"model": "gpt-4", "temperature": 0,  "messages": [{"role": "user", "content": "'.$textoArticulo.'"}]}',
   'headers' => [
-    'Authorization' => 'Bearer xxxxxxxxx',
+    'Authorization' => 'Bearer ' . getenv('OPENAI_API_KEY'),
     'accept' => 'application/json',
     'content-type' => 'application/json',
   ],
@@ -31,7 +31,7 @@ $textoImagen = $texto;
 $response = $client->request('POST', 'https://api.openai.com/v1/images/generations', [
   'body' => '{"prompt": "'.$textoImagen.'", "size": "1024x1024", "n": 1}',
   'headers' => [
-    'Authorization' => 'Bearer ***REMOVED***',
+    'Authorization' => 'Bearer ' . getenv('OPENAI_API_KEY'),
     'accept' => 'application/json',
     'content-type' => 'application/json',
   ],

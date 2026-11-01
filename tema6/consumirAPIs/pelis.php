@@ -17,7 +17,7 @@
     
 <?php
 
-$key = "***REMOVED***";
+$key = "api_key=" . getenv('TMDB_API_KEY');
 
 //$uri = "https://api.themoviedb.org/3/genre/tv/list?language=es&".$key;       
 $uri = "https://api.themoviedb.org/3/discover/tv?language=es&with_generes=Comedia,Misterio&with_original_language=en&page=2&".$key;       

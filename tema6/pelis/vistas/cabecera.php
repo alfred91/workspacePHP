@@ -140,7 +140,7 @@
           method: 'GET',
           headers: {
             accept: 'application/json',
-            Authorization: 'Bearer ***REMOVED***'
+            Authorization: 'Bearer <?= getenv('TMDB_TOKEN') ?>'
           }
         };
 

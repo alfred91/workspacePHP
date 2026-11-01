@@ -1,5 +1,5 @@
 function getWeather() {
-    const apiKey = '***REMOVED***';
+    const apiKey = 'TU_API_KEY'; // clave del servicio del tiempo
     const city = $('#cityInput').val();
 
     if (!city) {

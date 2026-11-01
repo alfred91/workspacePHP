@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const app = require("./app");
 const port = 3000;
-const urlMongoDb = "mongodb+srv://usuario:<password>@taskdb.odkvgjh.mongodb.net/mydb";
+const urlMongoDb = process.env.MONGODB_URI;
 
 mongoose
   .connect(urlMongoDb)

@@ -1,5 +1,5 @@
 function getSummonerInfo() {
-    const apiKey = '***REMOVED***';
+    const apiKey = 'TU_API_KEY'; // clave de https://developer.riotgames.com
     const summonerName = document.getElementById('summonerInput').value;
 
     if (!summonerName) {
